@@ -1,14 +1,12 @@
 // Иллюстрации уроков: функции, которые возвращают SVG-строку. Цифры считаются здесь же, без внешних данных,
 // поэтому иллюстрации работают и без сети. Один и тот же рисунок служит кадром анимации — с другими параметрами.
-const C = { bg: "#0e1318", line: "#263040", text: "#c9d1dc", dim: "#8b95a3", blue: "#2f7de1", green: "#4cc38a", red: "#ef6a6a", gold: "#e0b341" };
-const svg = (w, h, body, label) => `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${label}" style="width:100%;max-width:${w}px;height:auto;background:${C.bg};border-radius:8px">${body}</svg>`;
-const txt = (x, y, s, { size = 13, color = C.text, anchor = "start", weight = 400 } = {}) => `<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" font-weight="${weight}" font-family="system-ui,sans-serif">${s}</text>`;
-
-// Повторяемые случайные числа: одно и то же зерно — одна и та же картинка.
-export function rng(seed) {
-  let a = seed >>> 0;
-  return () => { a = (a + 0x6d2b79f5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; };
-}
+import { C, svg, txt, rng } from "./draw.js";
+import M01 from "./fig-m01.js";
+import M02 from "./fig-m02.js";
+import M03 from "./fig-m03.js";
+import M04 from "./fig-m04.js";
+import M05 from "./fig-m05.js";
+export { rng };
 
 // Сколько орлов выпало у каждого из n людей, бросивших монету flips раз.
 export function coinFlipCounts(n, flips = 10, seed = 7) {
@@ -24,7 +22,6 @@ export function courseMap() {
     box(20, "Учебный режим", ["модули 0–14", "уроки, схемы, анимации", "симуляторы без денег"], C.blue) +
     box(330, "Рабочий режим", ["этапы 1–5", "монеты → идея → проверка", "бумажная торговля"], C.green) +
     `<path d="M275 75 H325" stroke="${C.text}" stroke-width="2" marker-end="url(#ar)"/><path d="M325 125 H275" stroke="${C.text}" stroke-width="2" marker-end="url(#ar)"/>` +
-    `<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="${C.text}"/></marker></defs>` +
     txt(300, 68, "попробовать", { size: 11, anchor: "middle", color: C.dim }) + txt(300, 145, "что это?", { size: 11, anchor: "middle", color: C.dim }) +
     txt(300, 210, "Из урока — в программу на настоящих данных, из программы — в нужный урок.", { size: 12, anchor: "middle", color: C.dim }),
     "Схема: учебный и рабочий режимы связаны ссылками в обе стороны");
@@ -65,4 +62,4 @@ export function equityDrawdown({ seed = 3, days = 300 } = {}) {
   return svg(W, H, body, `Кривая капитала с худшей просадкой ${Math.round(dd * 100)} процентов`);
 }
 
-export const FIGURES = { courseMap, coinFlips, equityDrawdown };
+export const FIGURES = { courseMap, coinFlips, equityDrawdown, ...M01, ...M02, ...M03, ...M04, ...M05 };

@@ -2,8 +2,8 @@
 // Порядок «сначала сеть»: при связи всегда свежая версия, без связи — сохранённая. Кэш браузера не используется
 // (сайт отдаёт файлы с разрешением хранить 10 минут): иначе после обновления новая страница получала бы старый app.js. Расчёты (api/*) не сохраняются,
 // кроме описания программы и прогресса — они нужны учебному режиму без сети.
-const CACHE = "polygon-87b0493516";
-const SHELL = ["./","index.html","course/figures.js","course/m00.js","course/index.js","course.js","icon-192.png","icon-512.png","apple-touch-icon.png","manifest.webmanifest","store-idb.js","worker.js","wizard.js","app.js","i18n.js","lib/backtest.js","lib/diagnostics.js","lib/indicators.js","lib/paper.js","lib/rules.js","lib/stats.js","lib/strategies.js","lib/data.js","lib/journal.js","lib/pairs.js","lib/currency.js","lib/benchmarks.js","lib/grid.js","lib/funding.js","lib/dca.js","lib/scan.js","lib/coins.js","lib/state.js","lib/progress.js","lib/catalog.js","lib/store.js","lib/service.js","meta.json"];
+const CACHE = "polygon-9f56bbc19f";
+const SHELL = ["./","app.js","apple-touch-icon.png","course.js","i18n.js","icon-192.png","icon-512.png","index.html","manifest.webmanifest","store-idb.js","wizard.js","worker.js","course/figures.js","course/index.js","course/m00.js","course/draw.js","course/fig-m01.js","course/fig-m02.js","course/fig-m03.js","course/fig-m04.js","course/fig-m05.js","course/glossary.js","course/m01.js","course/m02.js","course/m03.js","course/m04.js","course/m05.js","course/sims.js","sim/amm.js","sim/lending.js","sim/market.js","sim/block.js","lib/backtest.js","lib/benchmarks.js","lib/catalog.js","lib/coins.js","lib/currency.js","lib/data.js","lib/dca.js","lib/diagnostics.js","lib/funding.js","lib/grid.js","lib/indicators.js","lib/journal.js","lib/pairs.js","lib/paper.js","lib/progress.js","lib/rules.js","lib/scan.js","lib/service.js","lib/state.js","lib/stats.js","lib/store.js","lib/strategies.js","meta.json"];
 const KEEP_API = /\/api\/(meta|progress)$/;
 
 self.addEventListener("install", (e) => {
