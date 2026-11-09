@@ -114,3 +114,4 @@ export async function initCourse() {
   view ? openLesson(view) : renderHome();
 }
 window.initCourse = initCourse;
+window.polygonLesson = (id) => { view = id; }; // мастер рабочего режима: следующий показ курса откроет этот урок

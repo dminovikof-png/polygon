@@ -1,8 +1,8 @@
 // Сервис-воркер: сохраняет файлы программы на устройстве, чтобы учебный режим открывался без сети.
 // Порядок «сначала сеть»: при связи всегда свежая версия, без связи — сохранённая. Расчёты (api/*) не сохраняются,
 // кроме описания программы и прогресса — они нужны учебному режиму без сети.
-const CACHE = "polygon-10716c09ce";
-const SHELL = ["./","index.html","course/figures.js","course/m00.js","course/index.js","course.js","icon-192.png","icon-512.png","apple-touch-icon.png","manifest.webmanifest","store-idb.js","worker.js","app.js","lib/backtest.js","lib/diagnostics.js","lib/indicators.js","lib/paper.js","lib/rules.js","lib/stats.js","lib/strategies.js","lib/data.js","lib/journal.js","lib/pairs.js","lib/currency.js","lib/benchmarks.js","lib/grid.js","lib/funding.js","lib/dca.js","lib/scan.js","lib/coins.js","lib/state.js","lib/progress.js","lib/catalog.js","lib/store.js","lib/service.js","meta.json"];
+const CACHE = "polygon-7687ba1fa5";
+const SHELL = ["./","index.html","course/figures.js","course/m00.js","course/index.js","course.js","icon-192.png","icon-512.png","apple-touch-icon.png","manifest.webmanifest","store-idb.js","worker.js","app.js","wizard.js","lib/backtest.js","lib/diagnostics.js","lib/indicators.js","lib/paper.js","lib/rules.js","lib/stats.js","lib/strategies.js","lib/data.js","lib/journal.js","lib/pairs.js","lib/currency.js","lib/benchmarks.js","lib/grid.js","lib/funding.js","lib/dca.js","lib/scan.js","lib/coins.js","lib/state.js","lib/progress.js","lib/catalog.js","lib/store.js","lib/service.js","meta.json"];
 const KEEP_API = /\/api\/(meta|progress)$/;
 
 self.addEventListener("install", (e) => {

@@ -85,7 +85,7 @@ $("syncBox").addEventListener("toggle", () => { if ($("syncBox").open) syncStatu
 const STAGES = ["start", "coins", "state", "idea", "test", "paper", "ref"];
 const ALIAS = { rates: ["coins"], scan: ["test", "scan"], ind: ["ref", "ind"], cat: ["ref", "cat"] };
 document.querySelectorAll("#nav button").forEach((b) => (b.onclick = () => showTab(b.dataset.tab)));
-document.querySelectorAll("[data-go]").forEach((b) => (b.onclick = () => { showTab(b.dataset.go); window.scrollTo(0, 0); }));
+document.querySelectorAll("[data-go]").forEach((b) => (b.onclick = () => { if (b.closest("#tab-start")) { wiz.path = b.dataset.go === "idea" ? "idea" : "coins"; wizSave(); } showTab(b.dataset.go); window.scrollTo(0, 0); }));
 function showTab(name) {
   const [stage, sub] = ALIAS[name] || [name];
   document.querySelectorAll("#nav button").forEach((b) => b.classList.toggle("on", b.dataset.tab === stage));
@@ -98,7 +98,60 @@ function showTab(name) {
   if (stage === "state") loadState(); // список монет мог измениться на этапе 1
   if (stage === "test" && !$("scanPane").hidden) scanPlanUpdate();
   if (stage === "idea") renderApproach();
+  renderWizard();
 }
+/* ---------- мастер шагов ---------- */
+// Логика — в wizard.js (там же тесты); здесь только факты со страницы и отрисовка. Шаг отмечается по факту.
+const WIZ_KEY = "polygon.wizard";
+const wiz = (() => { try { return JSON.parse(localStorage.getItem(WIZ_KEY)) || {}; } catch { return {}; } })();
+const wizSave = () => { try { localStorage.setItem(WIZ_KEY, JSON.stringify(wiz)); } catch { /* без хранилища — до перезагрузки */ } };
+let W = null, wizJournal = [], wizSessions = [], plankNow = 1.96, lastCheck = null;
+import("./wizard.js").then((m) => { W = m; renderWizard(); }).catch(() => { /* без мастера этапы работают как прежде */ });
+const curStage = () => STAGES.find((t) => !$("tab-" + t).hidden);
+function chooseIdea() { wiz.idea = $("strategy").value; wizSave(); renderWizard(); }
+function openLessonFromWork(id) { window.polygonLesson?.(id); setMode("learn"); window.scrollTo(0, 0); }
+function renderWizard() {
+  if (!W || !meta) return;
+  const box = $("wizard"), off = wiz.on === false;
+  box.hidden = off; $("wizOn").hidden = !off;
+  if (off) return;
+  const w = W.wizardState({ path: wiz.path, picked: coinStore.picked ? [...picked()] : null, stateSeen: wiz.stateSeen, idea: wiz.idea, journal: wizJournal, sessions: wizSessions, stage: curStage(),
+    coinYears: coinData ? Object.fromEntries(coinData.rows.filter((r) => r.years != null).map((r) => [r.symbol, r.years])) : null });
+  const T = (k) => W.STEPS[k - 1].title, go = (k) => () => { showTab(W.STEPS[k - 1].stage); window.scrollTo(0, 0); };
+  const pathName = w.path === "idea" ? "путь «с идеи»" : "путь «с монет»";
+  const head = h("div", { class: "wizhead" },
+    h("b", null, w.inPath ? `Шаг ${w.pos} из ${w.total} — ${w.step.title}` : `${w.step.title} — не входит в ${pathName}`),
+    h("span", { class: "tag" }, `${w.done[w.n] ? "✓ " : ""}${w.note[w.n]}`), h("span", { style: "flex:1" }),
+    h("button", { class: "small sec", onclick: () => { wiz.collapsed = !wiz.collapsed; wizSave(); renderWizard(); } }, wiz.collapsed ? "Развернуть" : "Свернуть"),
+    h("button", { class: "small sec", title: "Включить снова можно на экране «Начало»", onclick: () => { wiz.on = false; wizSave(); renderWizard(); } }, "Выключить"));
+  if (wiz.collapsed) return box.replaceChildren(head);
+  const here = !$("tab-" + w.step.stage).hidden;
+  box.replaceChildren(...[head,
+    h("div", { class: "wizdots" }, w.order.map((k, i) => h("button", { class: "small" + (w.done[k] ? " ok" : "") + (k === w.n ? " on" : ""), title: `${T(k)}: ${w.note[k]}`, onclick: go(k) }, `${w.done[k] ? "✓" : i + 1} ${T(k)}`))),
+    h("div", { class: "plain" }, h("b", null, "Что сделать: "), w.what),
+    h("div", { class: "help" }, h("b", null, "Зачем: "), w.step.why),
+    h("div", { class: "help" }, h("b", null, "Частая ошибка: "), w.step.mistake),
+    ...w.warnings.map((x) => h("div", { class: "warn" }, "⚠ " + x)),
+    w.allDone ? h("div", { class: "help good" }, "Все шаги пройдены. Помните: бумажная сессия — не проверка. Месяц наблюдения почти ничего не доказывает, смысл — увидеть, как правило ведёт себя вживую.") : null,
+    h("div", { class: "inline" },
+      here ? null : h("button", { class: "small", onclick: go(w.n) }, "Открыть этот шаг"),
+      w.n === 1 && !coinStore.picked && here ? h("button", { class: "small sec", onclick: () => { coinStore.picked = [...picked()]; coinSave(); syncScanCoins(); } }, "Работать со всеми отмеченными") : null,
+      w.next ? h("button", { class: "small" + (w.done[w.n] ? "" : " sec"), onclick: go(w.next) }, `Дальше: ${T(w.next)} →`) : null,
+      w.step.lesson ? h("button", { class: "small sec", onclick: () => openLessonFromWork(w.step.lesson) }, "Подробнее в уроке") : null)].filter(Boolean)); // null в replaceChildren печатается как текст
+}
+$("wizOnBtn").onclick = () => { wiz.on = true; wizSave(); renderWizard(); };
+
+// Таблицы на телефоне — карточками: подпись столбца переносится в каждую ячейку (CSS показывает её только на узком экране).
+function cardify(t) {
+  const head = [...t.rows].find((r) => r.querySelector("th"));
+  if (!head || t.classList.contains("cards")) return;
+  const labels = []; for (const th of head.cells) for (let k = 0; k < (th.colSpan || 1); k++) labels.push(th.textContent);
+  head.classList.add("head"); t.classList.add("cards");
+  for (const r of t.rows) { if (r === head) continue; let c = 0; for (const td of r.cells) { td.dataset.label = td.colSpan > 1 ? "" : labels[c] ?? ""; c += td.colSpan || 1; } }
+}
+new MutationObserver((ms) => { for (const m of ms) for (const n of m.addedNodes) { if (n.nodeType !== 1) continue; if (n.tagName === "TABLE") cardify(n); else if (n.tagName === "TR") { const t = n.closest("table"); if (t) { t.classList.remove("cards"); cardify(t); } } else n.querySelectorAll?.("table").forEach(cardify); } })
+  .observe($("workArea"), { childList: true, subtree: true });
+
 const seg = (id, on) => document.querySelectorAll(`#${id} button`).forEach((b) => b.classList.toggle("on", b.dataset.m === on));
 function testMode(m) { seg("testMode", m); $("onePane").hidden = m !== "one"; $("scanPane").hidden = m !== "scan"; if (m === "scan") scanPlanUpdate(); }
 function refMode(m) { seg("refMode", m); $("refCat").hidden = m !== "cat"; $("refInd").hidden = m !== "ind"; $("refPlank").hidden = m !== "plank"; }
@@ -129,7 +182,7 @@ let approach = "trend";
 function renderApproach() {
   $("apprList").replaceChildren(...APPROACHES.map(([k, t, d, dir, tag]) => h("div", { class: "appr" + (k === approach ? " on" : ""), onclick: () => { approach = k; renderApproach(); } },
     h("b", null, t), h("span", { class: "help" }, d), h("br"), h("span", { class: "tagdir " + (dir ? "yes" : "no") }, tag))));
-  const pick = (key) => { $("strategy").value = key; onStrategy(); settingsSummary(); showTab("test"); testMode("one"); window.scrollTo(0, 0); };
+  const pick = (key) => { $("strategy").value = key; onStrategy(); settingsSummary(); chooseIdea(); showTab("test"); testMode("one"); window.scrollTo(0, 0); };
   const scanBox = (key) => $("scIdeas").querySelector(`input[value="${key}"]`);
   const item = (title, status, plain, key, extra = null) => h("div", { class: "idea" },
     h("div", null, status ? badge(status) : null, h("b", null, title), extra),
@@ -419,6 +472,7 @@ function syncScanCoins() {
   const p = picked();
   $("scSyms").querySelectorAll("input").forEach((x) => (x.checked = p.has(x.value)));
   $("coinPicked").textContent = `Отмечено: ${p.size} из ${meta.symbols.length}`;
+  renderWizard();
   if (!$("tab-test").hidden && !$("scanPane").hidden) scanPlanUpdate();
 }
 async function loadCoins(refresh = false) {
@@ -502,6 +556,7 @@ function renderState() {
   });
   $("stTable").replaceChildren(h("table", null, h("tr", null, ["Монета", "Относительно средней 200", "Прошлые такие периоды", "Дольше продлились", "Размах за 30 дней", "Чистота движения", "Сжатие полос", "Что было дальше (30 дней)"].map((x) => h("th", null, x))), ...rows),
     h("div", { class: "small-note" }, `${EXN[d.exchange]}, дневные свечи по ${date(Math.max(...d.rows.filter((r) => r.t).map((r) => r.t), 0))} включительно. Наведите на ячейку, чтобы увидеть подробности.`));
+  if (!$("tab-state").hidden && d.rows.some((r) => !r.error)) { wiz.stateSeen = true; wizSave(); renderWizard(); }
 }
 $("stRefresh").onclick = () => loadState(true);
 $("exchange").addEventListener("change", () => { stateData = null; if (!$("tab-state").hidden) loadState(); });
@@ -560,6 +615,7 @@ function draw(canvas, series, keys) {
 function sumLine(d) {
   const ref = d.benchmarks?.find((b) => b.chosen), yes = (v) => h("b", { class: v ? "good" : "bad" }, v ? "да" : "нет");
   const beat = ref ? d.strategy.total > ref.total : null;
+  lastCheck = { strategy: lastReq?.strategy, symbol: lastReq?.symbol, beat, tExcess: d.tExcess, plank: d.plank, benchmarkLabel: d.benchmarkLabel };
   $("sumLine").replaceChildren(
     `Обогнала эталон «${d.benchmarkLabel}»: `, beat == null ? "—" : yes(beat), ref ? ` (${pct(d.strategy.total)} против ${pct(ref.total)})` : "",
     " · Выше планки: ", yes(d.tExcess > d.plank), ` (t = ${d.tExcess.toFixed(2)} при планке ${d.plank.toFixed(2)})`);
@@ -673,6 +729,7 @@ async function loadJournal() {
   const title = (e) => (e.strategy === "custom" ? "Своя стратегия" : e.strategy === "carry" ? `Carry: вход > ${e.params.entryApr} %, выход < ${e.params.exitApr} %, N=${e.params.payments}` : e.strategy === "grid" ? `Сетка ${e.params.levels} ур., ${e.params.mode === "pct" ? `−${e.params.lowerPct}…+${e.params.upperPct} %` : `${e.params.lower}–${e.params.upper}`}${e.params.intrabar === "one" ? ", мягко" : ""}` : meta.strategies.find((s) => s.key === e.strategy)?.title || e.strategy);
   const unique = j.filter((e) => e.repeatOf == null).length;
   const bar = Math.max(1.96, Math.sqrt(2 * Math.log(Math.max(unique, 1)))); // та же формула, что lib/stats.js plank
+  wizJournal = j; plankNow = bar; renderWizard();
   $("journalPill").replaceChildren(`Журнал: ${unique} попыт${unique % 10 === 1 && unique % 100 !== 11 ? "ка" : [2, 3, 4].includes(unique % 10) && ![12, 13, 14].includes(unique % 100) ? "ки" : "ок"} · планка `, h("b", null, bar.toFixed(2).replace(".", ",")));
   $("journalPill").title = "Число уникальных проверок в журнале и требование к t-статистике. Подробнее — в справке.";
   $("journalPill").onclick = () => { showTab("ref"); refMode("plank"); };
@@ -741,7 +798,10 @@ function levInfo() {
 ["lev", "maint", "positionPct"].forEach((id) => $(id).addEventListener("input", levInfo));
 $("toPaper").onclick = () => { showTab("paper"); $("pName").focus(); };
 $("pCreate").onclick = async () => {
-  $("pError").textContent = ""; $("pCreate").disabled = true;
+  $("pError").textContent = "";
+  const c = W?.paperCheck({ strategy: $("strategy").value, symbol: $("symbol").value, journal: wizJournal, plank: plankNow, last: lastCheck });
+  if (c && !c.ok && !confirm(`${c.message}\n\nБумажная сессия не превратит идею в проверенную: она только покажет, как правило ведёт себя вживую.\n\nНажмите «ОК», если понимаете, что идея не прошла проверку, и всё равно хотите наблюдать.`)) return;
+  $("pCreate").disabled = true;
   try {
     await api("api/paper/create", { ...currentReq(), name: $("pName").value || stratTitle() + " · " + $("symbol").value, capital: Number($("pCap").value) });
     $("pName").value = ""; await loadSessions();
@@ -751,6 +811,7 @@ $("pCreate").onclick = async () => {
 let sessionBox = {};
 async function loadSessions() {
   const list_ = await api("api/paper");
+  wizSessions = list_; renderWizard();
   const root = $("sessions"); root.replaceChildren(); sessionBox = {};
   if (!list_.length) root.append(h("div", { class: "card help" }, "Сессий пока нет. Создайте первую выше."));
   for (const s of list_) {
@@ -871,6 +932,7 @@ async function scanPlanUpdate() {
   try {
     const p = await api("api/scan/plan", req); if (seq !== scanPlanSeq) return;
     $("scPlan").textContent = `Комбинаций: ${p.combos}. Биржа ${EXN[req.exchange]}, комиссия ${req.feePct} %, проскальзывание ${req.slipPct} %, до ${req.maxBars} свечей истории, валюта отчёта ${req.reportCcy}. Сейчас в журнале ${p.attemptsNow} уникальных попыток, планка значимости ${p.plankNow.toFixed(2)}; после скана — до ${p.attemptsNow + p.combos} попыток и планка до ${p.plankAfterMax.toFixed(2)} (повторы уже проверенных настроек не считаются). Первый скан скачивает свечи и может идти несколько минут.`;
+    const sw = W?.scanWarning(p.plankNow, p.plankAfterMax); if (sw) $("scPlan").append(h("div", { class: "warn" }, "⚠ " + sw));
     $("scRun").disabled = false;
   } catch (e) {
     if (seq !== scanPlanSeq) return;
@@ -925,7 +987,7 @@ function renderCatalog() {
     root1.append(h("div", { class: "card" },
       h("div", null, h("b", null, s.title), " ", badge(s.verdict.status), s.side === "short" ? h("span", { class: "badge b-no" }, "шорт") : null, h("span", { class: "tag" }, s.group === "project" ? "из исследований проекта" : "классический пример")),
       h("div", { class: "plain" }, s.plain), h("div", { class: "box" }, h("b", null, "Итог: "), s.verdict.text, h("div", { class: "small-note" }, "Источник: " + s.source)),
-      h("button", { class: "small", onclick: () => { $("strategy").value = s.key; onStrategy(); showTab("test"); testMode("one"); window.scrollTo(0, 0); } }, "Проверить в полигоне")));
+      h("button", { class: "small", onclick: () => { $("strategy").value = s.key; onStrategy(); chooseIdea(); showTab("test"); testMode("one"); window.scrollTo(0, 0); } }, "Проверить в полигоне")));
   }
   for (const c of meta.catalog.filter((x) => !f || x.status === f)) {
     root2.append(h("div", { class: "card" },
@@ -972,8 +1034,9 @@ if ("serviceWorker" in navigator && isSecureContext) navigator.serviceWorker.reg
   for (const s of meta.strategies) (s.group === "project" ? g1 : g2).append(new Option(`${s.verdict.status}  ${s.title}`, s.key));
   g3.append(new Option("Своя стратегия (конструктор из нескольких индикаторов)", "custom"), new Option("Сетка (грид-бот: спот или фьючерс с плечом)", "grid"), new Option("Carry: спот + шорт бессрочного фьючерса (Bybit)", "carry"));
   $("strategy").append(g1, g2, g3);
-  $("strategy").onchange = onStrategy; onStrategy();
+  $("strategy").onchange = () => { onStrategy(); chooseIdea(); }; onStrategy();
   renderIndicators(); renderCatalog(); scanFill(); syncScanCoins(); loadJournal(); levInfo(); settingsSummary();
+  api("api/paper").then((l) => { wizSessions = l; renderWizard(); }).catch(() => {});
   let mode = "work"; try { mode = localStorage.getItem(MODE_KEY) || "work"; } catch { /* по умолчанию рабочий */ }
   if (mode === "learn") { const go = () => setMode("learn"); window.initCourse ? go() : addEventListener("load", go); }
 })();

@@ -68,6 +68,20 @@
     #workArea nav button{font-size:13px;padding:8px 10px}
     h1{font-size:19px} .top .sub{display:none}
   }
+  /* мастер */
+  .wiz{border-color:#2f7de1;padding:12px 16px} .wizhead{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .wizdots{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 4px} .wizdots button{margin:0;background:#12181f;color:#c9d1dc;border:1px solid #263040} .wizdots button.ok{color:#4cc38a} .wizdots button.on{background:#2f7de1;color:#fff;border-color:#2f7de1}
+  .wiz .plain{margin:6px 0 2px} .wiz .inline button{margin:8px 0 0}
+  /* телефон: таблицы карточками — каждая строка отдельной карточкой, подпись столбца слева */
+  @media(max-width:700px){
+    .wiz{padding:10px 12px} .wizdots button{font-size:12px;padding:4px 8px}
+    table.cards,table.cards tbody{display:block} table.cards tr.head{display:none}
+    table.cards tr{display:block;background:#12181f;border:1px solid #263040;border-radius:8px;margin:0 0 8px;padding:6px 10px}
+    table.cards td{display:flex;justify-content:space-between;gap:12px;border:0;padding:3px 0;text-align:right}
+    table.cards td::before{content:attr(data-label);color:#8b95a3;text-align:left;flex:0 0 42%}
+    table.cards td[data-label=""]{justify-content:flex-start;text-align:left} table.cards td[data-label=""]::before{display:none}
+    table.cards td:first-child{font-weight:600}
+  }
   [hidden]{display:none!important}
 </style>
 </head>
@@ -99,6 +113,7 @@
         </div>
         <div class="help">Процент начисляется только за свечи, которые идея целиком провела вне рынка (свечи со входом или с выходом по стопу внутри свечи не считаются). По умолчанию выключено.</div>
         </details>
+  <div id="wizard" class="card wiz" hidden></div>
   <nav id="nav">
     <button data-tab="start" class="on">Начало</button>
     <button data-tab="coins"><span class="n">1</span>Монеты</button>
@@ -115,6 +130,7 @@
       <div class="card"><b>Начать с монет</b><div class="help">Сначала выбрать, с какими монетами работать, посмотреть, что с ними сейчас, затем подобрать подход и проверить его на истории.</div><button data-go="coins">Этап 1 →</button></div>
       <div class="card"><b>Начать с идеи</b><div class="help">Есть мысль, что какое-то правило работает? Выберите подход и идею и проверьте её сразу на многих монетах. Так меньше риск подогнать идею под одну монету.</div><button class="sec" data-go="idea">Этап 3 →</button></div>
     </div>
+    <div class="help" id="wizOn" hidden>Мастер шагов выключен. <button class="small sec" id="wizOnBtn">Включить мастер</button></div>
     <div class="card"><b>Как устроена работа</b>
       <div class="help">1 — какие монеты; 2 — что с ними сейчас (описание, не прогноз); 3 — каким способом зарабатывать и по каким правилам; 4 — честная проверка на истории: сигнал по закрытию свечи, сделка по открытию следующей, комиссия и проскальзывание с каждой стороны; 5 — наблюдение на бумаге, без денег. Биржа, издержки и эталон задаются один раз в общих настройках вверху. Каждая проверка записывается в журнал, и от числа проверок зависит планка значимости (вверху справа).</div>
     </div>
