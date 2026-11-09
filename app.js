@@ -16,10 +16,20 @@ function h(tag, attrs, ...kids) {
 function table(head, rows) { return h("table", null, h("tr", null, head.map((x) => h("th", null, x))), rows.map((r) => h("tr", null, r.map((x) => h("td", null, x))))); }
 const list = (items, cls) => h("ul", null, items.map((x) => h("li", { class: cls }, x)));
 const badge = (status) => h("span", { class: "badge " + ({ "❌": "b-no", "✅": "b-ok", "🟡": "b-mid", "⏸": "b-mid", "учебная": "b-learn" }[status] || "") }, status);
+// Запросы идут на сервер компьютера, а на планшете и телефоне — в рабочий поток (public/worker.js) с тем же расчётом.
+let worker = null, workerSeq = 0, device = false;
+const workerWaiting = new Map();
 async function api(url, body) {
+  if (worker) return new Promise((ok, fail) => { const id = ++workerSeq; workerWaiting.set(id, { ok, fail }); worker.postMessage({ id, method: body ? "POST" : "GET", url, body }); });
   const r = await fetch(url, body ? { method: "POST", body: JSON.stringify(body) } : undefined);
   const d = await r.json(); if (d.error) throw new Error(d.error); return d;
 }
+function startWorker() {
+  worker = new Worker("worker.js", { type: "module" });
+  worker.onmessage = (e) => { const w = workerWaiting.get(e.data.id); workerWaiting.delete(e.data.id); e.data.error ? w?.fail(new Error(e.data.error)) : w?.ok(e.data.data); };
+  worker.onerror = (e) => { for (const w of workerWaiting.values()) w.fail(new Error("Рабочий поток остановился: " + (e.message || "ошибка"))); workerWaiting.clear(); };
+}
+window.polygonApi = api;
 
 /* ---------- режимы: учебный и рабочий ---------- */
 const MODE_KEY = "polygon.mode";
@@ -38,6 +48,37 @@ if (matchMedia("(pointer:coarse)").matches) document.addEventListener("click", (
   const t = e.target.closest?.("[title]");
   if (t && !t.closest("button,a,input,select")) { const box = h("div", { class: "tipbox" }, t.title); document.body.append(box); setTimeout(() => box.remove(), 6000); }
 });
+
+/* ---------- устройство: расчёт без компьютера ---------- */
+// Binance не отдаёт данные браузеру; авто-обновления бумажных сессий нет — телефон не работает в фоне.
+function deviceMode() {
+  try { navigator.storage?.persist?.(); } catch { /* браузер решает сам */ }
+  $("storageBox").hidden = false; $("deviceNote").hidden = false;
+  $("deviceNote").textContent = "Расчёты идут на этом устройстве: свечи скачиваются с биржи сюда же. Binance отсюда недоступен (он не отдаёт данные браузеру) — Bybit и OKX работают. Бумажные сессии пересчитываются при открытии.";
+}
+async function syncStatus() {
+  try {
+    const s = await api("api/sync/status"), d = (x) => (x ? x.slice(0, 16).replace("T", " ") : "ни разу");
+    $("syncStatus").textContent = `Последняя загрузка файла: ${d(s.lastImport)} · последняя выгрузка: ${d(s.lastExport)}.` + (device && !s.lastImport ? " Планка здесь посчитана без попыток на других устройствах." : "");
+    if (device) { const st = await api("device/storage"); $("storageInfo").textContent = st.usage == null ? "" : `Занято на устройстве: ${(st.usage / 1e6).toFixed(1)} МБ${st.quota ? ` из доступных ${(st.quota / 1e6).toFixed(0)} МБ` : ""}. Свечи скачаются заново при следующей проверке.`; }
+  } catch { /* старый сервер без обмена */ }
+}
+const saveFile = (name, text, type) => { const a = h("a", { href: URL.createObjectURL(new Blob([text], { type })), download: name }); document.body.append(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000); };
+$("syncOut").onclick = async () => {
+  try { const d = await api("api/sync/export"); saveFile(`polygon-${device ? "device" : "pc"}-${d.at.slice(0, 10)}.json`, JSON.stringify(d), "application/json"); syncStatus(); }
+  catch (e) { $("syncStatus").textContent = e.message; }
+};
+$("syncIn").onchange = async (e) => {
+  const f = e.target.files[0]; e.target.value = "";
+  if (!f) return;
+  try {
+    const r = await api("api/sync/import", JSON.parse(await f.text()));
+    $("syncStatus").textContent = `Добавлено записей журнала: ${r.journalAdded}, бумажных сессий: ${r.sessionsAdded}${r.sessionsSkipped.length ? ` (не поместились: ${r.sessionsSkipped.join(", ")})` : ""}. Уникальных попыток теперь ${r.attempts}, планка ${r.plankBefore.toFixed(2)} → ${r.plank.toFixed(2)}.`;
+    loadJournal(); loadSessions?.();
+  } catch (err) { $("syncStatus").textContent = "Не получилось: " + err.message; }
+};
+$("clearCandles").onclick = async () => { if (!confirm("Удалить скачанные свечи с этого устройства? Журнал и сессии останутся.")) return; await api("device/clear", {}); syncStatus(); };
+$("syncBox").addEventListener("toggle", () => { if ($("syncBox").open) syncStatus(); });
 
 /* ---------- этапы ---------- */
 // Старые имена вкладок ведут на новые этапы: scan — режим этапа «Проверка», ind и cat — разделы справки.
@@ -383,7 +424,7 @@ function syncScanCoins() {
 async function loadCoins(refresh = false) {
   const seq = ++coinSeq;
   $("coinError").textContent = ""; $("coinRefresh").disabled = true; $("coinRefresh").textContent = "Загружаю…";
-  if (!coinData) $("coinTable").replaceChildren(h("div", { class: "help" }, "Скачиваю дневные свечи и фандинг… В первый раз это занимает до минуты, дальше — из кэша."));
+  if (!coinData) $("coinTable").replaceChildren(h("div", { class: "help" }, "Скачиваю дневные свечи и фандинг… В первый раз это занимает до минуты на компьютере и до 2–3 минут на телефоне, дальше — из кэша."));
   try {
     const d = await api("api/coins", { exchange: $("exchange").value, symbols: meta.symbols, refresh });
     if (seq === coinSeq) { coinData = d; renderCoins(); }
@@ -437,7 +478,7 @@ async function loadState(refresh = false) {
   const seq = ++stateSeq, syms = [...picked()];
   $("stCoins").textContent = `Монеты с этапа 1: ${syms.length}`;
   $("stError").textContent = ""; $("stRefresh").disabled = true; $("stRefresh").textContent = "Загружаю…";
-  if (!stateData) $("stTable").replaceChildren(h("div", { class: "help" }, "Скачиваю дневные свечи… В первый раз это занимает до минуты, дальше — из кэша."));
+  if (!stateData) $("stTable").replaceChildren(h("div", { class: "help" }, "Скачиваю дневные свечи… В первый раз это занимает до минуты на компьютере и до 2–3 минут на телефоне, дальше — из кэша."));
   try {
     const d = await api("api/state", { exchange: $("exchange").value, symbols: syms, refresh });
     if (seq === stateSeq) { stateData = d; renderState(); }
@@ -717,7 +758,7 @@ async function loadSessions() {
     sessionBox[s.id] = body;
     root.append(h("div", { class: "card" },
       h("div", { class: "inline" }, h("b", null, s.name), h("span", { class: "tag" }, `${s.symbol} · ${s.tf} · ${EXN[s.exchange] || s.exchange} · ${s.strategy === "custom" ? "своя стратегия" : s.type === "grid" ? (s.params.market === "perp" ? `фьючерсная сетка ${s.params.levels} ур., ${{ long: "лонг", short: "шорт", neutral: "нейтральная" }[s.params.direction]} ${s.params.leverage}x` : `сетка ${s.params.levels} ур.`) : s.type === "carry" ? "carry" : s.type === "dca" ? `DCA $${s.params.amount} раз в ${s.params.every} свеч.` : meta.strategies.find((x) => x.key === s.strategy)?.title} · капитал $${s.capital}${s.reportCcy === "BTC" ? " (отчёт в BTC)" : ""}${(s.leverage ?? 1) > 1 ? " · плечо " + s.leverage + "x" : ""} · старт ${dt(s.startT)} UTC`),
-        h("button", { class: "small", onclick: () => refreshSession(s.id) }, "Обновить"), h("a", { class: "small", href: "api/paper/csv?id=" + encodeURIComponent(s.id), download: "" }, "Сделки в CSV"), h("button", { class: "danger small", onclick: async () => { if (confirm("Удалить сессию?")) { await api("api/paper/delete", { id: s.id }); loadSessions(); } } }, "Удалить")),
+        h("button", { class: "small", onclick: () => refreshSession(s.id) }, "Обновить"), device ? h("button", { class: "small sec", onclick: async () => { const r = await api("api/paper/csv", { id: s.id }); saveFile(r.file, r.csv, "text/csv;charset=utf-8"); } }, "Сделки в CSV") : h("a", { class: "small", href: "api/paper/csv?id=" + encodeURIComponent(s.id), download: "" }, "Сделки в CSV"), h("button", { class: "danger small", onclick: async () => { if (confirm("Удалить сессию?")) { await api("api/paper/delete", { id: s.id }); loadSessions(); } } }, "Удалить")),
       body));
     refreshSession(s.id);
   }
@@ -908,14 +949,19 @@ if ("serviceWorker" in navigator && isSecureContext) navigator.serviceWorker.reg
 
 (async function init() {
   try { meta = await api("api/meta"); }
-  catch { try { window.polygonMeta = await (await fetch("meta.json")).json(); } catch { /* словарь будет без определений */ } return serverless(); }
+  catch {
+    // сервера нет — считаем на самом устройстве; если браузер не умеет фоновые потоки модулей — только учебный режим
+    try { startWorker(); meta = await Promise.race([api("api/meta"), new Promise((_, f) => setTimeout(() => f(new Error("нет ответа")), 8000))]); device = true; meta.codeChanged = false; }
+    catch { worker = null; try { window.polygonMeta = await (await fetch("meta.json")).json(); } catch { /* словарь будет без определений */ } return serverless(); }
+  }
   window.polygonMeta = meta;
+  if (device) deviceMode();
   // старый сервер (до этой проверки) не присылает codeChanged; новый присылает true, если код изменился после его запуска
   if (meta.codeChanged !== false) {
     $("staleServer").hidden = false;
     $("staleServer").textContent = "Программа обновилась, а сервер запущен со старым кодом: часть возможностей не видна или работает неверно (например, нет OKX в списке бирж). Закройте окно сервера и запустите его снова (start.bat), затем обновите страницу.";
   }
-  for (const e of meta.exchanges) $("exchange").add(new Option(EXN[e], e));
+  for (const e of meta.exchanges) { const o = new Option(EXN[e] + (device && e === "binance" ? " (только с компьютера)" : ""), e); o.disabled = device && e === "binance"; $("exchange").add(o); }
   SYMBOL_BASE.push(...meta.symbols);
   for (const s of coinStore.extra || []) if (!meta.symbols.includes(s)) meta.symbols.push(s); // монеты, добавленные на этапе 1
   fillSymbols();

@@ -265,6 +265,13 @@
       <b>Журнал попыток</b>
       <div class="help">Каждая проверка записывается. Чем больше вариантов вы перепробовали, тем выше планка, которую нужно превысить, чтобы результат нельзя было списать на удачу.</div>
       <div class="help" id="journalSummary"></div>
+      <div id="deviceNote" class="warn" hidden></div>
+      <details class="sub" id="syncBox"><summary>Обмен с другим устройством (журнал, прогресс курса, бумажные сессии)</summary>
+        <div class="help">Планка должна учитывать попытки на всех устройствах. Выгрузите файл на одном устройстве и загрузите его на другом (например, через почту себе или облачный диск). Загрузка только добавляет недостающее и ничего не удаляет; повторы не задваиваются.</div>
+        <div class="inline"><button id="syncOut" class="sec">Выгрузить файл</button><label class="sec" style="margin:10px 0 0;display:inline-block;background:#2a3647;color:#fff;border-radius:6px;padding:9px 16px;cursor:pointer">Загрузить файл<input id="syncIn" type="file" accept=".json,application/json" hidden></label></div>
+        <div class="help" id="syncStatus"></div>
+        <div id="storageBox" hidden><div class="help" id="storageInfo"></div><button id="clearCandles" class="sec small">Очистить скачанные свечи</button></div>
+      </details>
       <table id="journal"></table>
     </div>
   </section>

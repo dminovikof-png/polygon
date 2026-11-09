@@ -18,13 +18,13 @@ const P = (id) => (progress.lessons[id] ||= { done: false, doneAt: null, quiz: {
 // Прогресс — на компьютере (data/progress.json); если сервера нет (статический сайт) — в браузере.
 const LOCAL = "polygon.progress";
 async function loadProgress() {
-  try { progress = await (await fetch("api/progress")).json(); if (!progress.lessons) throw 0; }
+  try { progress = window.polygonApi ? await window.polygonApi("api/progress") : await (await fetch("api/progress")).json(); if (!progress.lessons) throw 0; }
   catch { try { progress = JSON.parse(localStorage.getItem(LOCAL)) || { lessons: {} }; } catch { progress = { lessons: {} }; } }
 }
 async function saveLesson(id) {
   const part = { lessons: { [id]: P(id) } };
   try { localStorage.setItem(LOCAL, JSON.stringify(progress)); } catch { /* без хранилища */ }
-  try { await fetch("api/progress", { method: "POST", body: JSON.stringify(part) }); } catch { /* без сервера — только в браузере */ }
+  try { window.polygonApi ? await window.polygonApi("api/progress", part) : await fetch("api/progress", { method: "POST", body: JSON.stringify(part) }); } catch { /* без сервера и потока — только в браузере */ }
 }
 
 // Текст: абзацы через пустую строку, **жирный**, [[термин]] и [[термин|как показать]] — ссылка в словарь.
