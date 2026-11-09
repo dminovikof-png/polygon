@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Честный полигон</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#101418">
+<style>
+  *{box-sizing:border-box}
+  body{font:15px/1.5 system-ui,Segoe UI,Roboto,sans-serif;margin:0;background:#101418;color:#e6e9ee}
+  main{max-width:1000px;margin:0 auto;padding:20px}
+  h1{font-size:22px;margin:0 0 4px} .sub{color:#8b95a3;margin-bottom:14px}
+  nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+  nav button{background:#171d24;color:#c9d1dc;border:1px solid #263040;border-radius:8px;padding:8px 14px;cursor:pointer;margin:0;font-size:14px}
+  nav button.on{background:#2f7de1;color:#fff;border-color:#2f7de1}
+  .card{background:#171d24;border:1px solid #263040;border-radius:10px;padding:16px;margin-bottom:16px}
+  label{display:block;font-size:13px;color:#9aa5b4;margin:8px 0 2px}
+  select,input[type=number],input[type=text]{background:#0e1318;color:#e6e9ee;border:1px solid #2c3949;border-radius:6px;padding:7px;width:100%}
+  .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  button{background:#2f7de1;color:#fff;border:0;border-radius:6px;padding:9px 16px;font-size:14px;cursor:pointer;margin:10px 8px 0 0}
+  button.sec{background:#2a3647} button.danger{background:#8c3b3b} button.small{padding:4px 9px;font-size:12px;margin:0}
+  button:disabled{opacity:.5}
+  .help{color:#8b95a3;font-size:13px;margin-top:6px} .plain{color:#cfd6e0;font-size:14px;margin:8px 0}
+  table{width:100%;border-collapse:collapse} td,th{padding:6px 8px;border-bottom:1px solid #263040;text-align:left;font-size:14px;vertical-align:top}
+  .good{color:#4cc38a} .bad{color:#ef6a6a} .warn{color:#e0b341;font-size:13px} .err{color:#ef6a6a;margin-top:8px}
+  .scanwarn{font-size:20px;font-weight:600;color:#e0b341;border:2px solid #e0b341;text-align:center} .scanpick{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin:10px 0} .chk{max-height:220px;overflow-y:auto;font-size:13px;margin-bottom:6px} .chk label{display:flex;gap:6px;align-items:center;margin:2px 0;font-weight:normal} .chk input{width:auto} @media(max-width:700px){.scanpick{grid-template-columns:1fr}}
+  .verdict{font-size:17px;margin:4px 0 12px}
+  canvas{width:100%;height:240px;background:#0e1318;border-radius:8px}
+  .badge{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;background:#2a3647;margin-right:6px}
+  .b-no{background:#5a2b2b}.b-ok{background:#1f5a3c}.b-mid{background:#5a4b1f}.b-learn{background:#2b4a6b}
+  .box{background:#12181f;border:1px solid #263040;border-radius:8px;padding:10px;margin:8px 0}
+  .inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap} .inline>*{flex:0 0 auto} .inline select,.inline input{width:auto;min-width:80px}
+  details summary{cursor:pointer;color:#8fb7ef;font-size:13px}
+  ul{margin:6px 0;padding-left:20px} li{margin:3px 0}
+  hr{border:0;border-top:1px solid #263040;margin:14px 0}
+  .small-note{font-size:12px;color:#7f8b9a}
+  .tag{font-size:12px;color:#8b95a3}
+  .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:12px} .top .sub{margin:0;flex:1 1 300px}
+  .pill{background:#171d24;border:1px solid #263040;border-radius:20px;padding:5px 12px;font-size:13px;white-space:nowrap} .pill b{color:#e0b341}
+  #settingsBox{padding:10px 16px} #settingsBox[open]{padding-bottom:16px} #settingsBox summary{font-size:14px}
+  nav{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px} nav button{flex:0 0 auto} nav button .n{display:inline-flex;width:20px;height:20px;border-radius:50%;background:#2a3647;align-items:center;justify-content:center;margin-right:6px;font-size:12px;font-weight:600} nav button.on .n{background:#fff;color:#2f7de1} nav button.ref{color:#8b95a3}
+  .seg{display:inline-flex;border:1px solid #263040;border-radius:8px;overflow:hidden;margin-bottom:12px;flex-wrap:wrap} .seg button{margin:0;border-radius:0;background:#12181f;color:#c9d1dc;padding:7px 14px} .seg button.on{background:#2f7de1;color:#fff}
+  .entry{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+  .appr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
+  .appr{background:#12181f;border:1px solid #263040;border-radius:10px;padding:12px;cursor:pointer} .appr.on{border-color:#2f7de1;background:#16243a} .appr b{display:block;margin-bottom:4px}
+  .tagdir{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;margin-top:6px} .tagdir.yes{background:#4a2d1b;color:#f2b38a} .tagdir.no{background:#1f3d33;color:#8fe0bb}
+  .idea{border-bottom:1px solid #263040;padding:10px 0} .idea:last-child{border-bottom:0} .idea .plain{margin:4px 0}
+  .card{overflow-x:auto}
+  details.sub{margin-top:10px} details.sub>*:not(summary){margin-left:2px}
+  .sumline{font-size:16px;padding:10px 12px;border-radius:8px;background:#12181f;border:1px solid #263040;margin-bottom:10px}
+  @media(max-width:600px){main{padding:12px 16px}}
+  /* учебный режим */
+  .lesson h2{font-size:20px;margin:10px 0 4px} .lesson .plain{font-size:15px;line-height:1.6;max-width:70ch}
+  .fig{margin:12px 0} .fig figcaption{margin-top:4px}
+  .term{background:none;border:0;border-bottom:1px dashed #8fb7ef;color:#cfe0f7;padding:0;margin:0;font:inherit;cursor:help;border-radius:0}
+  .termpop{background:#1d2633;border:1px solid #2f7de1;border-radius:8px;padding:8px 10px;margin:6px 0;font-size:14px;max-width:60ch}
+  .quiz .opt{display:block;width:100%;text-align:left;background:#1d2633;color:#e6e9ee;margin:6px 0 0} .quiz .opt.ok{background:#1f5a3c} .quiz .opt.no{background:#5a2b2b}
+  .measured{border-color:#5a4b1f} .linkbtn{background:none;color:#8fb7ef;padding:0;margin:0;font-size:15px;text-align:left}
+  ol.lessons li{margin:6px 0}
+  /* сенсорные экраны: крупнее кнопки; подсказки по нажатию вместо наведения */
+  @media(pointer:coarse){button{min-height:40px} button.small{min-height:34px} nav button{padding:10px 14px} .tipbox{position:fixed;left:12px;right:12px;bottom:76px;z-index:30;background:#1d2633;border:1px solid #2f7de1;border-radius:8px;padding:10px 12px;font-size:14px}}
+  /* телефон: этапы — нижняя панель */
+  @media(max-width:700px){
+    main{padding-bottom:84px}
+    #workArea nav{position:fixed;left:0;right:0;bottom:0;z-index:20;margin:0;padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:#101418;border-top:1px solid #263040}
+    #workArea nav button{font-size:13px;padding:8px 10px}
+    h1{font-size:19px} .top .sub{display:none}
+  }
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <h1>Честный полигон</h1>
+  <div id="staleServer" class="err" hidden></div>
+  <div id="noServer" class="card" hidden><b>Рабочий режим здесь пока недоступен</b>
+    <div class="help">Проверка идей, скан и бумажная торговля сейчас работают только с компьютера: запустите на нём start.bat и откройте программу там (или с планшета в домашней сети — start-lan.bat). Расчёты прямо на планшете и телефоне появятся в следующей версии. Учебный режим работает и здесь, в том числе без интернета.</div></div>
+  <div class="top"><div class="sub">Проверка торговых идей на истории и учебная торговля. Это учебный инструмент, не инвестиционный совет. Данные скачиваются на ваш компьютер и остаются у вас.</div><div class="inline"><div class="seg" id="modeSeg" style="margin:0"><button data-mode="learn">Учебный</button><button data-mode="work" class="on">Рабочий</button></div><div class="pill" id="journalPill">Журнал: …</div></div></div>
+  <section id="learnArea" hidden></section>
+  <div id="workArea">
+  <details class="card" id="settingsBox">
+    <summary id="settingsSum">Общие настройки</summary>
+    <div class="help">Одни на все этапы: проверку, скан и новые бумажные сессии.</div>
+    <div class="row">
+      <div><label>Биржа (источник данных)</label><select id="exchange"></select></div>
+      <div><label>Валюта отчёта</label><select id="reportCcy"><option value="USDT">USDT (доллары)</option><option value="BTC">BTC (биткоины)</option></select></div>
+      <div><label>Комиссия за сделку, % (с каждой стороны)</label><input id="fee" type="number" step="0.01" value="0.1"></div>
+      <div><label>Проскальзывание, % (разница цены при исполнении)</label><input id="slip" type="number" step="0.01" value="0.05"></div>
+      <div><label>Число свечей истории (до 20 000)</label><input id="maxBars" type="number" step="500" min="100" max="20000" value="5000"></div>
+    </div>
+    <div style="margin-top:10px"><b>С чем сравнивать (эталон)</b></div>
+        <div class="help">Эталон — простое действие, которое идея должна обогнать, чтобы в ней был смысл. Вердикт и t-статистика считаются против выбранного эталона, в таблице показываются все три. Удержание BTC важно, потому что цель — расти в BTC: идея на альте, которая проигрывает простому BTC, ничего не добавляет.</div>
+        <div class="row">
+          <div><label>Эталон для вердикта</label><select id="benchmark"></select></div>
+          <div><label>Доходность кэша, % годовых (USDT на сберегательном счёте; 0 — без дохода)</label><input id="cashYield" type="number" step="0.5" min="0" max="100" value="0"></div>
+          <div><label style="display:flex;gap:6px;align-items:center;margin-top:28px"><input type="checkbox" id="cashFlat" style="width:auto"> Начислять этот процент стратегии, пока она вне рынка</label></div>
+        </div>
+        <div class="help">Процент начисляется только за свечи, которые идея целиком провела вне рынка (свечи со входом или с выходом по стопу внутри свечи не считаются). По умолчанию выключено.</div>
+        </details>
+  <nav id="nav">
+    <button data-tab="start" class="on">Начало</button>
+    <button data-tab="coins"><span class="n">1</span>Монеты</button>
+    <button data-tab="state"><span class="n">2</span>Состояние рынка</button>
+    <button data-tab="idea"><span class="n">3</span>Подход и идея</button>
+    <button data-tab="test"><span class="n">4</span>Проверка</button>
+    <button data-tab="paper"><span class="n">5</span>Наблюдение</button>
+    <button data-tab="ref" class="ref">Справка</button>
+  </nav>
+
+  <!-- НАЧАЛО -->
+  <section id="tab-start">
+    <div class="entry">
+      <div class="card"><b>Начать с монет</b><div class="help">Сначала выбрать, с какими монетами работать, посмотреть, что с ними сейчас, затем подобрать подход и проверить его на истории.</div><button data-go="coins">Этап 1 →</button></div>
+      <div class="card"><b>Начать с идеи</b><div class="help">Есть мысль, что какое-то правило работает? Выберите подход и идею и проверьте её сразу на многих монетах. Так меньше риск подогнать идею под одну монету.</div><button class="sec" data-go="idea">Этап 3 →</button></div>
+    </div>
+    <div class="card"><b>Как устроена работа</b>
+      <div class="help">1 — какие монеты; 2 — что с ними сейчас (описание, не прогноз); 3 — каким способом зарабатывать и по каким правилам; 4 — честная проверка на истории: сигнал по закрытию свечи, сделка по открытию следующей, комиссия и проскальзывание с каждой стороны; 5 — наблюдение на бумаге, без денег. Биржа, издержки и эталон задаются один раз в общих настройках вверху. Каждая проверка записывается в журнал, и от числа проверок зависит планка значимости (вверху справа).</div>
+    </div>
+  </section>
+
+  <!-- 4. ПРОВЕРКА -->
+  <section id="tab-test" hidden>
+    <div class="seg" id="testMode"><button class="on" data-m="one">Одна идея</button><button data-m="scan">Скан: много сразу</button></div>
+    <div id="onePane">
+    <div class="card">
+      <div class="row">
+        <div><label>Монета или пара</label><select id="symbol"></select></div>
+        <div><label>Свеча</label><select id="tf"><option value="1D">1 день</option><option value="4h">4 часа</option><option value="1h">1 час</option></select></div>
+        <div><label>Идея (стратегия)</label><select id="strategy"></select></div>
+      </div>
+      <div class="help" id="pairInfo"></div>
+      <div id="stratInfo"></div>
+      <div id="params" class="row"></div>
+      <div id="builder" hidden></div>
+      <div id="carryBox" class="box" hidden>
+        <div class="plain">Carry: монета на споте + шорт фьючерса на то же количество. Цена почти не влияет, доход — фандинг. Вход и выход — по средней ставке за последние выплаты.</div>
+        <div class="row">
+          <div><label>Средняя за N выплат</label><input id="cN" type="number" step="1" min="1" max="500" value="9"></div>
+          <div><label>Вход, если средняя выше, % годовых</label><input id="cIn" type="number" step="0.5" value="10.95"></div>
+          <div><label>Выход, если средняя ниже, % годовых</label><input id="cOut" type="number" step="0.5" value="3.29"></div>
+        </div>
+        <details class="sub"><summary id="cAdvSum">Ещё настройки carry</summary>
+          <div class="row">
+          <div><label>Аварийный выход, если одна выплата ниже, % годовых</label><input id="cEm" type="number" step="1" value="-21.9"></div>
+          <div><label>Комиссия фьючерса, % (тейкер: Bybit 0,055, Binance и OKX 0,05)</label><input id="cPerpFee" type="number" step="0.005" min="0" value="0.055"></div>
+          <div><label>Залоговый коэффициент спота (0–1)</label><input id="cHaircut" type="number" step="0.05" min="0.05" max="1" value="0.9"></div>
+          </div>
+        </details>
+        <details class="sub"><summary>Как работает carry и как считается</summary>
+          <div class="plain">Carry — «сбор процента» без угадывания направления: покупаем монету на споте и одновременно продаём (шортим) бессрочный фьючерс на то же количество монет. Рост или падение цены почти не влияют: прибыль одной ноги гасит убыток другой. Доход — фандинг: регулярные выплаты, которые при перекупленном рынке лонги платят шортам. Входим, когда средняя годовая ставка фандинга за последние N выплат выше порога, выходим, когда она ниже порога выхода или когда одна выплата сильно отрицательная. Данные — выбранной биржи (спот, бессрочные фьючерсы и история выплат), только пары к USDT; у OKX история выплат — только последние 3 месяца, длинная проверка — на Bybit или Binance.</div>
+          <div class="help">Пороги по умолчанию — из боевого правила проекта (S1-5): вход при средней за 9 выплат выше 0,01 % за 8 часов (≈ 10,95 % годовых), выход ниже 0,003 % (≈ 3,29 %) или при выплате ниже −0,02 % (≈ −21,9 %). Как считается: сигнал по закрытию свечи, обе ноги исполняются по открытию следующей свечи по своим ценам (спот — по споту, фьючерс — по фьючерсу), поэтому изменение разницы цен (базиса) учтено. Комиссия и проскальзывание — на всех четырёх сделках. Выплата ровно в момент входа или выхода засчитывается, только если она против нас. Модель единого счёта: спот служит залогом фьючерса; если на худшей точке свечи залога не хватает — ликвидация. Рекомендуемая свеча — 4 часа: 20 000 часовых свечей покрывают только 2,3 года.</div>
+        </details>
+      </div>
+      <div id="gridBox" class="box" hidden>
+        <div class="plain">Сетка: заявки на покупку ниже цены и на продажу выше; каждая пара сделок — небольшая прибыль. Пока цена ходит в диапазоне, прибыль копится; если цена уходит из диапазона, сетка оказывается вся в монете (вниз) или вся в деньгах (вверх).</div>
+        <div class="row">
+          <div><label>Рынок</label><select id="gMarket"><option value="spot">спот (без плеча)</option><option value="perp">бессрочный фьючерс выбранной биржи (с плечом)</option></select></div>
+          <div data-perp hidden><label>Направление</label><select id="gDir"><option value="long">лонг (покупает ниже, продаёт выше)</option><option value="short">шорт (продаёт выше, откупает ниже)</option><option value="neutral">нейтральная (лонг ниже цены старта, шорт выше)</option></select></div>
+          <div data-perp hidden><label>Плечо, x (1–50)</label><input id="gLev" type="number" step="1" min="1" max="50" value="3"></div>
+        </div>
+        <div class="row">
+          <div><label>Границы</label><select id="gMode"><option value="pct">в % от цены старта (честнее для истории)</option><option value="price">ценами (как в боте)</option></select></div>
+          <div data-g="pct"><label>Нижняя, % ниже цены старта</label><input id="gLowPct" type="number" step="1" min="1" max="99" value="15"></div>
+          <div data-g="pct"><label>Верхняя, % выше цены старта</label><input id="gUpPct" type="number" step="1" min="1" max="1000" value="15"></div>
+          <div data-g="price" hidden><label>Нижняя граница, цена</label><input id="gLow" type="number" step="any" min="0"></div>
+          <div data-g="price" hidden><label>Верхняя граница, цена</label><input id="gUp" type="number" step="any" min="0"></div>
+          <div><label>Число уровней (линий цены)</label><input id="gLevels" type="number" step="1" min="3" max="200" value="17"></div>
+        </div>
+        <div class="help" id="gInfo"></div>
+        <details class="sub"><summary id="gAdvSum">Ещё настройки сетки</summary>
+          <div class="row">
+          <div data-perp hidden><label>Комиссия фьючерса, % (тейкер: Bybit 0,055, Binance и OKX 0,05)</label><input id="gPerpFee" type="number" step="0.005" min="0" value="0.055"></div>
+          <div data-perp hidden><label>Поддерживающая маржа, % от позиции</label><input id="gMaint" type="number" step="0.1" min="0.1" max="9" value="0.5"></div>
+          <div><label>Шаг между уровнями</label><select id="gSpacing"><option value="geom">геометрический (одинаковый в %)</option><option value="arith">арифметический (одинаковый в цене)</option></select></div>
+          <div><label>Стоп-лосс, цена (0 — нет)</label><input id="gStop" type="number" step="any" min="0" value="0"></div>
+          <div><label>Тейк-профит, цена (0 — нет)</label><input id="gTake" type="number" step="any" min="0" value="0"></div>
+          <div><label>Круги внутри одной свечи</label><select id="gIntrabar"><option value="strict">не засчитывать (строго, по умолчанию)</option><option value="one">не больше одного на ячейку (мягче, завышает)</option></select></div>
+          </div>
+          <div class="inline" style="margin-top:8px">
+            <label style="margin:0"><input type="checkbox" id="gStartBuy" checked style="width:auto"> Стартовая позиция: покупка монеты для ячеек выше цены (у шорт-сетки — продажа для ячеек ниже)</label>
+            <label style="margin:0"><input type="checkbox" id="gTrailing" style="width:auto"> Трейлинг: сдвигать сетку за ценой, когда она вышла за границу (спот и лонг — вверх, шорт — вниз; у нейтральной сетки нет)</label>
+          </div>
+        </details>
+        <details class="sub"><summary>Как работает сетка и как считается</summary>
+        <div class="plain">Сетка — это много лимитных заявок сразу: на покупку ниже цены и на продажу выше. Диапазон делится уровнями на ячейки; каждая ячейка покупает на своём нижнем уровне и продаёт на верхнем, и каждая такая пара сделок — «круг» с небольшой прибылью. Пока цена ходит внутри диапазона, круги копятся. Когда цена уходит вниз, сетка оказывается вся в монете и теряет вместе с ней; когда вверх — вся в деньгах и рост пропускает. Поэтому важно смотреть не только на прибыль кругов, но и на переоценку монет, которые сетка держит.</div>
+        <div class="plain" data-perp hidden>Фьючерсная сетка торгует бессрочным фьючерсом, а не монетой. Вложение служит залогом (маржой), а позиции всех ячеек вместе — вложение × плечо. Прибыль кругов растёт вместе с плечом, но так же растёт убыток, когда цена уходит из диапазона: лонг-сетка при падении набирает позицию с плечом, шорт-сетка — при росте. Если убыток съедает залог до поддерживающей маржи, биржа закрывает позицию (ликвидация), и вложение пропадает. Плюс фандинг: каждые несколько часов лонг платит шорту (или наоборот).</div>
+        <div class="help">Как считается: порядок движения цены внутри свечи неизвестен, поэтому считаются оба пути (сначала максимум или сначала минимум) и берётся худший. Лимитная заявка исполняется ровно по своей цене, с комиссией; рыночные сделки (стартовая покупка, стоп, тейк, трейлинг) — с комиссией и проскальзыванием. Комиссия спотовой сетки берётся из общих настроек вверху, у фьючерсной — из поля «Комиссия фьючерса»; общее поле «Плечо» к сетке не применяется. У фьючерсной сетки ещё: ликвидация проверяется на каждой точке свечи в худшем порядке движения, и после неё вложение считается потерянным целиком; фандинг — по истории выплат выбранной биржи, позиция для выплаты — худшая из начала и конца свечи.</div>
+        </details>
+      </div>
+      <details id="advBox" class="box">
+        <summary id="advSum">Дополнительно</summary>
+        <div class="row">
+          <div><label>Доля капитала в позиции, % (100 — весь капитал)</label><input id="positionPct" type="number" step="5" min="1" max="100" value="100"></div>
+        </div>
+        <div class="help" id="positionInfo">В каждую сделку идёт эта доля текущего капитала, остальное лежит в кэше (у пары к BTC — в BTC). Комиссия платится только с вложенной части. Внутри сделки доля не выравнивается: если монета выросла, её доля в счёте тоже выросла. Процент на кэш начисляется, только если включено «Начислять этот процент стратегии».</div>
+<details id="levBox" class="box" style="margin-top:10px">
+          <summary>Плечо и стоимость заёмных денег (по умолчанию выключено: плечо 1x)</summary>
+          <div class="help">Плечо — торговля на заёмные деньги: при 3x на ваши $100 открывается позиция на $300, прибыль и убыток умножаются на 3. Если цена уходит против вас достаточно далеко, биржа принудительно закрывает позицию (ликвидация), и залог теряется целиком. Здесь это моделируется: проверка считает цену ликвидации и по худшему сценарию внутри свечи показывает, была ли ликвидация. Шорт (ставка на падение) выбирается в самой идее: есть готовые шорт-идеи, а в конструкторе — переключатель «Направление».</div>
+          <div class="row">
+            <div><label>Плечо, раз (1 — без плеча)</label><input id="lev" type="number" step="0.5" min="1" max="50" value="1"></div>
+            <div><label>Плата за удержание, % годовых (проценты по займу или фандинг; для шорта и для покупки с плечом)</label><input id="carry" type="number" step="1" min="0" max="500" value="10"></div>
+            <div><label>Поддерживающая маржа, % (запас до ликвидации; обычно 0,5–1 %)</label><input id="maint" type="number" step="0.1" min="0" max="10" value="0.5"></div>
+          </div>
+          <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="fundHist" style="width:auto"> Брать плату за удержание из истории фандинга выбранной биржи (только пары к USDT; у OKX история — только 3 месяца; до начала истории — постоянная ставка выше)</label>
+          <div class="help">По истории: шорт получает положительный фандинг и платит отрицательный, покупка с плечом — наоборот, со всей суммы позиции (как на бессрочном фьючерсе). На свече входа и выхода выплата засчитывается, только если она против вас.</div>
+          <div class="help" id="levInfo"></div>
+        </details>
+      </details>
+      <div id="historyHint" class="warn"></div>
+      <button id="run">Проверить</button>
+      <button id="toBuilder" class="sec">Открыть в конструкторе</button>
+      <div id="error" class="err"></div>
+    </div>
+
+    <div class="card" id="result" hidden>
+      <div class="sumline" id="sumLine"></div>
+      <div class="verdict" id="verdict"></div>
+      <canvas id="chart" width="900" height="240"></canvas>
+      <div class="help" id="chartLegend"></div>
+      <table id="tbl"></table>
+      <div style="margin-top:12px"><b>Идея против трёх эталонов и разбавленного удержания</b></div>
+      <div id="benchTbl"></div>
+      <div id="gridExtra"></div>
+      <div id="notes" class="warn"></div>
+      <button id="deep">Полный разбор стратегии</button>
+      <button id="toPaper" class="sec">Начать бумажную торговлю по этим правилам</button>
+      <div class="help">«Полный разбор» проверит, на чём держится результат: лучшие сделки, сдвиг исполнения, соседние параметры, годы и другие монеты. Скачает данные по остальным монетам, это может занять до минуты.</div>
+      <div id="deepError" class="err"></div>
+    </div>
+
+    <div class="card" id="analysis" hidden><b>Полный разбор</b><div id="deepBody"></div></div>
+
+    </div>
+    <div id="scanPane" hidden>
+    <div class="card scanwarn">Чем больше комбинаций, тем больше случайных победителей. Ни одна строка не доказательство.</div>
+    <div class="card"><b>Скан: много идей × монет × свечей сразу</b>
+      <div class="help">Идеи можно отметить здесь или на этапе 3. Каждая выбранная идея прогоняется на каждой монете и каждой свече с параметрами по умолчанию — теми же правилами, что и обычная проверка: сигнал по закрытию, сделка на открытии следующей свечи, комиссия и проскальзывание с каждой стороны. Биржа, издержки, валюта отчёта, эталон, процент на кэш и длина истории берутся из общих настроек вверху страницы. <b>Каждая комбинация записывается в журнал как попытка</b>, поэтому после скана планка значимости растёт для всех будущих проверок.</div>
+      <div class="scanpick"><div><label>Идеи</label><div id="scIdeas" class="chk"></div><button class="sec small" data-all="scIdeas">все / ни одной</button></div>
+        <div><label>Монеты</label><div id="scSyms" class="chk"></div><button class="sec small" data-all="scSyms">все / ни одной</button></div>
+        <div><label>Свечи</label><div id="scTfs" class="chk"></div></div></div>
+      <div id="scPlan" class="help"></div>
+      <button id="scRun">Запустить скан</button>
+      <div id="scError" class="err"></div>
+    </div>
+    <div id="scResult" hidden>
+      <div class="card"><div id="scSummary"></div></div>
+      <div class="card"><b>Фильтры</b>
+        <div class="row">
+          <div><label>Период для фильтров</label><select id="sfPeriod"><option value="year">последний год</option><option value="all">вся история</option></select></div>
+          <div><label>Обогнала</label><select id="sfBeat"><option value="">не важно</option><option value="btc">удержание BTC</option><option value="coin">удержание монеты</option><option value="cash">кэш под процент</option></select></div>
+          <div><label>Сделок за всю историю, не меньше</label><input id="sfTrades" type="number" min="0" value="0"></div>
+          <div><label>Просадка не глубже, %</label><input id="sfDd" type="number" min="0" max="100" placeholder="любая"></div>
+          <div><label>Сортировка</label><select id="sfSort"><option value="t">по t-статистике</option><option value="year">по доходности за год</option><option value="total">по доходности за всё время</option></select></div>
+        </div>
+        <label style="margin:6px 0 0"><input type="checkbox" id="sfPlus" style="width:auto"> Только в плюсе за выбранный период</label>
+        <div id="sfCount" class="help"></div>
+      </div>
+      <div class="card" style="overflow-x:auto"><table id="scTable"></table></div>
+    </div>
+    </div>
+
+    <div class="card">
+      <b>Журнал попыток</b>
+      <div class="help">Каждая проверка записывается. Чем больше вариантов вы перепробовали, тем выше планка, которую нужно превысить, чтобы результат нельзя было списать на удачу.</div>
+      <div class="help" id="journalSummary"></div>
+      <table id="journal"></table>
+    </div>
+  </section>
+
+  <!-- БУМАЖНАЯ ТОРГОВЛЯ -->
+  <section id="tab-paper" hidden>
+    <div class="card">
+      <b>Что это</b>
+      <div class="plain">Бумажная торговля — это учебная торговля без денег. Вы выбираете правила, программа запоминает момент старта и дальше, по каждой новой закрытой свече, сама решает: купить, продать или держать, по тем же правилам и с теми же комиссиями, что и проверка на истории. Деньги не используются, к бирже вы не подключаетесь. Сигнал определяется по закрытию свечи, а сделка исполняется по цене открытия следующей. Результат пересчитывается каждый раз при обновлении и всегда воспроизводим.</div>
+      <hr>
+      <b>Новая сессия</b>
+      <div class="help" id="newSummary"></div>
+      <div class="row">
+        <div><label>Название</label><input id="pName" type="text" maxlength="60" placeholder="например, Дончиан на SOL"></div>
+        <div><label>Условный капитал, $</label><input id="pCap" type="number" value="1000" min="10"></div>
+      </div>
+      <button id="pCreate">Начать сессию</button>
+      <div class="help">Правила, монета и свеча берутся с этапа 4 «Проверка» (текущий выбор там), биржа и издержки — из общих настроек. Так же запускаются сетка (спот и фьючерс) и carry.</div>
+      <div id="pError" class="err"></div>
+      <hr>
+      <b>Бумажный DCA (покупка частями)</b>
+      <div class="plain">Покупать монету на одну и ту же сумму раз в N свечей, пока не кончится бюджет. Это не способ обогнать рынок, а способ растянуть вход во времени. Сравнение — с разовой покупкой всего бюджета в начале: при росте цены она обычно выгоднее, при падении — DCA.</div>
+      <div class="row">
+        <div><label>Сумма одной покупки, $</label><input id="dAmount" type="number" value="100" min="1"></div>
+        <div><label>Раз в N свечей</label><input id="dEvery" type="number" value="7" min="1" max="1000" step="1"></div>
+        <div><label>Бюджет всего, $</label><input id="dBudget" type="number" value="1000" min="10"></div>
+      </div>
+      <div class="help" id="dInfo"></div>
+      <button id="dCreate">Начать DCA</button>
+      <div id="dError" class="err"></div>
+    </div>
+    <div class="card">
+      <b>Сводка всех сессий</b>
+      <div class="help">Все сессии вместе: сколько стоил бы капитал, если бы те же деньги с момента старта каждой сессии просто лежали в BTC или в кэше (USDT, под процент кэша сессии). В BTC капитал и результат пересчитаны по цене BTC на старте и сейчас. «Сейчас» — последняя закрытая свеча каждой сессии.</div>
+      <div class="inline" style="margin-top:8px"><label style="margin:0">Валюта сводки</label><select id="pfCcy" style="width:auto"><option value="USDT">USDT</option><option value="BTC">BTC</option></select><button class="sec small" id="pfRun">Посчитать сводку</button></div>
+      <div id="pfOut"></div>
+      <details style="margin-top:8px"><summary>Автообновление без открытого браузера (Планировщик заданий Windows)</summary>
+        <div class="help">Скрипт <code>scripts\paper-update.bat</code> пересчитывает все сессии по новым закрытым свечам и дописывает итог в <code>data\paper-log.jsonl</code> (сервер для этого запускать не нужно). Чтобы он запускался раз в сутки: откройте «Планировщик заданий» → «Создать простую задачу» → «Ежедневно» → «Запустить программу» → укажите файл <code>paper-update.bat</code> из папки <code>scripts</code> программы. Или одной командой в командной строке (путь — ваш):<br><code>schtasks /Create /SC DAILY /ST 09:00 /TN "Chestny poligon paper" /TR "\"D:\Investing System\polygon\scripts\paper-update.bat\""</code><br>Сессии всегда пересчитываются из свечей, поэтому пропущенный день ничего не ломает: журнал нужен, чтобы видеть, что программа «говорила» в каждый день.</div>
+      </details>
+    </div>
+    <div class="inline" style="margin-bottom:10px"><label style="margin:0"><input type="checkbox" id="auto"> Обновлять автоматически раз в минуту</label><button class="sec small" id="refreshAll">Обновить все</button></div>
+    <div id="sessions"></div>
+  </section>
+
+
+  <!-- 1. МОНЕТЫ -->
+  <section id="tab-coins" hidden>
+    <div class="card"><b>1. Монеты</b>
+      <div class="help">Факты о прошлом каждой монеты на выбранной в общих настройках бирже, по дневным свечам. Это не оценка «хорошая или плохая монета» и не прогноз. Отметьте монеты, с которыми хотите работать: они будут выбраны в скане на этапе 4.</div>
+      <div class="inline" style="margin-top:8px"><input id="coinAdd" placeholder="например SUIUSDT" style="width:170px"><button id="coinAddBtn" class="sec">Добавить монету</button><button id="coinRefresh">Обновить</button></div>
+      <div id="coinError" class="err"></div>
+      <div id="coinTable"></div>
+      <div class="inline" style="margin-top:8px"><button id="coinToScan">Скан по отмеченным монетам →</button><span id="coinPicked" class="help"></span></div>
+      <details class="sub"><summary>Что значат столбцы</summary>
+        <ul>
+          <li><b>История</b> — с какой даты у биржи есть дневные свечи. «не меньше» — скачано столько, сколько позволяет программа, начало может быть раньше. Меньше 3 лет — для проверки идеи мало: случайная удача и настоящее преимущество на коротком отрезке почти не различаются.</li>
+          <li><b>Оборот в день</b> — средний за 30 дней, объём × цена закрытия, примерно. Меньше 1 млн USDT — проскальзывание у рыночных сделок может быть заметно больше заданного в настройках.</li>
+          <li><b>Размах за год</b> — годовая волатильность по дневным изменениям за последний год. 60 % значит, что за год цена обычно отклоняется примерно на ±60 %.</li>
+          <li><b>За год</b> — изменение цены за последние 365 дней. Прошлый рост не говорит о будущем.</li>
+          <li><b>Худшее падение</b> — самое глубокое падение от максимума по закрытиям за всю скачанную историю (наведите, чтобы увидеть даты). <b>Ниже максимума</b> — насколько цена сейчас ниже своего максимума.</li>
+          <li><b>Связь с BTC</b> — корреляция дневных изменений за год: 1 — ходит точно как BTC, 0 — независимо. Почти все монеты ходят вместе с BTC, поэтому несколько монет — это не несколько независимых ставок.</li>
+          <li><b>Фандинг, 30 дн.</b> — средняя годовая ставка бессрочного фьючерса этой биржи. Положительная — лонги платят шортам. Подробнее — ниже, в «Стороже ставок».</li>
+        </ul>
+      </details>
+    </div>
+    <div class="card"><b>Сторож ставок</b>
+      <div class="help">Только чтение: программа смотрит публичные данные Bybit, Binance и OKX и ничего не торгует. Здесь видно, есть ли сейчас процент, который можно собрать без ставки на направление цены. Это не рекомендация: высокая ставка обычно держится недолго, а издержки входа и выхода съедают часть дохода.</div>
+      <div class="inline" style="margin-top:8px"><label style="margin:0">Подсвечивать, если выше, % годовых</label><input id="rThr" type="number" step="1" value="10" style="width:90px"><button id="rRefresh">Обновить</button></div>
+      <div id="rError" class="err"></div>
+    </div>
+    <div class="card"><b>Фандинг бессрочных фьючерсов (годовая ставка)</b>
+      <div class="help">Фандинг — выплата между лонгами и шортами бессрочного фьючерса, обычно раз в 8 часов. Годовая ставка = ставка одной выплаты × число выплат в году. Положительная — лонги платят шортам, то есть carry (спот + шорт фьючерса) получает доход.</div>
+      <div class="help">По каждой монете жирным отмечена биржа с самой высокой средней за 7 дней. Разница между биржами — не готовый доход: чтобы её собрать, нужны счета на двух биржах и деньги на обеих, а ставки быстро сходятся.</div>
+      <div id="rFunding"></div>
+    </div>
+    <div class="card"><b>Базис срочных фьючерсов (годовая доходность)</b>
+      <div class="help">Срочный фьючерс обычно дороже монеты, а к дате экспирации цены сходятся. Купив монету и продав фьючерс, можно заранее зафиксировать эту разницу. Годовая доходность = (цена покупателя фьючерса ÷ индекс − 1) × 365 ÷ дней до экспирации, до комиссий. Берётся лучшая цена покупателя (по ней вы бы продали), а не средняя. Инверсные контракты рассчитываются в монете.</div>
+      <div id="rFutures"></div>
+    </div>
+  </section>
+
+  <!-- 2. СОСТОЯНИЕ РЫНКА -->
+  <section id="tab-state" hidden>
+    <div class="card"><b>2. Состояние рынка</b>
+      <div class="help">Что сейчас происходит с монетами, отмеченными на этапе 1, по дневным свечам биржи из общих настроек, и как часто такое бывало в прошлом этой же монеты.</div>
+      <div class="warn" style="margin-top:8px">Это описание, а не прогноз. В исследованиях проекта направление цены предсказать не удалось: состояние рынка почти ничего не говорит о том, пойдёт цена вверх или вниз. Сравните последние два столбца — обычно они почти одинаковые.</div>
+      <div class="inline" style="margin-top:8px"><button id="stRefresh">Обновить</button><span id="stCoins" class="help"></span></div>
+      <div id="stError" class="err"></div>
+      <div id="stTable"></div>
+      <details class="sub"><summary>Что значат столбцы</summary>
+        <ul>
+          <li><b>Относительно средней 200</b> — цена выше или ниже средней цены закрытия за 200 дней, на сколько процентов и сколько дней подряд. Это самый простой способ назвать рынок «растущим» или «падающим».</li>
+          <li><b>Прошлые такие периоды</b> — сколько раз раньше цена была по эту же сторону средней и сколько дней такой период длился обычно (медиана). Цена часто пересекает среднюю туда-обратно за несколько дней, поэтому медиана короткая.</li>
+          <li><b>Дольше продлились</b> — из прошлых периодов, которые дожили до нынешнего возраста, какая доля продлилась дольше. Мало периодов — мало смысла.</li>
+          <li><b>Размах за 30 дней</b> — годовая волатильность за последний месяц и где она среди всей истории монеты: низкая (ниже 25 % прошлых значений), обычная или высокая (выше 75 %). Размах предсказуем лучше направления: спокойный месяц чаще сменяется спокойным.</li>
+          <li><b>Чистота движения</b> — итог за 30 дней, делённый на весь пройденный путь: 1 — цена шла в одну сторону, 0 — ходила туда-сюда и вернулась («пила»).</li>
+          <li><b>Сжатие полос</b> — ширина полос Боллинджера (20 дней) среди прошлых значений. Сжатие — когда уже, чем в 90 % прошлых дней. Исследование проекта: перед крупными движениями сжатие бывает не чаще обычного.</li>
+          <li><b>Что было дальше</b> — доля дней, после которых цена через 30 дней была выше: в том же положении относительно средней и во все дни. Соседние дни почти одинаковы, поэтому независимых наблюдений примерно в 30 раз меньше, чем дней (показано в подсказке).</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- 3. ПОДХОД И ИДЕЯ -->
+  <section id="tab-idea" hidden>
+    <div class="card"><b>3. Подход и идея</b>
+      <div class="help">Сначала — каким способом зарабатывать. От этого зависит, какие идеи подходят.</div>
+      <div id="apprList" class="appr-grid"></div>
+    </div>
+    <div class="card" id="apprIdeas"></div>
+  </section>
+
+  <!-- СПРАВКА -->
+  <section id="tab-ref" hidden>
+    <div class="seg" id="refMode"><button class="on" data-m="cat">Каталог идей и словарь</button><button data-m="ind">Индикаторы</button><button data-m="plank">Что такое планка</button></div>
+    <div id="refPlank" hidden>
+      <div class="card"><b>Планка значимости</b>
+        <div class="plain">t-статистика показывает, насколько устойчиво идея обгоняла эталон свеча за свечой. Если проверить много идей, у нескольких высокая t появится случайно — как у одного из 500 человек, подбросивших монетку 10 раз, почти наверняка выпадет 9 орлов. Поэтому требование растёт с числом проверок: планка = √(2 · ln N), где N — число уникальных попыток в журнале, и не меньше 1,96.</div>
+        <table><tr><th>Попыток</th><th>Планка</th></tr><tr><td>1</td><td>1,96</td></tr><tr><td>10</td><td>2,15</td></tr><tr><td>100</td><td>3,03</td></tr><tr><td>1000</td><td>3,72</td></tr></table>
+        <div class="help">Повтор той же настройки (биржа, монета, свеча, идея, параметры, издержки) — не новая попытка. Пройти планку — повод проверить идею глубже, а не доказательство.</div>
+      </div>
+    </div>
+    <div id="refInd" hidden>
+    <div class="card"><b>Индикаторы</b>
+      <div class="help">Индикатор — это число, которое программа вычисляет по прошлым ценам и объёмам, чтобы описать состояние рынка. Любой индикатор можно использовать в конструкторе стратегий, и несколько сразу. Все индикаторы используют только прошлые и текущую закрытую свечу: заглядывания в будущее нет.</div>
+      <input type="text" id="indFilter" placeholder="Поиск по названию или описанию…" style="margin-top:8px">
+    </div>
+    <div id="indList"></div>
+    </div>
+    <div id="refCat">
+    <div class="card"><b>Каталог идей, проверенных в проекте</b>
+      <div class="help">Здесь собраны все идеи из журналов исследований проекта (RESEARCH_JOURNAL.md, retest, отчёты по гипотезам). Идеи, которые можно воспроизвести на свечах, доступны в программе кнопкой «Проверить». Остальные показаны для полноты с причиной, почему здесь они не запускаются. Вердикты — из ваших журналов: другие данные и периоды могут дать другие цифры.</div>
+      <div class="inline"><label style="margin:0">Показать:</label>
+        <select id="catFilter"><option value="">все</option><option value="❌">отвергнутые ❌</option><option value="🟡">частично 🟡</option><option value="✅">принятые ✅</option><option value="⏸">замороженные ⏸</option></select></div>
+    </div>
+    <div id="catPresets"></div>
+    <div class="card"><b>Только каталог (нельзя воспроизвести в программе)</b></div>
+    <div id="catOnly"></div>
+    <div class="card"><b>Словарь терминов</b><table id="glossary"></table></div>
+    </div>
+  </section>
+  </div>
+</main>
+
+<script src="app.js"></script>
+<script type="module" src="course.js"></script>
+</body>
+</html>
