@@ -82,6 +82,7 @@
     table.cards td[data-label=""]{justify-content:flex-start;text-align:left} table.cards td[data-label=""]::before{display:none}
     table.cards td:first-child{font-weight:600}
   }
+  .i18n-wait body{visibility:hidden} .langsel{width:auto;padding:5px 8px;font-size:13px}
   [hidden]{display:none!important}
 </style>
 </head>
@@ -91,8 +92,9 @@
   <div id="staleServer" class="err" hidden></div>
   <div id="noServer" class="card" hidden><b>Рабочий режим здесь пока недоступен</b>
     <div class="help">Проверка идей, скан и бумажная торговля сейчас работают только с компьютера: запустите на нём start.bat и откройте программу там (или с планшета в домашней сети — start-lan.bat). Расчёты прямо на планшете и телефоне появятся в следующей версии. Учебный режим работает и здесь, в том числе без интернета.</div></div>
-  <div class="top"><div class="sub">Проверка торговых идей на истории и учебная торговля. Это учебный инструмент, не инвестиционный совет. Данные скачиваются на ваш компьютер и остаются у вас.</div><div class="inline"><div class="seg" id="modeSeg" style="margin:0"><button data-mode="learn">Учебный</button><button data-mode="work" class="on">Рабочий</button></div><div class="pill" id="journalPill">Журнал: …</div></div></div>
-  <section id="learnArea" hidden></section>
+  <div class="top"><div class="sub">Проверка торговых идей на истории и учебная торговля. Это учебный инструмент, не инвестиционный совет. Данные скачиваются на ваш компьютер и остаются у вас.</div><div class="inline"><div class="seg" id="modeSeg" style="margin:0"><button data-mode="learn">Учебный</button><button data-mode="work" class="on">Рабочий</button></div><div class="pill" id="journalPill">Журнал: …</div><select id="langSel" class="langsel notr" aria-label="Язык / Language"></select></div></div>
+  <div id="langNote" class="help" hidden>Перевод сделан без проверки носителем языка. Уроки курса пока только на русском: они переводятся по модулям.</div>
+  <section id="learnArea" class="notr" hidden></section>
   <div id="workArea">
   <details class="card" id="settingsBox">
     <summary id="settingsSum">Общие настройки</summary>
@@ -432,7 +434,8 @@
   </div>
 </main>
 
-<script src="app.js?v=d7cf0c03cc"></script>
-<script type="module" src="course.js?v=d7cf0c03cc"></script>
+<script src="i18n.js?v=87b0493516"></script>
+<script src="app.js?v=87b0493516"></script>
+<script type="module" src="course.js?v=87b0493516"></script>
 </body>
 </html>

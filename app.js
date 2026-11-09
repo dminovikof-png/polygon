@@ -1,5 +1,6 @@
 // Интерфейс «Честного полигона». Вся логика расчётов — на сервере (lib/), здесь только показ.
 const $ = (id) => document.getElementById(id);
+const T = (s) => window.PolygonI18n?.tr(s) ?? s; // перевод текста, который не попадает на страницу (окна подтверждения, подписи на графике)
 let meta, lastReq = null, custom = null, indSeq = 1, btcPairs = {};
 const pct = (x) => (x * 100).toFixed(1) + " %";
 const pct0 = (x) => (x * 100).toFixed(0) + " %";
@@ -32,6 +33,13 @@ function startWorker() {
 window.polygonApi = api;
 
 /* ---------- режимы: учебный и рабочий ---------- */
+// Язык: список в шапке; смена перезагружает страницу (так все надписи, включая уже показанные, пересобираются).
+(function langUi() {
+  const I = window.PolygonI18n; if (!I?.set) return;
+  for (const [k, v] of Object.entries(I.LANGS)) $("langSel").add(new Option(v, k, false, k === I.lang));
+  $("langSel").onchange = (e) => I.set(e.target.value);
+  $("langNote").hidden = I.lang === "ru";
+})();
 const MODE_KEY = "polygon.mode";
 function setMode(m) {
   document.querySelectorAll("#modeSeg button").forEach((b) => b.classList.toggle("on", b.dataset.mode === m));
@@ -77,7 +85,7 @@ $("syncIn").onchange = async (e) => {
     loadJournal(); loadSessions?.();
   } catch (err) { $("syncStatus").textContent = "Не получилось: " + err.message; }
 };
-$("clearCandles").onclick = async () => { if (!confirm("Удалить скачанные свечи с этого устройства? Журнал и сессии останутся.")) return; await api("device/clear", {}); syncStatus(); };
+$("clearCandles").onclick = async () => { if (!confirm(T("Удалить скачанные свечи с этого устройства? Журнал и сессии останутся."))) return; await api("device/clear", {}); syncStatus(); };
 $("syncBox").addEventListener("toggle", () => { if ($("syncBox").open) syncStatus(); });
 
 /* ---------- этапы ---------- */
@@ -238,7 +246,7 @@ function onStrategy() {
     h("div", { class: "plain" }, h("b", null, s.title), " ", badge(s.verdict.status), s.side === "short" ? h("span", { class: "badge b-no" }, "шорт") : null, h("span", { class: "tag" }, s.group === "project" ? "из исследований проекта" : "классический пример")),
     h("div", { class: "plain" }, s.plain),
     h("details", { class: "box" }, h("summary", null, "Что показало исследование проекта"), h("div", { class: "plain" }, s.verdict.text), h("div", { class: "small-note" }, "Источник: " + s.source)),
-    s.needsBtcPair ? h("div", { class: "warn" }, "Эта идея работает только на паре к BTC: выберите в списке «Монета или пара» настоящую пару к BTC (например, SOLBTC) или синтетику (например, SOLUSDT/BTCUSDT — для длинной истории). Результат удобнее смотреть в валюте отчёта BTC.") : null,
+    s.needsBtcPair ? h("div", { class: "warn" }, "Эта идея работает только на паре к BTC: выберите в списке «Монета или пара» настоящую пару к BTC (например, SOLBTC) или синтетику (например, SOLUSDT/BTCUSDT — для длинной истории). Результат удобнее смотреть в валюте отчёта BTC.") : "",
   );
   if (s.needsBtcPair && !isBtcPair($("symbol").value)) { const syn = [...$("symbol").options].find((o) => o.value === "SOLUSDT/BTCUSDT"); if (syn) { $("symbol").value = syn.value; onSymbol(); } }
   if (s.needsBtcPair) $("reportCcy").value = "BTC";
@@ -606,7 +614,7 @@ function draw(canvas, series, keys) {
   keys.forEach((k, n) => {
     g.beginPath(); g.strokeStyle = k.color; g.lineWidth = 2;
     series.forEach((p, i) => (i ? g.lineTo(x(i), y(p[k.key])) : g.moveTo(x(i), y(p[k.key])))); g.stroke();
-    g.fillStyle = k.color; g.fillText(k.label, 14 + n * 150, 14);
+    g.fillStyle = k.color; g.fillText(T(k.label), 14 + n * 150, 14);
   });
 }
 
@@ -800,7 +808,7 @@ $("toPaper").onclick = () => { showTab("paper"); $("pName").focus(); };
 $("pCreate").onclick = async () => {
   $("pError").textContent = "";
   const c = W?.paperCheck({ strategy: $("strategy").value, symbol: $("symbol").value, journal: wizJournal, plank: plankNow, last: lastCheck });
-  if (c && !c.ok && !confirm(`${c.message}\n\nБумажная сессия не превратит идею в проверенную: она только покажет, как правило ведёт себя вживую.\n\nНажмите «ОК», если понимаете, что идея не прошла проверку, и всё равно хотите наблюдать.`)) return;
+  if (c && !c.ok && !confirm([c.message, "Бумажная сессия не превратит идею в проверенную: она только покажет, как правило ведёт себя вживую.", "Нажмите «ОК», если понимаете, что идея не прошла проверку, и всё равно хотите наблюдать."].map(T).join("\n\n"))) return;
   $("pCreate").disabled = true;
   try {
     await api("api/paper/create", { ...currentReq(), name: $("pName").value || stratTitle() + " · " + $("symbol").value, capital: Number($("pCap").value) });
@@ -819,7 +827,7 @@ async function loadSessions() {
     sessionBox[s.id] = body;
     root.append(h("div", { class: "card" },
       h("div", { class: "inline" }, h("b", null, s.name), h("span", { class: "tag" }, `${s.symbol} · ${s.tf} · ${EXN[s.exchange] || s.exchange} · ${s.strategy === "custom" ? "своя стратегия" : s.type === "grid" ? (s.params.market === "perp" ? `фьючерсная сетка ${s.params.levels} ур., ${{ long: "лонг", short: "шорт", neutral: "нейтральная" }[s.params.direction]} ${s.params.leverage}x` : `сетка ${s.params.levels} ур.`) : s.type === "carry" ? "carry" : s.type === "dca" ? `DCA $${s.params.amount} раз в ${s.params.every} свеч.` : meta.strategies.find((x) => x.key === s.strategy)?.title} · капитал $${s.capital}${s.reportCcy === "BTC" ? " (отчёт в BTC)" : ""}${(s.leverage ?? 1) > 1 ? " · плечо " + s.leverage + "x" : ""} · старт ${dt(s.startT)} UTC`),
-        h("button", { class: "small", onclick: () => refreshSession(s.id) }, "Обновить"), device ? h("button", { class: "small sec", onclick: async () => { const r = await api("api/paper/csv", { id: s.id }); saveFile(r.file, r.csv, "text/csv;charset=utf-8"); } }, "Сделки в CSV") : h("a", { class: "small", href: "api/paper/csv?id=" + encodeURIComponent(s.id), download: "" }, "Сделки в CSV"), h("button", { class: "danger small", onclick: async () => { if (confirm("Удалить сессию?")) { await api("api/paper/delete", { id: s.id }); loadSessions(); } } }, "Удалить")),
+        h("button", { class: "small", onclick: () => refreshSession(s.id) }, "Обновить"), device ? h("button", { class: "small sec", onclick: async () => { const r = await api("api/paper/csv", { id: s.id }); saveFile(r.file, r.csv, "text/csv;charset=utf-8"); } }, "Сделки в CSV") : h("a", { class: "small", href: "api/paper/csv?id=" + encodeURIComponent(s.id), download: "" }, "Сделки в CSV"), h("button", { class: "danger small", onclick: async () => { if (confirm(T("Удалить сессию?"))) { await api("api/paper/delete", { id: s.id }); loadSessions(); } } }, "Удалить")),
       body));
     refreshSession(s.id);
   }
@@ -907,7 +915,7 @@ function renderIndicators() {
       h("div", null, h("b", null, i.title), " ", h("span", { class: "badge" }, i.group)),
       h("div", { class: "plain" }, i.plain), h("div", { class: "help" }, i.use),
       i.params.length ? table(["Параметр", "По умолчанию", "Допустимо"], i.params.map((p) => [p.label, p.def, `${p.min} … ${p.max}`])) : h("div", { class: "small-note" }, "Параметров нет."),
-      table(["Выход индикатора (его можно использовать в условиях)", "Как обращаться"], i.outputs.map((o) => [o.label, i.outputs.length === 1 ? "по имени индикатора" : "имя." + o.key]))));
+      table(["Выход индикатора (его можно использовать в условиях)", "Как обращаться"], i.outputs.map((o) => [o.label, i.outputs.length === 1 ? "по имени индикатора" : `имя.${o.key}`]))));
   }
 }
 $("indFilter").oninput = renderIndicators;
@@ -1031,7 +1039,7 @@ if ("serviceWorker" in navigator && isSecureContext) navigator.serviceWorker.reg
   for (const [k, v] of Object.entries(meta.benchmarks)) $("benchmark").add(new Option(v[0].toUpperCase() + v.slice(1), k));
   $("maxBars").value = meta.defaultBars; $("maxBars").max = meta.maxBars;
   const g1 = h("optgroup", { label: "Стратегии из исследований проекта" }), g2 = h("optgroup", { label: "Классические примеры" }), g3 = h("optgroup", { label: "Своя" });
-  for (const s of meta.strategies) (s.group === "project" ? g1 : g2).append(new Option(`${s.verdict.status}  ${s.title}`, s.key));
+  for (const s of meta.strategies) (s.group === "project" ? g1 : g2).append(new Option(`${s.verdict.status}  ${T(s.title)}`, s.key));
   g3.append(new Option("Своя стратегия (конструктор из нескольких индикаторов)", "custom"), new Option("Сетка (грид-бот: спот или фьючерс с плечом)", "grid"), new Option("Carry: спот + шорт бессрочного фьючерса (Bybit)", "carry"));
   $("strategy").append(g1, g2, g3);
   $("strategy").onchange = () => { onStrategy(); chooseIdea(); }; onStrategy();
