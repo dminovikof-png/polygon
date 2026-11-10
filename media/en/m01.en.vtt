@@ -1,0 +1,269 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.093
+Module one:
+
+2
+00:00:01.093 --> 00:00:02.512
+blockchain and coins.
+
+3
+00:00:02.512 --> 00:00:05.958
+We will see how a shared record of transfers works,
+
+4
+00:00:05.958 --> 00:00:11.566
+who decides which block comes next, how bitcoin is issued, and how smart contracts,
+
+5
+00:00:11.566 --> 00:00:14.606
+tokens, stablecoins and second layers differ.
+
+6
+00:00:15.606 --> 00:00:18.242
+A bank keeps its record of money to itself.
+
+7
+00:00:18.242 --> 00:00:22.963
+A blockchain does the same, but the record is kept by thousands of computers,
+
+8
+00:00:22.963 --> 00:00:24.802
+and none of them is in charge.
+
+9
+00:00:24.802 --> 00:00:28.971
+Transfers are gathered into blocks, and blocks are linked by hashes.
+
+10
+00:00:28.971 --> 00:00:30.933
+A hash is a fingerprint of data:
+
+11
+00:00:30.933 --> 00:00:34.182
+change one letter, and the whole fingerprint changes.
+
+12
+00:00:35.182 --> 00:00:39.898
+In the lesson you can change one digit in a block and see how the hash changes.
+
+13
+00:00:39.898 --> 00:00:42.705
+Each block stores the hash of the previous one.
+
+14
+00:00:42.705 --> 00:00:46.645
+So forging an old record means recalculating every block after it,
+
+15
+00:00:46.645 --> 00:00:49.630
+faster than the rest of the network adds new ones.
+
+16
+00:00:50.630 --> 00:00:53.536
+Who adds the next block is decided by consensus.
+
+17
+00:00:53.536 --> 00:00:58.621
+In proof of work, the right goes to whoever first finds the required number by brute
+
+18
+00:00:58.621 --> 00:01:01.467
+force, and that costs hardware and electricity.
+
+19
+00:01:01.467 --> 00:01:05.825
+In proof of stake, blocks are proposed by validators who put up a stake,
+
+20
+00:01:05.825 --> 00:01:08.126
+and for cheating they lose part of it.
+
+21
+00:01:09.126 --> 00:01:11.196
+Both methods share one weak spot:
+
+22
+00:01:11.196 --> 00:01:12.450
+the majority attack.
+
+23
+00:01:12.450 --> 00:01:17.155
+Whoever controls more than half of the power, or a large part of the stake,
+
+24
+00:01:17.155 --> 00:01:20.730
+can rewrite recent blocks and spend the same coins twice.
+
+25
+00:01:20.730 --> 00:01:25.623
+In big networks this costs billions; in small ones such attacks have happened.
+
+26
+00:01:25.623 --> 00:01:30.390
+That is why an exchange credits a transfer only after several confirmations.
+
+27
+00:01:31.390 --> 00:01:34.308
+New bitcoins appear only as a block reward.
+
+28
+00:01:34.308 --> 00:01:38.990
+Every 210,000 blocks, roughly every four years, the reward is halved.
+
+29
+00:01:38.990 --> 00:01:42.451
+There will be just under 21 million coins in total,
+
+30
+00:01:42.451 --> 00:01:45.437
+and more than 95 percent are already issued.
+
+31
+00:01:45.437 --> 00:01:48.762
+But limited issuance does not force the price up:
+
+32
+00:01:48.762 --> 00:01:52.630
+it is known in advance, and the price is moved by demand.
+
+33
+00:01:53.630 --> 00:01:57.001
+Ethereum stores not only transfers but also programs:
+
+34
+00:01:57.001 --> 00:01:58.019
+smart contracts.
+
+35
+00:01:58.019 --> 00:02:00.372
+A contract is like a vending machine:
+
+36
+00:02:00.372 --> 00:02:04.189
+the rules are written in code and are the same for everyone.
+
+37
+00:02:04.189 --> 00:02:06.797
+It cannot be secretly changed or stopped.
+
+38
+00:02:06.797 --> 00:02:10.168
+But a bug in the code cannot be quickly fixed either:
+
+39
+00:02:10.168 --> 00:02:13.094
+the network will execute it just as precisely.
+
+40
+00:02:14.094 --> 00:02:16.848
+Anyone can issue a token in a few minutes,
+
+41
+00:02:16.848 --> 00:02:19.864
+so a token by itself says nothing about value.
+
+42
+00:02:19.864 --> 00:02:22.945
+Stablecoins try to be worth exactly one dollar.
+
+43
+00:02:22.945 --> 00:02:25.961
+Money-backed ones rely on the issuing company,
+
+44
+00:02:25.961 --> 00:02:29.043
+crypto-backed ones on collateral in a contract,
+
+45
+00:02:29.043 --> 00:02:32.846
+algorithmic ones on a promise to swap for their own token.
+
+46
+00:02:32.846 --> 00:02:35.337
+In May 2022 that is how UST collapsed,
+
+47
+00:02:35.337 --> 00:02:38.550
+and tens of billions of dollars vanished with it.
+
+48
+00:02:39.550 --> 00:02:41.677
+The network's work is not free.
+
+49
+00:02:41.677 --> 00:02:44.009
+In Ethereum it is measured in gas:
+
+50
+00:02:44.009 --> 00:02:48.194
+a simple transfer is 21,000 units, a swap several times more.
+
+51
+00:02:48.194 --> 00:02:51.145
+The fee is gas multiplied by the gas price.
+
+52
+00:02:51.145 --> 00:02:55.261
+The base part is burned, the rest is a tip to the validator.
+
+53
+00:02:55.261 --> 00:02:59.446
+When everyone wants to get into a block, the gas price rises.
+
+54
+00:03:00.446 --> 00:03:02.578
+Hence the idea of a second layer.
+
+55
+00:03:02.578 --> 00:03:07.940
+A rollup gathers many transfers into a batch and writes the whole batch to the main
+
+56
+00:03:07.940 --> 00:03:11.235
+network at once, and the fee is shared by everyone.
+
+57
+00:03:11.235 --> 00:03:15.951
+Optimistic rollups treat a batch as valid until someone proves otherwise,
+
+58
+00:03:15.951 --> 00:03:18.019
+so a withdrawal can take a week.
+
+59
+00:03:18.019 --> 00:03:20.538
+ZK rollups attach a mathematical proof.
+
+60
+00:03:20.538 --> 00:03:23.381
+The price of cheapness is new links of risk:
+
+61
+00:03:23.381 --> 00:03:25.190
+the operator and the bridge.
+
+62
+00:03:26.190 --> 00:03:27.214
+The main points.
+
+63
+00:03:27.214 --> 00:03:31.376
+A blockchain is a shared record that cannot be quietly rewritten.
+
+64
+00:03:31.376 --> 00:03:34.257
+Who adds a block is decided by work or stake.
+
+65
+00:03:34.257 --> 00:03:39.251
+And network coins, tokens, stablecoins and second layers are different things,
+
+66
+00:03:39.251 --> 00:03:43.029
+each with its own answer to the question of whom you trust.
+
+67
+00:03:43.029 --> 00:03:45.846
+Details are in the lessons below this video.

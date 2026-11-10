@@ -1,0 +1,217 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.125
+Module four:
+
+2
+00:00:01.125 --> 00:00:02.676
+decentralized exchanges.
+
+3
+00:00:02.676 --> 00:00:07.780
+How to swap with a pool instead of an order book, how a formula sets the price,
+
+4
+00:00:07.780 --> 00:00:13.142
+where providers' impermanent loss comes from, and how bots make money on your swap.
+
+5
+00:00:14.142 --> 00:00:17.579
+A decentralized exchange is a set of smart contracts.
+
+6
+00:00:17.579 --> 00:00:22.701
+Keeping an order book on a blockchain is expensive, so instead there is a pool:
+
+7
+00:00:22.701 --> 00:00:25.360
+a contract holding a stock of two tokens.
+
+8
+00:00:25.360 --> 00:00:29.121
+Providers deposit both tokens, traders swap with the pool,
+
+9
+00:00:29.121 --> 00:00:31.390
+and a formula calculates the price.
+
+10
+00:00:31.390 --> 00:00:36.318
+You connect a wallet and swap tokens straight from it, without registration.
+
+11
+00:00:37.318 --> 00:00:39.983
+The best-known formula is x·y = k:
+
+12
+00:00:39.983 --> 00:00:45.077
+the product of the pool's reserves does not change during a swap.
+
+13
+00:00:45.077 --> 00:00:50.721
+Say the pool holds 100 ether and 200,000 dollars, so the price is 2,000.
+
+14
+00:00:50.721 --> 00:00:56.207
+To take 10 ether you will have to pay about 22,200, or 2,222 per coin.
+
+15
+00:00:56.207 --> 00:00:59.734
+The more you take, the dearer each next coin.
+
+16
+00:01:00.734 --> 00:01:05.015
+Price impact depends on the size of the swap relative to the pool.
+
+17
+00:01:05.015 --> 00:01:10.010
+In a pool worth hundreds of millions of dollars a 1,000-dollar swap is barely
+
+18
+00:01:10.010 --> 00:01:14.356
+noticeable; in a 50,000-dollar pool it moves the price by percents.
+
+19
+00:01:14.356 --> 00:01:19.350
+After a large swap, arbitrageurs pull the pool price back to the market, and,
+
+20
+00:01:19.350 --> 00:01:22.334
+as we will see now, at the providers' expense.
+
+21
+00:01:23.334 --> 00:01:26.607
+A provider deposited one ether and 2,000 dollars.
+
+22
+00:01:26.607 --> 00:01:32.017
+The ether price doubled, and arbitrageurs bought the cheap ether out of the pool.
+
+23
+00:01:32.017 --> 00:01:37.360
+Now the provider has 5,657 dollars, while simply holding would have given 6,000.
+
+24
+00:01:37.360 --> 00:01:41.969
+The pool keeps selling what gets dearer and buying what gets cheaper.
+
+25
+00:01:41.969 --> 00:01:46.110
+The loss is the same for a rise and a fall by the same factor.
+
+26
+00:01:47.110 --> 00:01:49.539
+A provider earns fees from every swap,
+
+27
+00:01:49.539 --> 00:01:52.480
+and the result is fees minus impermanent loss.
+
+28
+00:01:52.480 --> 00:01:55.356
+For two dollar stablecoins the loss is small.
+
+29
+00:01:55.356 --> 00:01:59.576
+If one coin can crash against the other, the loss eats everything.
+
+30
+00:01:59.576 --> 00:02:04.562
+And liquidity in a narrow range earns more fees, but when the price leaves it,
+
+31
+00:02:04.562 --> 00:02:07.822
+you are left entirely in the coin that got cheaper.
+
+32
+00:02:08.822 --> 00:02:13.558
+A sent transaction first lands in a public queue and is visible to everyone.
+
+33
+00:02:13.558 --> 00:02:18.544
+A bot sees your large swap, places its own buy before it and a sell right after.
+
+34
+00:02:18.544 --> 00:02:21.971
+It takes almost all the slippage tolerance you allowed:
+
+35
+00:02:21.971 --> 00:02:24.651
+if you agreed to receive five percent less,
+
+36
+00:02:24.651 --> 00:02:27.206
+the bot will try to take almost all five.
+
+37
+00:02:28.206 --> 00:02:29.772
+How to protect yourself.
+
+38
+00:02:29.772 --> 00:02:30.946
+A small tolerance:
+
+39
+00:02:30.946 --> 00:02:34.274
+for liquid pairs, from one tenth to half a percent.
+
+40
+00:02:34.274 --> 00:02:36.884
+Better to repeat a swap than to overpay.
+
+41
+00:02:36.884 --> 00:02:40.080
+A large swap — in parts or through an aggregator.
+
+42
+00:02:40.080 --> 00:02:41.581
+And private submission:
+
+43
+00:02:41.581 --> 00:02:45.822
+many wallets can pass the transaction straight to block builders.
+
+44
+00:02:46.822 --> 00:02:52.128
+An aggregator splits a swap across several pools so that each part moves the price
+
+45
+00:02:52.128 --> 00:02:52.452
+less.
+
+46
+00:02:52.452 --> 00:02:56.594
+The full cost of a swap is made up of network gas, the pool fee,
+
+47
+00:02:56.594 --> 00:02:57.953
+price impact and MEV.
+
+48
+00:02:57.953 --> 00:03:00.412
+What you should compare is the result:
+
+49
+00:03:00.412 --> 00:03:02.806
+how many tokens you actually receive.
+
+50
+00:03:03.806 --> 00:03:04.818
+The main points.
+
+51
+00:03:04.818 --> 00:03:07.918
+On a decentralized exchange you swap with a pool,
+
+52
+00:03:07.918 --> 00:03:12.092
+and the bigger the swap relative to the pool, the worse the price.
+
+53
+00:03:12.092 --> 00:03:15.255
+Providers earn fees but pay with impermanent loss.
+
+54
+00:03:15.255 --> 00:03:19.430
+And a large swap with a high slippage tolerance is a gift to bots.

@@ -1,0 +1,237 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.025
+Módulo três:
+
+2
+00:00:01.025 --> 00:00:02.433
+corretoras centralizadas.
+
+3
+00:00:02.433 --> 00:00:06.260
+Como funciona o livro de ofertas, quanto as taxas custam de verdade,
+
+4
+00:00:06.260 --> 00:00:10.594
+o que são futuros e funding, e por que a alavancagem liquida você mesmo com a
+
+5
+00:00:10.594 --> 00:00:11.438
+previsão certa.
+
+6
+00:00:12.438 --> 00:00:14.638
+Numa corretora ninguém define o preço.
+
+7
+00:00:14.638 --> 00:00:15.969
+Há um livro de ofertas:
+
+8
+00:00:15.969 --> 00:00:18.284
+uma lista de quem quer comprar e vender.
+
+9
+00:00:18.284 --> 00:00:20.947
+Em cima os vendedores, embaixo os compradores,
+
+10
+00:00:20.947 --> 00:00:23.841
+e a diferença entre os melhores preços é o spread.
+
+11
+00:00:23.841 --> 00:00:26.272
+Uma ordem limitada fica no livro e espera.
+
+12
+00:00:26.272 --> 00:00:30.729
+Uma ordem a mercado pega as melhores ofertas uma após a outra até completar o
+
+13
+00:00:30.729 --> 00:00:31.134
+volume.
+
+14
+00:00:32.134 --> 00:00:34.721
+Na lição você pode mexer no livro com as mãos:
+
+15
+00:00:34.721 --> 00:00:38.489
+enviar uma ordem a mercado e ver a que preço médio ela é executada.
+
+16
+00:00:38.489 --> 00:00:42.426
+Quanto maior a ordem em relação à profundidade do livro, pior o preço.
+
+17
+00:00:42.426 --> 00:00:43.438
+Isso é o slippage.
+
+18
+00:00:44.438 --> 00:00:47.552
+Quem tinha a ordem esperando no livro é o maker.
+
+19
+00:00:47.552 --> 00:00:50.148
+Quem a pegou é o taker, e ele paga mais.
+
+20
+00:00:50.148 --> 00:00:54.430
+No spot a taxa base é de cerca de um décimo de por cento por lado,
+
+21
+00:00:54.430 --> 00:00:57.285
+e uma volta «comprei — vendi», dois décimos.
+
+22
+00:00:57.285 --> 00:00:58.388
+Parece minúsculo.
+
+23
+00:00:58.388 --> 00:01:03.060
+Mas quinhentas voltas transformam cem dólares em cerca de trinta e sete,
+
+24
+00:01:03.060 --> 00:01:05.006
+sem um único erro de previsão.
+
+25
+00:01:06.006 --> 00:01:09.745
+Daí uma regra que o teste honesto confirma de novo e de novo:
+
+26
+00:01:09.745 --> 00:01:14.709
+quanto mais uma ideia opera, maior a vantagem de que ela precisa só para pagar as
+
+27
+00:01:14.709 --> 00:01:15.077
+taxas.
+
+28
+00:01:15.077 --> 00:01:20.164
+Uma ideia que compra e vende todo dia com ordens a mercado perde em um ano cerca de
+
+29
+00:01:20.164 --> 00:01:22.003
+metade do capital só em taxas.
+
+30
+00:01:22.003 --> 00:01:25.374
+Por isso o programa desconta os custos de cada negócio.
+
+31
+00:01:26.374 --> 00:01:28.445
+No spot você compra a própria moeda.
+
+32
+00:01:28.445 --> 00:01:30.919
+Um futuro é um contrato sobre o preço dela:
+
+33
+00:01:30.919 --> 00:01:33.393
+não há moeda, só a liquidação da diferença.
+
+34
+00:01:33.393 --> 00:01:37.880
+Um futuro com vencimento tem uma data em que a diferença para o preço da moeda
+
+35
+00:01:37.880 --> 00:01:38.513
+desaparece.
+
+36
+00:01:38.513 --> 00:01:42.598
+O perpétuo não tem data, e quem o prende ao preço da moeda é o funding.
+
+37
+00:01:43.598 --> 00:01:46.865
+O funding são pagamentos periódicos entre longs e shorts.
+
+38
+00:01:46.865 --> 00:01:49.273
+Quando a multidão quer comprar alavancada,
+
+39
+00:01:49.273 --> 00:01:51.910
+a taxa é positiva e os longs pagam aos shorts.
+
+40
+00:01:51.910 --> 00:01:56.267
+Um centésimo de por cento a cada oito horas dá cerca de 11 por cento ao ano,
+
+41
+00:01:56.267 --> 00:01:59.534
+e em períodos quentes a taxa pode ser várias vezes maior.
+
+42
+00:02:00.534 --> 00:02:05.519
+Alavancagem de 10 permite abrir uma posição de mil dólares com cem de colateral.
+
+43
+00:02:05.519 --> 00:02:09.693
+Um movimento de um por cento no preço é dez por cento do colateral.
+
+44
+00:02:09.693 --> 00:02:14.429
+Quando a perda quase comeu o colateral, a corretora fecha a posição sozinha.
+
+45
+00:02:14.429 --> 00:02:17.108
+A armadilha principal é o caminho do preço:
+
+46
+00:02:17.108 --> 00:02:21.096
+depois de uma queda de 12 por cento a posição já está liquidada,
+
+47
+00:02:21.096 --> 00:02:23.214
+e uma alta de 20 não vai ajudá-la.
+
+48
+00:02:24.214 --> 00:02:28.987
+Com margem isolada, a liquidação leva só o colateral daquela posição.
+
+49
+00:02:28.987 --> 00:02:32.308
+Com margem cruzada, a conta inteira é colateral:
+
+50
+00:02:32.308 --> 00:02:36.943
+a liquidação fica mais longe, mas uma posição ruim pode levar tudo.
+
+51
+00:02:36.943 --> 00:02:42.616
+E a liquidação é calculada pelo preço de marcação, uma média de várias corretoras,
+
+52
+00:02:42.616 --> 00:02:47.182
+para que um pico casual não feche as posições de todos de uma vez.
+
+53
+00:02:48.182 --> 00:02:48.883
+O principal.
+
+54
+00:02:48.883 --> 00:02:50.637
+O preço é um livro de ofertas:
+
+55
+00:02:50.637 --> 00:02:53.384
+uma ordem a mercado paga o spread e o slippage.
+
+56
+00:02:53.384 --> 00:02:55.546
+A taxa de uma volta parece minúscula,
+
+57
+00:02:55.546 --> 00:03:00.397
+mas com trading frequente come o capital mais rápido que qualquer erro de previsão.
+
+58
+00:03:00.397 --> 00:03:05.306
+E alavancagem de dez liquida com um movimento de cerca de dez por cento contra você,
+
+59
+00:03:05.306 --> 00:03:07.118
+mesmo que depois o preço volte.

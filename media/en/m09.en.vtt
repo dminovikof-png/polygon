@@ -1,0 +1,213 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.202
+Module nine:
+
+2
+00:00:01.202 --> 00:00:01.984
+strategies.
+
+3
+00:00:01.984 --> 00:00:06.316
+Holding and buying in parts, trend following, mean reversion,
+
+4
+00:00:06.316 --> 00:00:10.862
+grids and neutral strategies, and the hidden assumption of each.
+
+5
+00:00:11.862 --> 00:00:14.355
+A strategy is easy to describe in rules.
+
+6
+00:00:14.355 --> 00:00:15.914
+It is more useful to ask:
+
+7
+00:00:15.914 --> 00:00:19.342
+what has to happen to the price for this to make money?
+
+8
+00:00:19.342 --> 00:00:21.212
+That is the hidden assumption.
+
+9
+00:00:21.212 --> 00:00:25.326
+Every strategy has one, even one that calls itself market-neutral.
+
+10
+00:00:26.326 --> 00:00:29.269
+Buy and hold has a single assumption:
+
+11
+00:00:29.269 --> 00:00:31.974
+in years the price will be higher.
+
+12
+00:00:31.974 --> 00:00:36.269
+Buying in parts is often sold as a way to buy cheaper,
+
+13
+00:00:36.269 --> 00:00:38.974
+but it only smears the entry date.
+
+14
+00:00:38.974 --> 00:00:44.224
+Starting in 2019, 2020 or 2023, buying at once gave twice as much.
+
+15
+00:00:44.224 --> 00:00:47.326
+Starting in 2018 or 2022, the opposite.
+
+16
+00:00:48.326 --> 00:00:49.491
+Trend following:
+
+17
+00:00:49.491 --> 00:00:54.150
+be in the market while the price rises, and leave when it falls.
+
+18
+00:00:54.150 --> 00:00:55.242
+The assumption:
+
+19
+00:00:55.242 --> 00:00:58.081
+strong moves last longer than it seems.
+
+20
+00:00:58.081 --> 00:01:03.832
+On bitcoin since 2017, the 200-day average rule grew seven times against 17 for
+
+21
+00:01:03.832 --> 00:01:08.054
+holding, but its worst drawdown was 64 percent against 83.
+
+22
+00:01:09.054 --> 00:01:10.133
+Mean reversion:
+
+23
+00:01:10.133 --> 00:01:13.657
+buy after a sharp fall and sell after the bounce.
+
+24
+00:01:13.657 --> 00:01:14.735
+The assumption:
+
+25
+00:01:14.735 --> 00:01:16.533
+sharp moves are overdone.
+
+26
+00:01:16.533 --> 00:01:20.489
+The result is many small profits and rare large losses,
+
+27
+00:01:20.489 --> 00:01:22.862
+when the fall turns into a crash.
+
+28
+00:01:22.862 --> 00:01:27.608
+On bitcoin since 2017, growth of two times against 17 for holding:
+
+29
+00:01:27.608 --> 00:01:29.766
+crypto trends for a long time.
+
+30
+00:01:30.766 --> 00:01:35.190
+A grid bot places buy orders below the price and sell orders above it.
+
+31
+00:01:35.190 --> 00:01:38.665
+Each pass of the price down and back is a small profit.
+
+32
+00:01:38.665 --> 00:01:39.613
+The assumption:
+
+33
+00:01:39.613 --> 00:01:41.825
+the price will move within a range.
+
+34
+00:01:41.825 --> 00:01:46.691
+If it goes down and does not come back, the grid keeps buying a falling coin.
+
+35
+00:01:46.691 --> 00:01:49.029
+And with a step of a quarter percent,
+
+36
+00:01:49.029 --> 00:01:52.126
+fees eat about 80 percent of each round's profit.
+
+37
+00:01:53.126 --> 00:01:53.494
+Carry:
+
+38
+00:01:53.494 --> 00:01:56.007
+buy the coin and sell a perpetual future,
+
+39
+00:01:56.007 --> 00:02:01.035
+collecting funding; the assumption is that funding stays positive and the exchange
+
+40
+00:02:01.035 --> 00:02:01.954
+stays reliable.
+
+41
+00:02:01.954 --> 00:02:06.920
+Market making earns the spread as long as it exceeds the losses from trading with
+
+42
+00:02:06.920 --> 00:02:08.147
+those who know more.
+
+43
+00:02:08.147 --> 00:02:12.806
+Stat arbitrage expects diverged coins to converge faster than fees eat them.
+
+44
+00:02:13.806 --> 00:02:19.015
+Each strategy in the lesson has a button that opens work mode with the idea already
+
+45
+00:02:19.015 --> 00:02:19.580
+selected.
+
+46
+00:02:19.580 --> 00:02:21.525
+There you can test it honestly:
+
+47
+00:02:21.525 --> 00:02:24.726
+with fees, on different coins and on held-out data.
+
+48
+00:02:25.726 --> 00:02:26.723
+The main points.
+
+49
+00:02:26.723 --> 00:02:31.147
+Every strategy has a hidden assumption about price, and if it is wrong,
+
+50
+00:02:31.147 --> 00:02:33.079
+the mechanics will not save it.
+
+51
+00:02:33.079 --> 00:02:38.188
+In a rising market, strategies that leave the market more often lose to holding on
+
+52
+00:02:38.188 --> 00:02:38.624
+return.
+
+53
+00:02:38.624 --> 00:02:42.550
+And neutral strategies lose to fees and to those who know more.

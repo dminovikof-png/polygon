@@ -1,0 +1,209 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.027
+Módulo diez:
+
+2
+00:00:01.027 --> 00:00:02.608
+riesgo y tamaño de posición.
+
+3
+00:00:02.608 --> 00:00:05.543
+Por qué una caída es más peligrosa de lo que parece,
+
+4
+00:00:05.543 --> 00:00:07.801
+cómo calcular la posición desde el stop,
+
+5
+00:00:07.801 --> 00:00:12.090
+qué es el criterio de Kelly y por qué el apalancamiento constante se come el
+
+6
+00:00:12.090 --> 00:00:12.542
+capital.
+
+7
+00:00:13.542 --> 00:00:17.771
+La caída es cuánto está el capital por debajo de su máximo anterior.
+
+8
+00:00:17.771 --> 00:00:20.135
+Su principal problema es la asimetría.
+
+9
+00:00:20.135 --> 00:00:23.369
+Tras menos cincuenta por ciento hace falta más cien.
+
+10
+00:00:23.369 --> 00:00:28.594
+Tras menos ochenta y tres, la peor caída del bitcoin, una subida de casi seis veces.
+
+11
+00:00:28.594 --> 00:00:31.206
+Tras menos noventa y seis, de veinticinco.
+
+12
+00:00:32.206 --> 00:00:35.172
+No solo importa la profundidad, sino la duración:
+
+13
+00:00:35.172 --> 00:00:39.470
+cuántos días seguidos está el capital por debajo de su máximo anterior.
+
+14
+00:00:39.470 --> 00:00:43.102
+Es el tiempo que tendrás que aguantar sin abandonar la idea.
+
+15
+00:00:44.102 --> 00:00:46.773
+El enfoque profesional empieza con una pregunta:
+
+16
+00:00:46.773 --> 00:00:49.443
+¿cuánto estoy dispuesto a perder si me equivoco?
+
+17
+00:00:49.443 --> 00:00:52.281
+Normalmente, de medio a dos por ciento del capital.
+
+18
+00:00:52.281 --> 00:00:56.899
+El tamaño de la posición es el riesgo en dólares dividido por la distancia al stop.
+
+19
+00:00:56.899 --> 00:00:58.735
+Con un riesgo del uno por ciento,
+
+20
+00:00:58.735 --> 00:01:02.797
+veinte pérdidas seguidas quitan un 18 por ciento; con un riesgo del diez,
+
+21
+00:01:02.797 --> 00:01:05.078
+dejan solo el 12 por ciento de la cuenta.
+
+22
+00:01:06.078 --> 00:01:07.291
+Un juego con ventaja:
+
+23
+00:01:07.291 --> 00:01:11.911
+la mitad de las operaciones gana 1,2 veces el riesgo y la otra mitad pierde uno.
+
+24
+00:01:11.911 --> 00:01:13.413
+El criterio de Kelly dice:
+
+25
+00:01:13.413 --> 00:01:16.243
+arriesga en torno al ocho por ciento del capital,
+
+26
+00:01:16.243 --> 00:01:18.669
+y el crecimiento medio será el más rápido.
+
+27
+00:01:18.669 --> 00:01:23.463
+Por encima, el crecimiento se frena, y hacia dos Kelly el capital típico se reduce,
+
+28
+00:01:23.463 --> 00:01:25.542
+aunque cada operación sea favorable.
+
+29
+00:01:26.542 --> 00:01:30.354
+El simulador juega mil futuros de doscientas operaciones cada uno.
+
+30
+00:01:30.354 --> 00:01:33.762
+Con un riesgo del dos y del cuatro por ciento no hay ruina.
+
+31
+00:01:33.762 --> 00:01:38.498
+Con Kelly se arruinó el dos por ciento de los futuros; con un quince por ciento de
+
+32
+00:01:38.498 --> 00:01:40.866
+riesgo, el 28; con un veinticinco, el 74.
+
+33
+00:01:40.866 --> 00:01:43.985
+Y en la vida real la ventaja no se conoce de antemano,
+
+34
+00:01:43.985 --> 00:01:47.566
+así que los profesionales apuestan medio o un cuarto de Kelly.
+
+35
+00:01:48.566 --> 00:01:52.821
+La diversificación funciona cuando los activos no se mueven juntos.
+
+36
+00:01:52.821 --> 00:01:56.886
+La correlación diaria de bitcoin y ether en dos años es de 0,83,
+
+37
+00:01:56.886 --> 00:02:00.697
+parecida con otras monedas, y en los desplomes es aún mayor.
+
+38
+00:02:00.697 --> 00:02:05.333
+Diez monedas en lugar de una protegen de que una concreta se vaya a cero,
+
+39
+00:02:05.333 --> 00:02:08.318
+pero casi no protegen de una caída del mercado.
+
+40
+00:02:09.318 --> 00:02:13.680
+Parece que un apalancamiento de dos en una moneda que sube da el doble.
+
+41
+00:02:13.680 --> 00:02:18.225
+Pero con apalancamiento constante cada oscilación quita parte del capital:
+
+42
+00:02:18.225 --> 00:02:22.218
+menos cincuenta y más cincuenta por ciento dan menos veinticinco.
+
+43
+00:02:22.218 --> 00:02:23.386
+Bitcoin desde 2020:
+
+44
+00:02:23.386 --> 00:02:28.116
+sin apalancamiento, multiplicó por diez; con apalancamiento de dos, por seis,
+
+45
+00:02:28.116 --> 00:02:30.082
+con una caída del 97 por ciento.
+
+46
+00:02:30.082 --> 00:02:34.566
+Los apalancamientos de tres y cinco se fueron a cero ya en marzo de 2020.
+
+47
+00:02:35.566 --> 00:02:36.282
+Lo principal.
+
+48
+00:02:36.282 --> 00:02:38.873
+Las pérdidas y la recuperación son asimétricas.
+
+49
+00:02:38.873 --> 00:02:41.849
+El tamaño de la apuesta importa tanto como la ventaja:
+
+50
+00:02:41.849 --> 00:02:46.202
+incluso un juego favorable arruina con una fracción de riesgo demasiado grande.
+
+51
+00:02:46.202 --> 00:02:50.722
+Y las monedas caen juntas, mientras el apalancamiento constante se come el capital
+
+52
+00:02:50.722 --> 00:02:51.934
+aunque el precio suba.

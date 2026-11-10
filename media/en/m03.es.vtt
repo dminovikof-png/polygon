@@ -1,0 +1,245 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:00.960
+Módulo tres:
+
+2
+00:00:00.960 --> 00:00:02.181
+exchanges centralizados.
+
+3
+00:00:02.181 --> 00:00:05.996
+Cómo funciona el libro de órdenes, cuánto cuestan de verdad las comisiones,
+
+4
+00:00:05.996 --> 00:00:07.928
+qué son los futuros y la financiación,
+
+5
+00:00:07.928 --> 00:00:11.438
+y por qué el apalancamiento te liquida aunque aciertes el pronóstico.
+
+6
+00:00:12.438 --> 00:00:14.441
+En un exchange nadie fija el precio.
+
+7
+00:00:14.441 --> 00:00:15.777
+Hay un libro de órdenes:
+
+8
+00:00:15.777 --> 00:00:18.336
+una lista de quienes quieren comprar y vender.
+
+9
+00:00:18.336 --> 00:00:20.840
+Arriba los vendedores, abajo los compradores,
+
+10
+00:00:20.840 --> 00:00:23.900
+y la diferencia entre los mejores precios es el spread.
+
+11
+00:00:23.900 --> 00:00:26.627
+Una orden limitada se queda en el libro y espera.
+
+12
+00:00:26.627 --> 00:00:31.134
+Una de mercado toma las mejores órdenes una tras otra hasta completar su volumen.
+
+13
+00:00:32.134 --> 00:00:34.751
+En la lección puedes tocar el libro con tus manos:
+
+14
+00:00:34.751 --> 00:00:38.100
+enviar una orden de mercado y ver a qué precio medio se ejecuta.
+
+15
+00:00:38.100 --> 00:00:42.182
+Cuanto mayor es la orden frente a la profundidad del libro, peor es el precio.
+
+16
+00:00:42.182 --> 00:00:43.438
+Eso es el deslizamiento.
+
+17
+00:00:44.438 --> 00:00:47.962
+Quien tenía su orden esperando en el libro es el maker.
+
+18
+00:00:47.962 --> 00:00:50.397
+Quien la tomó es el taker, y paga más.
+
+19
+00:00:50.397 --> 00:00:54.562
+En spot la comisión base es de una décima de por ciento por lado,
+
+20
+00:00:54.562 --> 00:00:57.317
+y una vuelta «compré — vendí», dos décimas.
+
+21
+00:00:57.317 --> 00:00:58.342
+Parece diminuta.
+
+22
+00:00:58.342 --> 00:01:02.956
+Pero quinientas vueltas convierten cien dólares en unos treinta y siete,
+
+23
+00:01:02.956 --> 00:01:05.006
+sin un solo error de pronóstico.
+
+24
+00:01:06.006 --> 00:01:09.760
+De ahí una regla que la prueba honesta confirma una y otra vez:
+
+25
+00:01:09.760 --> 00:01:11.846
+cuanto más a menudo opera una idea,
+
+26
+00:01:11.846 --> 00:01:14.945
+más ventaja necesita solo para pagar las comisiones.
+
+27
+00:01:14.945 --> 00:01:19.653
+Una idea que compra y vende cada día con órdenes de mercado pierde en un año la
+
+28
+00:01:19.653 --> 00:01:21.858
+mitad del capital solo en comisiones.
+
+29
+00:01:21.858 --> 00:01:25.374
+Por eso el programa descuenta los costes de cada operación.
+
+30
+00:01:26.374 --> 00:01:28.122
+En spot compras la moneda en sí.
+
+31
+00:01:28.122 --> 00:01:30.362
+Un futuro es un contrato sobre su precio:
+
+32
+00:01:30.362 --> 00:01:32.820
+no hay moneda, solo se liquida la diferencia.
+
+33
+00:01:32.820 --> 00:01:37.299
+Un futuro con vencimiento tiene una fecha en la que la diferencia con el precio de
+
+34
+00:01:37.299 --> 00:01:38.446
+la moneda desaparece.
+
+35
+00:01:38.446 --> 00:01:42.598
+El perpetuo no tiene fecha, y lo ata al precio de la moneda la financiación.
+
+36
+00:01:43.598 --> 00:01:46.796
+La financiación son pagos periódicos entre largos y cortos.
+
+37
+00:01:46.796 --> 00:01:49.669
+Cuando la multitud quiere comprar con apalancamiento,
+
+38
+00:01:49.669 --> 00:01:52.487
+la tasa es positiva y los largos pagan a los cortos.
+
+39
+00:01:52.487 --> 00:01:56.336
+Una centésima de por ciento cada ocho horas son un 11 por ciento anual,
+
+40
+00:01:56.336 --> 00:01:59.534
+y en épocas calientes la tasa puede ser varias veces mayor.
+
+41
+00:02:00.534 --> 00:02:04.933
+Un apalancamiento de 10 permite abrir una posición de mil dólares con cien de
+
+42
+00:02:04.933 --> 00:02:05.504
+colateral.
+
+43
+00:02:05.504 --> 00:02:10.074
+Un movimiento del precio del uno por ciento es el diez por ciento del colateral.
+
+44
+00:02:10.074 --> 00:02:12.874
+Cuando la pérdida casi se ha comido el colateral,
+
+45
+00:02:12.874 --> 00:02:15.159
+el exchange cierra la posición él mismo.
+
+46
+00:02:15.159 --> 00:02:17.673
+La trampa principal es el camino del precio:
+
+47
+00:02:17.673 --> 00:02:21.272
+tras una caída del 12 por ciento la posición ya está liquidada,
+
+48
+00:02:21.272 --> 00:02:23.214
+y una subida del 20 no la ayudará.
+
+49
+00:02:24.214 --> 00:02:29.377
+Con margen aislado, la liquidación se lleva solo el colateral de esa posición.
+
+50
+00:02:29.377 --> 00:02:32.554
+Con margen cruzado, toda la cuenta es colateral:
+
+51
+00:02:32.554 --> 00:02:37.187
+la liquidación se aleja, pero una mala posición puede llevárselo todo.
+
+52
+00:02:37.187 --> 00:02:42.747
+Y la liquidación se calcula con el precio de marca, un promedio de varios exchanges,
+
+53
+00:02:42.747 --> 00:02:47.182
+para que un pico casual no cierre las posiciones de todos a la vez.
+
+54
+00:02:48.182 --> 00:02:48.902
+Lo principal.
+
+55
+00:02:48.902 --> 00:02:50.729
+El precio es un libro de órdenes:
+
+56
+00:02:50.729 --> 00:02:53.774
+una orden de mercado paga el spread y el deslizamiento.
+
+57
+00:02:53.774 --> 00:02:55.934
+La comisión por vuelta parece diminuta,
+
+58
+00:02:55.934 --> 00:03:00.086
+pero operando a menudo se come el capital más rápido que cualquier error de
+
+59
+00:03:00.086 --> 00:03:00.695
+pronóstico.
+
+60
+00:03:00.695 --> 00:03:05.014
+Y un apalancamiento de diez liquida con un movimiento de un diez por ciento en
+
+61
+00:03:05.014 --> 00:03:07.118
+contra, aunque luego el precio vuelva.

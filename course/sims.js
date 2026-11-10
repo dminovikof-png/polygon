@@ -333,7 +333,7 @@ function mlSim() {
 // Бюджет агента: лимиты кошелька против поддельных счетов.
 function agentLimitsSim() {
   const rate = select("поддельные счета", [["0.05", "редко (5 % дней)"], ["0.1", "иногда (10 % дней)"], ["0.3", "часто (30 % дней)"]], show);
-  const perTx = select("лимит на платёж", [["1", "1 $"], ["2", "2 $"], ["5", "5 $"], ["50", "50 $"]], show), daily = select("лимит на день", [["3", "3 $"], ["10", "10 $"], ["30", "30 $"]], show);
+  const perTx = select("лимит на платёж", [["1", "$1"], ["2", "$2"], ["5", "$5"], ["50", "$50"]], show), daily = select("лимит на день", [["3", "$3"], ["10", "$10"], ["30", "$30"]], show);
   const allow = select("белый список получателей", [["1", "включён"], ["0", "выключен"]], show);
   rate.inp.value = "0.1"; perTx.inp.value = "2"; daily.inp.value = "10";
   let seed = 1;
@@ -342,7 +342,7 @@ function agentLimitsSim() {
   function show() { pic.innerHTML = FIGURES.limitsChart({ attackRate: +rate.inp.value, perTx: +perTx.inp.value, daily: +daily.inp.value, allowlist: allow.inp.value === "1", seed }); }
   show();
   return frame("Лимиты кошелька агента", el("div", { class: "simrow" }, rate.node, perTx.node, daily.node, allow.node), again, pic,
-    el("div", { class: "help" }, "Учебная модель: 500 $ на старте, 20 честных платежей в день по 10–30 центов, поддельный счёт — на 200 $. Денег и сетей здесь нет."));
+    el("div", { class: "help" }, "Учебная модель: $500 на старте, 20 честных платежей в день по 10–30 центов, поддельный счёт — на $200. Денег и сетей здесь нет."));
 }
 
 // Способ учёта цены покупки для налога.

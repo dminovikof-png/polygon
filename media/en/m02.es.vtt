@@ -1,0 +1,237 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.020
+Módulo dos:
+
+2
+00:00:01.020 --> 00:00:02.237
+wallets y seguridad.
+
+3
+00:00:02.237 --> 00:00:06.680
+Dónde están de verdad las monedas, qué son una clave y una frase semilla,
+
+4
+00:00:06.680 --> 00:00:08.932
+y cómo se pierde dinero casi siempre:
+
+5
+00:00:08.932 --> 00:00:12.158
+no por un hackeo de la red, sino por tu propia firma.
+
+6
+00:00:13.158 --> 00:00:14.775
+Un wallet no guarda monedas:
+
+7
+00:00:14.775 --> 00:00:17.258
+siempre están registradas en la blockchain.
+
+8
+00:00:17.258 --> 00:00:19.222
+El wallet guarda la clave privada,
+
+9
+00:00:19.222 --> 00:00:22.687
+un número secreto que da derecho a firmar una transferencia.
+
+10
+00:00:22.687 --> 00:00:27.538
+Si las claves las tiene el exchange, tú solo tienes un registro en su base de datos.
+
+11
+00:00:27.538 --> 00:00:30.945
+Si la clave la tienes solo tú, nadie congelará tus monedas,
+
+12
+00:00:30.945 --> 00:00:33.486
+pero nadie te ayudará a recuperar el acceso.
+
+13
+00:00:34.486 --> 00:00:36.448
+Ambas opciones tienen su riesgo.
+
+14
+00:00:36.448 --> 00:00:40.495
+En noviembre de 2022 el exchange FTX bloqueó los retiros y quebró:
+
+15
+00:00:40.495 --> 00:00:43.929
+la propia empresa había usado el dinero de los clientes.
+
+16
+00:00:43.929 --> 00:00:48.466
+Y miles de personas perdieron su frase semilla o enviaron monedas al lugar
+
+17
+00:00:48.466 --> 00:00:50.796
+equivocado, sin forma de recuperarlas.
+
+18
+00:00:50.796 --> 00:00:54.598
+Así que la pregunta no es si es seguro, sino en quién confías.
+
+19
+00:00:55.598 --> 00:00:57.896
+Una frase semilla son 12 o 24 palabras.
+
+20
+00:00:57.896 --> 00:01:02.433
+De ella el wallet calcula todas las claves, y de las claves, las direcciones.
+
+21
+00:01:02.433 --> 00:01:04.496
+Las flechas van en un solo sentido:
+
+22
+00:01:04.496 --> 00:01:07.147
+desde una dirección no se encuentra la clave.
+
+23
+00:01:07.147 --> 00:01:12.038
+Quien conoce la frase puede restaurar el wallet en cualquier sitio y llevarse todo.
+
+24
+00:01:13.038 --> 00:01:14.258
+De ahí tres reglas.
+
+25
+00:01:14.258 --> 00:01:16.121
+La frase no se puede cambiar:
+
+26
+00:01:16.121 --> 00:01:19.460
+solo crear un wallet nuevo y mover allí las monedas.
+
+27
+00:01:19.460 --> 00:01:24.534
+La frase no se introduce en ningún sitio salvo para restaurar tu propio wallet:
+
+28
+00:01:24.534 --> 00:01:28.452
+pedir que la introduzcas es una estafa en cien casos de cien.
+
+29
+00:01:28.452 --> 00:01:30.635
+Y la frase se guarda sin internet:
+
+30
+00:01:30.635 --> 00:01:33.654
+en papel o metal, no en una foto ni en la nube.
+
+31
+00:01:34.654 --> 00:01:38.297
+Un wallet caliente guarda la clave en un dispositivo con internet.
+
+32
+00:01:38.297 --> 00:01:40.560
+Uno de hardware firma dentro de sí mismo,
+
+33
+00:01:40.560 --> 00:01:42.989
+y lo importante es mirar su propia pantalla.
+
+34
+00:01:42.989 --> 00:01:45.639
+Otra trampa es el envenenamiento de direcciones:
+
+35
+00:01:45.639 --> 00:01:50.220
+un estafador envía una transferencia diminuta desde una dirección parecida y espera
+
+36
+00:01:50.220 --> 00:01:51.766
+que la copies del historial.
+
+37
+00:01:52.766 --> 00:01:54.849
+Los hábitos que más dinero salvan.
+
+38
+00:01:54.849 --> 00:01:58.340
+Antes de una transferencia grande, una pequeña de prueba.
+
+39
+00:01:58.340 --> 00:02:01.586
+La dirección, de un lugar fiable y comprobada entera.
+
+40
+00:02:01.586 --> 00:02:04.832
+Poco en el wallet caliente y lo principal en el frío.
+
+41
+00:02:04.832 --> 00:02:05.629
+Y sin prisas:
+
+42
+00:02:05.629 --> 00:02:08.630
+casi todas las estafas presionan con la urgencia.
+
+43
+00:02:09.630 --> 00:02:12.985
+Para intercambiar un token en un exchange descentralizado,
+
+44
+00:02:12.985 --> 00:02:15.762
+das a su contrato permiso para gastar ese token.
+
+45
+00:02:15.762 --> 00:02:19.465
+A menudo sin límite, y el permiso sigue después del intercambio.
+
+46
+00:02:19.465 --> 00:02:22.242
+Si hackean el contrato o el sitio resulta falso,
+
+47
+00:02:22.242 --> 00:02:24.614
+se llevan los tokens sin una nueva firma.
+
+48
+00:02:24.614 --> 00:02:29.358
+Pon el límite justo en la cantidad del intercambio y revoca los permisos antiguos.
+
+49
+00:02:30.358 --> 00:02:34.830
+Casi todas las pérdidas de particulares no son hackeos, sino ingeniería social:
+
+50
+00:02:34.830 --> 00:02:38.793
+la persona entrega ella misma la frase, una firma o una transferencia.
+
+51
+00:02:38.793 --> 00:02:40.548
+Un soporte que escribe primero.
+
+52
+00:02:40.548 --> 00:02:42.133
+Un sitio clon de un anuncio.
+
+53
+00:02:42.133 --> 00:02:46.266
+Un conocido nuevo con su propia plataforma de la que no se puede retirar.
+
+54
+00:02:46.266 --> 00:02:49.606
+Un rendimiento garantizado que en realidad es una pirámide.
+
+55
+00:02:50.606 --> 00:02:51.421
+Lo principal.
+
+56
+00:02:51.421 --> 00:02:55.434
+Las monedas están en la blockchain, y el wallet guarda la clave:
+
+57
+00:02:55.434 --> 00:02:58.256
+quien conoce la clave o la frase es el dueño.
+
+58
+00:02:58.256 --> 00:03:02.332
+En un exchange confías en el exchange; en tu wallet, en ti mismo.
+
+59
+00:03:02.332 --> 00:03:07.286
+Y el dinero se pierde casi siempre por una firma que la persona dio ella misma.

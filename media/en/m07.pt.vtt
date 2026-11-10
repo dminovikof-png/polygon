@@ -1,0 +1,213 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.098
+Módulo sete:
+
+2
+00:00:01.098 --> 00:00:02.594
+análise fundamentalista.
+
+3
+00:00:02.594 --> 00:00:05.150
+O que está por trás do preço de um token:
+
+4
+00:00:05.150 --> 00:00:08.890
+o caminho da receita ao detentor, a emissão de moedas novas,
+
+5
+00:00:08.890 --> 00:00:11.757
+a ligação entre a atividade da rede e o preço,
+
+6
+00:00:11.757 --> 00:00:14.126
+e as armadilhas das métricas on-chain.
+
+7
+00:00:15.126 --> 00:00:18.258
+Uma ação tem o lucro da empresa e um direito a parte dele.
+
+8
+00:00:18.258 --> 00:00:20.580
+Um token, por padrão, não tem esse direito.
+
+9
+00:00:20.580 --> 00:00:24.090
+Um protocolo pode arrecadar centenas de milhões em taxas por ano,
+
+10
+00:00:24.090 --> 00:00:26.898
+mas se quem as recebe são os provedores de liquidez,
+
+11
+00:00:26.898 --> 00:00:28.842
+ao detentor do token não chega nada.
+
+12
+00:00:28.842 --> 00:00:31.542
+Por isso se olha o caminho da receita até o token.
+
+13
+00:00:32.542 --> 00:00:33.702
+Há três caminhos.
+
+14
+00:00:33.702 --> 00:00:34.588
+Distribuição:
+
+15
+00:00:34.588 --> 00:00:38.067
+parte das taxas é paga a quem faz staking do token.
+
+16
+00:00:38.067 --> 00:00:39.295
+Recompra e queima:
+
+17
+00:00:39.295 --> 00:00:42.705
+o protocolo compra tokens no mercado e os destrói.
+
+18
+00:00:42.705 --> 00:00:46.389
+E o direito de voto, que é uma promessa, não dinheiro.
+
+19
+00:00:46.389 --> 00:00:50.754
+Quando há caminho, dá para calcular um múltiplo, como nas ações:
+
+20
+00:00:50.754 --> 00:00:55.870
+em empresas maduras é de 10 a 30, e em muitos tokens, centenas ou infinito.
+
+21
+00:00:56.870 --> 00:01:01.829
+Fala-se muito da demanda e menos da oferta, embora ela seja mais fácil de contar.
+
+22
+00:01:01.829 --> 00:01:06.971
+A emissão acontece todo dia, os desbloqueios liberam lotes de tokens da equipe e dos
+
+23
+00:01:06.971 --> 00:01:09.848
+investidores, e quem recebe muitas vezes vende.
+
+24
+00:01:09.848 --> 00:01:13.705
+Se uma moeda emite oito por cento ao ano e o preço fica parado,
+
+25
+00:01:13.705 --> 00:01:16.398
+a demanda na verdade cresceu oito por cento:
+
+26
+00:01:16.398 --> 00:01:17.990
+as moedas novas a comeram.
+
+27
+00:01:18.990 --> 00:01:19.793
+Para comparar:
+
+28
+00:01:19.793 --> 00:01:24.493
+a emissão do bitcoin hoje é menor que um por cento ao ano e cai pela metade a cada
+
+29
+00:01:24.493 --> 00:01:25.181
+quatro anos.
+
+30
+00:01:25.181 --> 00:01:29.824
+Tokens jovens muitas vezes têm avaliação total cinco ou até dez vezes maior que a
+
+31
+00:01:29.824 --> 00:01:30.627
+capitalização.
+
+32
+00:01:30.627 --> 00:01:33.894
+Pela frente eles têm vários anos de grandes desbloqueios.
+
+33
+00:01:34.894 --> 00:01:38.859
+Se uma rede é cada vez mais usada, a moeda deveria encarecer?
+
+34
+00:01:38.859 --> 00:01:40.744
+Em trechos longos há ligação,
+
+35
+00:01:40.744 --> 00:01:44.644
+mas num horizonte de meses ela se afoga no humor do mercado.
+
+36
+00:01:44.644 --> 00:01:49.259
+Em 2022 a rede do bitcoin funcionou perfeitamente e o hashrate cresceu,
+
+37
+00:01:49.259 --> 00:01:51.729
+mas o preço caiu mais de três quartos.
+
+38
+00:01:51.729 --> 00:01:55.174
+Mudaram os juros, a liquidez e a vontade de arriscar.
+
+39
+00:01:56.174 --> 00:01:59.689
+Uma blockchain é aberta, e muita coisa pode ser contada:
+
+40
+00:01:59.689 --> 00:02:03.329
+transferências, endereços, taxas, entradas nas corretoras.
+
+41
+00:02:03.329 --> 00:02:05.651
+Mas aberto não é o mesmo que honesto.
+
+42
+00:02:05.651 --> 00:02:10.296
+O número de endereços é inflado com milhões de carteiras vazias; o volume,
+
+43
+00:02:10.296 --> 00:02:12.618
+mandando as mesmas moedas em círculo.
+
+44
+00:02:12.618 --> 00:02:16.447
+Mais difícil de falsificar é o que custa dinheiro de verdade:
+
+45
+00:02:16.447 --> 00:02:18.518
+taxas, receita, moedas queimadas.
+
+46
+00:02:19.518 --> 00:02:20.244
+A conclusão.
+
+47
+00:02:20.244 --> 00:02:25.204
+Os dados fundamentalistas respondem o que é isto e quanto pode valer daqui a anos.
+
+48
+00:02:25.204 --> 00:02:28.591
+Mas servem mal para decidir se vale comprar esta semana.
+
+49
+00:02:28.591 --> 00:02:32.886
+E vale confiar nos números pelos quais alguém paga dinheiro de verdade.
+
+50
+00:02:33.886 --> 00:02:34.640
+O principal.
+
+51
+00:02:34.640 --> 00:02:39.224
+Importa se há um caminho da receita do protocolo até o detentor do token.
+
+52
+00:02:39.224 --> 00:02:42.616
+A emissão e os desbloqueios são vendedores constantes.
+
+53
+00:02:42.616 --> 00:02:47.326
+E a atividade da rede e o preço da moeda se ligam pouco e com muito atraso.

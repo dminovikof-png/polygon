@@ -1,0 +1,233 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.310
+Module eleven:
+
+2
+00:00:01.310 --> 00:00:02.339
+honest testing.
+
+3
+00:00:02.339 --> 00:00:07.070
+How a backtest lies, how peeking into the future inflates the result,
+
+4
+00:00:07.070 --> 00:00:12.350
+why the best of 500 random variants proves nothing, and why data is held out.
+
+5
+00:00:13.350 --> 00:00:18.297
+A backtest is a calculation of what a rule would have earned if it had been traded
+
+6
+00:00:18.297 --> 00:00:19.021
+in the past.
+
+7
+00:00:19.021 --> 00:00:21.494
+It is the only cheap way to test an idea.
+
+8
+00:00:21.494 --> 00:00:22.580
+But it is a model:
+
+9
+00:00:22.580 --> 00:00:27.286
+it assumes correct execution prices, correct fees and a rule known in advance.
+
+10
+00:00:27.286 --> 00:00:30.966
+Each of these assumptions can be broken without you noticing.
+
+11
+00:00:31.966 --> 00:00:34.503
+The most common mistake is one candle:
+
+12
+00:00:34.503 --> 00:00:39.376
+the rule looks at the day's close and buys at the start of that same day.
+
+13
+00:00:39.376 --> 00:00:41.645
+In code it is a shift of one line.
+
+14
+00:00:41.645 --> 00:00:44.315
+The blue line is the honest calculation:
+
+15
+00:00:44.315 --> 00:00:45.450
+a sevenfold rise.
+
+16
+00:00:45.450 --> 00:00:49.922
+The red one gets the gain of the very day the decision was made on:
+
+17
+00:00:49.922 --> 00:00:50.590
+176 times.
+
+18
+00:00:51.590 --> 00:00:52.764
+Take 500 monkeys.
+
+19
+00:00:52.764 --> 00:00:57.875
+Each one, day after day, randomly decides whether to be in bitcoin or not.
+
+20
+00:00:57.875 --> 00:00:59.188
+No analysis at all.
+
+21
+00:00:59.188 --> 00:01:02.089
+Let us run them on real history with fees.
+
+22
+00:01:02.089 --> 00:01:06.302
+The best ones look like geniuses, although it is pure chance.
+
+23
+00:01:07.302 --> 00:01:10.697
+So the best of many variants proves nothing.
+
+24
+00:01:10.697 --> 00:01:13.706
+Its t-statistic is compared with a bar:
+
+25
+00:01:13.706 --> 00:01:18.722
+what the best of the same number of variants of pure noise gives.
+
+26
+00:01:18.722 --> 00:01:23.814
+For one attempt it is 1.96, for 20 it is 2.45, for 500 it is 3.53.
+
+27
+00:01:24.814 --> 00:01:26.001
+All attempts count:
+
+28
+00:01:26.001 --> 00:01:30.813
+every parameter, every coin, every variant of the rule, even a discarded one.
+
+29
+00:01:30.813 --> 00:01:35.563
+That is why the program keeps an attempts journal and raises the bar itself.
+
+30
+00:01:35.563 --> 00:01:40.750
+The honest number of attempts is almost always larger than you would like to admit.
+
+31
+00:01:41.750 --> 00:01:45.769
+Overfitting is when a rule has memorized the noise of the past.
+
+32
+00:01:45.769 --> 00:01:47.810
+The protection is held-out data.
+
+33
+00:01:47.810 --> 00:01:51.702
+History is split into a sandbox, where you may tune anything,
+
+34
+00:01:51.702 --> 00:01:54.253
+and a held-out part that is opened once.
+
+35
+00:01:54.253 --> 00:01:58.910
+The sandbox's best monkey behaves like a random one on the held-out data.
+
+36
+00:01:59.910 --> 00:02:02.275
+Real rules are the same, only milder.
+
+37
+00:02:02.275 --> 00:02:06.174
+The rule “hold above the average” with 30 variants of length:
+
+38
+00:02:06.174 --> 00:02:09.114
+the best variant in the sandbox grew 36 times,
+
+39
+00:02:09.114 --> 00:02:11.926
+and on held-out data a little more than two,
+
+40
+00:02:11.926 --> 00:02:14.738
+slightly better than the median and holding.
+
+41
+00:02:14.738 --> 00:02:18.126
+The sandbox's promise is exaggerated many times over.
+
+42
+00:02:19.126 --> 00:02:20.869
+Fees, slippage, funding:
+
+43
+00:02:20.869 --> 00:02:24.645
+small percentages, but they are paid on every trade,
+
+44
+00:02:24.645 --> 00:02:27.695
+and a rule's edge is usually even smaller.
+
+45
+00:02:27.695 --> 00:02:33.431
+The turtles on bitcoin made 136 trades and, with fees raised to half a percent,
+
+46
+00:02:33.431 --> 00:02:35.174
+lost half of the result.
+
+47
+00:02:35.174 --> 00:02:38.950
+A rule with 40 trades hardly noticed the difference.
+
+48
+00:02:39.950 --> 00:02:41.700
+The order of honest testing.
+
+49
+00:02:41.700 --> 00:02:43.637
+Write the rule down in advance.
+
+50
+00:02:43.637 --> 00:02:44.824
+Count all attempts.
+
+51
+00:02:44.824 --> 00:02:46.574
+Open the held-out data once.
+
+52
+00:02:46.574 --> 00:02:49.573
+And only then, watch it on paper, without money.
+
+53
+00:02:49.573 --> 00:02:53.822
+That is exactly how the stages of the program's work mode are built.
+
+54
+00:02:54.822 --> 00:02:55.885
+The main points.
+
+55
+00:02:55.885 --> 00:03:01.466
+A backtest easily lies through peeking into the future, overfitting and wrong costs.
+
+56
+00:03:01.466 --> 00:03:05.984
+Among hundreds of random strategies there is always a brilliant one,
+
+57
+00:03:05.984 --> 00:03:08.974
+so the bar rises with the number of attempts.
+
+58
+00:03:08.974 --> 00:03:11.166
+And held-out data is opened once.

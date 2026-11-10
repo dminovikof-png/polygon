@@ -1,0 +1,221 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.101
+Módulo trece:
+
+2
+00:00:01.101 --> 00:00:05.377
+el futuro de las finanzas descentralizadas y la economía de los agentes de
+
+3
+00:00:05.377 --> 00:00:06.764
+inteligencia artificial.
+
+4
+00:00:06.764 --> 00:00:09.942
+Cómo recibe un agente un wallet, qué reglas lo limitan,
+
+5
+00:00:09.942 --> 00:00:13.814
+cómo se pagan los agentes entre sí y quién responde de sus errores.
+
+6
+00:00:14.814 --> 00:00:19.125
+Un agente es un programa basado en un modelo de lenguaje que no solo responde,
+
+7
+00:00:19.125 --> 00:00:19.954
+sino que actúa.
+
+8
+00:00:19.954 --> 00:00:21.943
+Nadie le abrirá una cuenta bancaria,
+
+9
+00:00:21.943 --> 00:00:25.536
+y un pago con tarjeta cuesta más que una solicitud a un servicio.
+
+10
+00:00:25.536 --> 00:00:29.073
+Así que el agente recibe un wallet cripto y paga en stablecoins:
+
+11
+00:00:29.073 --> 00:00:32.886
+una transferencia en una segunda capa cuesta una fracción de céntimo.
+
+12
+00:00:33.886 --> 00:00:36.071
+El eslabón más peligroso es la clave.
+
+13
+00:00:36.071 --> 00:00:40.677
+Por eso el wallet del agente es una cuenta inteligente con sus propias reglas:
+
+14
+00:00:40.677 --> 00:00:44.456
+comprueba quién firmó, cuánto, a quién y si se superó el límite.
+
+15
+00:00:44.456 --> 00:00:47.999
+El agente recibe una clave de sesión con derechos estrechos:
+
+16
+00:00:47.999 --> 00:00:51.483
+para un día, no más de diez dólares, solo a tres servicios.
+
+17
+00:00:51.483 --> 00:00:54.022
+La clave principal se queda con la persona.
+
+18
+00:00:55.022 --> 00:00:56.763
+Un mes de trabajo de un agente:
+
+19
+00:00:56.763 --> 00:01:00.302
+veinte solicitudes al día, de diez a treinta céntimos cada una,
+
+20
+00:01:00.302 --> 00:01:03.671
+y a veces le cuelan una factura falsa de doscientos dólares.
+
+21
+00:01:03.671 --> 00:01:05.469
+Sin reglas, esas facturas pasan.
+
+22
+00:01:05.469 --> 00:01:08.165
+Los límites y la lista blanca acotan la pérdida,
+
+23
+00:01:08.165 --> 00:01:11.366
+pero un límite demasiado bajo estorba el trabajo honesto.
+
+24
+00:01:12.366 --> 00:01:16.468
+Un agente necesita un pago instantáneo, barato y sin registro.
+
+25
+00:01:16.468 --> 00:01:21.099
+El protocolo x402 usa el viejo código de respuesta «se requiere pago»:
+
+26
+00:01:21.099 --> 00:01:26.392
+el servicio dice un precio, el agente repite la solicitud con un pago firmado en
+
+27
+00:01:26.392 --> 00:01:29.237
+stablecoin y el servicio entrega los datos.
+
+28
+00:01:29.237 --> 00:01:29.965
+Junto a él:
+
+29
+00:01:29.965 --> 00:01:34.662
+mandatos firmados por una persona y registros de reputación de agentes.
+
+30
+00:01:35.662 --> 00:01:38.635
+Una intención es cuando se firma solo lo necesario:
+
+31
+00:01:38.635 --> 00:01:41.199
+vender ether no más barato de cierto precio.
+
+32
+00:01:41.199 --> 00:01:43.705
+Cómo hacerlo lo deciden los solucionadores.
+
+33
+00:01:43.705 --> 00:01:45.687
+Compiten en una subasta holandesa,
+
+34
+00:01:45.687 --> 00:01:48.718
+donde el precio empeora poco a poco hasta tu límite.
+
+35
+00:01:48.718 --> 00:01:50.408
+El más fuerte no tiene prisa:
+
+36
+00:01:50.408 --> 00:01:54.430
+se queda la operación justo cuando el segundo está a punto de entrar.
+
+37
+00:01:55.430 --> 00:01:57.792
+Así que el precio lo fija la competencia:
+
+38
+00:01:57.792 --> 00:02:00.556
+cuantos más solucionadores y menores sus costes,
+
+39
+00:02:00.556 --> 00:02:02.688
+más cerca está el precio del mercado.
+
+40
+00:02:02.688 --> 00:02:05.740
+Sin rivales, la operación sale en tu límite inferior.
+
+41
+00:02:05.740 --> 00:02:09.024
+Ponlo con sentido y no des a la intención un plazo largo:
+
+42
+00:02:09.024 --> 00:02:11.558
+es una opción gratuita para el solucionador.
+
+43
+00:02:12.558 --> 00:02:17.117
+Un agente une un modelo, que puede equivocarse o caer en una orden oculta,
+
+44
+00:02:17.117 --> 00:02:21.122
+con una blockchain, donde una transferencia no se puede deshacer.
+
+45
+00:02:21.122 --> 00:02:23.463
+Un agente no tiene derechos ni bienes,
+
+46
+00:02:23.463 --> 00:02:26.790
+y casi en todas partes responde de sus actos su dueño.
+
+47
+00:02:26.790 --> 00:02:27.898
+De ahí las reglas:
+
+48
+00:02:27.898 --> 00:02:33.074
+un wallet aparte con un presupuesto que no duela perder, límites a nivel del wallet,
+
+49
+00:02:33.074 --> 00:02:36.462
+firma humana para lo grande y un registro de cada pago.
+
+50
+00:02:37.462 --> 00:02:38.241
+Lo principal.
+
+51
+00:02:38.241 --> 00:02:41.539
+A un agente se le puede dar un wallet y un presupuesto,
+
+52
+00:02:41.539 --> 00:02:43.577
+y paga él mismo datos y servicios.
+
+53
+00:02:43.577 --> 00:02:46.814
+La seguridad no se basa en la inteligencia del agente,
+
+54
+00:02:46.814 --> 00:02:48.613
+sino en las reglas del wallet.
+
+55
+00:02:48.613 --> 00:02:52.150
+Y de los errores del agente responde quien le dio la clave.

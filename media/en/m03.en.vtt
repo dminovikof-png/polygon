@@ -1,0 +1,225 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.164
+Module three:
+
+2
+00:00:01.164 --> 00:00:02.543
+centralized exchanges.
+
+3
+00:00:02.543 --> 00:00:07.429
+How the order book works, what fees really cost, what futures and funding are,
+
+4
+00:00:07.429 --> 00:00:11.438
+and why leverage liquidates you even when the forecast is right.
+
+5
+00:00:12.438 --> 00:00:14.627
+Nobody sets the price on an exchange.
+
+6
+00:00:14.627 --> 00:00:15.988
+There is an order book:
+
+7
+00:00:15.988 --> 00:00:18.414
+a list of those who want to buy and sell.
+
+8
+00:00:18.414 --> 00:00:21.076
+Sellers are at the top, buyers at the bottom,
+
+9
+00:00:21.076 --> 00:00:24.034
+and the gap between the best prices is the spread.
+
+10
+00:00:24.034 --> 00:00:26.460
+A limit order sits in the book and waits.
+
+11
+00:00:26.460 --> 00:00:31.134
+A market order takes the best orders one after another until it fills its size.
+
+12
+00:00:32.134 --> 00:00:35.109
+In the lesson you can get your hands on the order book:
+
+13
+00:00:35.109 --> 00:00:38.300
+send a market order and see at what average price it fills.
+
+14
+00:00:38.300 --> 00:00:42.519
+The bigger the order compared with the depth of the book, the worse the price.
+
+15
+00:00:42.519 --> 00:00:43.438
+That is slippage.
+
+16
+00:00:44.438 --> 00:00:47.740
+Whoever's order waited in the book is the maker.
+
+17
+00:00:47.740 --> 00:00:51.455
+Whoever took it is the taker, and the taker pays more.
+
+18
+00:00:51.455 --> 00:00:55.719
+On spot the base fee is about one tenth of a percent per side,
+
+19
+00:00:55.719 --> 00:00:58.402
+and a “buy — sell” round is two tenths.
+
+20
+00:00:58.402 --> 00:00:59.365
+It seems tiny.
+
+21
+00:00:59.365 --> 00:01:05.006
+But 500 rounds turn 100 dollars into about 37, without a single forecasting error.
+
+22
+00:01:06.006 --> 00:01:09.677
+Hence a rule that honest testing confirms again and again:
+
+23
+00:01:09.677 --> 00:01:11.576
+the more often an idea trades,
+
+24
+00:01:11.576 --> 00:01:14.994
+the bigger the edge it needs just to pay for the fees.
+
+25
+00:01:14.994 --> 00:01:19.867
+An idea that buys and sells with market orders every day loses about half its
+
+26
+00:01:19.867 --> 00:01:21.893
+capital in a year on fees alone.
+
+27
+00:01:21.893 --> 00:01:25.374
+That is why the program deducts costs from every trade.
+
+28
+00:01:26.374 --> 00:01:28.410
+On spot you buy the coin itself.
+
+29
+00:01:28.410 --> 00:01:30.700
+A future is a contract on its price:
+
+30
+00:01:30.700 --> 00:01:34.009
+there is no coin, only settlement of the difference.
+
+31
+00:01:34.009 --> 00:01:38.590
+A dated future has a date by which the gap to the coin price disappears.
+
+32
+00:01:38.590 --> 00:01:42.598
+A perpetual has no date, and funding ties it to the coin price.
+
+33
+00:01:43.598 --> 00:01:46.895
+Funding is a regular payment between longs and shorts.
+
+34
+00:01:46.895 --> 00:01:49.460
+When the crowd wants to buy with leverage,
+
+35
+00:01:49.460 --> 00:01:52.024
+the rate is positive and longs pay shorts.
+
+36
+00:01:52.024 --> 00:01:56.298
+One hundredth of a percent per eight hours is about 11 percent a year,
+
+37
+00:01:56.298 --> 00:01:59.534
+and in hot periods the rate can be many times higher.
+
+38
+00:02:00.534 --> 00:02:05.459
+Leverage of 10 lets you open a 1,000-dollar position with 100 of collateral.
+
+39
+00:02:05.459 --> 00:02:09.217
+A one percent price move is ten percent of the collateral.
+
+40
+00:02:09.217 --> 00:02:12.198
+When the loss has almost eaten the collateral,
+
+41
+00:02:12.198 --> 00:02:14.790
+the exchange closes the position itself.
+
+42
+00:02:14.790 --> 00:02:16.864
+The main trap is the price path:
+
+43
+00:02:16.864 --> 00:02:20.687
+after a 12 percent fall the position is already liquidated,
+
+44
+00:02:20.687 --> 00:02:23.214
+and a 20 percent rise will not help it.
+
+45
+00:02:24.214 --> 00:02:29.168
+With isolated margin, liquidation takes only the collateral of that position.
+
+46
+00:02:29.168 --> 00:02:32.449
+With cross margin, the whole account is collateral:
+
+47
+00:02:32.449 --> 00:02:37.274
+liquidation is pushed further away, but a bad position can take everything.
+
+48
+00:02:37.274 --> 00:02:42.743
+And liquidation is calculated on the mark price, an average across several exchanges,
+
+49
+00:02:42.743 --> 00:02:47.182
+so that one random spike does not close everyone's positions at once.
+
+50
+00:02:48.182 --> 00:02:49.185
+The main points.
+
+51
+00:02:49.185 --> 00:02:50.878
+The price is an order book:
+
+52
+00:02:50.878 --> 00:02:53.637
+a market order pays the spread and slippage.
+
+53
+00:02:53.637 --> 00:02:55.581
+The fee for a round seems tiny,
+
+54
+00:02:55.581 --> 00:03:00.346
+but with frequent trading it eats capital faster than any forecasting error.
+
+55
+00:03:00.346 --> 00:03:04.923
+And leverage of 10 liquidates on a move of about ten percent against you,
+
+56
+00:03:04.923 --> 00:03:07.118
+even if the price later comes back.

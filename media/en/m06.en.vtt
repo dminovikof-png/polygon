@@ -1,0 +1,233 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.254
+Module six:
+
+2
+00:00:01.254 --> 00:00:02.240
+asset types.
+
+3
+00:00:02.240 --> 00:00:08.238
+Coins, tokens and memecoins, options, dated futures and tokenized assets,
+
+4
+00:00:08.238 --> 00:00:10.046
+and the risks of each.
+
+5
+00:00:11.046 --> 00:00:13.511
+Network coins pay for the network's work,
+
+6
+00:00:13.511 --> 00:00:18.021
+protocol tokens give rights in an application, stablecoins hold the dollar,
+
+7
+00:00:18.021 --> 00:00:20.486
+and memecoins give nothing but attention.
+
+8
+00:00:20.486 --> 00:00:22.650
+With any coin the tokenomics matter:
+
+9
+00:00:22.650 --> 00:00:26.137
+how many there are in total, how many are already trading,
+
+10
+00:00:26.137 --> 00:00:28.302
+and what will reach the market next.
+
+11
+00:00:29.302 --> 00:00:32.876
+Market cap is the price times the coins in circulation.
+
+12
+00:00:32.876 --> 00:00:37.881
+Fully diluted value is the price times all the coins that will ever come out.
+
+13
+00:00:37.881 --> 00:00:41.975
+If 15 percent are circulating, the other 85 belong to the team,
+
+14
+00:00:41.975 --> 00:00:44.964
+funds and treasury and come out on a schedule.
+
+15
+00:00:44.964 --> 00:00:46.654
+Every unlock adds sellers.
+
+16
+00:00:47.654 --> 00:00:52.388
+Even the largest coins have fallen by 80 and even 96 percent from their peak and
+
+17
+00:00:52.388 --> 00:00:54.163
+taken years to get back to it.
+
+18
+00:00:54.163 --> 00:00:55.820
+And these are the survivors:
+
+19
+00:00:55.820 --> 00:00:59.488
+thousands of coins from past cycles have disappeared entirely.
+
+20
+00:00:59.488 --> 00:01:04.459
+That is why the chart of crypto as a whole looks better than the result of a typical
+
+21
+00:01:04.459 --> 00:01:04.814
+buyer.
+
+22
+00:01:05.814 --> 00:01:08.587
+An option is a right, but not an obligation,
+
+23
+00:01:08.587 --> 00:01:12.306
+to buy or sell a coin at an agreed price on a certain date.
+
+24
+00:01:12.306 --> 00:01:15.394
+For the right, the buyer pays a premium up front.
+
+25
+00:01:15.394 --> 00:01:20.310
+A call profits from a rise; a put profits from a fall and resembles insurance.
+
+26
+00:01:20.310 --> 00:01:23.020
+The buyer's loss is limited to the premium.
+
+27
+00:01:23.020 --> 00:01:28.062
+The seller's profit is also limited to the premium, while the loss can be large.
+
+28
+00:01:29.062 --> 00:01:32.187
+The main thing in an option's price is volatility:
+
+29
+00:01:32.187 --> 00:01:36.436
+the more a coin swings, the likelier the right turns out profitable,
+
+30
+00:01:36.436 --> 00:01:37.748
+and the dearer it is.
+
+31
+00:01:37.748 --> 00:01:42.623
+In the lesson the Black–Scholes model converts expected swings into a premium.
+
+32
+00:01:42.623 --> 00:01:45.310
+Try changing the strike price and the term.
+
+33
+00:01:46.310 --> 00:01:51.212
+A dated future is a contract to buy or sell a coin on a certain date at a price
+
+34
+00:01:51.212 --> 00:01:52.019
+agreed today.
+
+35
+00:01:52.019 --> 00:01:55.928
+The gap between the future's price and the coin's is the basis.
+
+36
+00:01:55.928 --> 00:02:00.396
+When many want to buy with leverage, the future is dearer than the coin.
+
+37
+00:02:00.396 --> 00:02:03.374
+And by the expiry date the basis must disappear.
+
+38
+00:02:04.374 --> 00:02:05.199
+Hence a trade:
+
+39
+00:02:05.199 --> 00:02:08.144
+buy the coin and sell the future at the same time.
+
+40
+00:02:08.144 --> 00:02:10.913
+What you lose on one leg you gain on the other,
+
+41
+00:02:10.913 --> 00:02:13.328
+and what remains is the basis minus fees.
+
+42
+00:02:13.328 --> 00:02:17.570
+It resembles a deposit, with the risk of the exchange holding both legs,
+
+43
+00:02:17.570 --> 00:02:22.518
+and the risk of a sharp rise, when you are asked to add collateral on the short leg.
+
+44
+00:02:23.518 --> 00:02:28.453
+Tokenized assets promise to bring bonds, gold and real estate onto the blockchain.
+
+45
+00:02:28.453 --> 00:02:33.449
+But the blockchain only stores a record of who has how many tokens and does not see
+
+46
+00:02:33.449 --> 00:02:34.472
+the asset itself.
+
+47
+00:02:34.472 --> 00:02:36.939
+So you have to check the chain of people:
+
+48
+00:02:36.939 --> 00:02:39.287
+who the issuer is, who holds the asset,
+
+49
+00:02:39.287 --> 00:02:42.176
+whether an ordinary holder can redeem the token,
+
+50
+00:02:42.176 --> 00:02:44.884
+and what happens if the issuer goes bankrupt.
+
+51
+00:02:44.884 --> 00:02:46.870
+There are no yield miracles here.
+
+52
+00:02:47.870 --> 00:02:48.857
+The main points.
+
+53
+00:02:48.857 --> 00:02:50.956
+An option is a right with a price:
+
+54
+00:02:50.956 --> 00:02:55.584
+the buyer's loss is limited to the premium, the seller's profit is limited.
+
+55
+00:02:55.584 --> 00:02:57.683
+With a coin the tokenomics matter:
+
+56
+00:02:57.683 --> 00:03:00.275
+how much is still to come and who owns it.
+
+57
+00:03:00.275 --> 00:03:05.397
+And the largest coins have fallen almost to zero from their peak and taken years to
+
+58
+00:03:05.397 --> 00:03:06.014
+come back.

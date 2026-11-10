@@ -1,0 +1,225 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.134
+Este es el módulo de introducción del curso Polígono Honesto.
+
+2
+00:00:04.134 --> 00:00:05.188
+Tiene tres temas:
+
+3
+00:00:05.188 --> 00:00:10.337
+qué da el curso y qué no, por qué la mayoría de las ideas de trading no funcionan y
+
+4
+00:00:10.337 --> 00:00:12.446
+cómo leer las cifras del programa.
+
+5
+00:00:13.446 --> 00:00:15.251
+El programa tiene dos modos.
+
+6
+00:00:15.251 --> 00:00:17.184
+El de aprendizaje es el curso:
+
+7
+00:00:17.184 --> 00:00:22.018
+monedas, exchanges, wallets, protocolos, trading y prueba honesta de ideas.
+
+8
+00:00:22.018 --> 00:00:24.145
+El de trabajo es la prueba en sí:
+
+9
+00:00:24.145 --> 00:00:26.208
+eliges monedas, eliges una idea,
+
+10
+00:00:26.208 --> 00:00:30.462
+la pruebas en la historia real y la observas en papel, sin dinero.
+
+11
+00:00:31.462 --> 00:00:33.325
+Así se ve el modo de trabajo.
+
+12
+00:00:33.325 --> 00:00:36.151
+El asistente de arriba dice qué hacer ahora,
+
+13
+00:00:36.151 --> 00:00:39.428
+por qué importa y qué error se comete más a menudo.
+
+14
+00:00:39.428 --> 00:00:42.190
+El asistente no prohíbe nada; solo explica.
+
+15
+00:00:43.190 --> 00:00:44.731
+El curso da comprensión:
+
+16
+00:00:44.731 --> 00:00:46.849
+qué pasa cuando pulsas «comprar»,
+
+17
+00:00:46.849 --> 00:00:52.113
+de dónde sale el interés en los protocolos y por qué la misma estrategia brilla en
+
+18
+00:00:52.113 --> 00:00:53.846
+un tramo y fracasa en otro.
+
+19
+00:00:53.846 --> 00:00:57.056
+El curso no dice qué comprar ni promete ganancias.
+
+20
+00:00:57.056 --> 00:00:59.174
+No es asesoramiento de inversión.
+
+21
+00:01:00.174 --> 00:01:04.335
+Imagina a diez personas, cada una lanza una moneda diez veces.
+
+22
+00:01:04.335 --> 00:01:07.422
+La mejor suele sacar seis, siete u ocho caras.
+
+23
+00:01:08.422 --> 00:01:12.839
+Con cien personas, alguien ya tiene ocho o nueve caras de diez,
+
+24
+00:01:12.839 --> 00:01:14.662
+aunque la moneda es justa.
+
+25
+00:01:15.662 --> 00:01:18.673
+Quinientas personas, y la mejor parece una maestra.
+
+26
+00:01:18.673 --> 00:01:19.440
+Pero es azar:
+
+27
+00:01:19.440 --> 00:01:21.329
+simplemente hay muchos intentos.
+
+28
+00:01:21.329 --> 00:01:23.454
+Con las ideas de trading pasa igual.
+
+29
+00:01:23.454 --> 00:01:27.350
+Prueba muchas ideas y algunas parecerán excelentes por casualidad.
+
+30
+00:01:28.350 --> 00:01:31.392
+Por eso el programa calcula el estadístico t,
+
+31
+00:01:31.392 --> 00:01:35.043
+lo constante que fue la idea al superar la referencia,
+
+32
+00:01:35.043 --> 00:01:38.018
+y lo compara con el umbral de significancia.
+
+33
+00:01:38.018 --> 00:01:40.790
+El umbral sube con el número de intentos:
+
+34
+00:01:40.790 --> 00:01:44.238
+para un intento es 1,96; para quinientos, unos 3,5.
+
+35
+00:01:45.238 --> 00:01:48.402
+El programa se basa en una investigación:
+
+36
+00:01:48.402 --> 00:01:51.413
+29 hipótesis y 563 variantes en cripto.
+
+37
+00:01:51.413 --> 00:01:54.268
+Con tantos intentos el umbral es 3,1.
+
+38
+00:01:54.268 --> 00:01:58.822
+Ninguna idea que predice la dirección del precio lo superó.
+
+39
+00:01:59.822 --> 00:02:00.815
+Ahora las cifras.
+
+40
+00:02:00.815 --> 00:02:03.387
+Cada prueba tiene cuatro cifras principales.
+
+41
+00:02:03.387 --> 00:02:04.146
+Rentabilidad:
+
+42
+00:02:04.146 --> 00:02:06.893
+cuánto creció el capital después de comisiones.
+
+43
+00:02:06.893 --> 00:02:07.243
+Caída:
+
+44
+00:02:07.243 --> 00:02:10.165
+el descenso más profundo de un máximo a un mínimo.
+
+45
+00:02:10.165 --> 00:02:13.262
+Es lo que tendrás que aguantar sin abandonar la idea.
+
+46
+00:02:14.262 --> 00:02:17.524
+La tercera cifra es la comparación con la referencia.
+
+47
+00:02:17.524 --> 00:02:22.693
+Un más 80 por ciento no significa nada si la moneda subió un 120 en el mismo tiempo.
+
+48
+00:02:22.693 --> 00:02:25.524
+La cuarta es si el resultado supera el umbral.
+
+49
+00:02:25.524 --> 00:02:29.094
+El programa muestra todo esto junto en la etapa de prueba.
+
+50
+00:02:30.094 --> 00:02:30.831
+Lo principal.
+
+51
+00:02:30.831 --> 00:02:34.457
+El curso explica las cripto y el trading con palabras sencillas,
+
+52
+00:02:34.457 --> 00:02:37.801
+y el programa permite comprobarlo todo en la historia real.
+
+53
+00:02:37.801 --> 00:02:40.917
+Casi todas las ideas de trading, probadas honestamente,
+
+54
+00:02:40.917 --> 00:02:42.844
+no superan a simplemente mantener.
+
+55
+00:02:42.844 --> 00:02:44.884
+Siguen las lecciones de este módulo:
+
+56
+00:02:44.884 --> 00:02:46.414
+están debajo de este vídeo.

@@ -1,0 +1,241 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.181
+Módulo seis:
+
+2
+00:00:01.181 --> 00:00:02.358
+tipos de activos.
+
+3
+00:00:02.358 --> 00:00:08.245
+Monedas, tokens y memecoins, opciones, futuros con vencimiento y activos tokenizados,
+
+4
+00:00:08.245 --> 00:00:10.046
+y los riesgos de cada uno.
+
+5
+00:00:11.046 --> 00:00:13.719
+Las monedas de red pagan el trabajo de la red,
+
+6
+00:00:13.719 --> 00:00:16.914
+los tokens de protocolo dan derechos en una aplicación,
+
+7
+00:00:16.914 --> 00:00:21.562
+las stablecoins sostienen el dólar y las memecoins no dan nada más que atención.
+
+8
+00:00:21.562 --> 00:00:24.003
+En cualquier moneda importa la tokenómica:
+
+9
+00:00:24.003 --> 00:00:28.302
+cuántas hay en total, cuántas ya cotizan y qué llegará después al mercado.
+
+10
+00:00:29.302 --> 00:00:32.912
+La capitalización es el precio por las monedas en circulación.
+
+11
+00:00:32.912 --> 00:00:37.454
+La valoración total es el precio por todas las monedas que llegarán a existir.
+
+12
+00:00:37.454 --> 00:00:41.588
+Si circula el quince por ciento, el otro ochenta y cinco es del equipo,
+
+13
+00:00:41.588 --> 00:00:44.732
+los fondos y la tesorería, y sale según un calendario.
+
+14
+00:00:44.732 --> 00:00:46.654
+Cada desbloqueo añade vendedores.
+
+15
+00:00:47.654 --> 00:00:51.957
+Incluso las monedas más grandes cayeron un ochenta y hasta un noventa y seis por
+
+16
+00:00:51.957 --> 00:00:54.862
+ciento desde su máximo y tardaron años en volver a él.
+
+17
+00:00:54.862 --> 00:00:56.207
+Y son las supervivientes:
+
+18
+00:00:56.207 --> 00:00:59.596
+miles de monedas de ciclos pasados desaparecieron por completo.
+
+19
+00:00:59.596 --> 00:01:03.900
+Por eso el gráfico del conjunto de las cripto se ve mejor que el resultado de un
+
+20
+00:01:03.900 --> 00:01:04.814
+comprador típico.
+
+21
+00:01:05.814 --> 00:01:08.581
+Una opción es el derecho, pero no la obligación,
+
+22
+00:01:08.581 --> 00:01:12.961
+de comprar o vender una moneda a un precio pactado en una fecha determinada.
+
+23
+00:01:12.961 --> 00:01:16.131
+Por el derecho, el comprador paga de entrada una prima.
+
+24
+00:01:16.131 --> 00:01:20.569
+Un call gana con la subida; un put gana con la caída y se parece a un seguro.
+
+25
+00:01:20.569 --> 00:01:23.220
+La pérdida del comprador se limita a la prima.
+
+26
+00:01:23.220 --> 00:01:26.333
+La ganancia del vendedor también se limita a la prima,
+
+27
+00:01:26.333 --> 00:01:28.062
+y su pérdida puede ser grande.
+
+28
+00:01:29.062 --> 00:01:32.440
+Lo principal en el precio de una opción es la volatilidad:
+
+29
+00:01:32.440 --> 00:01:36.982
+cuanto más oscila una moneda, más probable es que el derecho resulte rentable,
+
+30
+00:01:36.982 --> 00:01:37.797
+y más caro es.
+
+31
+00:01:37.797 --> 00:01:42.515
+En la lección, el modelo de Black–Scholes convierte las oscilaciones esperadas en
+
+32
+00:01:42.515 --> 00:01:43.097
+una prima.
+
+33
+00:01:43.097 --> 00:01:45.310
+Prueba a cambiar el strike y el plazo.
+
+34
+00:01:46.310 --> 00:01:50.409
+Un futuro con vencimiento es un contrato para comprar o vender una moneda en una
+
+35
+00:01:50.409 --> 00:01:52.562
+fecha determinada a un precio pactado hoy.
+
+36
+00:01:52.562 --> 00:01:56.149
+La diferencia entre el precio del futuro y el de la moneda es la base.
+
+37
+00:01:56.149 --> 00:01:58.660
+Cuando muchos quieren comprar con apalancamiento,
+
+38
+00:01:58.660 --> 00:02:00.504
+el futuro es más caro que la moneda.
+
+39
+00:02:00.504 --> 00:02:03.374
+Y para la fecha de vencimiento la base debe desaparecer.
+
+40
+00:02:04.374 --> 00:02:05.615
+De ahí una operación:
+
+41
+00:02:05.615 --> 00:02:08.334
+comprar la moneda y vender a la vez el futuro.
+
+42
+00:02:08.334 --> 00:02:11.112
+Lo que pierdes en una pata lo ganas en la otra,
+
+43
+00:02:11.112 --> 00:02:13.298
+y queda la base menos las comisiones.
+
+44
+00:02:13.298 --> 00:02:18.026
+Se parece a un depósito, con el riesgo del exchange donde están ambas patas y el
+
+45
+00:02:18.026 --> 00:02:22.518
+riesgo de una subida brusca, cuando te piden más colateral en la pata corta.
+
+46
+00:02:23.518 --> 00:02:28.398
+Los activos tokenizados prometen llevar a la blockchain bonos, oro e inmuebles.
+
+47
+00:02:28.398 --> 00:02:33.526
+Pero la blockchain solo guarda un registro de quién tiene cuántos tokens y no ve el
+
+48
+00:02:33.526 --> 00:02:34.329
+activo en sí.
+
+49
+00:02:34.329 --> 00:02:37.294
+Así que hay que comprobar la cadena de personas:
+
+50
+00:02:37.294 --> 00:02:39.951
+quién es el emisor, quién guarda el activo,
+
+51
+00:02:39.951 --> 00:02:44.646
+si un tenedor normal puede canjear el token y qué pasa si el emisor quiebra.
+
+52
+00:02:44.646 --> 00:02:46.870
+Aquí no hay milagros de rendimiento.
+
+53
+00:02:47.870 --> 00:02:48.670
+Lo principal.
+
+54
+00:02:48.670 --> 00:02:50.884
+Una opción es un derecho con precio:
+
+55
+00:02:50.884 --> 00:02:55.620
+la pérdida del comprador se limita a la prima y la ganancia del vendedor está
+
+56
+00:02:55.620 --> 00:02:56.173
+limitada.
+
+57
+00:02:56.173 --> 00:02:58.387
+En una moneda importa la tokenómica:
+
+58
+00:02:58.387 --> 00:03:00.663
+cuánto falta por salir y de quién es.
+
+59
+00:03:00.663 --> 00:03:05.583
+Y las monedas más grandes cayeron casi a cero desde su máximo y tardaron años en
+
+60
+00:03:05.583 --> 00:03:06.014
+volver.

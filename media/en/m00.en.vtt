@@ -1,0 +1,213 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.985
+This is the introductory module of the Honest Polygon course.
+
+2
+00:00:03.985 --> 00:00:05.176
+It has three topics:
+
+3
+00:00:05.176 --> 00:00:09.884
+what the course gives and what it does not, why most trading ideas do not work,
+
+4
+00:00:09.884 --> 00:00:12.446
+and how to read the numbers in the program.
+
+5
+00:00:13.446 --> 00:00:15.305
+The program has two modes.
+
+6
+00:00:15.305 --> 00:00:16.949
+Learning is the course:
+
+7
+00:00:16.949 --> 00:00:22.240
+coins, exchanges, wallets, protocols, trading and honest testing of ideas.
+
+8
+00:00:22.240 --> 00:00:24.170
+Work is the testing itself:
+
+9
+00:00:24.170 --> 00:00:29.461
+pick coins, choose an idea, test it on real history and watch it on paper,
+
+10
+00:00:29.461 --> 00:00:30.462
+without money.
+
+11
+00:00:31.462 --> 00:00:33.654
+This is what the work mode looks like.
+
+12
+00:00:33.654 --> 00:00:36.365
+The wizard at the top tells you what to do now,
+
+13
+00:00:36.365 --> 00:00:39.595
+why it matters and which mistake people make most often.
+
+14
+00:00:39.595 --> 00:00:42.190
+The wizard forbids nothing; it only explains.
+
+15
+00:00:43.190 --> 00:00:44.923
+The course gives understanding:
+
+16
+00:00:44.923 --> 00:00:49.282
+what happens when you press “buy”, where the interest in protocols comes from,
+
+17
+00:00:49.282 --> 00:00:53.641
+and why the same strategy looks brilliant on one stretch and fails on another.
+
+18
+00:00:53.641 --> 00:00:57.497
+The course does not tell you what to buy and does not promise profit.
+
+19
+00:00:57.497 --> 00:00:59.174
+This is not investment advice.
+
+20
+00:01:00.174 --> 00:01:03.727
+Imagine ten people, each tossing a coin ten times.
+
+21
+00:01:03.727 --> 00:01:07.422
+The best one usually gets six, seven or eight heads.
+
+22
+00:01:08.422 --> 00:01:13.102
+Take a hundred people, and someone already has eight or nine heads out of ten,
+
+23
+00:01:13.102 --> 00:01:14.662
+although the coin is fair.
+
+24
+00:01:15.662 --> 00:01:19.249
+Five hundred people, and the best one looks like a master.
+
+25
+00:01:19.249 --> 00:01:20.300
+But it is chance:
+
+26
+00:01:20.300 --> 00:01:22.217
+there are simply many attempts.
+
+27
+00:01:22.217 --> 00:01:23.887
+Trading ideas are the same.
+
+28
+00:01:23.887 --> 00:01:27.350
+Test many ideas, and some will look excellent by chance.
+
+29
+00:01:28.350 --> 00:01:31.649
+That is why the program computes the t-statistic,
+
+30
+00:01:31.649 --> 00:01:37.304
+how steadily the idea beat the benchmark, and compares it with the significance bar.
+
+31
+00:01:37.304 --> 00:01:40.131
+The bar rises with the number of attempts:
+
+32
+00:01:40.131 --> 00:01:44.238
+for one attempt it is 1.96, for five hundred it is about 3.5.
+
+33
+00:01:45.238 --> 00:01:47.829
+The program is built on research:
+
+34
+00:01:47.829 --> 00:01:51.048
+29 hypotheses and 563 variants on crypto.
+
+35
+00:01:51.048 --> 00:01:54.111
+With that many attempts the bar is 3.1.
+
+36
+00:01:54.111 --> 00:01:58.822
+Not one idea that predicts the direction of price passed it.
+
+37
+00:01:59.822 --> 00:02:00.841
+Now the numbers.
+
+38
+00:02:00.841 --> 00:02:02.943
+Every test has four main numbers.
+
+39
+00:02:02.943 --> 00:02:03.389
+Return:
+
+40
+00:02:03.389 --> 00:02:05.746
+how much the capital grew after fees.
+
+41
+00:02:05.746 --> 00:02:06.319
+Drawdown:
+
+42
+00:02:06.319 --> 00:02:08.931
+the deepest fall from a peak to a trough.
+
+43
+00:02:08.931 --> 00:02:13.262
+It is what you will have to sit through without abandoning the idea.
+
+44
+00:02:14.262 --> 00:02:17.558
+The third number is the comparison with the benchmark.
+
+45
+00:02:17.558 --> 00:02:22.319
+Plus 80 percent means nothing if the coin rose 120 percent over the same time.
+
+46
+00:02:22.319 --> 00:02:25.371
+The fourth is whether the result is above the bar.
+
+47
+00:02:25.371 --> 00:02:29.094
+The program shows all of this side by side at the test stage.
+
+48
+00:02:30.094 --> 00:02:31.094
+The main points.
+
+49
+00:02:31.094 --> 00:02:34.471
+The course explains crypto and trading in plain words,
+
+50
+00:02:34.471 --> 00:02:38.098
+and the program lets you check everything on real history.
+
+51
+00:02:38.098 --> 00:02:42.475
+Almost all trading ideas, tested honestly, do not beat simple holding.
+
+52
+00:02:42.475 --> 00:02:44.788
+Next come the lessons of this module:
+
+53
+00:02:44.788 --> 00:02:46.414
+they are below this video.

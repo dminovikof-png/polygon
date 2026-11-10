@@ -1,0 +1,189 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.075
+Module ten:
+
+2
+00:00:01.075 --> 00:00:02.591
+risk and position size.
+
+3
+00:00:02.591 --> 00:00:08.061
+Why drawdown is more dangerous than it looks, how to size a position from the stop,
+
+4
+00:00:08.061 --> 00:00:12.542
+what the Kelly criterion is, and why constant leverage eats capital.
+
+5
+00:00:13.542 --> 00:00:17.938
+Drawdown is how far capital is below its previous peak.
+
+6
+00:00:17.938 --> 00:00:20.496
+Its main nastiness is asymmetry.
+
+7
+00:00:20.496 --> 00:00:23.773
+After minus 50 percent you need plus 100.
+
+8
+00:00:23.773 --> 00:00:28.968
+After minus 83, bitcoin's worst fall, a rise of almost six times.
+
+9
+00:00:28.968 --> 00:00:31.206
+After minus 96, of 25 times.
+
+10
+00:00:32.206 --> 00:00:34.744
+Not only depth matters but also duration:
+
+11
+00:00:34.744 --> 00:00:38.521
+how many days in a row capital stays below its previous peak.
+
+12
+00:00:38.521 --> 00:00:43.102
+That is the time you will have to sit through without abandoning the idea.
+
+13
+00:00:44.102 --> 00:00:47.152
+The professional approach starts with a question:
+
+14
+00:00:47.152 --> 00:00:49.766
+how much am I ready to lose if I am wrong?
+
+15
+00:00:49.766 --> 00:00:52.816
+Usually half a percent to two percent of capital.
+
+16
+00:00:52.816 --> 00:00:57.360
+Position size is the risk in dollars divided by the distance to the stop.
+
+17
+00:00:57.360 --> 00:01:02.464
+At one percent risk, 20 losses in a row take about 18 percent; at ten percent risk
+
+18
+00:01:02.464 --> 00:01:05.078
+they leave only 12 percent of the account.
+
+19
+00:01:06.078 --> 00:01:07.411
+A game with an edge:
+
+20
+00:01:07.411 --> 00:01:11.144
+half the trades bring 1.2 times the risk, half lose one.
+
+21
+00:01:11.144 --> 00:01:12.810
+The Kelly criterion says:
+
+22
+00:01:12.810 --> 00:01:17.476
+risk about eight percent of capital, and growth is fastest on average.
+
+23
+00:01:17.476 --> 00:01:23.009
+More than that and growth slows, and at around two Kelly capital typically shrinks,
+
+24
+00:01:23.009 --> 00:01:25.542
+even though every trade is profitable.
+
+25
+00:01:26.542 --> 00:01:31.052
+The simulator plays out a thousand futures of 200 trades each.
+
+26
+00:01:31.052 --> 00:01:34.399
+At two and four percent risk there is no ruin.
+
+27
+00:01:34.399 --> 00:01:40.437
+At Kelly, two percent of the futures went broke; at 15 percent risk, 28; at 25, 74.
+
+28
+00:01:40.437 --> 00:01:44.074
+And in real life the edge is not known in advance,
+
+29
+00:01:44.074 --> 00:01:47.566
+so practitioners bet half or a quarter of Kelly.
+
+30
+00:01:48.566 --> 00:01:52.236
+Diversification works when assets do not move together.
+
+31
+00:01:52.236 --> 00:01:56.640
+The daily correlation of bitcoin and ether over two years is 0.83,
+
+32
+00:01:56.640 --> 00:02:00.577
+similar with other coins, and in crashes it is even higher.
+
+33
+00:02:00.577 --> 00:02:05.582
+Ten coins instead of one protect against one particular coin going to zero,
+
+34
+00:02:05.582 --> 00:02:08.318
+but hardly protect against a market fall.
+
+35
+00:02:09.318 --> 00:02:14.097
+It seems that leverage of two on a rising coin gives twice as much.
+
+36
+00:02:14.097 --> 00:02:19.089
+But with constant leverage every swing takes away part of the capital:
+
+37
+00:02:19.089 --> 00:02:22.156
+minus 50 and plus 50 percent make minus 25.
+
+38
+00:02:22.156 --> 00:02:23.511
+Bitcoin since 2020:
+
+39
+00:02:23.511 --> 00:02:28.361
+without leverage a tenfold rise, with leverage of two a sixfold one,
+
+40
+00:02:28.361 --> 00:02:30.287
+with a 97 percent drawdown.
+
+41
+00:02:30.287 --> 00:02:34.566
+Leverage of three and five was wiped out back in March 2020.
+
+42
+00:02:35.566 --> 00:02:36.648
+The main points.
+
+43
+00:02:36.648 --> 00:02:39.015
+Losses and recovery are asymmetric.
+
+44
+00:02:39.015 --> 00:02:41.518
+Bet size matters as much as the edge:
+
+45
+00:02:41.518 --> 00:02:46.050
+even a profitable game ruins you if the risk fraction is too large.
+
+46
+00:02:46.050 --> 00:02:51.528
+And coins fall together, while constant leverage eats capital even when the price
+
+47
+00:02:51.528 --> 00:02:51.934
+rises.

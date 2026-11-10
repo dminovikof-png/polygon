@@ -1,0 +1,189 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.200
+Módulo oito:
+
+2
+00:00:01.200 --> 00:00:02.334
+análise técnica.
+
+3
+00:00:02.334 --> 00:00:06.232
+Velas e tempos gráficos, indicadores, figuras e volume,
+
+4
+00:00:06.232 --> 00:00:09.350
+e o que disso o projeto testou com dinheiro.
+
+5
+00:00:10.350 --> 00:00:13.342
+A análise técnica estuda o próprio gráfico do preço.
+
+6
+00:00:13.342 --> 00:00:15.644
+A linguagem dela são as velas japonesas:
+
+7
+00:00:15.644 --> 00:00:18.004
+cada uma mostra a abertura, o fechamento,
+
+8
+00:00:18.004 --> 00:00:20.478
+a máxima e a mínima do seu trecho de tempo.
+
+9
+00:00:21.478 --> 00:00:24.464
+O comprimento do trecho é o tempo gráfico.
+
+10
+00:00:24.464 --> 00:00:28.090
+Um mês são 30 velas diárias ou 43 200 de um minuto.
+
+11
+00:00:28.090 --> 00:00:33.280
+Quanto mais curta a vela, mais ruído ela tem e mais uma estratégia opera,
+
+12
+00:00:33.280 --> 00:00:36.124
+enquanto a taxa por negócio não diminui.
+
+13
+00:00:36.124 --> 00:00:41.811
+Por isso nos gráficos de minutos perdem até ideias que parecem lucrativas nos de
+
+14
+00:00:41.811 --> 00:00:42.238
+horas.
+
+15
+00:00:43.238 --> 00:00:46.250
+Um indicador é uma fórmula de preços passados:
+
+16
+00:00:46.250 --> 00:00:50.899
+a média móvel de 200 dias, o RSI de zero a cem, as bandas de Bollinger,
+
+17
+00:00:50.899 --> 00:00:52.208
+o canal de Donchian.
+
+18
+00:00:52.208 --> 00:00:53.649
+Repare em duas coisas.
+
+19
+00:00:53.649 --> 00:00:55.286
+As médias sempre atrasam.
+
+20
+00:00:55.286 --> 00:01:00.458
+E o RSI pode ficar sobreaquecido por semanas enquanto o preço continua subindo.
+
+21
+00:01:00.458 --> 00:01:03.470
+Um indicador reconta o passado de outra forma.
+
+22
+00:01:04.470 --> 00:01:07.168
+Ombro-cabeça-ombro, fundo duplo, bandeira:
+
+23
+00:01:07.168 --> 00:01:10.445
+ensinam a reconhecer figuras pela forma do gráfico.
+
+24
+00:01:10.445 --> 00:01:14.943
+Mas o olho encontra formas em todo lugar, até em lançamentos de moeda.
+
+25
+00:01:14.943 --> 00:01:18.412
+Entre estes gráficos há um real e passeios aleatórios.
+
+26
+00:01:18.412 --> 00:01:20.982
+Distingui-los a olho é quase impossível.
+
+27
+00:01:21.982 --> 00:01:24.971
+Se uma figura também aparece num gráfico aleatório,
+
+28
+00:01:24.971 --> 00:01:26.906
+por si só ela não significa nada.
+
+29
+00:01:26.906 --> 00:01:31.771
+Só significa algo se depois da figura o preço se comporta diferente de depois de um
+
+30
+00:01:31.771 --> 00:01:32.767
+momento qualquer.
+
+31
+00:01:32.767 --> 00:01:33.646
+O teste é este:
+
+32
+00:01:33.646 --> 00:01:35.873
+achar todos os casos ao longo de anos,
+
+33
+00:01:35.873 --> 00:01:39.742
+calcular o resultado com taxas e comparar com entradas aleatórias.
+
+34
+00:01:40.742 --> 00:01:42.900
+Como medir a utilidade de um sinal?
+
+35
+00:01:42.900 --> 00:01:46.476
+O projeto mede a ligação entre o sinal e o retorno futuro.
+
+36
+00:01:46.476 --> 00:01:50.361
+Bons sinais no mercado de ações dão de dois a cinco centésimos.
+
+37
+00:01:50.361 --> 00:01:53.382
+Mas até uma ligação real pode não pagar as taxas:
+
+38
+00:01:53.382 --> 00:01:58.192
+um sinal de força três centésimos dava menos de dois pontos-base de diferença,
+
+39
+00:01:58.192 --> 00:02:00.350
+e um negócio custa de oito a vinte.
+
+40
+00:02:01.350 --> 00:02:05.139
+O projeto testou a média móvel de 200 dias, os rompimentos,
+
+41
+00:02:05.139 --> 00:02:08.093
+as figuras de Gartley e o aperto de Bollinger.
+
+42
+00:02:08.093 --> 00:02:11.496
+A regra da média reduz o drawdown à custa do retorno.
+
+43
+00:02:11.496 --> 00:02:13.230
+O resto não ganha dinheiro.
+
+44
+00:02:14.230 --> 00:02:15.049
+O principal.
+
+45
+00:02:15.049 --> 00:02:20.100
+Velas e indicadores comprimem o gráfico passado, mas não preveem o futuro.
+
+46
+00:02:20.100 --> 00:02:22.626
+O olho encontra figuras até no acaso,
+
+47
+00:02:22.626 --> 00:02:26.926
+então qualquer figura é testada em milhares de casos com taxas.

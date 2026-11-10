@@ -1,0 +1,265 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.183
+Módulo cinco:
+
+2
+00:00:01.183 --> 00:00:02.207
+protocolos DeFi.
+
+3
+00:00:02.207 --> 00:00:07.075
+Empréstimos com colateral, fontes de rendimento, staking, pontes e oráculos,
+
+4
+00:00:07.075 --> 00:00:11.558
+e como avaliar o risco de um protocolo antes de colocar dinheiro nele.
+
+5
+00:00:12.558 --> 00:00:17.072
+Um protocolo não sabe quem você é, então a confiança é substituída por colateral.
+
+6
+00:00:17.072 --> 00:00:20.694
+Você deposita moedas que valem mais do que quer tomar emprestado.
+
+7
+00:00:20.694 --> 00:00:22.143
+Três números decidem tudo:
+
+8
+00:00:22.143 --> 00:00:26.100
+quanto você pode tomar, o limite de liquidação e a saúde do empréstimo.
+
+9
+00:00:26.100 --> 00:00:28.998
+Enquanto a saúde estiver acima de um, está tudo bem.
+
+10
+00:00:29.998 --> 00:00:34.904
+Na lição você pode derrubar o preço do colateral e ver quando a saúde do empréstimo
+
+11
+00:00:34.904 --> 00:00:35.909
+cai abaixo de um.
+
+12
+00:00:35.909 --> 00:00:40.757
+Então qualquer liquidante paga parte da dívida e leva o colateral com um prêmio de
+
+13
+00:00:40.757 --> 00:00:42.057
+cinco a dez por cento.
+
+14
+00:00:42.057 --> 00:00:45.190
+Bots fazem isso em segundos, sem ligações nem avisos.
+
+15
+00:00:46.190 --> 00:00:49.851
+Os protocolos mostram rendimentos com números grandes.
+
+16
+00:00:49.851 --> 00:00:51.479
+A única pergunta útil é:
+
+17
+00:00:51.479 --> 00:00:52.157
+quem paga?
+
+18
+00:00:52.157 --> 00:00:55.004
+Num depósito de empréstimos, os tomadores.
+
+19
+00:00:55.004 --> 00:00:58.666
+Nos pools, os traders, em troca da perda impermanente.
+
+20
+00:00:58.666 --> 00:01:01.242
+No staking, a emissão de moedas novas.
+
+21
+00:01:01.242 --> 00:01:04.022
+No farming, o token do próprio protocolo.
+
+22
+00:01:04.022 --> 00:01:06.734
+Ou você mesmo, se a fonte não é visível.
+
+23
+00:01:07.734 --> 00:01:11.545
+Se a emissão da rede é de três por cento ao ano e você recebe três,
+
+24
+00:01:11.545 --> 00:01:14.332
+você só não fica para trás em relação à diluição.
+
+25
+00:01:14.332 --> 00:01:18.428
+Um farming de duzentos por cento costuma ser pago no token do protocolo,
+
+26
+00:01:18.428 --> 00:01:22.921
+que é impresso e vendido, e o preço dele cai mais rápido do que o rendimento se
+
+27
+00:01:22.921 --> 00:01:23.377
+acumula.
+
+28
+00:01:23.377 --> 00:01:27.188
+E um depósito com taxa turbinada às vezes é um produto estruturado:
+
+29
+00:01:27.188 --> 00:01:29.406
+você vende risco por um pequeno prêmio.
+
+30
+00:01:30.406 --> 00:01:32.595
+Nas redes de prova de participação,
+
+31
+00:01:32.595 --> 00:01:36.535
+os validadores depositam uma garantia e recebem uma recompensa.
+
+32
+00:01:36.535 --> 00:01:37.849
+Os riscos do staking:
+
+33
+00:01:37.849 --> 00:01:39.725
+multas por erros do validador,
+
+34
+00:01:39.725 --> 00:01:43.790
+a fila de saque e a confiabilidade de quem ficou com suas moedas.
+
+35
+00:01:43.790 --> 00:01:48.794
+O staking líquido dá um token-recibo, mas ele vale o que o mercado paga por ele:
+
+36
+00:01:48.794 --> 00:01:53.422
+em junho de 2022 o stETH foi negociado abaixo do ether por várias semanas.
+
+37
+00:01:54.422 --> 00:01:56.279
+As redes não se enxergam.
+
+38
+00:01:56.279 --> 00:02:02.520
+Uma ponte recebe uma moeda num cofre numa rede e emite um token embrulhado em outra.
+
+39
+00:02:02.520 --> 00:02:08.314
+O recibo vale enquanto o cofre estiver intacto, e nos cofres há somas enormes.
+
+40
+00:02:08.314 --> 00:02:13.292
+Em 2022 roubaram cerca de 320 milhões de dólares da ponte Wormhole,
+
+41
+00:02:13.292 --> 00:02:15.446
+e mais de 600 da ponte Ronin.
+
+42
+00:02:16.446 --> 00:02:19.692
+Um oráculo informa a um contrato um preço de fora.
+
+43
+00:02:19.692 --> 00:02:22.354
+Se o preço é fácil de mover, vão movê-lo.
+
+44
+00:02:22.354 --> 00:02:26.509
+Em outubro de 2022 tiraram mais de cem milhões da Mango Markets:
+
+45
+00:02:26.509 --> 00:02:29.301
+inflaram o preço de um token pouco líquido,
+
+46
+00:02:29.301 --> 00:02:34.754
+o protocolo acreditou no colateral inflado, e com ele tomaram quase tudo emprestado.
+
+47
+00:02:34.754 --> 00:02:35.338
+Proteção:
+
+48
+00:02:35.338 --> 00:02:40.662
+várias fontes de preço, uma média no tempo e limites para colateral pouco líquido.
+
+49
+00:02:41.662 --> 00:02:45.974
+O dinheiro num depósito muitas vezes fica em várias camadas ao mesmo tempo:
+
+50
+00:02:45.974 --> 00:02:50.574
+a stablecoin do emissor, uma ponte, uma segunda camada, o protocolo, um oráculo,
+
+51
+00:02:50.574 --> 00:02:51.724
+uma multiassinatura.
+
+52
+00:02:51.724 --> 00:02:54.197
+Cada camada tem seu risco, e eles se somam.
+
+53
+00:02:54.197 --> 00:02:57.417
+Uma auditoria reduz a chance de erro, mas não a elimina:
+
+54
+00:02:57.417 --> 00:03:00.694
+muitos protocolos atacados tinham passado por auditorias.
+
+55
+00:03:01.694 --> 00:03:03.817
+Cinco perguntas antes de depositar.
+
+56
+00:03:03.817 --> 00:03:08.002
+Há quantos anos o protocolo funciona com uma soma grande sem ataques?
+
+57
+00:03:08.002 --> 00:03:11.520
+Quem pode mudar o código e quantas chaves são necessárias?
+
+58
+00:03:11.520 --> 00:03:12.855
+De onde vêm os preços?
+
+59
+00:03:12.855 --> 00:03:15.099
+Por quantas camadas o dinheiro passa?
+
+60
+00:03:15.099 --> 00:03:16.615
+E quem paga o rendimento?
+
+61
+00:03:16.615 --> 00:03:20.558
+O tamanho de um protocolo fala do tamanho, não da confiabilidade.
+
+62
+00:03:21.558 --> 00:03:22.333
+O principal.
+
+63
+00:03:22.333 --> 00:03:26.080
+Os empréstimos se apoiam num colateral maior que a dívida,
+
+64
+00:03:26.080 --> 00:03:30.085
+e quando ele cai o contrato vende o colateral a um liquidante.
+
+65
+00:03:30.085 --> 00:03:32.088
+Todo rendimento tem um pagador.
+
+66
+00:03:32.088 --> 00:03:37.062
+E os riscos da rede, da ponte, do contrato, do oráculo e das chaves se somam.
