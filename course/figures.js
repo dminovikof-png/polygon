@@ -6,6 +6,15 @@ import M02 from "./fig-m02.js";
 import M03 from "./fig-m03.js";
 import M04 from "./fig-m04.js";
 import M05 from "./fig-m05.js";
+import M06 from "./fig-m06.js";
+import M07 from "./fig-m07.js";
+import M08 from "./fig-m08.js";
+import M09 from "./fig-m09.js";
+import M10 from "./fig-m10.js";
+import M11 from "./fig-m11.js";
+import M12 from "./fig-m12.js";
+import M13 from "./fig-m13.js";
+import M14 from "./fig-m14.js";
 export { rng };
 
 // Сколько орлов выпало у каждого из n людей, бросивших монету flips раз.
@@ -62,4 +71,4 @@ export function equityDrawdown({ seed = 3, days = 300 } = {}) {
   return svg(W, H, body, `Кривая капитала с худшей просадкой ${Math.round(dd * 100)} процентов`);
 }
 
-export const FIGURES = { courseMap, coinFlips, equityDrawdown, ...M01, ...M02, ...M03, ...M04, ...M05 };
+export const FIGURES = { courseMap, coinFlips, equityDrawdown, ...M01, ...M02, ...M03, ...M04, ...M05, ...M06, ...M07, ...M08, ...M09, ...M10, ...M11, ...M12, ...M13, ...M14 };

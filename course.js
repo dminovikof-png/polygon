@@ -3,6 +3,7 @@ import { MODULES } from "./course/index.js";
 import { FIGURES } from "./course/figures.js";
 import { SIMS } from "./course/sims.js";
 import { COURSE_TERMS } from "./course/glossary.js";
+import { VIDEOS } from "./course/videos.js";
 
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -30,11 +31,15 @@ async function saveLesson(id) {
 }
 
 // Текст: абзацы через пустую строку, **жирный**, [[термин]] и [[термин|как показать]] — ссылка в словарь.
+// Строки абзаца, начинающиеся с «- », становятся списком (строка до них — заголовком абзаца).
 function richText(s) {
-  return s.split(/\n\n+/).map((par) => {
-    const p = el("p", { class: "plain" });
-    p.innerHTML = esc(par).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, t, shown) => `<button class="term" data-term="${t}">${shown || t}</button>`);
-    return p;
+  const mark = (t) => esc(t).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>").replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, t, shown) => `<button class="term" data-term="${t}">${shown || t}</button>`);
+  return s.split(/\n\n+/).flatMap((par) => {
+    const lines = par.split("\n"), items = lines.filter((l) => l.startsWith("- ")), head = lines.filter((l) => !l.startsWith("- ")).join(" ");
+    const out = [];
+    if (head) { const p = el("p", { class: "plain" }); p.innerHTML = mark(head); out.push(p); }
+    if (items.length) { const ul = el("ul", { class: "plain" }); ul.innerHTML = items.map((l) => `<li>${mark(l.slice(2))}</li>`).join(""); out.push(ul); }
+    return out;
   });
 }
 document.addEventListener("click", (e) => {
@@ -77,10 +82,16 @@ const BLOCKS = {
     return box;
   },
   measured: (b) => el("div", { class: "box measured" }, el("b", null, "Что показало исследование проекта"), ...richText(b.text), b.source ? el("div", { class: "small-note" }, "Источник: " + b.source) : null),
-  try: (b) => el("button", { class: "sec", onclick: () => window.goWork?.(b.stage, b.sub) }, b.label + " →"),
+  try: (b) => el("button", { class: "sec", onclick: () => window.goWork?.(b.stage, b.sub, { strategy: b.strategy, symbol: b.symbol }) }, b.label + " →"),
   sim: (b) => SIMS[b.sim](b.args || {}),
   checked: (b) => el("div", { class: "small-note" }, `Факты проверены ${b.date.split("-").reverse().join(".")}.`, ...(b.sources || []).map(([t, u]) => [" ", el("a", { href: u, target: "_blank", rel: "noopener" }, t)])),
-  video: (b) => el("div", { class: "box" }, el("b", null, b.title || "Видео"), b.src ? el("video", { src: b.src, controls: true, preload: "none", style: "width:100%;margin-top:8px" }) : el("div", { class: "help" }, "Ролик появится позже."), b.transcript ? el("details", { class: "sub" }, el("summary", null, "Текст ролика"), ...richText(b.transcript)) : null),
+  // Ролик: файлы лежат в media/ (их собирает scripts/video/build.mjs и в git они не входят) — если файла нет, вместо плеера пояснение.
+  video: (b) => {
+    const later = () => el("div", { class: "help" }, "Ролик появится позже.");
+    const v = b.src ? el("video", { src: b.src, poster: b.poster, controls: true, preload: "none", playsinline: true, style: "width:100%;margin-top:8px;border-radius:8px" }, b.track ? el("track", { kind: "subtitles", src: b.track, srclang: "ru", label: "Русский", default: true }) : null) : null;
+    if (v) v.onerror = () => v.replaceWith(later());
+    return el("div", { class: "box" }, el("b", null, b.title || "Видео"), v || later(), b.transcript ? el("details", { class: "sub" }, el("summary", null, "Текст ролика"), ...richText(b.transcript)) : null);
+  },
 };
 
 function renderHome() {
@@ -92,8 +103,11 @@ function renderHome() {
       el("b", null, `${mi}. ${m.title}`),
       el("ol", { class: "lessons" }, m.lessons.map((l) => el("li", null, el("button", { class: "linkbtn", onclick: () => openLesson(l.id) }, l.title), ` · ${l.minutes} мин`, P(l.id).done ? el("span", { class: "good" }, " ✓ пройден") : null))),
       el("details", { class: "sub" }, el("summary", null, "Главное в трёх строках"), el("ul", null, m.summary.map((s) => el("li", null, s)))))),
-    el("div", { class: "card help" }, "Дальше появятся модули: типы активов, анализ, стратегии, риск, честная проверка, алго- и ИИ-трейдинг, экономика ИИ-агентов, налоги и правила по странам."));
+    el("div", { class: "card help" }, "Все модули курса на месте. Налоги и правила меняются часто: перед решением сверяйтесь с датой проверки и первоисточником в уроке."));
 }
+
+// Блок ролика модуля из его сценария (course/videos.js): видео, субтитры, заставка и текст реплик.
+const moduleVideo = (mid) => ({ src: `media/${mid}.mp4`, track: `media/${mid}.ru.vtt`, poster: `media/${mid}.jpg`, transcript: VIDEOS[mid].scenes.map((s) => s.t).join("\n\n") });
 
 function openLesson(id) {
   const i = lessons.findIndex((l) => l.id === id), l = lessons[i];
@@ -105,6 +119,7 @@ function openLesson(id) {
   $("learnArea").replaceChildren(el("div", { class: "card lesson" },
     el("div", { class: "inline" }, el("button", { class: "sec small", onclick: renderHome }, "← К списку уроков"), el("span", { class: "help" }, `${l.module.title} · урок ${l.module.lessons.findIndex((x) => x.id === id) + 1} из ${l.module.lessons.length} · ${l.minutes} мин`)),
     el("h2", null, l.title),
+    l.module.lessons[0].id === id && VIDEOS[l.module.id] ? BLOCKS.video(moduleVideo(l.module.id)) : null, // ролик модуля — в его первом уроке
     ...l.blocks.map((b, k) => BLOCKS[b.type](b, l, k)),
     el("hr"),
     el("div", { class: "inline" }, prev ? el("button", { class: "sec", onclick: () => openLesson(prev.id) }, "← " + prev.title) : null, doneBtn, next ? el("span", { class: "help" }, "Следующий: " + next.title) : null)));

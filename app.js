@@ -49,7 +49,13 @@ function setMode(m) {
 }
 document.querySelectorAll("#modeSeg button").forEach((b) => (b.onclick = () => setMode(b.dataset.mode)));
 // Из урока — сразу на нужный этап рабочего режима.
-window.goWork = (stage, sub) => { setMode("work"); showTab(stage); if (sub && stage === "test") testMode(sub); if (sub && stage === "ref") refMode(sub); window.scrollTo(0, 0); };
+// Из урока: открыть этап; opts.strategy и opts.symbol — сразу выбрать идею и монету в проверке («проверить в полигоне»).
+window.goWork = (stage, sub, opts = {}) => {
+  setMode("work");
+  if (opts.symbol && [...$("symbol").options].some((o) => o.value === opts.symbol)) { $("symbol").value = opts.symbol; onSymbol(); }
+  if (opts.strategy && [...$("strategy").options].some((o) => o.value === opts.strategy)) { $("strategy").value = opts.strategy; onStrategy(); settingsSummary(); chooseIdea(); }
+  showTab(stage); if (sub && stage === "test") testMode(sub); if (sub && stage === "ref") refMode(sub); window.scrollTo(0, 0);
+};
 // На сенсорном экране наведения нет: подсказка (title) показывается по нажатию.
 if (matchMedia("(pointer:coarse)").matches) document.addEventListener("click", (e) => {
   document.querySelectorAll(".tipbox").forEach((x) => x.remove());

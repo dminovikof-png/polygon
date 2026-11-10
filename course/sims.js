@@ -7,6 +7,9 @@ import { healthFactor, liquidationPrice, maxBorrow, liquidate, rates } from "../
 import { makeBook, marketOrder, liqPrice, fee } from "../sim/market.js";
 import { DEMO_BOOK } from "./fig-m03.js";
 import { DEMO_POOL } from "./fig-m04.js";
+import { blackScholes, breakeven, probProfit } from "../sim/option.js";
+import { kelly, positionSize } from "../sim/ruin.js";
+import { DATA } from "./data.js";
 
 const fmt = (v, d = 0) => (v == null || !isFinite(v) ? "—" : Number(v).toLocaleString("ru-RU", { minimumFractionDigits: d, maximumFractionDigits: d }));
 function el(tag, attrs, ...kids) {
@@ -198,4 +201,157 @@ function ratesSim() {
   return frame("Откуда процент вкладчика", u.node, pic, res);
 }
 
-export const SIMS = { block, book, liveBook, liq, amm, il, lending, rates: ratesSim };
+// Опцион: цена по модели и выплата при экспирации.
+function option() {
+  const type = select("опцион", [["call", "колл (право купить)"], ["put", "пут (право продать)"]], show), side = select("сторона", [["long", "купить"], ["short", "продать"]], show);
+  const spot = field("цена монеты сейчас", { value: 100, min: 0 }, show), strike = field("страйк", { value: 110, min: 0 }, show);
+  const days = field("дней до экспирации", { value: 30, min: 1 }, show), vol = field("волатильность, % годовых", { value: 60, min: 1 }, show);
+  const pic = el("div", { class: "fig" }), res = el("div", { class: "plain" });
+  function show() {
+    const o = { type: type.inp.value, S: num(spot.inp), K: num(strike.inp), days: num(days.inp), vol: num(vol.inp) / 100 };
+    const prem = blackScholes(o), be = breakeven({ type: o.type, strike: o.K, premium: prem }), pp = probProfit({ ...o, premium: prem });
+    pic.innerHTML = FIGURES.optionPayoff({ type: o.type, side: side.inp.value, strike: o.K, premium: prem, spot: o.S });
+    const long = side.inp.value === "long";
+    res.textContent = `Премия по модели: ${fmt(prem, 2)} (${fmt((prem / o.S) * 100, 1)} % цены монеты). Безубыточность ${fmt(be, 2)}. По той же модели купленный опцион окажется в плюсе примерно в ${fmt(pp * 100)} % случаев — ${long ? "в остальных теряется вся премия или её часть" : "в остальных продавец оставляет премию себе, но в редких случаях теряет много"}. Модель грубая: настоящие цены на бирже другие.`;
+  }
+  show();
+  return frame("Опцион: премия и выплата", el("div", { class: "simrow" }, type.node, side.node, spot.node, strike.node, days.node, vol.node), pic, res);
+}
+
+const check = (label, on, onChange) => { const i = el("input", { type: "checkbox", style: "width:auto" }); i.checked = on; i.onchange = onChange; return { i, node: el("label", { style: "font-weight:normal;margin:0" }, i, " ", label) }; };
+
+// График монеты с включаемыми индикаторами.
+function chart() {
+  const coin = select("монета", [["btc", "BTC"], ["eth", "ETH"], ["sol", "SOL"], ["doge", "DOGE"]], show), years = select("период", [["1", "1 год"], ["3", "3 года"], ["0", "вся история"]], show);
+  years.inp.value = "3";
+  const o = { sma50: check("SMA 50", false, show), sma200: check("SMA 200", true, show), bb: check("Боллинджер", false, show), dc: check("Дончиан", false, show), rsi: check("RSI", false, show) };
+  const pic = el("div", { class: "fig" });
+  function show() { pic.innerHTML = FIGURES.priceChart({ coin: coin.inp.value, years: +years.inp.value, sma50: o.sma50.i.checked, sma200: o.sma200.i.checked, bb: o.bb.i.checked, dc: o.dc.i.checked, showRsi: o.rsi.i.checked }); }
+  show();
+  return frame("График с индикаторами", el("div", { class: "simrow" }, coin.node, years.node), el("div", { class: "inline" }, Object.values(o).map((x) => x.node)), pic, el("div", { class: "help" }, `Данные: ${DATA.source}, по ${DATA.asOf.split("-").reverse().join(".")}.`));
+}
+
+// DCA против покупки сразу.
+function dcaSim() {
+  const year = select("начать в", [2018, 2019, 2020, 2021, 2022, 2023, 2024].map((y) => [String(y), String(y)]), show), months = select("покупать в течение", [["12", "1 года"], ["24", "2 лет"], ["36", "3 лет"]], show);
+  year.inp.value = "2021"; months.inp.value = "24";
+  const pic = el("div", { class: "fig" });
+  function show() { pic.innerHTML = FIGURES.dcaVsLump({ startYear: +year.inp.value, months: +months.inp.value }); }
+  show();
+  return frame("DCA или всё сразу", el("div", { class: "simrow" }, year.node, months.node), pic, el("div", { class: "help" }, "Сравнивается одна и та же сумма: DCA вкладывает её частями, «всё сразу» — в первый день. Стоимость показана на последний день периода покупок."));
+}
+
+// Учебная лаборатория: три механики на истории BTC с выбранной комиссией.
+function strategyLab({ rule: start = "smaTrend" } = {}) {
+  const rule = select("правило", [["smaTrend", "тренд: цена выше SMA 200"], ["donchian", "черепахи: пробой 20, выход 10"], ["rsiRevert", "возврат: RSI < 30, выход RSI > 55"]], show);
+  const fee = select("комиссия за сделку", [["0", "0 %"], ["0.001", "0,1 %"], ["0.003", "0,3 %"]], show);
+  fee.inp.value = "0.001"; rule.inp.value = start;
+  const pic = el("div", { class: "fig" });
+  function show() { pic.innerHTML = FIGURES.strategyOnBtc({ rule: rule.inp.value, fee: +fee.inp.value }); }
+  show();
+  return frame("Три механики на истории BTC", el("div", { class: "simrow" }, rule.node, fee.node), pic, el("div", { class: "help" }, "Иллюстрация, а не проверка: одна монета, одни параметры, без планки значимости и отложенных данных. Честная проверка — в рабочем режиме."));
+}
+
+// Размер позиции по риску.
+function possize() {
+  const eq = field("капитал, $", { value: 10000, min: 0 }, show), risk = field("риск на сделку, % капитала", { value: 1, min: 0, step: 0.1 }, show);
+  const entry = field("цена входа", { value: 100, min: 0 }, show), stop = field("стоп", { value: 92, min: 0 }, show);
+  const res = el("div", { class: "plain" });
+  function show() {
+    const r = positionSize({ equity: num(eq.inp), riskPct: num(risk.inp) / 100, entry: num(entry.inp), stop: num(stop.inp) });
+    const dist = Math.abs(num(stop.inp) / num(entry.inp) - 1) * 100;
+    res.textContent = `Купить ${fmt(r.units, 4)} монеты на $${fmt(r.notional)} (${fmt(r.share * 100, 1)} % капитала). Стоп в ${fmt(dist, 1)} % от входа: при срабатывании потеря $${fmt(r.risk)}, это ${fmt(num(risk.inp), 1)} % счёта${r.share > 1 ? ". Позиция больше капитала — понадобится плечо: стоп слишком близко или риск слишком велик" : ""}. Проскальзывание на стопе сделает потерю чуть больше.`;
+  }
+  show();
+  return frame("Размер позиции по риску", el("div", { class: "simrow" }, eq.node, risk.node, entry.node, stop.node), res);
+}
+
+// Разорение: выгодная игра и разная доля риска.
+function ruinSim() {
+  const p = field("доля выигрышей, %", { value: 50, min: 1, max: 99 }, show), b = field("выигрыш, R (убыток = 1R)", { value: 1.2, min: 0.1, step: 0.1 }, show);
+  const f = range("риск на сделку, % капитала:", { min: 0.5, max: 40, step: 0.5, value: 5 }, show);
+  const pic = el("div", { class: "fig" }), curve = el("div", { class: "fig" }), res = el("div", { class: "plain" });
+  function show() {
+    const pp = num(p.inp) / 100, bb = num(b.inp), ff = num(f.inp) / 100, k = kelly(pp, bb);
+    f.out.textContent = fmt(ff * 100, 1) + " %";
+    pic.innerHTML = FIGURES.ruinPaths({ p: pp, b: bb, f: ff });
+    curve.innerHTML = k > 0 ? FIGURES.kellyCurve({ p: pp, b: bb, f: ff }) : "";
+    res.textContent = k > 0 ? `Доля по Келли: ${fmt(k * 100, 1)} %. Больше Келли — рост медленнее при большем риске; больше двух Келли — капитал в среднем тает, хотя каждая сделка выгодна.` : "У такой игры нет преимущества: ожидание сделки не больше нуля. Никакой размер ставки её не спасёт.";
+  }
+  show();
+  return frame("Симулятор разорения", el("div", { class: "simrow" }, p.node, b.node), f.node, pic, curve, res);
+}
+
+// Постоянное плечо на истории BTC с выбранного года.
+function leverSim() {
+  const from = select("с начала", [2018, 2019, 2020, 2021, 2022, 2023].map((y) => [`${y}-01-01`, String(y)]), show);
+  from.inp.value = "2020-01-01";
+  const pic = el("div", { class: "fig" });
+  function show() { pic.innerHTML = FIGURES.leverHistory({ from: from.inp.value }); }
+  show();
+  return frame("Плечо на истории BTC", from.node, pic);
+}
+
+// 500 обезьян: случайные стратегии на настоящей истории.
+function monkeysSim() {
+  const coin = select("монета", [["btc", "BTC"], ["eth", "ETH"], ["sol", "SOL"], ["doge", "DOGE"]], show), count = select("сколько обезьян", [["20", "20"], ["100", "100"], ["500", "500"], ["2000", "2000"]], show);
+  const fee = select("комиссия за сделку", [["0", "0 %"], ["0.001", "0,1 %"], ["0.003", "0,3 %"]], show);
+  count.inp.value = "500"; fee.inp.value = "0.001";
+  let seed = 1;
+  const again = el("button", { class: "sec small", onclick: () => { seed++; show(); } }, "Новые обезьяны");
+  const pic = el("div", { class: "fig" }), split = el("div", { class: "fig" });
+  function show() {
+    const o = { coin: coin.inp.value, count: +count.inp.value, seed, fee: +fee.inp.value };
+    pic.innerHTML = FIGURES.monkeysChart(o); split.innerHTML = FIGURES.monkeysSplit(o);
+  }
+  show();
+  return frame("500 обезьян", el("div", { class: "simrow" }, coin.node, count.node, fee.node), again, pic, split);
+}
+
+// Подгонка длины средней: песочница и отложенные данные.
+function overfitSim() {
+  const coin = select("монета", [["btc", "BTC"], ["eth", "ETH"], ["sol", "SOL"], ["doge", "DOGE"]], show);
+  const pic = el("div", { class: "fig" });
+  function show() { pic.innerHTML = FIGURES.paramOverfit({ coin: coin.inp.value }); }
+  show();
+  return frame("Подгонка параметра", coin.node, pic, el("div", { class: "help" }, "Песочница — первые 70 % истории монеты, отложенные данные — последние 30 %. Комиссия 0,1 % за смену позиции."));
+}
+
+// Модель на ценах с проверкой вперёд.
+function mlSim() {
+  const coin = select("монета", [["btc", "BTC"], ["eth", "ETH"], ["sol", "SOL"], ["doge", "DOGE"]], show);
+  const model = select("модель", [["logit", "логистическая регрессия"], ["knn", "k ближайших соседей"]], show);
+  const k = select("k (для соседей)", [["1", "1"], ["5", "5"], ["15", "15"], ["50", "50"]], show), lags = select("признаки", [["1", "доходность за 1 день"], ["5", "за 5 дней"], ["20", "за 20 дней"]], show);
+  const train = select("окно обучения", [["365", "1 год"], ["730", "2 года"]], show);
+  k.inp.value = "15"; lags.inp.value = "5"; train.inp.value = "730";
+  const pic = el("div", { class: "fig" });
+  function show() { k.node.hidden = model.inp.value !== "knn"; pic.innerHTML = FIGURES.mlWalk({ coin: coin.inp.value, model: model.inp.value, k: +k.inp.value, lags: +lags.inp.value, train: +train.inp.value }); }
+  show();
+  return frame("Модель на ценах: проверка вперёд", el("div", { class: "simrow" }, coin.node, model.node, k.node, lags.node, train.node), pic, el("div", { class: "help" }, "Модель переобучается каждые 30 дней только на прошлом. В рынке — когда вероятность роста больше 50 %, комиссия 0,1 % за смену позиции. Расчёт занимает до секунды."));
+}
+
+// Бюджет агента: лимиты кошелька против поддельных счетов.
+function agentLimitsSim() {
+  const rate = select("поддельные счета", [["0.05", "редко (5 % дней)"], ["0.1", "иногда (10 % дней)"], ["0.3", "часто (30 % дней)"]], show);
+  const perTx = select("лимит на платёж", [["1", "1 $"], ["2", "2 $"], ["5", "5 $"], ["50", "50 $"]], show), daily = select("лимит на день", [["3", "3 $"], ["10", "10 $"], ["30", "30 $"]], show);
+  const allow = select("белый список получателей", [["1", "включён"], ["0", "выключен"]], show);
+  rate.inp.value = "0.1"; perTx.inp.value = "2"; daily.inp.value = "10";
+  let seed = 1;
+  const again = el("button", { class: "sec small", onclick: () => { seed++; show(); } }, "Другой месяц");
+  const pic = el("div", { class: "fig" });
+  function show() { pic.innerHTML = FIGURES.limitsChart({ attackRate: +rate.inp.value, perTx: +perTx.inp.value, daily: +daily.inp.value, allowlist: allow.inp.value === "1", seed }); }
+  show();
+  return frame("Лимиты кошелька агента", el("div", { class: "simrow" }, rate.node, perTx.node, daily.node, allow.node), again, pic,
+    el("div", { class: "help" }, "Учебная модель: 500 $ на старте, 20 честных платежей в день по 10–30 центов, поддельный счёт — на 200 $. Денег и сетей здесь нет."));
+}
+
+// Способ учёта цены покупки для налога.
+function taxLotsSim() {
+  const method = select("способ учёта", [["fifo", "FIFO"], ["lifo", "LIFO"], ["avg", "средняя цена"]], show);
+  const pic = el("div", { class: "fig" });
+  function show() { pic.innerHTML = FIGURES.costMethods({ method: method.inp.value }); }
+  show();
+  return frame("Какая цена покупки списывается", method.node, pic);
+}
+
+export const SIMS = { block, book, liveBook, liq, amm, il, lending, rates: ratesSim, option, chart, dca: dcaSim, strategyLab, possize, ruin: ruinSim, lever: leverSim, monkeys: monkeysSim, overfit: overfitSim, ml: mlSim, agentLimits: agentLimitsSim, taxLots: taxLotsSim };
