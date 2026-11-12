@@ -2,7 +2,6 @@
 import { C, svg, txt, box, arrow, plot, fmt, para } from "./draw.js";
 import { agentBudget, dutchAuction, solverCosts, auctionStats } from "../sim/agents.js";
 
-const wrap = (s, n) => { const out = []; let cur = ""; for (const w of s.split(" ")) { if ((cur + " " + w).trim().length > n && cur) { out.push(cur); cur = w; } else cur = (cur + " " + w).trim(); } if (cur) out.push(cur); return out; };
 const usd = (v) => "$" + fmt(v, v > 0 && v < 10 ? 2 : 0);
 const pct = (v, d = 2) => fmt(v * 100, d) + " %";
 

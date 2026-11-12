@@ -5,6 +5,18 @@ import { SIMS } from "./course/sims.js";
 import { COURSE_TERMS } from "./course/glossary.js";
 import { VIDEOS } from "./course/videos.js";
 import { applyTranslation } from "./course/tr.js";
+import { fitText } from "./course/draw.js";
+
+// Рисунки и симуляторы перерисовываются вставкой SVG; после перевода (он идёт сразу при вставке) подписи вписываются в край.
+// Если словарь пришёл позже первого рисунка, вписываются заново всё, что уже на странице.
+{
+  let queued = new Set();
+  const flush = () => { const roots = [...queued]; queued = new Set(); for (const r of roots) if (r.isConnected) fitText(r); };
+  new MutationObserver((recs) => {
+    for (const r of recs) for (const n of r.addedNodes) if (n.nodeType === 1 && (n.matches("svg[role=img]") || n.querySelector("svg[role=img]"))) { if (!queued.size) setTimeout(flush, 0); queued.add(n.matches("svg") ? n.parentNode : n); }
+  }).observe(document.body, { childList: true, subtree: true });
+  globalThis.PolygonI18n?.ready?.then(() => setTimeout(() => fitText(document.body), 0));
+}
 
 const $ = (id) => document.getElementById(id);
 // Язык: кнопки и подписи курса переводит общий словарь (i18n.js), текст уроков — перевод модуля course/<язык>/.

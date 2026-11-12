@@ -1,5 +1,5 @@
 // Рисунки модуля 11 «Честная проверка». Цены — настоящие дневные закрытия (public/course/data.js).
-import { C, svg, txt, box, arrow, plot, fmt, yearTicks, para } from "./draw.js";
+import { C, svg, txt, box, arrow, plot, fmt, yearTicks, para, wrapLines } from "./draw.js";
 import { monkeys, paramSweep, peekEquity, plank } from "../sim/monkeys.js";
 import { rules, equityFromPositions } from "../sim/ta.js";
 import { ruleStats } from "./fig-m09.js";
@@ -97,7 +97,7 @@ function costsFig() {
   return svg(600, 256, body, "Итог правил при разной комиссии");
 }
 
-const wrap = (s, max) => { const out = []; let cur = ""; for (const w of s.split(" ")) { if ((cur + " " + w).trim().length > max && cur) { out.push(cur); cur = w; } else cur = (cur + " " + w).trim(); } if (cur) out.push(cur); return out; };
+const wrap = wrapLines;
 
 // Порядок честной проверки.
 function pipeline() {

@@ -16,6 +16,26 @@ export function box(x, y, w, h, title, lines = [], { color = C.line, fill = C.ca
 }
 export const arrow = (x1, y1, x2, y2, { color = C.text, dash = false, width = 2 } = {}) => `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${color}" stroke-width="${width}" fill="none" marker-end="url(#ar)"${dash ? ' stroke-dasharray="5 4"' : ""}/>`;
 export const line = (x1, y1, x2, y2, { color = C.line, dash = false, width = 1 } = {}) => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${width}"${dash ? ' stroke-dasharray="4 3"' : ""}/>`;
+// Подписи, вылезающие за край рисунка (длинный перевод, число у края), вписываются по месту в браузере:
+// короткая сдвигается внутрь, длинная сжимается по ширине (textLength). Вызывать после перевода — нужны настоящие размеры.
+export function fitText(root) {
+  for (const s of root.querySelectorAll("svg[role=img]")) {
+    const vb = s.viewBox?.baseVal;
+    if (!vb || !vb.width) continue;
+    const lo = vb.x + 4, hi = vb.x + vb.width - 4;
+    for (const t of s.querySelectorAll("text")) {
+      if (t.dataset.x0 == null) t.dataset.x0 = t.getAttribute("x") ?? "0";
+      t.setAttribute("x", t.dataset.x0); t.removeAttribute("textLength"); t.removeAttribute("lengthAdjust");
+      let b; try { b = t.getBBox(); } catch { continue; }
+      const over = b.x + b.width - hi, under = lo - b.x;
+      if (!b.width || (over <= 0 && under <= 0)) continue;
+      if (b.width <= (hi - lo) * 0.4) { t.setAttribute("x", (+t.dataset.x0 + (over > 0 ? -over : under)).toFixed(1)); continue; }
+      const a = t.getAttribute("text-anchor") || "start", x = +t.dataset.x0;
+      const room = a === "end" ? x - lo : a === "middle" ? 2 * Math.min(x - lo, hi - x) : hi - x;
+      if (room > 20 && room < b.width) { t.setAttribute("textLength", room.toFixed(1)); t.setAttribute("lengthAdjust", "spacingAndGlyphs"); }
+    }
+  }
+}
 export const fmt = (v, d = 0) => Number(v).toLocaleString("ru-RU", { minimumFractionDigits: d, maximumFractionDigits: d });
 
 // Повторяемые случайные числа: одно и то же зерно — одна и та же картинка.
@@ -74,10 +94,23 @@ export function yearTicks(t0, n, maxTicks = 9) {
 export const dayIndex = (t0, date) => Math.round((Date.parse(date + "T00:00:00Z") / 1000 - t0) / 86400);
 
 // Текст в несколько строк: перенос по словам, max — сколько знаков в строке.
+// Фраза переводится целиком до переноса: словарь интерфейса знает всю фразу, а не её куски по строкам.
+// В китайском нет пробелов, поэтому длинное «слово» режется по знакам (иероглиф шире буквы — вдвое меньше знаков).
 export function para(x, y, s, { max = 90, size = 12, color = C.text, lh = 17 } = {}) {
-  const lines = [];
+  return wrapLines(s, max).map((l, i) => txt(x, y + i * lh, l, { size, color })).join("");
+}
+
+// Те же переведённые и перенесённые строки — для подписей в рамках (box) и других рисунков.
+export function wrapLines(s, max) {
+  const tr = globalThis.PolygonI18n?.tr, text = tr ? tr(String(s)) : String(s), lines = [];
+  const words = text.split(" ").flatMap((w) => {
+    const n = /[　-鿿＀-￯]/.test(w) ? Math.floor(max / 2) : max;
+    if (w.length <= n) return [w];
+    const parts = []; for (let i = 0; i < w.length; i += n) parts.push(w.slice(i, i + n)); return parts;
+  });
   let cur = "";
-  for (const w of String(s).split(" ")) { if ((cur + " " + w).trim().length > max && cur) { lines.push(cur); cur = w; } else cur = (cur + " " + w).trim(); }
+  const width = (t) => t.length * (/[　-鿿＀-￯]/.test(t) ? 2 : 1);
+  for (const w of words) { if (width((cur + " " + w).trim()) > max && cur) { lines.push(cur); cur = w; } else cur = (cur + " " + w).trim(); }
   if (cur) lines.push(cur);
-  return lines.map((l, i) => txt(x, y + i * lh, l, { size, color })).join("");
+  return lines;
 }

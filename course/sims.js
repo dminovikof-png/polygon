@@ -228,7 +228,7 @@ function chart() {
   const pic = el("div", { class: "fig" });
   function show() { pic.innerHTML = FIGURES.priceChart({ coin: coin.inp.value, years: +years.inp.value, sma50: o.sma50.i.checked, sma200: o.sma200.i.checked, bb: o.bb.i.checked, dc: o.dc.i.checked, showRsi: o.rsi.i.checked }); }
   show();
-  return frame("График с индикаторами", el("div", { class: "simrow" }, coin.node, years.node), el("div", { class: "inline" }, Object.values(o).map((x) => x.node)), pic, el("div", { class: "help" }, `Данные: ${DATA.source}, по ${DATA.asOf.split("-").reverse().join(".")}.`));
+  return frame("График с индикаторами", el("div", { class: "simrow" }, coin.node, years.node), el("div", { class: "inline" }, Object.values(o).map((x) => x.node)), pic, el("div", { class: "help" }, `Данные: Binance, дневные свечи по UTC (публичные данные), по ${DATA.asOf.split("-").reverse().join(".")}.`));
 }
 
 // DCA против покупки сразу.
