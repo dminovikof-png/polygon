@@ -123,23 +123,39 @@ const BLOCKS = {
   },
 };
 
-// Строка в боковой панели под «Учёбой»: «07 Название модуля» и «7.2 Название урока»; без открытого урока скрыта.
-export const lessonLabel = (l) => { const n = Number(l.module.id.slice(1)); return [`${String(n).padStart(2, "0")} ${l.module.title}`, `${n}.${l.module.lessons.findIndex((x) => x.id === l.id) + 1} ${l.title}`]; };
-function sideLesson(l) {
-  const box = document.getElementById("sideLesson"); if (!box) return;
-  box.hidden = !l;
-  box.replaceChildren(...(l ? lessonLabel(l).map((t) => el("span", null, t)) : []));
+// Боковая панель в учёбе: разделы курса (модули); у открытого раздела — его уроки (пройденные с ✓).
+// Открытый раздел — раздел открытого урока или выбранный в панели; на странице всех разделов — ни один.
+let openMod = null;
+const num = (m) => String(mods.indexOf(m)).padStart(2, "0");
+function sideCourse() {
+  const box = $("sideCourse"); if (!box) return;
+  const close = () => $("side")?.classList.remove("open"); // на планшете панель раскрыта поверх урока
+  box.replaceChildren(...mods.flatMap((m) => {
+    const on = m.id === openMod, n = mods.indexOf(m);
+    // раздел выбран — выделен полностью; открыт его урок — выделен урок, а раздел только цветом (виден и в свёрнутой полосе планшета)
+    const b = el("button", { class: on ? (view ? "cur" : "on") : null, "data-mod": m.id, onclick: () => { openModule(m.id); close(); window.scrollTo(0, 0); } },
+      el("span", { class: "k notr" }, num(m)), el("span", { class: "t notr" }, m.title));
+    return !on ? [b] : [b, ...m.lessons.map((l, k) => el("button", { class: "side-sub" + (l.id === view ? " on" : ""), "data-lesson": l.id, onclick: () => { openLesson(l.id); close(); } },
+      el("span", { class: "k notr" }, `${n}.${k + 1}`), el("span", { class: "t notr" }, l.title + (P(l.id).done ? " ✓" : ""))))];
+  }));
 }
+const moduleCard = (m) => el("div", { class: "card" },
+  el("b", { class: "notr" }, `${mods.indexOf(m)}. ${m.title}`),
+  el("ol", { class: "lessons" }, m.lessons.map((l) => el("li", null, el("button", { class: "linkbtn notr", onclick: () => openLesson(l.id) }, l.title), ` · ${l.minutes} мин`, P(l.id).done ? el("span", { class: "good" }, " ✓ пройден") : null))),
+  el("details", { class: "sub" }, el("summary", null, "Главное в трёх строках"), el("ul", { class: "notr" }, m.summary.map((s) => el("li", null, s)))));
 function renderHome() {
-  view = null; sideLesson(null);
+  view = null; openMod = null; sideCourse();
   const done = lessons.filter((l) => P(l.id).done).length;
   $("learnArea").replaceChildren(
     el("div", { class: "card" }, el("b", null, "Курс"), el("div", { class: "help" }, `Пройдено уроков: ${done} из ${lessons.length}. Модули можно открывать в любом порядке. Курс объясняет и показывает, но не советует, что покупать.`)),
-    ...mods.map((m, mi) => el("div", { class: "card" },
-      el("b", { class: "notr" }, `${mi}. ${m.title}`),
-      el("ol", { class: "lessons" }, m.lessons.map((l) => el("li", null, el("button", { class: "linkbtn notr", onclick: () => openLesson(l.id) }, l.title), ` · ${l.minutes} мин`, P(l.id).done ? el("span", { class: "good" }, " ✓ пройден") : null))),
-      el("details", { class: "sub" }, el("summary", null, "Главное в трёх строках"), el("ul", { class: "notr" }, m.summary.map((s) => el("li", null, s)))))),
+    ...mods.map(moduleCard),
     el("div", { class: "card help" }, "Все модули курса на месте. Налоги и правила меняются часто: перед решением сверяйтесь с датой проверки и первоисточником в уроке."));
+}
+// Раздел из панели: его уроки и главное — без остальных разделов.
+function openModule(id) {
+  const m = mods.find((x) => x.id === id); if (!m) return renderHome();
+  view = null; openMod = id; sideCourse();
+  $("learnArea").replaceChildren(el("div", { class: "inline" }, el("button", { class: "sec small", onclick: renderHome }, "← Все разделы")), moduleCard(m));
 }
 
 // Блок ролика урока: ролик модуля (course/videos.js) разрезан по урокам — сцены урока n те, у которых lessons[i] === n;
@@ -161,8 +177,7 @@ function openLesson(id) {
   const i = lessons.findIndex((l) => l.id === id), l = lessons[i];
   if (!l) return renderHome();
   view = id;
-  const p = P(id);
-  const doneBtn = el("button", { onclick: () => { p.done = true; p.doneAt ||= Date.now(); saveLesson(id); next ? openLesson(next.id) : renderHome(); } }, p.done ? "Дальше" : "Урок пройден");
+  const p = P(id);  const doneBtn = el("button", { onclick: () => { p.done = true; p.doneAt ||= Date.now(); saveLesson(id); next ? openLesson(next.id) : renderHome(); } }, p.done ? "Дальше" : "Урок пройден");
   const prev = lessons[i - 1], next = lessons[i + 1];
   $("learnArea").replaceChildren(el("div", { class: "card lesson" },
     el("div", { class: "inline" }, el("button", { class: "sec small", onclick: renderHome }, "← К списку уроков"), el("span", { class: "kicker" }, `Модуль ${l.module.id.replace(/[^0-9]/g, "").padStart(2, "0")} · урок ${l.module.lessons.findIndex((x) => x.id === id) + 1} из ${l.module.lessons.length} · ${l.minutes} мин`)),
@@ -172,7 +187,7 @@ function openLesson(id) {
     ...l.blocks.map((b, k) => BLOCKS[b.type](b, l, k)),
     el("hr"),
     el("div", { class: "inline" }, prev ? el("button", { class: "sec notr", onclick: () => openLesson(prev.id) }, "← " + prev.title) : null, doneBtn, next ? el("span", { class: "help" }, "Следующий:", " ", el("span", { class: "notr" }, next.title)) : null)));
-  sideLesson(l);
+  openMod = l.module.id; sideCourse();
   window.scrollTo(0, 0);
 }
 

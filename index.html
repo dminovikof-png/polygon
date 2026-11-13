@@ -138,12 +138,13 @@
   #learnArea{margin:-20px -28px;padding:24px 28px;min-height:100vh}
   #learnArea>*{max-width:1040px}
   @media(max-width:599px){#learnArea{margin:-52px -16px -84px;padding:60px 16px 92px}}
-  /* строка под «Учёбой»: текущий модуль и урок (только при открытом уроке; на телефоне панели нет) */
-  #side .side-lesson{padding:0 14px 6px 44px;font-size:10px;line-height:1.5;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  #side .side-lesson span{display:block;overflow:hidden;text-overflow:ellipsis}
-  body[data-mode=work] #side .side-lesson{display:none}
-  @media(max-width:1000px){#side:not(.open) .side-lesson{display:none}}
-  @media(max-width:599px){#side .side-lesson{display:none!important}}
+  /* панель по режиму: в учёбе — разделы курса (у открытого — уроки), в работе — этапы и журнал.
+     На телефоне панели нет: нижняя полоса одна для обоих режимов, поэтому правило — от 600px */
+  @media(min-width:600px){body[data-mode=learn] #side .work-only,body:not([data-mode=learn]) #side .learn-only{display:none}}
+  #side button.cur,#side button.cur .k{color:var(--acc)}
+  #side .side-sub{padding-left:24px;font-size:11px}
+  #side .side-sub .k{min-width:28px}
+  @media(max-width:899px) and (min-width:600px){#side:not(.open) .side-sub{display:none}}
   /* свечной график */
   .candlebox{position:relative;margin:10px 0;border:1px solid var(--line);background:var(--panel)}
   canvas.candles{display:block;width:100%;height:320px;background:none;border-radius:0;touch-action:pan-y;cursor:grab}
@@ -158,10 +159,11 @@
   <div class="brand"><h1>Честный полигон</h1></div>
   <button id="sideMenu" class="notr" aria-label="☰">☰</button>
   <button data-mode="learn" class="pri"><span class="k notr">◇</span><span class="t">Учёба</span></button>
-  <div class="side-lesson notr" id="sideLesson" hidden></div>
-  <button data-side="work" class="pri only-phone"><span class="k notr">▤</span><span class="t">Работа</span></button>
-  <div class="side-h">Работа</div>
-  <nav id="nav">
+  <button data-side="work" class="pri"><span class="k notr">▤</span><span class="t">Работа</span></button>
+  <div class="side-h learn-only">Разделы курса</div>
+  <nav id="sideCourse" class="learn-only"></nav>
+  <div class="side-h work-only">Этапы</div>
+  <nav id="nav" class="work-only">
     <button data-tab="start"><span class="k notr">00</span><span class="t">Начало</span></button>
     <button data-tab="coins"><span class="k notr">01</span><span class="t">Монеты</span></button>
     <button data-tab="state"><span class="k notr">02</span><span class="t">Состояние рынка</span></button>
@@ -169,11 +171,11 @@
     <button data-tab="test"><span class="k notr">04</span><span class="t">Проверка</span></button>
     <button data-tab="paper"><span class="k notr">05</span><span class="t">Наблюдение</span></button>
   </nav>
-  <div class="side-h">Журнал</div>
-  <button data-tab="journal" class="pri"><span class="k notr">#</span><span class="t"><span class="t-full">Журнал попыток</span><span class="t-short">Журнал</span></span></button>
-  <button data-tab="ref" class="pri"><span class="k notr">≡</span><span class="t">Справка</span></button>
-  <div class="side-note" id="journalPill">Журнал: …</div>
-  <button data-tab="settings" class="pri"><span class="k notr">⚙</span><span class="t">Настройки</span></button>
+  <div class="side-h work-only">Журнал</div>
+  <button data-tab="journal" class="pri work-only"><span class="k notr">#</span><span class="t"><span class="t-full">Журнал попыток</span><span class="t-short">Журнал</span></span></button>
+  <button data-tab="ref" class="pri work-only"><span class="k notr">≡</span><span class="t">Справка</span></button>
+  <div class="side-note work-only" id="journalPill">Журнал: …</div>
+  <button data-tab="settings" class="pri work-only"><span class="k notr">⚙</span><span class="t">Настройки</span></button>
   <div class="side-foot"><div id="sideSum" class="notr"></div><select id="langSel" class="langsel notr" aria-label="Язык / Language"></select></div>
 </aside>
 <main>
@@ -519,8 +521,8 @@
 </main>
 </div>
 
-<script src="i18n.js?v=f58ab82952"></script>
-<script src="app.js?v=f58ab82952"></script>
-<script type="module" src="course.js?v=f58ab82952"></script>
+<script src="i18n.js?v=8498fe75be"></script>
+<script src="app.js?v=8498fe75be"></script>
+<script type="module" src="course.js?v=8498fe75be"></script>
 </body>
 </html>
