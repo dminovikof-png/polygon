@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.917
+Un agregador reparte el intercambio entre varios pools para que cada parte mueva
+
+2
+00:00:04.917 --> 00:00:05.830
+menos el precio.
+
+3
+00:00:05.830 --> 00:00:10.226
+El coste total de un intercambio suma el gas de la red, la comisión del pool,
+
+4
+00:00:10.226 --> 00:00:12.110
+el impacto en el precio y el MEV.
+
+5
+00:00:12.110 --> 00:00:14.393
+Lo que hay que comparar es el resultado:
+
+6
+00:00:14.393 --> 00:00:16.334
+cuántos tokens recibes en la mano.
+
+7
+00:00:17.334 --> 00:00:18.020
+Lo principal.
+
+8
+00:00:18.020 --> 00:00:20.976
+En un exchange descentralizado intercambias con un pool,
+
+9
+00:00:20.976 --> 00:00:24.513
+y cuanto mayor es el intercambio frente al pool, peor es el precio.
+
+10
+00:00:24.513 --> 00:00:28.313
+Los proveedores reciben comisiones, pero pagan con pérdida impermanente.
+
+11
+00:00:28.313 --> 00:00:32.694
+Y un intercambio grande con mucha tolerancia al deslizamiento es un regalo para los
+
+12
+00:00:32.694 --> 00:00:32.958
+bots.

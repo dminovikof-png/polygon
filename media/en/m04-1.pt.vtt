@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.232
+Módulo quatro:
+
+2
+00:00:01.232 --> 00:00:02.997
+corretoras descentralizadas.
+
+3
+00:00:02.997 --> 00:00:07.786
+Como trocar com um pool em vez de um livro, como uma fórmula define o preço,
+
+4
+00:00:07.786 --> 00:00:12.764
+de onde vem a perda impermanente dos provedores e como os bots ganham com a sua
+
+5
+00:00:12.764 --> 00:00:13.142
+troca.
+
+6
+00:00:14.142 --> 00:00:18.641
+Uma corretora descentralizada é um conjunto de contratos inteligentes.
+
+7
+00:00:18.641 --> 00:00:23.077
+Manter um livro na blockchain é caro, então no lugar dele há um pool:
+
+8
+00:00:23.077 --> 00:00:25.841
+um contrato com uma reserva de dois tokens.
+
+9
+00:00:25.841 --> 00:00:28.347
+Os provedores depositam os dois tokens,
+
+10
+00:00:28.347 --> 00:00:32.140
+os traders trocam com o pool e uma fórmula calcula o preço.
+
+11
+00:00:32.140 --> 00:00:36.318
+Você conecta a carteira e troca tokens direto dela, sem cadastro.

@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.123
+An option is a right, but not an obligation,
+
+2
+00:00:03.123 --> 00:00:06.842
+to buy or sell a coin at an agreed price on a certain date.
+
+3
+00:00:06.842 --> 00:00:09.930
+For the right, the buyer pays a premium up front.
+
+4
+00:00:09.930 --> 00:00:14.846
+A call profits from a rise; a put profits from a fall and resembles insurance.
+
+5
+00:00:14.846 --> 00:00:17.556
+The buyer's loss is limited to the premium.
+
+6
+00:00:17.556 --> 00:00:22.598
+The seller's profit is also limited to the premium, while the loss can be large.
+
+7
+00:00:23.598 --> 00:00:26.723
+The main thing in an option's price is volatility:
+
+8
+00:00:26.723 --> 00:00:30.972
+the more a coin swings, the likelier the right turns out profitable,
+
+9
+00:00:30.972 --> 00:00:32.284
+and the dearer it is.
+
+10
+00:00:32.284 --> 00:00:37.159
+In the lesson the Black–Scholes model converts expected swings into a premium.
+
+11
+00:00:37.159 --> 00:00:39.846
+Try changing the strike price and the term.

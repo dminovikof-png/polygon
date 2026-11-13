@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.652
+Whoever's order waited in the book is the maker.
+
+2
+00:00:03.652 --> 00:00:07.367
+Whoever took it is the taker, and the taker pays more.
+
+3
+00:00:07.367 --> 00:00:11.631
+On spot the base fee is about one tenth of a percent per side,
+
+4
+00:00:11.631 --> 00:00:14.314
+and a “buy — sell” round is two tenths.
+
+5
+00:00:14.314 --> 00:00:15.277
+It seems tiny.
+
+6
+00:00:15.277 --> 00:00:20.918
+But 500 rounds turn 100 dollars into about 37, without a single forecasting error.
+
+7
+00:00:21.918 --> 00:00:25.589
+Hence a rule that honest testing confirms again and again:
+
+8
+00:00:25.589 --> 00:00:27.488
+the more often an idea trades,
+
+9
+00:00:27.488 --> 00:00:30.906
+the bigger the edge it needs just to pay for the fees.
+
+10
+00:00:30.906 --> 00:00:35.779
+An idea that buys and sells with market orders every day loses about half its
+
+11
+00:00:35.779 --> 00:00:37.805
+capital in a year on fees alone.
+
+12
+00:00:37.805 --> 00:00:41.286
+That is why the program deducts costs from every trade.

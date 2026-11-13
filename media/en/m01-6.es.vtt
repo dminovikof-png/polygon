@@ -1,0 +1,85 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.457
+El trabajo de la red no es gratis.
+
+2
+00:00:02.457 --> 00:00:04.131
+En Ethereum se mide en gas:
+
+3
+00:00:04.131 --> 00:00:09.027
+una transferencia simple son 21 000 unidades; un intercambio, varias veces más.
+
+4
+00:00:09.027 --> 00:00:12.436
+La tarifa es el gas multiplicado por el precio del gas.
+
+5
+00:00:12.436 --> 00:00:16.217
+La parte base se quema; el resto es la propina del validador.
+
+6
+00:00:16.217 --> 00:00:20.246
+Cuando todos quieren entrar en un bloque, el precio del gas sube.
+
+7
+00:00:21.246 --> 00:00:23.240
+De ahí la idea de la segunda capa.
+
+8
+00:00:23.240 --> 00:00:28.048
+Un rollup reúne muchas transferencias en un lote y escribe todo el lote de una vez
+
+9
+00:00:28.048 --> 00:00:31.331
+en la red principal, y la tarifa se reparte entre todos.
+
+10
+00:00:31.331 --> 00:00:36.257
+Los rollups optimistas dan el lote por válido mientras nadie demuestre lo contrario,
+
+11
+00:00:36.257 --> 00:00:38.719
+así que un retiro puede tardar una semana.
+
+12
+00:00:38.719 --> 00:00:41.416
+Los rollups ZK adjuntan una prueba matemática.
+
+13
+00:00:41.416 --> 00:00:44.583
+El precio de lo barato son nuevos eslabones de riesgo:
+
+14
+00:00:44.583 --> 00:00:45.990
+el operador y el puente.
+
+15
+00:00:46.990 --> 00:00:47.751
+Lo principal.
+
+16
+00:00:47.751 --> 00:00:52.372
+Una blockchain es un registro común que no se puede reescribir sin que se note.
+
+17
+00:00:52.372 --> 00:00:55.999
+Quién añade un bloque lo decide el trabajo o la participación.
+
+18
+00:00:55.999 --> 00:00:57.930
+Y las monedas de red, los tokens,
+
+19
+00:00:57.930 --> 00:01:01.089
+las stablecoins y la segunda capa son cosas distintas,
+
+20
+00:01:01.089 --> 00:01:03.721
+cada una con su respuesta a en quién confías.
+
+21
+00:01:03.721 --> 00:01:06.646
+Los detalles están en las lecciones bajo el vídeo.

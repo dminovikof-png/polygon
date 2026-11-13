@@ -1,0 +1,57 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.009
+A language model is useful as an assistant:
+
+2
+00:00:03.009 --> 00:00:07.586
+explaining a term or someone else's code, writing a calculation and tests,
+
+3
+00:00:07.586 --> 00:00:12.348
+finding a look-ahead bug or a forgotten fee, turning a journal into a report.
+
+4
+00:00:12.348 --> 00:00:16.925
+But it does not know tomorrow's price, it can confidently invent a number,
+
+5
+00:00:16.925 --> 00:00:19.646
+and its knowledge ends at its training date.
+
+6
+00:00:20.646 --> 00:00:21.445
+And security.
+
+7
+00:00:21.445 --> 00:00:25.625
+Do not give a bot or an agent keys with the right to withdraw funds.
+
+8
+00:00:25.625 --> 00:00:29.375
+Text from a web page or an email may contain hidden commands.
+
+9
+00:00:29.375 --> 00:00:33.678
+And check any numbers the model gives you against the original source.
+
+10
+00:00:34.678 --> 00:00:35.680
+The main points.
+
+11
+00:00:35.680 --> 00:00:39.874
+A bot executes a rule without emotions but does not make it better.
+
+12
+00:00:39.874 --> 00:00:43.567
+Machine learning on prices alone almost always finds noise.
+
+13
+00:00:43.567 --> 00:00:46.071
+And language models are good assistants,
+
+14
+00:00:46.071 --> 00:00:49.702
+but do not trust them to predict prices or decide for you.

@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.623
+A provider deposited one ether and 2,000 dollars.
+
+2
+00:00:03.623 --> 00:00:09.033
+The ether price doubled, and arbitrageurs bought the cheap ether out of the pool.
+
+3
+00:00:09.033 --> 00:00:14.376
+Now the provider has 5,657 dollars, while simply holding would have given 6,000.
+
+4
+00:00:14.376 --> 00:00:18.985
+The pool keeps selling what gets dearer and buying what gets cheaper.
+
+5
+00:00:18.985 --> 00:00:23.126
+The loss is the same for a rise and a fall by the same factor.
+
+6
+00:00:24.126 --> 00:00:26.555
+A provider earns fees from every swap,
+
+7
+00:00:26.555 --> 00:00:29.496
+and the result is fees minus impermanent loss.
+
+8
+00:00:29.496 --> 00:00:32.372
+For two dollar stablecoins the loss is small.
+
+9
+00:00:32.372 --> 00:00:36.592
+If one coin can crash against the other, the loss eats everything.
+
+10
+00:00:36.592 --> 00:00:41.578
+And liquidity in a narrow range earns more fees, but when the price leaves it,
+
+11
+00:00:41.578 --> 00:00:44.838
+you are left entirely in the coin that got cheaper.

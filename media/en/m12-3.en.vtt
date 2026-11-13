@@ -1,0 +1,41 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.632
+Machine learning fits a rule to data:
+
+2
+00:00:02.632 --> 00:00:07.504
+the model is shown past returns and the right answers, and it looks for a link.
+
+3
+00:00:07.504 --> 00:00:10.402
+The key to testing it is the walk-forward test:
+
+4
+00:00:10.402 --> 00:00:14.102
+for each day, the model learns only from the days before it.
+
+5
+00:00:15.102 --> 00:00:19.204
+The nearest-neighbour method, on the same data it learned from,
+
+6
+00:00:19.204 --> 00:00:21.027
+guesses 100 percent of days:
+
+7
+00:00:21.027 --> 00:00:23.045
+it simply remembers the answer.
+
+8
+00:00:23.045 --> 00:00:27.017
+In a walk-forward test it gets 49 percent, worse than a coin.
+
+9
+00:00:27.017 --> 00:00:30.142
+The more flexible the model, the bigger the gap.
+
+10
+00:00:30.142 --> 00:00:33.918
+Under honest testing, all variants stay around 50 percent.

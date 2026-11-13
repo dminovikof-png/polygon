@@ -1,0 +1,37 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.202
+Module nine:
+
+2
+00:00:01.202 --> 00:00:01.984
+strategies.
+
+3
+00:00:01.984 --> 00:00:06.316
+Holding and buying in parts, trend following, mean reversion,
+
+4
+00:00:06.316 --> 00:00:10.862
+grids and neutral strategies, and the hidden assumption of each.
+
+5
+00:00:11.862 --> 00:00:14.355
+A strategy is easy to describe in rules.
+
+6
+00:00:14.355 --> 00:00:15.914
+It is more useful to ask:
+
+7
+00:00:15.914 --> 00:00:19.342
+what has to happen to the price for this to make money?
+
+8
+00:00:19.342 --> 00:00:21.212
+That is the hidden assumption.
+
+9
+00:00:21.212 --> 00:00:25.326
+Every strategy has one, even one that calls itself market-neutral.

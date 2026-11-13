@@ -1,0 +1,69 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.025
+Módulo três:
+
+2
+00:00:01.025 --> 00:00:02.433
+corretoras centralizadas.
+
+3
+00:00:02.433 --> 00:00:06.260
+Como funciona o livro de ofertas, quanto as taxas custam de verdade,
+
+4
+00:00:06.260 --> 00:00:10.594
+o que são futuros e funding, e por que a alavancagem liquida você mesmo com a
+
+5
+00:00:10.594 --> 00:00:11.438
+previsão certa.
+
+6
+00:00:12.438 --> 00:00:14.638
+Numa corretora ninguém define o preço.
+
+7
+00:00:14.638 --> 00:00:15.969
+Há um livro de ofertas:
+
+8
+00:00:15.969 --> 00:00:18.284
+uma lista de quem quer comprar e vender.
+
+9
+00:00:18.284 --> 00:00:20.947
+Em cima os vendedores, embaixo os compradores,
+
+10
+00:00:20.947 --> 00:00:23.841
+e a diferença entre os melhores preços é o spread.
+
+11
+00:00:23.841 --> 00:00:26.272
+Uma ordem limitada fica no livro e espera.
+
+12
+00:00:26.272 --> 00:00:30.729
+Uma ordem a mercado pega as melhores ofertas uma após a outra até completar o
+
+13
+00:00:30.729 --> 00:00:31.134
+volume.
+
+14
+00:00:32.134 --> 00:00:34.721
+Na lição você pode mexer no livro com as mãos:
+
+15
+00:00:34.721 --> 00:00:38.489
+enviar uma ordem a mercado e ver a que preço médio ela é executada.
+
+16
+00:00:38.489 --> 00:00:42.426
+Quanto maior a ordem em relação à profundidade do livro, pior o preço.
+
+17
+00:00:42.426 --> 00:00:43.438
+Isso é o slippage.

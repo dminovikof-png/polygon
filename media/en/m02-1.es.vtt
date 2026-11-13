@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.020
+Módulo dos:
+
+2
+00:00:01.020 --> 00:00:02.237
+wallets y seguridad.
+
+3
+00:00:02.237 --> 00:00:06.680
+Dónde están de verdad las monedas, qué son una clave y una frase semilla,
+
+4
+00:00:06.680 --> 00:00:08.932
+y cómo se pierde dinero casi siempre:
+
+5
+00:00:08.932 --> 00:00:12.158
+no por un hackeo de la red, sino por tu propia firma.
+
+6
+00:00:13.158 --> 00:00:14.775
+Un wallet no guarda monedas:
+
+7
+00:00:14.775 --> 00:00:17.258
+siempre están registradas en la blockchain.
+
+8
+00:00:17.258 --> 00:00:19.222
+El wallet guarda la clave privada,
+
+9
+00:00:19.222 --> 00:00:22.687
+un número secreto que da derecho a firmar una transferencia.
+
+10
+00:00:22.687 --> 00:00:27.538
+Si las claves las tiene el exchange, tú solo tienes un registro en su base de datos.
+
+11
+00:00:27.538 --> 00:00:30.945
+Si la clave la tienes solo tú, nadie congelará tus monedas,
+
+12
+00:00:30.945 --> 00:00:33.486
+pero nadie te ayudará a recuperar el acceso.
+
+13
+00:00:34.486 --> 00:00:36.448
+Ambas opciones tienen su riesgo.
+
+14
+00:00:36.448 --> 00:00:40.495
+En noviembre de 2022 el exchange FTX bloqueó los retiros y quebró:
+
+15
+00:00:40.495 --> 00:00:43.929
+la propia empresa había usado el dinero de los clientes.
+
+16
+00:00:43.929 --> 00:00:48.466
+Y miles de personas perdieron su frase semilla o enviaron monedas al lugar
+
+17
+00:00:48.466 --> 00:00:50.796
+equivocado, sin forma de recuperarlas.
+
+18
+00:00:50.796 --> 00:00:54.598
+Así que la pregunta no es si es seguro, sino en quién confías.

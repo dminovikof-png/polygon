@@ -1,0 +1,65 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:00.975
+Módulo um:
+
+2
+00:00:00.975 --> 00:00:02.226
+blockchain e moedas.
+
+3
+00:00:02.226 --> 00:00:05.977
+Vamos ver como funciona um registro comum de transferências,
+
+4
+00:00:05.977 --> 00:00:08.228
+quem decide qual bloco vem a seguir,
+
+5
+00:00:08.228 --> 00:00:12.793
+como o bitcoin é emitido e em que diferem contratos inteligentes, tokens,
+
+6
+00:00:12.793 --> 00:00:14.606
+stablecoins e segunda camada.
+
+7
+00:00:15.606 --> 00:00:18.431
+Um banco mantém o registro do dinheiro consigo.
+
+8
+00:00:18.431 --> 00:00:23.361
+Uma blockchain faz o mesmo, mas o registro é mantido por milhares de computadores,
+
+9
+00:00:23.361 --> 00:00:24.623
+e nenhum deles manda.
+
+10
+00:00:24.623 --> 00:00:29.252
+As transferências são reunidas em blocos, e os blocos são ligados por hashes.
+
+11
+00:00:29.252 --> 00:00:31.777
+Um hash é uma impressão digital dos dados:
+
+12
+00:00:31.777 --> 00:00:34.182
+mude uma letra, e toda a impressão muda.
+
+13
+00:00:35.182 --> 00:00:39.276
+Na lição você pode mudar um dígito num bloco e ver como o hash muda.
+
+14
+00:00:39.276 --> 00:00:41.503
+Cada bloco guarda o hash do anterior.
+
+15
+00:00:41.503 --> 00:00:46.620
+Então falsificar um registro antigo significa recalcular todos os blocos depois dele,
+
+16
+00:00:46.620 --> 00:00:49.630
+mais rápido do que o resto da rede adiciona novos.

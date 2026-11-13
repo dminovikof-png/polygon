@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:05.656
+An aggregator splits a swap across several pools so that each part moves the price
+
+2
+00:00:05.656 --> 00:00:05.980
+less.
+
+3
+00:00:05.980 --> 00:00:10.122
+The full cost of a swap is made up of network gas, the pool fee,
+
+4
+00:00:10.122 --> 00:00:11.481
+price impact and MEV.
+
+5
+00:00:11.481 --> 00:00:13.940
+What you should compare is the result:
+
+6
+00:00:13.940 --> 00:00:16.334
+how many tokens you actually receive.
+
+7
+00:00:17.334 --> 00:00:18.346
+The main points.
+
+8
+00:00:18.346 --> 00:00:21.446
+On a decentralized exchange you swap with a pool,
+
+9
+00:00:21.446 --> 00:00:25.620
+and the bigger the swap relative to the pool, the worse the price.
+
+10
+00:00:25.620 --> 00:00:28.783
+Providers earn fees but pay with impermanent loss.
+
+11
+00:00:28.783 --> 00:00:32.958
+And a large swap with a high slippage tolerance is a gift to bots.

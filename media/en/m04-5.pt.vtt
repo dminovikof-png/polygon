@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:05.504
+Um agregador divide a troca entre vários pools para que cada parte mova menos o
+
+2
+00:00:05.504 --> 00:00:05.895
+preço.
+
+3
+00:00:05.895 --> 00:00:09.940
+O custo total de uma troca soma o gas da rede, a taxa do pool,
+
+4
+00:00:09.940 --> 00:00:11.702
+o impacto no preço e o MEV.
+
+5
+00:00:11.702 --> 00:00:14.116
+O que se deve comparar é o resultado:
+
+6
+00:00:14.116 --> 00:00:16.334
+quantos tokens você recebe na mão.
+
+7
+00:00:17.334 --> 00:00:18.050
+O principal.
+
+8
+00:00:18.050 --> 00:00:21.270
+Numa corretora descentralizada você troca com um pool,
+
+9
+00:00:21.270 --> 00:00:24.609
+e quanto maior a troca em relação ao pool, pior o preço.
+
+10
+00:00:24.609 --> 00:00:28.307
+Os provedores recebem taxas, mas pagam com perda impermanente.
+
+11
+00:00:28.307 --> 00:00:32.958
+E uma troca grande com muita tolerância a slippage é um presente para os bots.

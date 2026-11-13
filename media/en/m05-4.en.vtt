@@ -1,0 +1,57 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.452
+Networks cannot see each other.
+
+2
+00:00:02.452 --> 00:00:07.810
+A bridge takes a coin into a vault on one network and issues a wrapped token on
+
+3
+00:00:07.810 --> 00:00:08.353
+another.
+
+4
+00:00:08.353 --> 00:00:13.303
+The IOU is valuable while the vault is intact, and vaults hold huge sums.
+
+5
+00:00:13.303 --> 00:00:18.119
+In 2022 about 320 million dollars were stolen from the Wormhole bridge,
+
+6
+00:00:18.119 --> 00:00:21.374
+and more than 600 million from the Ronin bridge.
+
+7
+00:00:22.374 --> 00:00:25.417
+An oracle tells a contract a price from outside.
+
+8
+00:00:25.417 --> 00:00:28.396
+If the price is easy to move, it will be moved.
+
+9
+00:00:28.396 --> 00:00:32.834
+In October 2022 more than 100 million were drained from Mango Markets:
+
+10
+00:00:32.834 --> 00:00:35.496
+the price of an illiquid token was pumped,
+
+11
+00:00:35.496 --> 00:00:38.412
+the protocol believed the inflated collateral,
+
+12
+00:00:38.412 --> 00:00:41.328
+and almost everything was borrowed against it.
+
+13
+00:00:41.328 --> 00:00:42.026
+Protection:
+
+14
+00:00:42.026 --> 00:00:46.590
+several price sources, a time average and limits on illiquid collateral.

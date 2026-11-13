@@ -1,0 +1,81 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.575
+O trabalho da rede não é de graça.
+
+2
+00:00:02.575 --> 00:00:04.670
+No Ethereum ele é medido em gas:
+
+3
+00:00:04.670 --> 00:00:09.644
+uma transferência simples são 21 000 unidades; uma troca, várias vezes mais.
+
+4
+00:00:09.644 --> 00:00:12.654
+A taxa é o gas multiplicado pelo preço do gas.
+
+5
+00:00:12.654 --> 00:00:16.450
+A parte base é queimada, o resto é a gorjeta do validador.
+
+6
+00:00:16.450 --> 00:00:20.246
+Quando todos querem entrar num bloco, o preço do gas sobe.
+
+7
+00:00:21.246 --> 00:00:23.205
+Daí a ideia da segunda camada.
+
+8
+00:00:23.205 --> 00:00:28.623
+Um rollup reúne muitas transferências num lote e grava o lote inteiro de uma vez na
+
+9
+00:00:28.623 --> 00:00:31.757
+rede principal, e a taxa é dividida entre todos.
+
+10
+00:00:31.757 --> 00:00:36.719
+Os rollups otimistas consideram o lote válido até alguém provar o contrário,
+
+11
+00:00:36.719 --> 00:00:39.135
+então um saque pode levar uma semana.
+
+12
+00:00:39.135 --> 00:00:41.877
+Os rollups ZK anexam uma prova matemática.
+
+13
+00:00:41.877 --> 00:00:44.619
+O preço do barato são novos elos de risco:
+
+14
+00:00:44.619 --> 00:00:45.990
+o operador e a ponte.
+
+15
+00:00:46.990 --> 00:00:47.700
+O principal.
+
+16
+00:00:47.700 --> 00:00:52.496
+Uma blockchain é um registro comum que não pode ser reescrito sem que se perceba.
+
+17
+00:00:52.496 --> 00:00:56.581
+Quem adiciona um bloco é decidido pelo trabalho ou pela participação.
+
+18
+00:00:56.581 --> 00:01:01.140
+E moedas de rede, tokens, stablecoins e segunda camada são coisas diferentes,
+
+19
+00:01:01.140 --> 00:01:03.982
+cada uma com sua resposta a em quem você confia.
+
+20
+00:01:03.982 --> 00:01:06.646
+Os detalhes estão nas lições abaixo do vídeo.

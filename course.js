@@ -36,6 +36,8 @@ let glossary = new Map(COURSE_TERMS), progress = { lessons: {} }, view = null;
 let mods = MODULES, lessons = [];
 const index = () => { mods = MODULES.map((m) => applyTranslation(m, TR.MODULES[m.id])); lessons = mods.flatMap((m) => m.lessons.map((l) => ({ ...l, module: m }))); };
 index();
+// копия массива в случайном порядке (Фишер — Йетс)
+const shuffled = (a) => { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; };
 const P = (id) => (progress.lessons[id] ||= { done: false, doneAt: null, quiz: {} });
 
 // Прогресс — на компьютере (data/progress.json); если сервера нет (статический сайт) — в браузере.
@@ -94,11 +96,14 @@ const BLOCKS = {
   quiz: (b, lesson, k) => {
     const saved = P(lesson.id).quiz[k], box = el("div", { class: "box quiz notr" }, el("b", null, T("Проверьте себя:") + " " + b.q));
     const res = el("div", { class: "plain" });
+    const btns = [];
     const pick = (j) => {
-      box.querySelectorAll(".opt").forEach((o, n) => { o.classList.toggle("ok", n === b.answer); o.classList.toggle("no", n === j && j !== b.answer); });
+      btns.forEach((o, n) => { o.classList.toggle("ok", n === b.answer); o.classList.toggle("no", n === j && j !== b.answer); });
       res.replaceChildren(el("b", { class: j === b.answer ? "good" : "bad" }, T(j === b.answer ? "Верно." : "Не совсем.") + " "), b.explain);
     };
-    b.options.forEach((o, j) => box.append(el("button", { class: "opt", onclick: () => { pick(j); P(lesson.id).quiz[k] = { pick: j, ok: j === b.answer, at: Date.now() }; saveLesson(lesson.id); } }, o)));
+    // btns[j] — вариант j из урока (в прогрессе хранится этот номер); на экране варианты в случайном порядке
+    b.options.forEach((o, j) => btns.push(el("button", { class: "opt", onclick: () => { pick(j); P(lesson.id).quiz[k] = { pick: j, ok: j === b.answer, at: Date.now() }; saveLesson(lesson.id); } }, o)));
+    box.append(...shuffled(btns));
     box.append(res);
     if (saved) pick(saved.pick);
     return box;
@@ -137,15 +142,19 @@ function renderHome() {
     el("div", { class: "card help" }, "Все модули курса на месте. Налоги и правила меняются часто: перед решением сверяйтесь с датой проверки и первоисточником в уроке."));
 }
 
-// Блок ролика модуля из его сценария (course/videos.js): видео, субтитры, заставка и текст реплик.
+// Блок ролика урока: ролик модуля (course/videos.js) разрезан по урокам — сцены урока n те, у которых lessons[i] === n;
+// файлы media/mNN-K.*. Урок без сцен — без ролика (null).
 // По-русски — русский ролик с русскими субтитрами. На другом языке — английский ролик (media/en/), если он переведён:
 // субтитры на языке интерфейса (если ролик переведён и на него) и английские; иначе русский ролик.
-const moduleVideo = (mid) => {
+const lessonVideo = (l) => {
+  const mid = l.module.id, v = VIDEOS[mid], n = l.module.lessons.findIndex((x) => x.id === l.id) + 1, id = l.id;
+  if (!v?.lessons?.includes(n)) return null;
+  const text = (scenes) => scenes.filter((_, i) => v.lessons[i] === n).map((s) => s.t).join("\n\n");
   const en = TR.EN[mid], own = TR.VIDEOS[mid];
-  if (LANG === "ru" || !en) return { src: `media/${mid}.mp4`, poster: `media/${mid}.jpg`, tracks: [{ src: `media/${mid}.ru.vtt`, lang: "ru" }], transcript: VIDEOS[mid].scenes.map((s) => s.t).join("\n\n") };
-  return { src: `media/en/${mid}.mp4`, poster: `media/en/${mid}.jpg`,
-    tracks: [{ src: `media/en/${mid}.en.vtt`, lang: "en" }, ...(LANG !== "en" && own ? [{ src: `media/en/${mid}.${LANG}.vtt`, lang: LANG }] : [])],
-    transcript: (own || en).scenes.map((s) => s.t).join("\n\n") };
+  if (LANG === "ru" || !en) return { src: `media/${id}.mp4`, poster: `media/${id}.jpg`, tracks: [{ src: `media/${id}.ru.vtt`, lang: "ru" }], transcript: text(v.scenes) };
+  return { src: `media/en/${id}.mp4`, poster: `media/en/${id}.jpg`,
+    tracks: [{ src: `media/en/${id}.en.vtt`, lang: "en" }, ...(LANG !== "en" && own ? [{ src: `media/en/${id}.${LANG}.vtt`, lang: LANG }] : [])],
+    transcript: text((own || en).scenes) };
 };
 
 function openLesson(id) {
@@ -159,7 +168,7 @@ function openLesson(id) {
     el("div", { class: "inline" }, el("button", { class: "sec small", onclick: renderHome }, "← К списку уроков"), el("span", { class: "kicker" }, `Модуль ${l.module.id.replace(/[^0-9]/g, "").padStart(2, "0")} · урок ${l.module.lessons.findIndex((x) => x.id === id) + 1} из ${l.module.lessons.length} · ${l.minutes} мин`)),
     el("h2", { class: "notr" }, l.title),
     LANG !== "ru" && !l.module.translated ? el("div", { class: "box help" }, "Этот модуль пока не переведён: текст урока — на русском.") : null,
-    l.module.lessons[0].id === id && VIDEOS[l.module.id] ? BLOCKS.video(moduleVideo(l.module.id)) : null, // ролик модуля — в его первом уроке
+    ((vid) => vid ? BLOCKS.video(vid) : null)(lessonVideo(l)), // ролик урока — его часть ролика модуля
     ...l.blocks.map((b, k) => BLOCKS[b.type](b, l, k)),
     el("hr"),
     el("div", { class: "inline" }, prev ? el("button", { class: "sec notr", onclick: () => openLesson(prev.id) }, "← " + prev.title) : null, doneBtn, next ? el("span", { class: "help" }, "Следующий:", " ", el("span", { class: "notr" }, next.title)) : null)));

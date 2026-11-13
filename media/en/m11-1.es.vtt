@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.108
+Módulo once:
+
+2
+00:00:01.108 --> 00:00:02.055
+prueba honesta.
+
+3
+00:00:02.055 --> 00:00:06.161
+Cómo miente un backtest, cómo mirar al futuro infla el resultado,
+
+4
+00:00:06.161 --> 00:00:11.403
+por qué la mejor de quinientas variantes aleatorias no demuestra nada y para qué se
+
+5
+00:00:11.403 --> 00:00:12.350
+reservan datos.
+
+6
+00:00:13.350 --> 00:00:17.837
+Un backtest es un cálculo de lo que habría ganado una regla si se hubiera operado
+
+7
+00:00:17.837 --> 00:00:19.056
+con ella en el pasado.
+
+8
+00:00:19.056 --> 00:00:21.493
+Es la única forma barata de probar una idea.
+
+9
+00:00:21.493 --> 00:00:22.490
+Pero es un modelo:
+
+10
+00:00:22.490 --> 00:00:24.595
+supone precios de ejecución correctos,
+
+11
+00:00:24.595 --> 00:00:27.587
+comisiones correctas y una regla conocida de antemano.
+
+12
+00:00:27.587 --> 00:00:30.966
+Cada uno de estos supuestos se puede romper sin darte cuenta.

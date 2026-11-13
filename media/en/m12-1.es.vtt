@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.035
+Módulo doce:
+
+2
+00:00:01.035 --> 00:00:03.660
+trading algorítmico e inteligencia artificial.
+
+3
+00:00:03.660 --> 00:00:07.655
+Qué hace un bot y qué no, por qué importan la latencia y la ejecución,
+
+4
+00:00:07.655 --> 00:00:12.049
+qué encuentra el aprendizaje automático en los precios y dónde son útiles los
+
+5
+00:00:12.049 --> 00:00:13.190
+modelos de lenguaje.
+
+6
+00:00:14.190 --> 00:00:17.453
+Un bot ejecuta una regla sin emociones ni cansancio:
+
+7
+00:00:17.453 --> 00:00:21.658
+no teme vender tras una caída ni olvida poner un stop por la noche.
+
+8
+00:00:21.658 --> 00:00:23.604
+Pero no hace rentable la regla.
+
+9
+00:00:23.604 --> 00:00:28.750
+La regla es un eslabón de cinco, y la mayoría de los problemas están en los demás:
+
+10
+00:00:28.750 --> 00:00:31.637
+los datos llegaron tarde, el exchange rechazó,
+
+11
+00:00:31.637 --> 00:00:35.214
+una orden se ejecutó en parte o se repitió tras un fallo.

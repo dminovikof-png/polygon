@@ -1,0 +1,53 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.189
+Tomemos quinientos monos.
+
+2
+00:00:02.189 --> 00:00:06.897
+Cada uno, día tras día, decide al azar si estar en bitcoin o no.
+
+3
+00:00:06.897 --> 00:00:08.074
+Ningún análisis.
+
+4
+00:00:08.074 --> 00:00:11.531
+Pongámoslos en la historia real con comisiones.
+
+5
+00:00:11.531 --> 00:00:15.062
+Los mejores parecen genios, aunque es puro azar.
+
+6
+00:00:16.062 --> 00:00:20.153
+Por eso la mejor de muchas variantes no demuestra nada.
+
+7
+00:00:20.153 --> 00:00:23.277
+Su estadístico t se compara con un umbral:
+
+8
+00:00:23.277 --> 00:00:27.665
+lo que da la mejor de otras tantas variantes de puro ruido.
+
+9
+00:00:27.665 --> 00:00:32.574
+Para un intento es 1,96; para veinte, 2,45; para quinientos, 3,53.
+
+10
+00:00:33.574 --> 00:00:35.216
+Cuentan todos los intentos:
+
+11
+00:00:35.216 --> 00:00:40.082
+cada parámetro, cada moneda, cada variante de la regla, incluso las descartadas.
+
+12
+00:00:40.082 --> 00:00:44.583
+Por eso el programa lleva un diario de intentos y sube el umbral él mismo.
+
+13
+00:00:44.583 --> 00:00:49.510
+El número honesto de intentos casi siempre es mayor de lo que uno quiere admitir.

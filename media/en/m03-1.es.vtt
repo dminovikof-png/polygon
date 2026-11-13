@@ -1,0 +1,65 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:00.960
+Módulo tres:
+
+2
+00:00:00.960 --> 00:00:02.181
+exchanges centralizados.
+
+3
+00:00:02.181 --> 00:00:05.996
+Cómo funciona el libro de órdenes, cuánto cuestan de verdad las comisiones,
+
+4
+00:00:05.996 --> 00:00:07.928
+qué son los futuros y la financiación,
+
+5
+00:00:07.928 --> 00:00:11.438
+y por qué el apalancamiento te liquida aunque aciertes el pronóstico.
+
+6
+00:00:12.438 --> 00:00:14.441
+En un exchange nadie fija el precio.
+
+7
+00:00:14.441 --> 00:00:15.777
+Hay un libro de órdenes:
+
+8
+00:00:15.777 --> 00:00:18.336
+una lista de quienes quieren comprar y vender.
+
+9
+00:00:18.336 --> 00:00:20.840
+Arriba los vendedores, abajo los compradores,
+
+10
+00:00:20.840 --> 00:00:23.900
+y la diferencia entre los mejores precios es el spread.
+
+11
+00:00:23.900 --> 00:00:26.627
+Una orden limitada se queda en el libro y espera.
+
+12
+00:00:26.627 --> 00:00:31.134
+Una de mercado toma las mejores órdenes una tras otra hasta completar su volumen.
+
+13
+00:00:32.134 --> 00:00:34.751
+En la lección puedes tocar el libro con tus manos:
+
+14
+00:00:34.751 --> 00:00:38.100
+enviar una orden de mercado y ver a qué precio medio se ejecuta.
+
+15
+00:00:38.100 --> 00:00:42.182
+Cuanto mayor es la orden frente a la profundidad del libro, peor es el precio.
+
+16
+00:00:42.182 --> 00:00:43.438
+Eso es el deslizamiento.

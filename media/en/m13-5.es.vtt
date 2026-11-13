@@ -1,0 +1,53 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.909
+Un agente une un modelo, que puede equivocarse o caer en una orden oculta,
+
+2
+00:00:04.909 --> 00:00:08.914
+con una blockchain, donde una transferencia no se puede deshacer.
+
+3
+00:00:08.914 --> 00:00:11.255
+Un agente no tiene derechos ni bienes,
+
+4
+00:00:11.255 --> 00:00:14.582
+y casi en todas partes responde de sus actos su dueño.
+
+5
+00:00:14.582 --> 00:00:15.690
+De ahí las reglas:
+
+6
+00:00:15.690 --> 00:00:20.866
+un wallet aparte con un presupuesto que no duela perder, límites a nivel del wallet,
+
+7
+00:00:20.866 --> 00:00:24.254
+firma humana para lo grande y un registro de cada pago.
+
+8
+00:00:25.254 --> 00:00:26.033
+Lo principal.
+
+9
+00:00:26.033 --> 00:00:29.331
+A un agente se le puede dar un wallet y un presupuesto,
+
+10
+00:00:29.331 --> 00:00:31.369
+y paga él mismo datos y servicios.
+
+11
+00:00:31.369 --> 00:00:34.606
+La seguridad no se basa en la inteligencia del agente,
+
+12
+00:00:34.606 --> 00:00:36.405
+sino en las reglas del wallet.
+
+13
+00:00:36.405 --> 00:00:39.942
+Y de los errores del agente responde quien le dio la clave.

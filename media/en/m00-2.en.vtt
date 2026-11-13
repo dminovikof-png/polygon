@@ -1,0 +1,69 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.903
+Imagine ten people, each tossing a coin ten times.
+
+2
+00:00:03.903 --> 00:00:07.598
+The best one usually gets six, seven or eight heads.
+
+3
+00:00:08.598 --> 00:00:13.278
+Take a hundred people, and someone already has eight or nine heads out of ten,
+
+4
+00:00:13.278 --> 00:00:14.838
+although the coin is fair.
+
+5
+00:00:15.838 --> 00:00:19.425
+Five hundred people, and the best one looks like a master.
+
+6
+00:00:19.425 --> 00:00:20.476
+But it is chance:
+
+7
+00:00:20.476 --> 00:00:22.393
+there are simply many attempts.
+
+8
+00:00:22.393 --> 00:00:24.063
+Trading ideas are the same.
+
+9
+00:00:24.063 --> 00:00:27.526
+Test many ideas, and some will look excellent by chance.
+
+10
+00:00:28.526 --> 00:00:31.825
+That is why the program computes the t-statistic,
+
+11
+00:00:31.825 --> 00:00:37.480
+how steadily the idea beat the benchmark, and compares it with the significance bar.
+
+12
+00:00:37.480 --> 00:00:40.307
+The bar rises with the number of attempts:
+
+13
+00:00:40.307 --> 00:00:44.414
+for one attempt it is 1.96, for five hundred it is about 3.5.
+
+14
+00:00:45.414 --> 00:00:48.005
+The program is built on research:
+
+15
+00:00:48.005 --> 00:00:51.224
+29 hypotheses and 563 variants on crypto.
+
+16
+00:00:51.224 --> 00:00:54.287
+With that many attempts the bar is 3.1.
+
+17
+00:00:54.287 --> 00:00:58.998
+Not one idea that predicts the direction of price passed it.

@@ -1,0 +1,69 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.347
+Imagine dez pessoas, cada uma lançando uma moeda dez vezes.
+
+2
+00:00:04.347 --> 00:00:07.598
+A melhor costuma tirar seis, sete ou oito caras.
+
+3
+00:00:08.598 --> 00:00:14.838
+Com cem pessoas, alguém já tem oito ou nove caras em dez, embora a moeda seja justa.
+
+4
+00:00:15.838 --> 00:00:18.852
+Quinhentas pessoas, e a melhor parece uma mestra.
+
+5
+00:00:18.852 --> 00:00:19.590
+Mas é sorte:
+
+6
+00:00:19.590 --> 00:00:21.682
+simplesmente há muitas tentativas.
+
+7
+00:00:21.682 --> 00:00:23.712
+Com as ideias de trading é igual.
+
+8
+00:00:23.712 --> 00:00:27.526
+Teste muitas ideias, e algumas parecerão excelentes por acaso.
+
+9
+00:00:28.526 --> 00:00:31.476
+Por isso o programa calcula a estatística t,
+
+10
+00:00:31.476 --> 00:00:35.029
+o quão consistentemente a ideia superou a referência,
+
+11
+00:00:35.029 --> 00:00:37.844
+e a compara com o limiar de significância.
+
+12
+00:00:37.844 --> 00:00:40.593
+O limiar sobe com o número de tentativas:
+
+13
+00:00:40.593 --> 00:00:44.414
+para uma tentativa é 1,96; para quinhentas, cerca de 3,5.
+
+14
+00:00:45.414 --> 00:00:48.211
+O programa se baseia numa pesquisa:
+
+15
+00:00:48.211 --> 00:00:51.327
+29 hipóteses e 563 variantes em cripto.
+
+16
+00:00:51.327 --> 00:00:54.363
+Com tantas tentativas, o limiar é 3,1.
+
+17
+00:00:54.363 --> 00:00:58.998
+Nenhuma ideia que prevê a direção do preço passou por ele.

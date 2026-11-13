@@ -1,0 +1,77 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:05.275
+Leverage of 10 lets you open a 1,000-dollar position with 100 of collateral.
+
+2
+00:00:05.275 --> 00:00:09.033
+A one percent price move is ten percent of the collateral.
+
+3
+00:00:09.033 --> 00:00:12.014
+When the loss has almost eaten the collateral,
+
+4
+00:00:12.014 --> 00:00:14.606
+the exchange closes the position itself.
+
+5
+00:00:14.606 --> 00:00:16.680
+The main trap is the price path:
+
+6
+00:00:16.680 --> 00:00:20.503
+after a 12 percent fall the position is already liquidated,
+
+7
+00:00:20.503 --> 00:00:23.030
+and a 20 percent rise will not help it.
+
+8
+00:00:24.030 --> 00:00:28.984
+With isolated margin, liquidation takes only the collateral of that position.
+
+9
+00:00:28.984 --> 00:00:32.265
+With cross margin, the whole account is collateral:
+
+10
+00:00:32.265 --> 00:00:37.090
+liquidation is pushed further away, but a bad position can take everything.
+
+11
+00:00:37.090 --> 00:00:42.559
+And liquidation is calculated on the mark price, an average across several exchanges,
+
+12
+00:00:42.559 --> 00:00:46.998
+so that one random spike does not close everyone's positions at once.
+
+13
+00:00:47.998 --> 00:00:49.001
+The main points.
+
+14
+00:00:49.001 --> 00:00:50.694
+The price is an order book:
+
+15
+00:00:50.694 --> 00:00:53.453
+a market order pays the spread and slippage.
+
+16
+00:00:53.453 --> 00:00:55.397
+The fee for a round seems tiny,
+
+17
+00:00:55.397 --> 00:01:00.162
+but with frequent trading it eats capital faster than any forecasting error.
+
+18
+00:01:00.162 --> 00:01:04.739
+And leverage of 10 liquidates on a move of about ten percent against you,
+
+19
+00:01:04.739 --> 00:01:06.934
+even if the price later comes back.

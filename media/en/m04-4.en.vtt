@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:05.086
+A sent transaction first lands in a public queue and is visible to everyone.
+
+2
+00:00:05.086 --> 00:00:10.072
+A bot sees your large swap, places its own buy before it and a sell right after.
+
+3
+00:00:10.072 --> 00:00:13.499
+It takes almost all the slippage tolerance you allowed:
+
+4
+00:00:13.499 --> 00:00:16.179
+if you agreed to receive five percent less,
+
+5
+00:00:16.179 --> 00:00:18.734
+the bot will try to take almost all five.
+
+6
+00:00:19.734 --> 00:00:21.300
+How to protect yourself.
+
+7
+00:00:21.300 --> 00:00:22.474
+A small tolerance:
+
+8
+00:00:22.474 --> 00:00:25.802
+for liquid pairs, from one tenth to half a percent.
+
+9
+00:00:25.802 --> 00:00:28.412
+Better to repeat a swap than to overpay.
+
+10
+00:00:28.412 --> 00:00:31.608
+A large swap — in parts or through an aggregator.
+
+11
+00:00:31.608 --> 00:00:33.109
+And private submission:
+
+12
+00:00:33.109 --> 00:00:37.350
+many wallets can pass the transaction straight to block builders.

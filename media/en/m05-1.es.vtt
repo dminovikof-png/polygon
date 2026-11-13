@@ -1,0 +1,57 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.183
+Módulo cinco:
+
+2
+00:00:01.183 --> 00:00:02.207
+protocolos DeFi.
+
+3
+00:00:02.207 --> 00:00:07.139
+Préstamos con colateral, fuentes de rendimiento, staking, puentes y oráculos,
+
+4
+00:00:07.139 --> 00:00:11.558
+y cómo evaluar el riesgo de un protocolo antes de poner dinero en él.
+
+5
+00:00:12.558 --> 00:00:17.012
+Un protocolo no sabe quién eres, así que la confianza se sustituye por colateral.
+
+6
+00:00:17.012 --> 00:00:20.586
+Depositas monedas que valen más de lo que quieres pedir prestado.
+
+7
+00:00:20.586 --> 00:00:22.125
+Tres cifras lo deciden todo:
+
+8
+00:00:22.125 --> 00:00:25.974
+cuánto puedes pedir, el umbral de liquidación y la salud del préstamo.
+
+9
+00:00:25.974 --> 00:00:28.998
+Mientras la salud esté por encima de uno, todo va bien.
+
+10
+00:00:29.998 --> 00:00:34.035
+En la lección puedes bajar el precio del colateral y ver cuándo la salud del
+
+11
+00:00:34.035 --> 00:00:35.682
+préstamo cae por debajo de uno.
+
+12
+00:00:35.682 --> 00:00:40.144
+Entonces cualquier liquidador paga parte de la deuda y se lleva el colateral con una
+
+13
+00:00:40.144 --> 00:00:42.534
+prima de entre el cinco y el diez por ciento.
+
+14
+00:00:42.534 --> 00:00:45.190
+Lo hacen bots en segundos, sin llamadas ni avisos.

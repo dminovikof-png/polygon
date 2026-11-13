@@ -1,0 +1,57 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.185
+Module five:
+
+2
+00:00:01.185 --> 00:00:02.230
+DeFi protocols.
+
+3
+00:00:02.230 --> 00:00:07.033
+Collateralized loans, sources of yield, staking, bridges and oracles,
+
+4
+00:00:07.033 --> 00:00:11.558
+and how to assess a protocol's risk before putting money into it.
+
+5
+00:00:12.558 --> 00:00:16.891
+A protocol does not know who you are, so trust is replaced by collateral.
+
+6
+00:00:16.891 --> 00:00:20.036
+You deposit coins worth more than you want to borrow.
+
+7
+00:00:20.036 --> 00:00:21.935
+Three numbers decide everything:
+
+8
+00:00:21.935 --> 00:00:26.268
+how much you can borrow, the liquidation threshold and the loan's health.
+
+9
+00:00:26.268 --> 00:00:28.998
+While health is above one, everything is fine.
+
+10
+00:00:29.998 --> 00:00:35.123
+In the lesson you can drop the collateral price and see when the loan's health falls
+
+11
+00:00:35.123 --> 00:00:35.733
+below one.
+
+12
+00:00:35.733 --> 00:00:40.858
+Then any liquidator repays part of the debt and takes the collateral with a bonus of
+
+13
+00:00:40.858 --> 00:00:42.078
+five to ten percent.
+
+14
+00:00:42.078 --> 00:00:45.190
+Bots do this in seconds, without calls or warnings.

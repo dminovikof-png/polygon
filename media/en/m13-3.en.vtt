@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:05.246
+An agent needs a payment that is instant, cheap and needs no registration.
+
+2
+00:00:05.246 --> 00:00:09.480
+The x402 protocol uses the old response code “payment required”:
+
+3
+00:00:09.480 --> 00:00:14.839
+the service names a price, the agent repeats the request with a signed stablecoin
+
+4
+00:00:14.839 --> 00:00:17.618
+payment, and the service returns the data.
+
+5
+00:00:17.618 --> 00:00:18.478
+Alongside it:
+
+6
+00:00:18.478 --> 00:00:22.646
+mandates signed by a human, and registries of agent reputation.

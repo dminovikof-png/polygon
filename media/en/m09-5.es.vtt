@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:05.046
+Un bot de grid pone órdenes de compra por debajo del precio y de venta por encima.
+
+2
+00:00:05.046 --> 00:00:09.112
+Cada pasada del precio hacia abajo y de vuelta es una pequeña ganancia.
+
+3
+00:00:09.112 --> 00:00:09.799
+El supuesto:
+
+4
+00:00:09.799 --> 00:00:11.631
+el precio se moverá en un rango.
+
+5
+00:00:11.631 --> 00:00:15.296
+Si baja y no vuelve, la grid sigue comprando una moneda que cae.
+
+6
+00:00:15.296 --> 00:00:17.644
+Y con un paso de un cuarto de por ciento,
+
+7
+00:00:17.644 --> 00:00:21.710
+las comisiones se comen un 80 por ciento de la ganancia de cada vuelta.

@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.051
+Money in a deposit often sits on several layers at once:
+
+2
+00:00:04.051 --> 00:00:09.007
+the issuer's stablecoin, a bridge, a second layer, the protocol, an oracle,
+
+3
+00:00:09.007 --> 00:00:09.734
+a multisig.
+
+4
+00:00:09.734 --> 00:00:12.708
+Each layer has its own risk, and they add up.
+
+5
+00:00:12.708 --> 00:00:16.739
+An audit lowers the chance of a bug but does not rule it out:
+
+6
+00:00:16.739 --> 00:00:19.382
+many hacked protocols had passed audits.
+
+7
+00:00:20.382 --> 00:00:22.377
+Five questions before depositing.
+
+8
+00:00:22.377 --> 00:00:26.368
+How many years has the protocol run with a large sum and no hacks?
+
+9
+00:00:26.368 --> 00:00:29.874
+Who can change the code, and how many keys does that take?
+
+10
+00:00:29.874 --> 00:00:31.688
+Where do the prices come from?
+
+11
+00:00:31.688 --> 00:00:34.349
+How many layers does the money pass through?
+
+12
+00:00:34.349 --> 00:00:35.739
+And who pays the yield?
+
+13
+00:00:35.739 --> 00:00:39.246
+A protocol's size tells you its size, not its reliability.
+
+14
+00:00:40.246 --> 00:00:41.297
+The main points.
+
+15
+00:00:41.297 --> 00:00:44.582
+Loans rest on collateral worth more than the debt,
+
+16
+00:00:44.582 --> 00:00:49.509
+and when it falls the contract itself sells the collateral to a liquidator.
+
+17
+00:00:49.509 --> 00:00:51.086
+Every yield has a payer.
+
+18
+00:00:51.086 --> 00:00:55.750
+And the risks of the network, bridge, contract, oracle and keys add up.

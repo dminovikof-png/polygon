@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.813
+Comisiones, deslizamiento, financiación:
+
+2
+00:00:02.813 --> 00:00:06.137
+porcentajes pequeños, pero se pagan en cada operación,
+
+3
+00:00:06.137 --> 00:00:08.969
+y la ventaja de una regla suele ser aún menor.
+
+4
+00:00:08.969 --> 00:00:12.109
+Las tortugas en bitcoin hicieron 136 operaciones y,
+
+5
+00:00:12.109 --> 00:00:16.788
+con la comisión subida a medio por ciento, perdieron la mitad del resultado.
+
+6
+00:00:16.788 --> 00:00:20.174
+Una regla con 40 operaciones apenas notó la diferencia.
+
+7
+00:00:21.174 --> 00:00:23.028
+El orden de una prueba honesta.
+
+8
+00:00:23.028 --> 00:00:24.702
+Anotar la regla de antemano.
+
+9
+00:00:24.702 --> 00:00:26.256
+Contar todos los intentos.
+
+10
+00:00:26.256 --> 00:00:28.349
+Abrir una vez los datos reservados.
+
+11
+00:00:28.349 --> 00:00:31.100
+Y solo después, observar en papel, sin dinero.
+
+12
+00:00:31.100 --> 00:00:35.046
+Así están construidas las etapas del modo de trabajo del programa.
+
+13
+00:00:36.046 --> 00:00:36.883
+Lo principal.
+
+14
+00:00:36.883 --> 00:00:40.293
+Un backtest miente con facilidad por mirar al futuro,
+
+15
+00:00:40.293 --> 00:00:42.416
+el sobreajuste y costes erróneos.
+
+16
+00:00:42.416 --> 00:00:46.663
+Entre cientos de estrategias aleatorias siempre hay una brillante,
+
+17
+00:00:46.663 --> 00:00:49.816
+así que el umbral sube con el número de intentos.
+
+18
+00:00:49.816 --> 00:00:52.390
+Y los datos reservados se abren una vez.

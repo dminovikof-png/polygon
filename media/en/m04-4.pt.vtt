@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.573
+Uma transação enviada primeiro cai numa fila pública e todos a veem.
+
+2
+00:00:04.573 --> 00:00:09.169
+Um bot vê sua troca grande, põe a compra dele antes e a venda logo depois.
+
+3
+00:00:09.169 --> 00:00:13.020
+Ele leva quase toda a tolerância a slippage que você permitiu:
+
+4
+00:00:13.020 --> 00:00:16.001
+se você aceitou receber cinco por cento a menos,
+
+5
+00:00:16.001 --> 00:00:18.734
+o bot vai tentar levar quase todos os cinco.
+
+6
+00:00:19.734 --> 00:00:20.835
+Como se proteger.
+
+7
+00:00:20.835 --> 00:00:21.936
+Pouca tolerância:
+
+8
+00:00:21.936 --> 00:00:25.239
+para pares líquidos, de um décimo a meio por cento.
+
+9
+00:00:25.239 --> 00:00:28.024
+Melhor repetir a troca do que pagar a mais.
+
+10
+00:00:28.024 --> 00:00:31.133
+Uma troca grande, em partes ou por um agregador.
+
+11
+00:00:31.133 --> 00:00:32.169
+E envio privado:
+
+12
+00:00:32.169 --> 00:00:37.350
+muitas carteiras conseguem passar a transação direto aos construtores de blocos.

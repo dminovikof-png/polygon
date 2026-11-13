@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.662
+O dinheiro num depósito muitas vezes fica em várias camadas ao mesmo tempo:
+
+2
+00:00:04.662 --> 00:00:09.262
+a stablecoin do emissor, uma ponte, uma segunda camada, o protocolo, um oráculo,
+
+3
+00:00:09.262 --> 00:00:10.412
+uma multiassinatura.
+
+4
+00:00:10.412 --> 00:00:12.885
+Cada camada tem seu risco, e eles se somam.
+
+5
+00:00:12.885 --> 00:00:16.105
+Uma auditoria reduz a chance de erro, mas não a elimina:
+
+6
+00:00:16.105 --> 00:00:19.382
+muitos protocolos atacados tinham passado por auditorias.
+
+7
+00:00:20.382 --> 00:00:22.505
+Cinco perguntas antes de depositar.
+
+8
+00:00:22.505 --> 00:00:26.690
+Há quantos anos o protocolo funciona com uma soma grande sem ataques?
+
+9
+00:00:26.690 --> 00:00:30.208
+Quem pode mudar o código e quantas chaves são necessárias?
+
+10
+00:00:30.208 --> 00:00:31.543
+De onde vêm os preços?
+
+11
+00:00:31.543 --> 00:00:33.787
+Por quantas camadas o dinheiro passa?
+
+12
+00:00:33.787 --> 00:00:35.303
+E quem paga o rendimento?
+
+13
+00:00:35.303 --> 00:00:39.246
+O tamanho de um protocolo fala do tamanho, não da confiabilidade.
+
+14
+00:00:40.246 --> 00:00:41.021
+O principal.
+
+15
+00:00:41.021 --> 00:00:44.768
+Os empréstimos se apoiam num colateral maior que a dívida,
+
+16
+00:00:44.768 --> 00:00:48.773
+e quando ele cai o contrato vende o colateral a um liquidante.
+
+17
+00:00:48.773 --> 00:00:50.776
+Todo rendimento tem um pagador.
+
+18
+00:00:50.776 --> 00:00:55.750
+E os riscos da rede, da ponte, do contrato, do oráculo e das chaves se somam.

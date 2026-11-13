@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.075
+Module ten:
+
+2
+00:00:01.075 --> 00:00:02.591
+risk and position size.
+
+3
+00:00:02.591 --> 00:00:08.061
+Why drawdown is more dangerous than it looks, how to size a position from the stop,
+
+4
+00:00:08.061 --> 00:00:12.542
+what the Kelly criterion is, and why constant leverage eats capital.
+
+5
+00:00:13.542 --> 00:00:17.938
+Drawdown is how far capital is below its previous peak.
+
+6
+00:00:17.938 --> 00:00:20.496
+Its main nastiness is asymmetry.
+
+7
+00:00:20.496 --> 00:00:23.773
+After minus 50 percent you need plus 100.
+
+8
+00:00:23.773 --> 00:00:28.968
+After minus 83, bitcoin's worst fall, a rise of almost six times.
+
+9
+00:00:28.968 --> 00:00:31.206
+After minus 96, of 25 times.
+
+10
+00:00:32.206 --> 00:00:34.744
+Not only depth matters but also duration:
+
+11
+00:00:34.744 --> 00:00:38.521
+how many days in a row capital stays below its previous peak.
+
+12
+00:00:38.521 --> 00:00:43.102
+That is the time you will have to sit through without abandoning the idea.

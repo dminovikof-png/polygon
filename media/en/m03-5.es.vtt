@@ -1,0 +1,85 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.749
+Un apalancamiento de 10 permite abrir una posición de mil dólares con cien de
+
+2
+00:00:04.749 --> 00:00:05.320
+colateral.
+
+3
+00:00:05.320 --> 00:00:09.890
+Un movimiento del precio del uno por ciento es el diez por ciento del colateral.
+
+4
+00:00:09.890 --> 00:00:12.690
+Cuando la pérdida casi se ha comido el colateral,
+
+5
+00:00:12.690 --> 00:00:14.975
+el exchange cierra la posición él mismo.
+
+6
+00:00:14.975 --> 00:00:17.489
+La trampa principal es el camino del precio:
+
+7
+00:00:17.489 --> 00:00:21.088
+tras una caída del 12 por ciento la posición ya está liquidada,
+
+8
+00:00:21.088 --> 00:00:23.030
+y una subida del 20 no la ayudará.
+
+9
+00:00:24.030 --> 00:00:29.193
+Con margen aislado, la liquidación se lleva solo el colateral de esa posición.
+
+10
+00:00:29.193 --> 00:00:32.370
+Con margen cruzado, toda la cuenta es colateral:
+
+11
+00:00:32.370 --> 00:00:37.003
+la liquidación se aleja, pero una mala posición puede llevárselo todo.
+
+12
+00:00:37.003 --> 00:00:42.563
+Y la liquidación se calcula con el precio de marca, un promedio de varios exchanges,
+
+13
+00:00:42.563 --> 00:00:46.998
+para que un pico casual no cierre las posiciones de todos a la vez.
+
+14
+00:00:47.998 --> 00:00:48.718
+Lo principal.
+
+15
+00:00:48.718 --> 00:00:50.545
+El precio es un libro de órdenes:
+
+16
+00:00:50.545 --> 00:00:53.590
+una orden de mercado paga el spread y el deslizamiento.
+
+17
+00:00:53.590 --> 00:00:55.750
+La comisión por vuelta parece diminuta,
+
+18
+00:00:55.750 --> 00:00:59.902
+pero operando a menudo se come el capital más rápido que cualquier error de
+
+19
+00:00:59.902 --> 00:01:00.511
+pronóstico.
+
+20
+00:01:00.511 --> 00:01:04.830
+Y un apalancamiento de diez liquida con un movimiento de un diez por ciento en
+
+21
+00:01:04.830 --> 00:01:06.934
+contra, aunque luego el precio vuelva.

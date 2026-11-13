@@ -1,0 +1,41 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.125
+Module four:
+
+2
+00:00:01.125 --> 00:00:02.676
+decentralized exchanges.
+
+3
+00:00:02.676 --> 00:00:07.780
+How to swap with a pool instead of an order book, how a formula sets the price,
+
+4
+00:00:07.780 --> 00:00:13.142
+where providers' impermanent loss comes from, and how bots make money on your swap.
+
+5
+00:00:14.142 --> 00:00:17.579
+A decentralized exchange is a set of smart contracts.
+
+6
+00:00:17.579 --> 00:00:22.701
+Keeping an order book on a blockchain is expensive, so instead there is a pool:
+
+7
+00:00:22.701 --> 00:00:25.360
+a contract holding a stock of two tokens.
+
+8
+00:00:25.360 --> 00:00:29.121
+Providers deposit both tokens, traders swap with the pool,
+
+9
+00:00:29.121 --> 00:00:31.390
+and a formula calculates the price.
+
+10
+00:00:31.390 --> 00:00:36.318
+You connect a wallet and swap tokens straight from it, without registration.

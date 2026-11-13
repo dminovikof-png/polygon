@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.369
+Overfitting is when a rule has memorized the noise of the past.
+
+2
+00:00:04.369 --> 00:00:06.410
+The protection is held-out data.
+
+3
+00:00:06.410 --> 00:00:10.302
+History is split into a sandbox, where you may tune anything,
+
+4
+00:00:10.302 --> 00:00:12.853
+and a held-out part that is opened once.
+
+5
+00:00:12.853 --> 00:00:17.510
+The sandbox's best monkey behaves like a random one on the held-out data.
+
+6
+00:00:18.510 --> 00:00:20.875
+Real rules are the same, only milder.
+
+7
+00:00:20.875 --> 00:00:24.774
+The rule “hold above the average” with 30 variants of length:
+
+8
+00:00:24.774 --> 00:00:27.714
+the best variant in the sandbox grew 36 times,
+
+9
+00:00:27.714 --> 00:00:30.526
+and on held-out data a little more than two,
+
+10
+00:00:30.526 --> 00:00:33.338
+slightly better than the median and holding.
+
+11
+00:00:33.338 --> 00:00:36.726
+The sandbox's promise is exaggerated many times over.

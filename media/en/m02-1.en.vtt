@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.105
+Module two:
+
+2
+00:00:01.105 --> 00:00:02.547
+wallets and security.
+
+3
+00:00:02.547 --> 00:00:06.529
+Where coins really live, what a key and a seed phrase are,
+
+4
+00:00:06.529 --> 00:00:08.794
+and how money is most often lost:
+
+5
+00:00:08.794 --> 00:00:12.158
+not to a network hack, but to your own signature.
+
+6
+00:00:13.158 --> 00:00:14.950
+A wallet does not hold coins:
+
+7
+00:00:14.950 --> 00:00:17.607
+they are always recorded in the blockchain.
+
+8
+00:00:17.607 --> 00:00:19.399
+A wallet holds a private key,
+
+9
+00:00:19.399 --> 00:00:22.859
+a secret number that gives the right to sign a transfer.
+
+10
+00:00:22.859 --> 00:00:27.245
+If the exchange holds the keys, you only have a record in its database.
+
+11
+00:00:27.245 --> 00:00:30.644
+If only you hold the key, nobody can freeze your coins,
+
+12
+00:00:30.644 --> 00:00:33.486
+but nobody can help you recover access either.
+
+13
+00:00:34.486 --> 00:00:36.554
+Both options have their own risk.
+
+14
+00:00:36.554 --> 00:00:41.002
+In November 2022 the FTX exchange halted withdrawals and went bankrupt:
+
+15
+00:00:41.002 --> 00:00:43.571
+the company itself had used client money.
+
+16
+00:00:43.571 --> 00:00:48.896
+And thousands of people have lost their seed phrase or sent coins to the wrong place,
+
+17
+00:00:48.896 --> 00:00:50.713
+with no way to get them back.
+
+18
+00:00:50.713 --> 00:00:54.598
+So the question is not whether it is safe, but whom you trust.

@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.526
+El error más común es de una vela:
+
+2
+00:00:02.526 --> 00:00:07.070
+la regla mira el cierre del día y compra al principio de ese mismo día.
+
+3
+00:00:07.070 --> 00:00:10.078
+En el código es un desplazamiento de una línea.
+
+4
+00:00:10.078 --> 00:00:12.382
+La línea azul es el cálculo honesto:
+
+5
+00:00:12.382 --> 00:00:13.726
+multiplica por siete.
+
+6
+00:00:13.726 --> 00:00:18.334
+La roja se lleva la subida del mismo día con el que se tomó la decisión:
+
+7
+00:00:18.334 --> 00:00:18.974
+176 veces.

@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.444
+Quem adiciona o próximo bloco é decidido pelo consenso.
+
+2
+00:00:03.444 --> 00:00:08.113
+Na prova de trabalho, o direito vai para quem primeiro encontra o número necessário
+
+3
+00:00:08.113 --> 00:00:11.151
+por força bruta, e isso custa hardware e eletricidade.
+
+4
+00:00:11.151 --> 00:00:15.764
+Na prova de participação, os blocos são propostos por validadores com um depósito,
+
+5
+00:00:15.764 --> 00:00:17.846
+e por trapaça eles perdem parte dele.
+
+6
+00:00:18.846 --> 00:00:20.942
+Os dois métodos têm um ponto fraco:
+
+7
+00:00:20.942 --> 00:00:22.140
+o ataque da maioria.
+
+8
+00:00:22.140 --> 00:00:26.333
+Quem controla mais da metade da potência, ou grande parte do depósito,
+
+9
+00:00:26.333 --> 00:00:30.466
+pode reescrever blocos recentes e gastar as mesmas moedas duas vezes.
+
+10
+00:00:30.466 --> 00:00:35.198
+Em redes grandes isso custa bilhões; em pequenas, esses ataques já aconteceram.
+
+11
+00:00:35.198 --> 00:00:40.110
+Por isso uma corretora credita uma transferência só depois de várias confirmações.

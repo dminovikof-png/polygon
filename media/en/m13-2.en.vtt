@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.594
+The most dangerous link is the key.
+
+2
+00:00:02.594 --> 00:00:06.442
+So the agent's wallet is a smart account with its own rules:
+
+3
+00:00:06.442 --> 00:00:11.252
+it checks who signed, how much, to whom, and whether the limit is exceeded.
+
+4
+00:00:11.252 --> 00:00:14.330
+The agent gets a session key with narrow rights:
+
+5
+00:00:14.330 --> 00:00:18.306
+for one day, no more than ten dollars, only to three services.
+
+6
+00:00:18.306 --> 00:00:20.486
+The main key stays with the human.
+
+7
+00:00:21.486 --> 00:00:23.237
+A month of an agent's work:
+
+8
+00:00:23.237 --> 00:00:26.091
+20 requests a day, ten to thirty cents each,
+
+9
+00:00:26.091 --> 00:00:29.593
+and sometimes it is slipped a fake 200-dollar invoice.
+
+10
+00:00:29.593 --> 00:00:32.187
+Without rules, such invoices go through.
+
+11
+00:00:32.187 --> 00:00:34.522
+Limits and a whitelist cap the loss,
+
+12
+00:00:34.522 --> 00:00:37.830
+but too low a limit gets in the way of honest work.

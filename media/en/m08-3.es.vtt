@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.895
+Hombro-cabeza-hombro, doble suelo, bandera:
+
+2
+00:00:02.895 --> 00:00:06.150
+se enseña a reconocer figuras por la forma del gráfico.
+
+3
+00:00:06.150 --> 00:00:10.885
+Pero el ojo encuentra formas en todas partes, incluso en lanzamientos de moneda.
+
+4
+00:00:10.885 --> 00:00:14.080
+Entre estos gráficos hay uno real y paseos aleatorios.
+
+5
+00:00:14.080 --> 00:00:16.862
+Distinguirlos a simple vista es casi imposible.
+
+6
+00:00:17.862 --> 00:00:20.878
+Si una figura aparece también en un gráfico aleatorio,
+
+7
+00:00:20.878 --> 00:00:22.553
+por sí sola no significa nada.
+
+8
+00:00:22.553 --> 00:00:26.910
+Solo significa algo si después de la figura el precio se comporta distinto que
+
+9
+00:00:26.910 --> 00:00:28.585
+después de un momento al azar.
+
+10
+00:00:28.585 --> 00:00:29.590
+La prueba es esta:
+
+11
+00:00:29.590 --> 00:00:31.489
+encontrar todos los casos en años,
+
+12
+00:00:31.489 --> 00:00:35.622
+calcular el resultado con comisiones y compararlo con entradas aleatorias.

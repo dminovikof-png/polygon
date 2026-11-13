@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.403
+Para trocar um token numa corretora descentralizada,
+
+2
+00:00:03.403 --> 00:00:06.809
+você dá ao contrato dela permissão para gastar esse token.
+
+3
+00:00:06.809 --> 00:00:10.331
+Muitas vezes sem limite, e a permissão fica depois da troca.
+
+4
+00:00:10.331 --> 00:00:13.032
+Se o contrato for atacado ou o site for falso,
+
+5
+00:00:13.032 --> 00:00:15.733
+os tokens são levados sem uma nova assinatura.
+
+6
+00:00:15.733 --> 00:00:20.078
+Defina o limite exatamente no valor da troca e revogue permissões antigas.

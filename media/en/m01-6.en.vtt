@@ -1,0 +1,81 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.477
+The network's work is not free.
+
+2
+00:00:02.477 --> 00:00:04.809
+In Ethereum it is measured in gas:
+
+3
+00:00:04.809 --> 00:00:08.994
+a simple transfer is 21,000 units, a swap several times more.
+
+4
+00:00:08.994 --> 00:00:11.945
+The fee is gas multiplied by the gas price.
+
+5
+00:00:11.945 --> 00:00:16.061
+The base part is burned, the rest is a tip to the validator.
+
+6
+00:00:16.061 --> 00:00:20.246
+When everyone wants to get into a block, the gas price rises.
+
+7
+00:00:21.246 --> 00:00:23.378
+Hence the idea of a second layer.
+
+8
+00:00:23.378 --> 00:00:28.740
+A rollup gathers many transfers into a batch and writes the whole batch to the main
+
+9
+00:00:28.740 --> 00:00:32.035
+network at once, and the fee is shared by everyone.
+
+10
+00:00:32.035 --> 00:00:36.751
+Optimistic rollups treat a batch as valid until someone proves otherwise,
+
+11
+00:00:36.751 --> 00:00:38.819
+so a withdrawal can take a week.
+
+12
+00:00:38.819 --> 00:00:41.338
+ZK rollups attach a mathematical proof.
+
+13
+00:00:41.338 --> 00:00:44.181
+The price of cheapness is new links of risk:
+
+14
+00:00:44.181 --> 00:00:45.990
+the operator and the bridge.
+
+15
+00:00:46.990 --> 00:00:48.014
+The main points.
+
+16
+00:00:48.014 --> 00:00:52.176
+A blockchain is a shared record that cannot be quietly rewritten.
+
+17
+00:00:52.176 --> 00:00:55.057
+Who adds a block is decided by work or stake.
+
+18
+00:00:55.057 --> 00:01:00.051
+And network coins, tokens, stablecoins and second layers are different things,
+
+19
+00:01:00.051 --> 00:01:03.829
+each with its own answer to the question of whom you trust.
+
+20
+00:01:03.829 --> 00:01:06.646
+Details are in the lessons below this video.

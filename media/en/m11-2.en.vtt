@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.887
+The most common mistake is one candle:
+
+2
+00:00:02.887 --> 00:00:07.760
+the rule looks at the day's close and buys at the start of that same day.
+
+3
+00:00:07.760 --> 00:00:10.029
+In code it is a shift of one line.
+
+4
+00:00:10.029 --> 00:00:12.699
+The blue line is the honest calculation:
+
+5
+00:00:12.699 --> 00:00:13.834
+a sevenfold rise.
+
+6
+00:00:13.834 --> 00:00:18.306
+The red one gets the gain of the very day the decision was made on:
+
+7
+00:00:18.306 --> 00:00:18.974
+176 times.

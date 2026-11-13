@@ -1,0 +1,53 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.563
+Un juego con ventaja:
+
+2
+00:00:01.563 --> 00:00:06.183
+la mitad de las operaciones gana 1,2 veces el riesgo y la otra mitad pierde uno.
+
+3
+00:00:06.183 --> 00:00:07.685
+El criterio de Kelly dice:
+
+4
+00:00:07.685 --> 00:00:10.515
+arriesga en torno al ocho por ciento del capital,
+
+5
+00:00:10.515 --> 00:00:12.941
+y el crecimiento medio será el más rápido.
+
+6
+00:00:12.941 --> 00:00:17.735
+Por encima, el crecimiento se frena, y hacia dos Kelly el capital típico se reduce,
+
+7
+00:00:17.735 --> 00:00:19.814
+aunque cada operación sea favorable.
+
+8
+00:00:20.814 --> 00:00:24.626
+El simulador juega mil futuros de doscientas operaciones cada uno.
+
+9
+00:00:24.626 --> 00:00:28.034
+Con un riesgo del dos y del cuatro por ciento no hay ruina.
+
+10
+00:00:28.034 --> 00:00:32.770
+Con Kelly se arruinó el dos por ciento de los futuros; con un quince por ciento de
+
+11
+00:00:32.770 --> 00:00:35.138
+riesgo, el 28; con un veinticinco, el 74.
+
+12
+00:00:35.138 --> 00:00:38.257
+Y en la vida real la ventaja no se conoce de antemano,
+
+13
+00:00:38.257 --> 00:00:41.838
+así que los profesionales apuestan medio o un cuarto de Kelly.

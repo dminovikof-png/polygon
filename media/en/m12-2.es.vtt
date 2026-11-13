@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.619
+Mientras una orden viaja al exchange, el precio tiene tiempo de moverse.
+
+2
+00:00:04.619 --> 00:00:09.124
+Los grandes ponen servidores junto al exchange y reaccionan en fracciones de
+
+3
+00:00:09.124 --> 00:00:12.681
+milisegundo; competir con ellos desde casa no tiene sentido.
+
+4
+00:00:12.681 --> 00:00:17.543
+Al bot particular le quedan reglas a las que les da igual entrar ahora o dentro de
+
+5
+00:00:17.543 --> 00:00:18.136
+un minuto:
+
+6
+00:00:18.136 --> 00:00:19.262
+diarias y horarias.
+
+7
+00:00:20.262 --> 00:00:22.232
+La ejecución tiene sus trampas.
+
+8
+00:00:22.232 --> 00:00:25.028
+El exchange limita el número de solicitudes.
+
+9
+00:00:25.028 --> 00:00:29.096
+Una orden grande se ejecuta por partes y a un precio medio peor.
+
+10
+00:00:29.096 --> 00:00:33.036
+En los desplomes, los stops se ejecutan peor de donde estaban.
+
+11
+00:00:33.036 --> 00:00:36.087
+Un buen backtest supone una ejecución pesimista:
+
+12
+00:00:36.087 --> 00:00:39.582
+si la idea sobrevive a una mala, sobrevivirá a la real.

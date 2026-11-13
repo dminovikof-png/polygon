@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.511
+Imagina a diez personas, cada una lanza una moneda diez veces.
+
+2
+00:00:04.511 --> 00:00:07.598
+La mejor suele sacar seis, siete u ocho caras.
+
+3
+00:00:08.598 --> 00:00:13.015
+Con cien personas, alguien ya tiene ocho o nueve caras de diez,
+
+4
+00:00:13.015 --> 00:00:14.838
+aunque la moneda es justa.
+
+5
+00:00:15.838 --> 00:00:18.849
+Quinientas personas, y la mejor parece una maestra.
+
+6
+00:00:18.849 --> 00:00:19.616
+Pero es azar:
+
+7
+00:00:19.616 --> 00:00:21.505
+simplemente hay muchos intentos.
+
+8
+00:00:21.505 --> 00:00:23.630
+Con las ideas de trading pasa igual.
+
+9
+00:00:23.630 --> 00:00:27.526
+Prueba muchas ideas y algunas parecerán excelentes por casualidad.
+
+10
+00:00:28.526 --> 00:00:31.568
+Por eso el programa calcula el estadístico t,
+
+11
+00:00:31.568 --> 00:00:35.219
+lo constante que fue la idea al superar la referencia,
+
+12
+00:00:35.219 --> 00:00:38.194
+y lo compara con el umbral de significancia.
+
+13
+00:00:38.194 --> 00:00:40.966
+El umbral sube con el número de intentos:
+
+14
+00:00:40.966 --> 00:00:44.414
+para un intento es 1,96; para quinientos, unos 3,5.
+
+15
+00:00:45.414 --> 00:00:48.578
+El programa se basa en una investigación:
+
+16
+00:00:48.578 --> 00:00:51.589
+29 hipótesis y 563 variantes en cripto.
+
+17
+00:00:51.589 --> 00:00:54.444
+Con tantos intentos el umbral es 3,1.
+
+18
+00:00:54.444 --> 00:00:58.998
+Ninguna idea que predice la dirección del precio lo superó.

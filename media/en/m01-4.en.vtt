@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.721
+Ethereum stores not only transfers but also programs:
+
+2
+00:00:03.721 --> 00:00:04.739
+smart contracts.
+
+3
+00:00:04.739 --> 00:00:07.092
+A contract is like a vending machine:
+
+4
+00:00:07.092 --> 00:00:10.909
+the rules are written in code and are the same for everyone.
+
+5
+00:00:10.909 --> 00:00:13.517
+It cannot be secretly changed or stopped.
+
+6
+00:00:13.517 --> 00:00:16.888
+But a bug in the code cannot be quickly fixed either:
+
+7
+00:00:16.888 --> 00:00:19.814
+the network will execute it just as precisely.

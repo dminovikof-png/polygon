@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.491
+While an order travels to the exchange, the price has time to move.
+
+2
+00:00:04.491 --> 00:00:09.064
+Large players put servers next to the exchange and react in fractions of a
+
+3
+00:00:09.064 --> 00:00:12.525
+millisecond; competing with them from home is pointless.
+
+4
+00:00:12.525 --> 00:00:17.470
+A private bot is left with rules that do not care whether they enter now or in a
+
+5
+00:00:17.470 --> 00:00:17.902
+minute:
+
+6
+00:00:17.902 --> 00:00:19.262
+daily and hourly ones.
+
+7
+00:00:20.262 --> 00:00:22.102
+Execution has its own traps.
+
+8
+00:00:22.102 --> 00:00:24.928
+The exchange limits the number of requests.
+
+9
+00:00:24.928 --> 00:00:28.739
+A large order fills in parts and at a worse average price.
+
+10
+00:00:28.739 --> 00:00:32.288
+In crashes, stops fill worse than where they were set.
+
+11
+00:00:32.288 --> 00:00:35.311
+A good backtest assumes pessimistic execution:
+
+12
+00:00:35.311 --> 00:00:39.582
+if the idea survives bad execution, it will survive the real one.

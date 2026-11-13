@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.648
+Una frase semilla son 12 o 24 palabras.
+
+2
+00:00:02.648 --> 00:00:07.185
+De ella el wallet calcula todas las claves, y de las claves, las direcciones.
+
+3
+00:00:07.185 --> 00:00:09.248
+Las flechas van en un solo sentido:
+
+4
+00:00:09.248 --> 00:00:11.899
+desde una dirección no se encuentra la clave.
+
+5
+00:00:11.899 --> 00:00:16.790
+Quien conoce la frase puede restaurar el wallet en cualquier sitio y llevarse todo.
+
+6
+00:00:17.790 --> 00:00:19.010
+De ahí tres reglas.
+
+7
+00:00:19.010 --> 00:00:20.873
+La frase no se puede cambiar:
+
+8
+00:00:20.873 --> 00:00:24.212
+solo crear un wallet nuevo y mover allí las monedas.
+
+9
+00:00:24.212 --> 00:00:29.286
+La frase no se introduce en ningún sitio salvo para restaurar tu propio wallet:
+
+10
+00:00:29.286 --> 00:00:33.204
+pedir que la introduzcas es una estafa en cien casos de cien.
+
+11
+00:00:33.204 --> 00:00:35.387
+Y la frase se guarda sin internet:
+
+12
+00:00:35.387 --> 00:00:38.406
+en papel o metal, no en una foto ni en la nube.

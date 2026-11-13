@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.480
+A seed phrase is 12 or 24 words.
+
+2
+00:00:02.480 --> 00:00:07.339
+From it the wallet derives all the keys, and from the keys the addresses.
+
+3
+00:00:07.339 --> 00:00:09.136
+The arrows go only one way:
+
+4
+00:00:09.136 --> 00:00:11.665
+you cannot find a key from an address.
+
+5
+00:00:11.665 --> 00:00:16.790
+Whoever knows the phrase can restore the wallet anywhere and take everything.
+
+6
+00:00:17.790 --> 00:00:18.932
+Hence three rules.
+
+7
+00:00:18.932 --> 00:00:20.771
+The phrase cannot be changed:
+
+8
+00:00:20.771 --> 00:00:24.451
+you can only create a new wallet and move the coins there.
+
+9
+00:00:24.451 --> 00:00:28.954
+The phrase is never entered anywhere except to restore your own wallet:
+
+10
+00:00:28.954 --> 00:00:33.268
+a request to enter it is a scam in a hundred cases out of a hundred.
+
+11
+00:00:33.268 --> 00:00:35.234
+And the phrase is kept offline:
+
+12
+00:00:35.234 --> 00:00:38.406
+on paper or metal, not in a photo or in the cloud.

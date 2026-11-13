@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.259
+El aprendizaje automático ajusta una regla a los datos:
+
+2
+00:00:03.259 --> 00:00:07.226
+al modelo se le muestran rentabilidades pasadas y las respuestas correctas,
+
+3
+00:00:07.226 --> 00:00:08.337
+y busca una relación.
+
+4
+00:00:08.337 --> 00:00:10.876
+Lo clave al probarlo es la prueba hacia delante:
+
+5
+00:00:10.876 --> 00:00:14.102
+para cada día, el modelo aprende solo de los días anteriores.
+
+6
+00:00:15.102 --> 00:00:19.283
+El método del vecino más cercano, con los mismos datos con que aprendió,
+
+7
+00:00:19.283 --> 00:00:21.432
+acierta el cien por cien de los días:
+
+8
+00:00:21.432 --> 00:00:23.407
+simplemente recuerda la respuesta.
+
+9
+00:00:23.407 --> 00:00:27.239
+En la prueba hacia delante, el 49 por ciento, peor que una moneda.
+
+10
+00:00:27.239 --> 00:00:29.969
+Cuanto más flexible el modelo, mayor la brecha.
+
+11
+00:00:29.969 --> 00:00:33.918
+Con una prueba honesta, todas las variantes rondan el 50 por ciento.

@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.108
+El dinero de un depósito suele estar en varias capas a la vez:
+
+2
+00:00:04.108 --> 00:00:08.957
+la stablecoin del emisor, un puente, una segunda capa, el protocolo, un oráculo,
+
+3
+00:00:08.957 --> 00:00:09.866
+una multifirma.
+
+4
+00:00:09.866 --> 00:00:12.169
+Cada capa tiene su riesgo, y se suman.
+
+5
+00:00:12.169 --> 00:00:16.170
+Una auditoría reduce la probabilidad de error, pero no la elimina:
+
+6
+00:00:16.170 --> 00:00:19.382
+muchos protocolos hackeados habían pasado auditorías.
+
+7
+00:00:20.382 --> 00:00:22.465
+Cinco preguntas antes de depositar.
+
+8
+00:00:22.465 --> 00:00:26.333
+¿Cuántos años lleva el protocolo con una suma grande sin hackeos?
+
+9
+00:00:26.333 --> 00:00:29.903
+¿Quién puede cambiar el código y cuántas claves hacen falta?
+
+10
+00:00:29.903 --> 00:00:31.569
+¿De dónde salen los precios?
+
+11
+00:00:31.569 --> 00:00:33.593
+¿Por cuántas capas pasa el dinero?
+
+12
+00:00:33.593 --> 00:00:35.318
+¿Y quién paga el rendimiento?
+
+13
+00:00:35.318 --> 00:00:39.246
+El tamaño de un protocolo habla de su tamaño, no de su fiabilidad.
+
+14
+00:00:40.246 --> 00:00:41.055
+Lo principal.
+
+15
+00:00:41.055 --> 00:00:45.601
+Los préstamos se sostienen con un colateral mayor que la deuda, y si cae,
+
+16
+00:00:45.601 --> 00:00:48.527
+el contrato vende el colateral a un liquidador.
+
+17
+00:00:48.527 --> 00:00:50.644
+Todo rendimiento tiene un pagador.
+
+18
+00:00:50.644 --> 00:00:55.750
+Y los riesgos de la red, el puente, el contrato, el oráculo y las claves se suman.

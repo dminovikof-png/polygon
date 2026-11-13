@@ -1,0 +1,53 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.524
+Take 500 monkeys.
+
+2
+00:00:01.524 --> 00:00:06.635
+Each one, day after day, randomly decides whether to be in bitcoin or not.
+
+3
+00:00:06.635 --> 00:00:07.948
+No analysis at all.
+
+4
+00:00:07.948 --> 00:00:10.849
+Let us run them on real history with fees.
+
+5
+00:00:10.849 --> 00:00:15.062
+The best ones look like geniuses, although it is pure chance.
+
+6
+00:00:16.062 --> 00:00:19.457
+So the best of many variants proves nothing.
+
+7
+00:00:19.457 --> 00:00:22.466
+Its t-statistic is compared with a bar:
+
+8
+00:00:22.466 --> 00:00:27.482
+what the best of the same number of variants of pure noise gives.
+
+9
+00:00:27.482 --> 00:00:32.574
+For one attempt it is 1.96, for 20 it is 2.45, for 500 it is 3.53.
+
+10
+00:00:33.574 --> 00:00:34.761
+All attempts count:
+
+11
+00:00:34.761 --> 00:00:39.573
+every parameter, every coin, every variant of the rule, even a discarded one.
+
+12
+00:00:39.573 --> 00:00:44.323
+That is why the program keeps an attempts journal and raises the bar itself.
+
+13
+00:00:44.323 --> 00:00:49.510
+The honest number of attempts is almost always larger than you would like to admit.

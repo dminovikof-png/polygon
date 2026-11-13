@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.452
+Un agente necesita un pago instantáneo, barato y sin registro.
+
+2
+00:00:04.452 --> 00:00:09.083
+El protocolo x402 usa el viejo código de respuesta «se requiere pago»:
+
+3
+00:00:09.083 --> 00:00:14.376
+el servicio dice un precio, el agente repite la solicitud con un pago firmado en
+
+4
+00:00:14.376 --> 00:00:17.221
+stablecoin y el servicio entrega los datos.
+
+5
+00:00:17.221 --> 00:00:17.949
+Junto a él:
+
+6
+00:00:17.949 --> 00:00:22.646
+mandatos firmados por una persona y registros de reputación de agentes.

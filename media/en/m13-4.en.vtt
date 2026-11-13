@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.171
+An intent is when you sign only what you need:
+
+2
+00:00:03.171 --> 00:00:05.809
+sell ether no cheaper than a certain price.
+
+3
+00:00:05.809 --> 00:00:07.955
+How to do it is decided by solvers.
+
+4
+00:00:07.955 --> 00:00:09.918
+They compete in a Dutch auction,
+
+5
+00:00:09.918 --> 00:00:13.169
+where the price gradually worsens down to your bound.
+
+6
+00:00:13.169 --> 00:00:15.438
+The strongest has no reason to hurry:
+
+7
+00:00:15.438 --> 00:00:19.118
+it takes the trade just when the second is about to step in.
+
+8
+00:00:20.118 --> 00:00:22.273
+So the price is set by competition:
+
+9
+00:00:22.273 --> 00:00:27.320
+the more solvers and the lower their costs, the closer the price is to the market.
+
+10
+00:00:27.320 --> 00:00:30.460
+Without rivals, the trade goes at your lower bound.
+
+11
+00:00:30.460 --> 00:00:34.091
+Set it thoughtfully, and do not give an intent a long life:
+
+12
+00:00:34.091 --> 00:00:36.246
+it is a free option for the solver.

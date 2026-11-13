@@ -1,0 +1,57 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.660
+Um jogo com vantagem:
+
+2
+00:00:01.660 --> 00:00:05.341
+metade dos negócios rende 1,2 vez o risco, metade perde um.
+
+3
+00:00:05.341 --> 00:00:06.838
+O critério de Kelly diz:
+
+4
+00:00:06.838 --> 00:00:09.583
+arrisque cerca de oito por cento do capital,
+
+5
+00:00:09.583 --> 00:00:12.141
+e o crescimento médio será o mais rápido.
+
+6
+00:00:12.141 --> 00:00:14.449
+Acima disso o crescimento desacelera,
+
+7
+00:00:14.449 --> 00:00:17.631
+e por volta de dois Kelly o capital típico encolhe,
+
+8
+00:00:17.631 --> 00:00:19.814
+embora cada negócio seja vantajoso.
+
+9
+00:00:20.814 --> 00:00:24.329
+O simulador joga mil futuros de duzentos negócios cada.
+
+10
+00:00:24.329 --> 00:00:27.715
+Com risco de dois e de quatro por cento não há ruína.
+
+11
+00:00:27.715 --> 00:00:32.764
+Com Kelly, dois por cento dos futuros quebraram; com quinze por cento de risco,
+
+12
+00:00:32.764 --> 00:00:34.425
+28; com vinte e cinco, 74.
+
+13
+00:00:34.425 --> 00:00:37.812
+E na vida real a vantagem não é conhecida de antemão,
+
+14
+00:00:37.812 --> 00:00:41.838
+por isso os profissionais apostam metade ou um quarto de Kelly.

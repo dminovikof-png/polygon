@@ -1,0 +1,61 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.164
+Module three:
+
+2
+00:00:01.164 --> 00:00:02.543
+centralized exchanges.
+
+3
+00:00:02.543 --> 00:00:07.429
+How the order book works, what fees really cost, what futures and funding are,
+
+4
+00:00:07.429 --> 00:00:11.438
+and why leverage liquidates you even when the forecast is right.
+
+5
+00:00:12.438 --> 00:00:14.627
+Nobody sets the price on an exchange.
+
+6
+00:00:14.627 --> 00:00:15.988
+There is an order book:
+
+7
+00:00:15.988 --> 00:00:18.414
+a list of those who want to buy and sell.
+
+8
+00:00:18.414 --> 00:00:21.076
+Sellers are at the top, buyers at the bottom,
+
+9
+00:00:21.076 --> 00:00:24.034
+and the gap between the best prices is the spread.
+
+10
+00:00:24.034 --> 00:00:26.460
+A limit order sits in the book and waits.
+
+11
+00:00:26.460 --> 00:00:31.134
+A market order takes the best orders one after another until it fills its size.
+
+12
+00:00:32.134 --> 00:00:35.109
+In the lesson you can get your hands on the order book:
+
+13
+00:00:35.109 --> 00:00:38.300
+send a market order and see at what average price it fills.
+
+14
+00:00:38.300 --> 00:00:42.519
+The bigger the order compared with the depth of the book, the worse the price.
+
+15
+00:00:42.519 --> 00:00:43.438
+That is slippage.

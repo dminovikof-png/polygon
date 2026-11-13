@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.041
+Módulo dois:
+
+2
+00:00:01.041 --> 00:00:02.308
+carteiras e segurança.
+
+3
+00:00:02.308 --> 00:00:06.513
+Onde as moedas ficam de verdade, o que são uma chave e uma frase-semente,
+
+4
+00:00:06.513 --> 00:00:08.817
+e como o dinheiro se perde quase sempre:
+
+5
+00:00:08.817 --> 00:00:12.158
+não por um ataque à rede, mas pela sua própria assinatura.
+
+6
+00:00:13.158 --> 00:00:15.028
+Uma carteira não guarda moedas:
+
+7
+00:00:15.028 --> 00:00:17.682
+elas estão sempre registradas na blockchain.
+
+8
+00:00:17.682 --> 00:00:19.733
+A carteira guarda a chave privada,
+
+9
+00:00:19.733 --> 00:00:23.593
+um número secreto que dá o direito de assinar uma transferência.
+
+10
+00:00:23.593 --> 00:00:27.997
+Se as chaves estão com a corretora, você só tem um registro na base dela.
+
+11
+00:00:27.997 --> 00:00:31.134
+Se só você tem a chave, ninguém congela suas moedas,
+
+12
+00:00:31.134 --> 00:00:33.486
+mas ninguém ajuda a recuperar o acesso.
+
+13
+00:00:34.486 --> 00:00:36.355
+As duas opções têm seu risco.
+
+14
+00:00:36.355 --> 00:00:40.481
+Em novembro de 2022 a corretora FTX suspendeu os saques e faliu:
+
+15
+00:00:40.481 --> 00:00:43.962
+a própria empresa tinha usado o dinheiro dos clientes.
+
+16
+00:00:43.962 --> 00:00:48.990
+E milhares de pessoas perderam a frase-semente ou mandaram moedas para o lugar
+
+17
+00:00:48.990 --> 00:00:50.730
+errado, sem como recuperar.
+
+18
+00:00:50.730 --> 00:00:54.598
+Então a pergunta não é se é seguro, mas em quem você confia.

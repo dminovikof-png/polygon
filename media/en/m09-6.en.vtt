@@ -1,0 +1,69 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:00.718
+Carry:
+
+2
+00:00:00.718 --> 00:00:03.231
+buy the coin and sell a perpetual future,
+
+3
+00:00:03.231 --> 00:00:08.259
+collecting funding; the assumption is that funding stays positive and the exchange
+
+4
+00:00:08.259 --> 00:00:09.178
+stays reliable.
+
+5
+00:00:09.178 --> 00:00:14.144
+Market making earns the spread as long as it exceeds the losses from trading with
+
+6
+00:00:14.144 --> 00:00:15.371
+those who know more.
+
+7
+00:00:15.371 --> 00:00:20.030
+Stat arbitrage expects diverged coins to converge faster than fees eat them.
+
+8
+00:00:21.030 --> 00:00:26.239
+Each strategy in the lesson has a button that opens work mode with the idea already
+
+9
+00:00:26.239 --> 00:00:26.804
+selected.
+
+10
+00:00:26.804 --> 00:00:28.749
+There you can test it honestly:
+
+11
+00:00:28.749 --> 00:00:31.950
+with fees, on different coins and on held-out data.
+
+12
+00:00:32.950 --> 00:00:33.947
+The main points.
+
+13
+00:00:33.947 --> 00:00:38.371
+Every strategy has a hidden assumption about price, and if it is wrong,
+
+14
+00:00:38.371 --> 00:00:40.303
+the mechanics will not save it.
+
+15
+00:00:40.303 --> 00:00:45.412
+In a rising market, strategies that leave the market more often lose to holding on
+
+16
+00:00:45.412 --> 00:00:45.848
+return.
+
+17
+00:00:45.848 --> 00:00:49.774
+And neutral strategies lose to fees and to those who know more.

@@ -1,0 +1,29 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.774
+A grid bot places buy orders below the price and sell orders above it.
+
+2
+00:00:04.774 --> 00:00:08.249
+Each pass of the price down and back is a small profit.
+
+3
+00:00:08.249 --> 00:00:09.197
+The assumption:
+
+4
+00:00:09.197 --> 00:00:11.409
+the price will move within a range.
+
+5
+00:00:11.409 --> 00:00:16.275
+If it goes down and does not come back, the grid keeps buying a falling coin.
+
+6
+00:00:16.275 --> 00:00:18.613
+And with a step of a quarter percent,
+
+7
+00:00:18.613 --> 00:00:21.710
+fees eat about 80 percent of each round's profit.

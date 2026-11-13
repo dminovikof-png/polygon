@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.705
+Para intercambiar un token en un exchange descentralizado,
+
+2
+00:00:03.705 --> 00:00:06.482
+das a su contrato permiso para gastar ese token.
+
+3
+00:00:06.482 --> 00:00:10.185
+A menudo sin límite, y el permiso sigue después del intercambio.
+
+4
+00:00:10.185 --> 00:00:12.962
+Si hackean el contrato o el sitio resulta falso,
+
+5
+00:00:12.962 --> 00:00:15.334
+se llevan los tokens sin una nueva firma.
+
+6
+00:00:15.334 --> 00:00:20.078
+Pon el límite justo en la cantidad del intercambio y revoca los permisos antiguos.

@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.683
+A game with an edge:
+
+2
+00:00:01.683 --> 00:00:05.416
+half the trades bring 1.2 times the risk, half lose one.
+
+3
+00:00:05.416 --> 00:00:07.082
+The Kelly criterion says:
+
+4
+00:00:07.082 --> 00:00:11.748
+risk about eight percent of capital, and growth is fastest on average.
+
+5
+00:00:11.748 --> 00:00:17.281
+More than that and growth slows, and at around two Kelly capital typically shrinks,
+
+6
+00:00:17.281 --> 00:00:19.814
+even though every trade is profitable.
+
+7
+00:00:20.814 --> 00:00:25.324
+The simulator plays out a thousand futures of 200 trades each.
+
+8
+00:00:25.324 --> 00:00:28.671
+At two and four percent risk there is no ruin.
+
+9
+00:00:28.671 --> 00:00:34.709
+At Kelly, two percent of the futures went broke; at 15 percent risk, 28; at 25, 74.
+
+10
+00:00:34.709 --> 00:00:38.346
+And in real life the edge is not known in advance,
+
+11
+00:00:38.346 --> 00:00:41.838
+so practitioners bet half or a quarter of Kelly.

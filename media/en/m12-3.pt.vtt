@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.281
+O aprendizado de máquina ajusta uma regra aos dados:
+
+2
+00:00:03.281 --> 00:00:06.719
+mostram-se ao modelo retornos passados e as respostas certas,
+
+3
+00:00:06.719 --> 00:00:08.184
+e ele procura uma ligação.
+
+4
+00:00:08.184 --> 00:00:10.833
+O principal ao testá-lo é o teste walk-forward:
+
+5
+00:00:10.833 --> 00:00:14.102
+para cada dia, o modelo aprende só com os dias anteriores.
+
+6
+00:00:15.102 --> 00:00:19.263
+O método do vizinho mais próximo, nos mesmos dados em que aprendeu,
+
+7
+00:00:19.263 --> 00:00:21.126
+acerta cem por cento dos dias:
+
+8
+00:00:21.126 --> 00:00:23.299
+ele simplesmente lembra a resposta.
+
+9
+00:00:23.299 --> 00:00:26.777
+No teste walk-forward, 49 por cento, pior que uma moeda.
+
+10
+00:00:26.777 --> 00:00:29.819
+Quanto mais flexível o modelo, maior a diferença.
+
+11
+00:00:29.819 --> 00:00:33.918
+Num teste honesto, todas as variantes ficam perto de 50 por cento.

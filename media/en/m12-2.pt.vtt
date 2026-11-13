@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.800
+Enquanto uma ordem viaja até a corretora, o preço tem tempo de se mover.
+
+2
+00:00:04.800 --> 00:00:09.991
+Os grandes põem servidores ao lado da corretora e reagem em frações de milissegundo;
+
+3
+00:00:09.991 --> 00:00:12.587
+competir com eles de casa não faz sentido.
+
+4
+00:00:12.587 --> 00:00:17.655
+Ao bot particular sobram regras para as quais tanto faz entrar agora ou daqui a um
+
+5
+00:00:17.655 --> 00:00:18.088
+minuto:
+
+6
+00:00:18.088 --> 00:00:19.262
+diárias e horárias.
+
+7
+00:00:20.262 --> 00:00:22.320
+A execução tem suas armadilhas.
+
+8
+00:00:22.320 --> 00:00:24.909
+A corretora limita o número de pedidos.
+
+9
+00:00:24.909 --> 00:00:29.092
+Uma ordem grande é executada em partes e a um preço médio pior.
+
+10
+00:00:29.092 --> 00:00:33.208
+Nos crashes, os stops são executados pior do que onde estavam.
+
+11
+00:00:33.208 --> 00:00:36.262
+Um bom backtest supõe uma execução pessimista:
+
+12
+00:00:36.262 --> 00:00:39.582
+se a ideia sobrevive a uma ruim, sobrevive à real.

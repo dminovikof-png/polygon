@@ -1,0 +1,41 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.015
+The best-known formula is x·y = k:
+
+2
+00:00:03.015 --> 00:00:08.109
+the product of the pool's reserves does not change during a swap.
+
+3
+00:00:08.109 --> 00:00:13.753
+Say the pool holds 100 ether and 200,000 dollars, so the price is 2,000.
+
+4
+00:00:13.753 --> 00:00:19.239
+To take 10 ether you will have to pay about 22,200, or 2,222 per coin.
+
+5
+00:00:19.239 --> 00:00:22.766
+The more you take, the dearer each next coin.
+
+6
+00:00:23.766 --> 00:00:28.047
+Price impact depends on the size of the swap relative to the pool.
+
+7
+00:00:28.047 --> 00:00:33.042
+In a pool worth hundreds of millions of dollars a 1,000-dollar swap is barely
+
+8
+00:00:33.042 --> 00:00:37.388
+noticeable; in a 50,000-dollar pool it moves the price by percents.
+
+9
+00:00:37.388 --> 00:00:42.382
+After a large swap, arbitrageurs pull the pool price back to the market, and,
+
+10
+00:00:42.382 --> 00:00:45.366
+as we will see now, at the providers' expense.

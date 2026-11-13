@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.256
+Who adds the next block is decided by consensus.
+
+2
+00:00:03.256 --> 00:00:08.341
+In proof of work, the right goes to whoever first finds the required number by brute
+
+3
+00:00:08.341 --> 00:00:11.187
+force, and that costs hardware and electricity.
+
+4
+00:00:11.187 --> 00:00:15.545
+In proof of stake, blocks are proposed by validators who put up a stake,
+
+5
+00:00:15.545 --> 00:00:17.846
+and for cheating they lose part of it.
+
+6
+00:00:18.846 --> 00:00:20.916
+Both methods share one weak spot:
+
+7
+00:00:20.916 --> 00:00:22.170
+the majority attack.
+
+8
+00:00:22.170 --> 00:00:26.875
+Whoever controls more than half of the power, or a large part of the stake,
+
+9
+00:00:26.875 --> 00:00:30.450
+can rewrite recent blocks and spend the same coins twice.
+
+10
+00:00:30.450 --> 00:00:35.343
+In big networks this costs billions; in small ones such attacks have happened.
+
+11
+00:00:35.343 --> 00:00:40.110
+That is why an exchange credits a transfer only after several confirmations.

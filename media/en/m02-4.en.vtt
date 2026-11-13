@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.965
+To swap a token on a decentralized exchange,
+
+2
+00:00:02.965 --> 00:00:06.114
+you give its contract permission to spend that token.
+
+3
+00:00:06.114 --> 00:00:09.857
+Often without a limit, and the permission stays after the swap.
+
+4
+00:00:09.857 --> 00:00:13.363
+If the contract is hacked or the site turns out to be fake,
+
+5
+00:00:13.363 --> 00:00:16.037
+the tokens are taken without a new signature.
+
+6
+00:00:16.037 --> 00:00:20.078
+Set the limit to exactly the swap amount and revoke old permissions.

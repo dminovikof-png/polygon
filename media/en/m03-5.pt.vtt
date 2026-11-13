@@ -1,0 +1,73 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:05.335
+Alavancagem de 10 permite abrir uma posição de mil dólares com cem de colateral.
+
+2
+00:00:05.335 --> 00:00:09.509
+Um movimento de um por cento no preço é dez por cento do colateral.
+
+3
+00:00:09.509 --> 00:00:14.245
+Quando a perda quase comeu o colateral, a corretora fecha a posição sozinha.
+
+4
+00:00:14.245 --> 00:00:16.924
+A armadilha principal é o caminho do preço:
+
+5
+00:00:16.924 --> 00:00:20.912
+depois de uma queda de 12 por cento a posição já está liquidada,
+
+6
+00:00:20.912 --> 00:00:23.030
+e uma alta de 20 não vai ajudá-la.
+
+7
+00:00:24.030 --> 00:00:28.803
+Com margem isolada, a liquidação leva só o colateral daquela posição.
+
+8
+00:00:28.803 --> 00:00:32.124
+Com margem cruzada, a conta inteira é colateral:
+
+9
+00:00:32.124 --> 00:00:36.759
+a liquidação fica mais longe, mas uma posição ruim pode levar tudo.
+
+10
+00:00:36.759 --> 00:00:42.432
+E a liquidação é calculada pelo preço de marcação, uma média de várias corretoras,
+
+11
+00:00:42.432 --> 00:00:46.998
+para que um pico casual não feche as posições de todos de uma vez.
+
+12
+00:00:47.998 --> 00:00:48.699
+O principal.
+
+13
+00:00:48.699 --> 00:00:50.453
+O preço é um livro de ofertas:
+
+14
+00:00:50.453 --> 00:00:53.200
+uma ordem a mercado paga o spread e o slippage.
+
+15
+00:00:53.200 --> 00:00:55.362
+A taxa de uma volta parece minúscula,
+
+16
+00:00:55.362 --> 00:01:00.213
+mas com trading frequente come o capital mais rápido que qualquer erro de previsão.
+
+17
+00:01:00.213 --> 00:01:05.122
+E alavancagem de dez liquida com um movimento de cerca de dez por cento contra você,
+
+18
+00:01:05.122 --> 00:01:06.934
+mesmo que depois o preço volte.

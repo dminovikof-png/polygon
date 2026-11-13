@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.321
+Quién añade el siguiente bloque lo decide el consenso.
+
+2
+00:00:03.321 --> 00:00:07.557
+En la prueba de trabajo, el derecho lo gana quien primero encuentra el número
+
+3
+00:00:07.557 --> 00:00:11.134
+necesario por fuerza bruta, y eso cuesta hardware y electricidad.
+
+4
+00:00:11.134 --> 00:00:15.755
+En la prueba de participación, los bloques los proponen validadores con un depósito,
+
+5
+00:00:15.755 --> 00:00:17.846
+y si hacen trampa pierden parte de él.
+
+6
+00:00:18.846 --> 00:00:20.972
+Ambos métodos tienen un punto débil:
+
+7
+00:00:20.972 --> 00:00:22.390
+el ataque de la mayoría.
+
+8
+00:00:22.390 --> 00:00:26.702
+Quien controla más de la mitad de la potencia, o gran parte del depósito,
+
+9
+00:00:26.702 --> 00:00:31.014
+puede reescribir bloques recientes y gastar las mismas monedas dos veces.
+
+10
+00:00:31.014 --> 00:00:35.444
+En las redes grandes cuesta miles de millones; en las pequeñas ha ocurrido.
+
+11
+00:00:35.444 --> 00:00:40.110
+Por eso un exchange acredita una transferencia solo tras varias confirmaciones.

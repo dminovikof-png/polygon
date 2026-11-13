@@ -1,0 +1,49 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.207
+As redes não se enxergam.
+
+2
+00:00:02.207 --> 00:00:08.448
+Uma ponte recebe uma moeda num cofre numa rede e emite um token embrulhado em outra.
+
+3
+00:00:08.448 --> 00:00:14.242
+O recibo vale enquanto o cofre estiver intacto, e nos cofres há somas enormes.
+
+4
+00:00:14.242 --> 00:00:19.220
+Em 2022 roubaram cerca de 320 milhões de dólares da ponte Wormhole,
+
+5
+00:00:19.220 --> 00:00:21.374
+e mais de 600 da ponte Ronin.
+
+6
+00:00:22.374 --> 00:00:25.620
+Um oráculo informa a um contrato um preço de fora.
+
+7
+00:00:25.620 --> 00:00:28.282
+Se o preço é fácil de mover, vão movê-lo.
+
+8
+00:00:28.282 --> 00:00:32.437
+Em outubro de 2022 tiraram mais de cem milhões da Mango Markets:
+
+9
+00:00:32.437 --> 00:00:35.229
+inflaram o preço de um token pouco líquido,
+
+10
+00:00:35.229 --> 00:00:40.682
+o protocolo acreditou no colateral inflado, e com ele tomaram quase tudo emprestado.
+
+11
+00:00:40.682 --> 00:00:41.266
+Proteção:
+
+12
+00:00:41.266 --> 00:00:46.590
+várias fontes de preço, uma média no tempo e limites para colateral pouco líquido.

@@ -1,0 +1,53 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:03.117
+Una opción es el derecho, pero no la obligación,
+
+2
+00:00:03.117 --> 00:00:07.497
+de comprar o vender una moneda a un precio pactado en una fecha determinada.
+
+3
+00:00:07.497 --> 00:00:10.667
+Por el derecho, el comprador paga de entrada una prima.
+
+4
+00:00:10.667 --> 00:00:15.105
+Un call gana con la subida; un put gana con la caída y se parece a un seguro.
+
+5
+00:00:15.105 --> 00:00:17.756
+La pérdida del comprador se limita a la prima.
+
+6
+00:00:17.756 --> 00:00:20.869
+La ganancia del vendedor también se limita a la prima,
+
+7
+00:00:20.869 --> 00:00:22.598
+y su pérdida puede ser grande.
+
+8
+00:00:23.598 --> 00:00:26.976
+Lo principal en el precio de una opción es la volatilidad:
+
+9
+00:00:26.976 --> 00:00:31.518
+cuanto más oscila una moneda, más probable es que el derecho resulte rentable,
+
+10
+00:00:31.518 --> 00:00:32.333
+y más caro es.
+
+11
+00:00:32.333 --> 00:00:37.051
+En la lección, el modelo de Black–Scholes convierte las oscilaciones esperadas en
+
+12
+00:00:37.051 --> 00:00:37.633
+una prima.
+
+13
+00:00:37.633 --> 00:00:39.846
+Prueba a cambiar el strike y el plazo.

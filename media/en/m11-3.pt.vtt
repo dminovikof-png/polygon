@@ -1,0 +1,53 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.198
+Pegue quinhentos macacos.
+
+2
+00:00:02.198 --> 00:00:07.004
+Cada um, dia após dia, decide ao acaso se fica no bitcoin ou não.
+
+3
+00:00:07.004 --> 00:00:08.187
+Nenhuma análise.
+
+4
+00:00:08.187 --> 00:00:11.292
+Vamos rodá-los na história real com taxas.
+
+5
+00:00:11.292 --> 00:00:15.062
+Os melhores parecem gênios, embora seja puro acaso.
+
+6
+00:00:16.062 --> 00:00:19.934
+Por isso a melhor de muitas variantes não prova nada.
+
+7
+00:00:19.934 --> 00:00:23.368
+A estatística t dela é comparada com um limiar:
+
+8
+00:00:23.368 --> 00:00:27.679
+o que dá a melhor de outras tantas variantes de puro ruído.
+
+9
+00:00:27.679 --> 00:00:32.574
+Para uma tentativa é 1,96; para vinte, 2,45; para quinhentas, 3,53.
+
+10
+00:00:33.574 --> 00:00:35.261
+Todas as tentativas contam:
+
+11
+00:00:35.261 --> 00:00:39.698
+cada parâmetro, cada moeda, cada variante da regra, até as descartadas.
+
+12
+00:00:39.698 --> 00:00:44.385
+Por isso o programa mantém um diário de tentativas e sobe o limiar sozinho.
+
+13
+00:00:44.385 --> 00:00:49.510
+O número honesto de tentativas é quase sempre maior do que se gostaria de admitir.

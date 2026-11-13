@@ -1,0 +1,41 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:01.231
+Module twelve:
+
+2
+00:00:01.231 --> 00:00:04.252
+algorithmic trading and artificial intelligence.
+
+3
+00:00:04.252 --> 00:00:08.406
+What a bot does and does not do, why latency and execution matter,
+
+4
+00:00:08.406 --> 00:00:13.190
+what machine learning finds in prices, and where language models are useful.
+
+5
+00:00:14.190 --> 00:00:17.291
+A bot executes a rule without emotions or fatigue:
+
+6
+00:00:17.291 --> 00:00:22.314
+it is not afraid to sell after a fall and does not forget to set a stop at night.
+
+7
+00:00:22.314 --> 00:00:24.857
+But it does not make the rule profitable.
+
+8
+00:00:24.857 --> 00:00:29.074
+The rule is one link out of five, and most trouble is in the others:
+
+9
+00:00:29.074 --> 00:00:31.803
+the data arrived late, the exchange refused,
+
+10
+00:00:31.803 --> 00:00:35.214
+an order filled partly or was repeated after a failure.

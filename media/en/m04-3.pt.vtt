@@ -1,0 +1,45 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:04.012
+Um provedor depositou um ether e dois mil dólares.
+
+2
+00:00:04.012 --> 00:00:09.578
+O preço do ether dobrou, e os arbitradores compraram o ether barato do pool.
+
+3
+00:00:09.578 --> 00:00:14.484
+Agora o provedor tem 5657 dólares, enquanto só mantendo teria 6000.
+
+4
+00:00:14.484 --> 00:00:18.805
+O pool vende sempre o que encarece e compra o que barateia.
+
+5
+00:00:18.805 --> 00:00:23.126
+A perda é igual para uma alta e uma queda pelo mesmo fator.
+
+6
+00:00:24.126 --> 00:00:26.540
+Um provedor ganha taxas de cada troca,
+
+7
+00:00:26.540 --> 00:00:30.289
+e o resultado dele são as taxas menos a perda impermanente.
+
+8
+00:00:30.289 --> 00:00:33.402
+Para duas stablecoins em dólar a perda é pequena.
+
+9
+00:00:33.402 --> 00:00:37.468
+Se uma moeda pode desabar em relação à outra, a perda come tudo.
+
+10
+00:00:37.468 --> 00:00:40.518
+E liquidez numa faixa estreita rende mais taxas,
+
+11
+00:00:40.518 --> 00:00:44.838
+mas quando o preço sai dela você fica inteiro na moeda que barateou.

@@ -1,0 +1,61 @@
+WEBVTT
+
+1
+00:00:00.350 --> 00:00:02.403
+Las redes no se ven entre sí.
+
+2
+00:00:02.403 --> 00:00:08.207
+Un puente recibe una moneda en un depósito de una red y emite un token envuelto en
+
+3
+00:00:08.207 --> 00:00:08.561
+otra.
+
+4
+00:00:08.561 --> 00:00:12.030
+El recibo vale mientras el depósito esté intacto,
+
+5
+00:00:12.030 --> 00:00:14.649
+y en los depósitos hay sumas enormes.
+
+6
+00:00:14.649 --> 00:00:19.250
+En 2022 robaron unos 320 millones de dólares del puente Wormhole,
+
+7
+00:00:19.250 --> 00:00:21.374
+y más de 600 del puente Ronin.
+
+8
+00:00:22.374 --> 00:00:25.842
+Un oráculo informa a un contrato de un precio de fuera.
+
+9
+00:00:25.842 --> 00:00:28.554
+Si el precio es fácil de mover, lo moverán.
+
+10
+00:00:28.554 --> 00:00:32.842
+En octubre de 2022 se sacaron más de cien millones de Mango Markets:
+
+11
+00:00:32.842 --> 00:00:35.617
+inflaron el precio de un token poco líquido,
+
+12
+00:00:35.617 --> 00:00:40.473
+el protocolo creyó el colateral inflado y con él se pidió prestado casi todo.
+
+13
+00:00:40.473 --> 00:00:41.167
+Protección:
+
+14
+00:00:41.167 --> 00:00:46.086
+varias fuentes de precio, un promedio en el tiempo y límites al colateral poco
+
+15
+00:00:46.086 --> 00:00:46.590
+líquido.
