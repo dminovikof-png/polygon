@@ -6,127 +6,185 @@
 <title>Честный полигон</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="theme-color" content="#101418">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="theme.css">
 <style>
   *{box-sizing:border-box}
-  body{font:15px/1.5 system-ui,Segoe UI,Roboto,sans-serif;margin:0;background:#101418;color:#e6e9ee}
-  main{max-width:1000px;margin:0 auto;padding:20px}
-  h1{font-size:22px;margin:0 0 4px} .sub{color:#8b95a3;margin-bottom:14px}
-  nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
-  nav button{background:#171d24;color:#c9d1dc;border:1px solid #263040;border-radius:8px;padding:8px 14px;cursor:pointer;margin:0;font-size:14px}
-  nav button.on{background:#2f7de1;color:#fff;border-color:#2f7de1}
-  .card{background:#171d24;border:1px solid #263040;border-radius:10px;padding:16px;margin-bottom:16px}
-  label{display:block;font-size:13px;color:#9aa5b4;margin:8px 0 2px}
-  select,input[type=number],input[type=text]{background:#0e1318;color:#e6e9ee;border:1px solid #2c3949;border-radius:6px;padding:7px;width:100%}
+  body{font:15px/1.5 var(--sans);margin:0;background:var(--bg);color:var(--tx)}
+  main{max-width:1040px;padding:20px 28px;min-width:0}
+  h1{font-size:22px;margin:0 0 4px} .sub{color:var(--mut);margin-bottom:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:16px;margin-bottom:16px}
+  label{display:block;font-size:13px;color:var(--mut);margin:8px 0 2px}
+  select,textarea,input:not([type]),input[type=text],input[type=search],input[type=number],input[type=email],input[type=url],input[type=tel],input[type=password],input[type=date]{background:var(--panel);color:var(--tx);border:1px solid var(--line2);border-radius:2px;padding:7px;width:100%}
+  ::placeholder{color:var(--mut);opacity:1}
+  input[type=range],input[type=checkbox],input[type=radio]{accent-color:var(--acc)}
   .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
-  button{background:#2f7de1;color:#fff;border:0;border-radius:6px;padding:9px 16px;font-size:14px;cursor:pointer;margin:10px 8px 0 0}
-  button.sec{background:#2a3647} button.danger{background:#8c3b3b} button.small{padding:4px 9px;font-size:12px;margin:0}
+  button{background:var(--acc);color:var(--on-acc);border:0;border-radius:2px;padding:9px 16px;font-size:14px;cursor:pointer;margin:10px 8px 0 0}
+  button.sec{background:var(--raise);color:var(--tx)} button.danger{background:var(--bad-bg);color:var(--tx)} button.small{padding:4px 9px;font-size:12px;margin:0}
   button:disabled{opacity:.5}
-  .help{color:#8b95a3;font-size:13px;margin-top:6px} .plain{color:#cfd6e0;font-size:14px;margin:8px 0}
-  table{width:100%;border-collapse:collapse} td,th{padding:6px 8px;border-bottom:1px solid #263040;text-align:left;font-size:14px;vertical-align:top}
-  .good{color:#4cc38a} .bad{color:#ef6a6a} .warn{color:#e0b341;font-size:13px} .err{color:#ef6a6a;margin-top:8px}
-  .scanwarn{font-size:20px;font-weight:600;color:#e0b341;border:2px solid #e0b341;text-align:center} .scanpick{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin:10px 0} .chk{max-height:220px;overflow-y:auto;font-size:13px;margin-bottom:6px} .chk label{display:flex;gap:6px;align-items:center;margin:2px 0;font-weight:normal} .chk input{width:auto} @media(max-width:700px){.scanpick{grid-template-columns:1fr}}
+  .help{color:var(--mut);font-size:13px;margin-top:6px} .plain{color:var(--tx);font-size:14px;margin:8px 0}
+  table{width:100%;border-collapse:collapse} td,th{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;font-size:14px;vertical-align:top}
+  .good{color:var(--good)} .bad{color:var(--bad)} .warn{color:var(--acc);font-size:13px} .err{color:var(--bad);margin-top:8px}
+  .scanwarn{font-size:20px;font-weight:600;color:var(--acc);border:2px solid var(--acc);text-align:center} .scanpick{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin:10px 0} .chk{max-height:220px;overflow-y:auto;font-size:13px;margin-bottom:6px} .chk label{display:flex;gap:6px;align-items:center;margin:2px 0;font-weight:normal} .chk input{width:auto} @media(max-width:700px){.scanpick{grid-template-columns:1fr}}
   .verdict{font-size:17px;margin:4px 0 12px}
-  canvas{width:100%;height:240px;background:#0e1318;border-radius:8px}
-  .badge{display:inline-block;padding:1px 8px;border-radius:10px;font-size:12px;background:#2a3647;margin-right:6px}
-  .b-no{background:#5a2b2b}.b-ok{background:#1f5a3c}.b-mid{background:#5a4b1f}.b-learn{background:#2b4a6b}
-  .box{background:#12181f;border:1px solid #263040;border-radius:8px;padding:10px;margin:8px 0}
-  .inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap} .inline>*{flex:0 0 auto} .inline>span.help{flex:0 1 auto;min-width:0} .inline>button{max-width:100%} /* длинное пояснение или кнопка в строке переносится, а не вылезает за край */ .inline select,.inline input{width:auto;min-width:80px}
-  details summary{cursor:pointer;color:#8fb7ef;font-size:13px}
+  canvas{width:100%;height:240px;background:var(--panel);border-radius:2px}
+  .badge{display:inline-block;padding:1px 8px;border-radius:2px;font-size:12px;background:var(--raise);margin-right:6px}
+  .b-no{background:var(--bad-bg)}.b-ok{background:var(--good-bg)}.b-mid{background:var(--mid-bg)}.b-learn{background:var(--raise)}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:2px;padding:10px;margin:8px 0}
+  .inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap} .inline>*{flex:0 0 auto} .inline>span.help,.inline>span.kicker{flex:0 1 auto;min-width:0} .inline>button{max-width:100%} /* длинное пояснение или кнопка в строке переносится, а не вылезает за край */ .inline select,.inline input{width:auto;min-width:80px}
+  details summary{cursor:pointer;color:var(--acc);font-size:13px}
   ul{margin:6px 0;padding-left:20px} li{margin:3px 0}
-  hr{border:0;border-top:1px solid #263040;margin:14px 0}
-  .small-note{font-size:12px;color:#7f8b9a}
-  .tag{font-size:12px;color:#8b95a3}
+  hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+  .small-note{font-size:12px;color:var(--mut)}
+  .tag{font-size:12px;color:var(--mut)}
   .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:12px} .top .sub{margin:0;flex:1 1 300px}
-  .pill{background:#171d24;border:1px solid #263040;border-radius:20px;padding:5px 12px;font-size:13px;white-space:nowrap} .pill b{color:#e0b341}
-  #settingsBox{padding:10px 16px} #settingsBox[open]{padding-bottom:16px} #settingsBox summary{font-size:14px}
-  nav{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px} nav button{flex:0 0 auto} nav button .n{display:inline-flex;width:20px;height:20px;border-radius:50%;background:#2a3647;align-items:center;justify-content:center;margin-right:6px;font-size:12px;font-weight:600} nav button.on .n{background:#fff;color:#2f7de1} nav button.ref{color:#8b95a3}
-  .seg{display:inline-flex;border:1px solid #263040;border-radius:8px;overflow:hidden;margin-bottom:12px;flex-wrap:wrap} .seg button{margin:0;border-radius:0;background:#12181f;color:#c9d1dc;padding:7px 14px} .seg button.on{background:#2f7de1;color:#fff}
+  .pill{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:5px 12px;font-size:13px;white-space:nowrap} .pill b{color:var(--acc)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;margin-bottom:12px;flex-wrap:wrap} .seg button{margin:0;border-radius:0;background:var(--panel);color:var(--tx);padding:7px 14px} .seg button.on{background:var(--acc);color:var(--on-acc)}
   .entry{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
   .appr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:10px}
-  .appr{background:#12181f;border:1px solid #263040;border-radius:10px;padding:12px;cursor:pointer} .appr.on{border-color:#2f7de1;background:#16243a} .appr b{display:block;margin-bottom:4px}
-  .tagdir{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;margin-top:6px} .tagdir.yes{background:#4a2d1b;color:#f2b38a} .tagdir.no{background:#1f3d33;color:#8fe0bb}
-  .idea{border-bottom:1px solid #263040;padding:10px 0} .idea:last-child{border-bottom:0} .idea .plain{margin:4px 0}
+  .appr{background:var(--panel);border:1px solid var(--line);border-radius:2px;padding:12px;cursor:pointer} .appr.on{border-color:var(--acc);background:var(--acc-bg)} .appr b{display:block;margin-bottom:4px}
+  .tagdir{display:inline-block;font-size:12px;padding:1px 8px;border-radius:2px;margin-top:6px} .tagdir.yes{background:var(--bad-bg);color:var(--bad)} .tagdir.no{background:var(--good-bg);color:var(--good)}
+  .idea{border-bottom:1px solid var(--line);padding:10px 0} .idea:last-child{border-bottom:0} .idea .plain{margin:4px 0}
   .card{overflow-x:auto}
   details.sub{margin-top:10px} details.sub>*:not(summary){margin-left:2px}
-  .sumline{font-size:16px;padding:10px 12px;border-radius:8px;background:#12181f;border:1px solid #263040;margin-bottom:10px}
-  @media(max-width:600px){main{padding:12px 16px}}
+  .sumline{font-size:16px;padding:10px 12px;border-radius:2px;background:var(--panel);border:1px solid var(--line);margin-bottom:10px}
   /* учебный режим */
   .lesson h2{font-size:20px;margin:10px 0 4px} .lesson .plain{font-size:15px;line-height:1.6;max-width:70ch} .lesson ul.plain{padding-left:22px} .lesson ul.plain li{margin:4px 0}
   .fig{margin:12px 0;overflow-x:auto} .fig figcaption{margin-top:4px}
   @media(max-width:600px){.fig svg{min-width:520px}} /* на телефоне подписи рисунков остаются читаемыми: рисунок прокручивается вбок */
-  .term{background:none;border:0;border-bottom:1px dashed #8fb7ef;color:#cfe0f7;padding:0;margin:0;font:inherit;cursor:help;border-radius:0}
-  .termpop{background:#1d2633;border:1px solid #2f7de1;border-radius:8px;padding:8px 10px;margin:6px 0;font-size:14px;max-width:60ch}
-  .quiz .opt{display:block;width:100%;text-align:left;background:#1d2633;color:#e6e9ee;margin:6px 0 0} .quiz .opt.ok{background:#1f5a3c} .quiz .opt.no{background:#5a2b2b}
-  .sim .simrow{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0} .simfield{display:flex;flex-direction:column;gap:3px;flex:1 1 140px;font-weight:normal} .simfield.wide{flex-basis:100%;margin:8px 0} .simfield input[type=range]{width:100%} .sim .hash{display:block;word-break:break-all;font-size:13px;margin:4px 0} .sim .plain{margin:8px 0} .warn{color:#e0b341}
-  .measured{border-color:#5a4b1f} .linkbtn{background:none;color:#8fb7ef;padding:0;margin:0;font-size:15px;text-align:left}
+  .term{background:none;border:0;border-bottom:1px dashed var(--acc);color:var(--tx-hi);padding:0;margin:0;font:inherit;cursor:help;border-radius:0}
+  .termpop{background:var(--raise);border:1px solid var(--acc);border-radius:2px;padding:8px 10px;margin:6px 0;font-size:14px;max-width:60ch}
+  .quiz .opt{display:block;width:100%;text-align:left;background:var(--raise);color:var(--tx);margin:6px 0 0} .quiz .opt.ok{background:var(--good-bg)} .quiz .opt.no{background:var(--bad-bg)}
+  .sim .simrow{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0} .simfield{display:flex;flex-direction:column;gap:3px;flex:1 1 140px;font-weight:normal} .simfield.wide{flex-basis:100%;margin:8px 0} .simfield input[type=range]{width:100%} .sim .hash{display:block;word-break:break-all;font-size:13px;margin:4px 0} .sim .plain{margin:8px 0} .warn{color:var(--acc)}
+  .measured{border-color:var(--mid-bg)} .linkbtn{background:none;color:var(--acc);padding:0;margin:0;font-size:15px;text-align:left}
   ol.lessons li{margin:6px 0}
   /* сенсорные экраны: крупнее кнопки; подсказки по нажатию вместо наведения */
-  @media(pointer:coarse){button{min-height:40px} button.small{min-height:34px} nav button{padding:10px 14px} .tipbox{position:fixed;left:12px;right:12px;bottom:76px;z-index:30;background:#1d2633;border:1px solid #2f7de1;border-radius:8px;padding:10px 12px;font-size:14px}}
-  /* телефон: этапы — нижняя панель */
-  @media(max-width:700px){
-    main{padding-bottom:84px}
-    #workArea nav{position:fixed;left:0;right:0;bottom:0;z-index:20;margin:0;padding:6px 8px calc(6px + env(safe-area-inset-bottom));background:#101418;border-top:1px solid #263040}
-    #workArea nav button{font-size:13px;padding:8px 10px}
-    h1{font-size:19px} .top .sub{display:none}
-  }
+  @media(pointer:coarse){button{min-height:40px} button.small{min-height:34px} .tipbox{position:fixed;left:12px;right:12px;bottom:76px;z-index:30;background:var(--raise);border:1px solid var(--acc);border-radius:2px;padding:10px 12px;font-size:14px}}
   /* мастер */
-  .wiz{border-color:#2f7de1;padding:12px 16px} .wizhead{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-  .wizdots{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 4px} .wizdots button{margin:0;background:#12181f;color:#c9d1dc;border:1px solid #263040} .wizdots button.ok{color:#4cc38a} .wizdots button.on{background:#2f7de1;color:#fff;border-color:#2f7de1}
+  .wiz{border-color:var(--acc);padding:12px 16px} .wizhead{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .wizdots{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 4px} .wizdots button{margin:0;background:var(--panel);color:var(--tx);border:1px solid var(--line)} .wizdots button.ok{color:var(--good)} .wizdots button.on{background:var(--acc);color:var(--on-acc);border-color:var(--acc)}
   .wiz .plain{margin:6px 0 2px} .wiz .inline button{margin:8px 0 0}
   /* телефон: таблицы карточками — каждая строка отдельной карточкой, подпись столбца слева */
   @media(max-width:700px){
     .wiz{padding:10px 12px} .wizdots button{font-size:12px;padding:4px 8px}
     table.cards,table.cards tbody{display:block} table.cards tr.head{display:none}
-    table.cards tr{display:block;background:#12181f;border:1px solid #263040;border-radius:8px;margin:0 0 8px;padding:6px 10px}
+    table.cards tr{display:block;background:var(--panel);border:1px solid var(--line);border-radius:2px;margin:0 0 8px;padding:6px 10px}
     table.cards td{display:flex;justify-content:space-between;gap:12px;border:0;padding:3px 0;text-align:right}
-    table.cards td::before{content:attr(data-label);color:#8b95a3;text-align:left;flex:0 0 42%}
+    table.cards td::before{content:attr(data-label);color:var(--mut);text-align:left;flex:0 0 42%}
     table.cards td[data-label=""]{justify-content:flex-start;text-align:left} table.cards td[data-label=""]::before{display:none}
     table.cards td:first-child{font-weight:600}
   }
   .i18n-wait body{visibility:hidden} .langsel{width:auto;padding:5px 8px;font-size:13px}
+  /* «Прибор»: подписи, цифры и навигация — моноширинным, мелко и прописными */
+  label,.tag,.small-note,th,.seg button,.badge,details summary{font-family:var(--mono)}
+  label,th{font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--mut)}
+  .verdict,.sumline,td{font-variant-numeric:tabular-nums}
+  .sumline b,.verdict b{font-family:var(--mono)}
+  button{font-family:var(--mono);letter-spacing:.03em}
+  button.sec{border:1px solid var(--line)}
+  .measured{border-left:3px solid var(--stripe);border-radius:0}
+  /* каркас: боковая панель закреплена, прокручивается страница справа */
+  .shell{display:grid;grid-template-columns:210px minmax(0,1fr);min-height:100vh}
+  #side{position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;background:var(--bg);border-right:1px solid var(--line);padding:14px 0;font:12px/1.4 var(--mono);z-index:30}
+  #side button{display:flex;gap:10px;align-items:baseline;width:100%;margin:0;padding:6px 14px;background:none;color:var(--tx);border:0;border-left:2px solid transparent;border-radius:0;text-align:left;font:inherit;letter-spacing:0;cursor:pointer;min-height:0}
+  #side button:hover{background:var(--raise)}
+  #side button.on{background:var(--acc-bg);color:var(--acc);border-left-color:var(--acc)}
+  #side .k{color:var(--mut);min-width:20px} #side button.on .k{color:var(--acc)}
+  #side .brand{padding:0 14px 14px} #side h1{font:500 13px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--tx-hi);margin:0}
+  #side .side-h{color:var(--mut);font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:14px 14px 4px}
+  #side .side-note{padding:0 14px 6px 44px;font-size:10px;color:var(--mut);cursor:pointer}
+  #side .side-foot{margin-top:auto;padding:14px;font-size:10px;color:var(--mut);display:flex;flex-direction:column;gap:8px}
+  #side nav{display:block;margin:0;padding:0;overflow:visible}
+  #sideMenu,.only-phone,.t-short{display:none!important}
+  /* планшет: узкая полоса с метками, ☰ раскрывает панель поверх страницы */
+  @media(max-width:899px) and (min-width:600px){
+    .shell{grid-template-columns:56px minmax(0,1fr)}
+    #side .t,#side .side-h,#side .side-note,#side .side-foot,#side .brand{display:none}
+    #side button{justify-content:center;padding:8px 0} #side .k{min-width:0}
+    #sideMenu{display:flex!important;color:var(--tx-hi)}
+    #side.open{position:fixed;left:0;width:240px;box-shadow:0 0 0 100vw var(--scrim)}
+    #side.open .t,#side.open .side-h,#side.open .side-note,#side.open .side-foot,#side.open .brand{display:block}
+    #side.open button{justify-content:flex-start;padding:6px 14px}
+  }
+  /* телефон: снизу четыре пункта, этапы работы — лентой сверху */
+  @media(max-width:599px){
+    .shell{display:block}
+    main{padding:12px 16px 84px}
+    body[data-mode=work] main{padding-top:58px}
+    #side{position:fixed;top:auto;left:0;right:0;bottom:0;height:auto;flex-direction:row;padding:0 0 env(safe-area-inset-bottom);border-right:0;border-top:1px solid var(--line);overflow:visible}
+    #side>*:not(.pri){display:none}
+    #side .pri{flex:1 1 0;flex-direction:column;align-items:center;gap:2px;padding:8px 2px;border-left:0;border-top:2px solid transparent;font-size:11px;text-align:center}
+    #side .pri.on{border-top-color:var(--acc)} #side .only-phone{display:flex!important}
+    #side .t-full{display:none} #side .t-short{display:inline!important} #side .pri .t{white-space:nowrap}
+    body[data-mode=work] #side #nav{display:flex;position:fixed;top:0;left:0;right:0;overflow-x:auto;background:var(--bg);border-bottom:1px solid var(--line)}
+    #side #nav button{flex:0 0 auto;width:auto;border-left:0;border-bottom:2px solid transparent;padding:12px 12px 10px}
+    #side #nav button.on{border-bottom-color:var(--acc)}
+    .top .sub{display:none}
+    /* выбор языка нужен и на сайте без сервера (там есть только учёба): в учёбе — вверху справа */
+    body[data-mode=learn] main{padding-top:52px}
+    body[data-mode=learn] #side .side-foot{display:block;position:fixed;top:8px;right:12px;padding:0;margin:0}
+    body[data-mode=learn] #side #sideSum{display:none}
+  }
+  /* урок на «бумаге»: заголовок с засечками, текст для чтения, строка над заголовком моноширинная */
+  #learnArea{padding:4px 0} #learnArea .card{background:var(--card);border-color:var(--line)}
+  .lesson h2{font:400 28px/1.25 var(--serif);color:var(--tx-hi);margin:14px 0 8px}
+  .lesson .plain{font-size:16px;line-height:1.7;max-width:64ch}
+  .lesson .kicker{font:11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+  .lesson .measured{background:var(--panel);border:0;border-left:3px solid var(--stripe)}
+  .term{border-bottom-color:var(--acc);color:var(--tx)}
+  .fig svg{background:var(--fig-bg)}
+  /* светлая область урока — до краёв окна справа от панели; текст урока остаётся узкой колонкой */
+  body[data-mode=learn] main{max-width:none}
+  #learnArea{margin:-20px -28px;padding:24px 28px;min-height:100vh}
+  #learnArea>*{max-width:1040px}
+  @media(max-width:599px){#learnArea{margin:-52px -16px -84px;padding:60px 16px 92px}}
+  /* строка под «Учёбой»: текущий модуль и урок (только при открытом уроке; на телефоне панели нет) */
+  #side .side-lesson{padding:0 14px 6px 44px;font-size:10px;line-height:1.5;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #side .side-lesson span{display:block;overflow:hidden;text-overflow:ellipsis}
+  body[data-mode=work] #side .side-lesson{display:none}
+  @media(max-width:1000px){#side:not(.open) .side-lesson{display:none}}
+  @media(max-width:599px){#side .side-lesson{display:none!important}}
+  /* свечной график */
+  .candlebox{position:relative;margin:10px 0;border:1px solid var(--line);background:var(--panel)}
+  canvas.candles{display:block;width:100%;height:320px;background:none;border-radius:0;touch-action:pan-y;cursor:grab}
+  .candletip{position:absolute;z-index:5;background:var(--raise);border:1px solid var(--acc);padding:4px 8px;font:12px var(--mono);color:var(--tx);pointer-events:none;white-space:nowrap}
+  .candlehelp{font:11px var(--mono);color:var(--mut);margin:4px 8px 6px}
   [hidden]{display:none!important}
 </style>
 </head>
 <body>
+<div class="shell">
+<aside id="side">
+  <div class="brand"><h1>Честный полигон</h1></div>
+  <button id="sideMenu" class="notr" aria-label="☰">☰</button>
+  <button data-mode="learn" class="pri"><span class="k notr">◇</span><span class="t">Учёба</span></button>
+  <div class="side-lesson notr" id="sideLesson" hidden></div>
+  <button data-side="work" class="pri only-phone"><span class="k notr">▤</span><span class="t">Работа</span></button>
+  <div class="side-h">Работа</div>
+  <nav id="nav">
+    <button data-tab="start"><span class="k notr">00</span><span class="t">Начало</span></button>
+    <button data-tab="coins"><span class="k notr">01</span><span class="t">Монеты</span></button>
+    <button data-tab="state"><span class="k notr">02</span><span class="t">Состояние рынка</span></button>
+    <button data-tab="idea"><span class="k notr">03</span><span class="t">Подход и идея</span></button>
+    <button data-tab="test"><span class="k notr">04</span><span class="t">Проверка</span></button>
+    <button data-tab="paper"><span class="k notr">05</span><span class="t">Наблюдение</span></button>
+  </nav>
+  <div class="side-h">Журнал</div>
+  <button data-tab="journal" class="pri"><span class="k notr">#</span><span class="t"><span class="t-full">Журнал попыток</span><span class="t-short">Журнал</span></span></button>
+  <button data-tab="ref" class="pri"><span class="k notr">≡</span><span class="t">Справка</span></button>
+  <div class="side-note" id="journalPill">Журнал: …</div>
+  <button data-tab="settings" class="pri"><span class="k notr">⚙</span><span class="t">Настройки</span></button>
+  <div class="side-foot"><div id="sideSum" class="notr"></div><select id="langSel" class="langsel notr" aria-label="Язык / Language"></select></div>
+</aside>
 <main>
-  <h1>Честный полигон</h1>
   <div id="staleServer" class="err" hidden></div>
   <div id="noServer" class="card" hidden><b>Рабочий режим здесь пока недоступен</b>
     <div class="help">Проверка идей, скан и бумажная торговля сейчас работают только с компьютера: запустите на нём start.bat и откройте программу там (или с планшета в домашней сети — start-lan.bat). Расчёты прямо на планшете и телефоне появятся в следующей версии. Учебный режим работает и здесь, в том числе без интернета.</div></div>
-  <div class="top"><div class="sub">Проверка торговых идей на истории и учебная торговля. Это учебный инструмент, не инвестиционный совет. Данные скачиваются на ваш компьютер и остаются у вас.</div><div class="inline"><div class="seg" id="modeSeg" style="margin:0"><button data-mode="learn">Учебный</button><button data-mode="work" class="on">Рабочий</button></div><div class="pill" id="journalPill">Журнал: …</div><select id="langSel" class="langsel notr" aria-label="Язык / Language"></select></div></div>
-  <div id="langNote" class="help" hidden>Перевод сделан без проверки носителем языка. Уроки курса пока только на русском: они переводятся по модулям.</div>
-  <section id="learnArea" hidden></section>
+  <div class="top"><div class="sub">Проверка торговых идей на истории и учебная торговля. Это учебный инструмент, не инвестиционный совет. Данные скачиваются на ваш компьютер и остаются у вас.</div></div>
+  <div id="langNote" class="help" hidden>Перевод сделан без проверки носителем языка.</div>
+  <section id="learnArea" class="paper" hidden></section>
   <div id="workArea">
-  <details class="card" id="settingsBox">
-    <summary id="settingsSum">Общие настройки</summary>
-    <div class="help">Одни на все этапы: проверку, скан и новые бумажные сессии.</div>
-    <div class="row">
-      <div><label>Биржа (источник данных)</label><select id="exchange"></select></div>
-      <div><label>Валюта отчёта</label><select id="reportCcy"><option value="USDT">USDT (доллары)</option><option value="BTC">BTC (биткоины)</option></select></div>
-      <div><label>Комиссия за сделку, % (с каждой стороны)</label><input id="fee" type="number" step="0.01" value="0.1"></div>
-      <div><label>Проскальзывание, % (разница цены при исполнении)</label><input id="slip" type="number" step="0.01" value="0.05"></div>
-      <div><label>Число свечей истории (до 20 000)</label><input id="maxBars" type="number" step="500" min="100" max="20000" value="5000"></div>
-    </div>
-    <div style="margin-top:10px"><b>С чем сравнивать (эталон)</b></div>
-        <div class="help">Эталон — простое действие, которое идея должна обогнать, чтобы в ней был смысл. Вердикт и t-статистика считаются против выбранного эталона, в таблице показываются все три. Удержание BTC важно, потому что цель — расти в BTC: идея на альте, которая проигрывает простому BTC, ничего не добавляет.</div>
-        <div class="row">
-          <div><label>Эталон для вердикта</label><select id="benchmark"></select></div>
-          <div><label>Доходность кэша, % годовых (USDT на сберегательном счёте; 0 — без дохода)</label><input id="cashYield" type="number" step="0.5" min="0" max="100" value="0"></div>
-          <div><label style="display:flex;gap:6px;align-items:center;margin-top:28px"><input type="checkbox" id="cashFlat" style="width:auto"> Начислять этот процент стратегии, пока она вне рынка</label></div>
-        </div>
-        <div class="help">Процент начисляется только за свечи, которые идея целиком провела вне рынка (свечи со входом или с выходом по стопу внутри свечи не считаются). По умолчанию выключено.</div>
-        </details>
   <div id="wizard" class="card wiz" hidden></div>
-  <nav id="nav">
-    <button data-tab="start" class="on">Начало</button>
-    <button data-tab="coins"><span class="n">1</span>Монеты</button>
-    <button data-tab="state"><span class="n">2</span>Состояние рынка</button>
-    <button data-tab="idea"><span class="n">3</span>Подход и идея</button>
-    <button data-tab="test"><span class="n">4</span>Проверка</button>
-    <button data-tab="paper"><span class="n">5</span>Наблюдение</button>
-    <button data-tab="ref" class="ref">Справка</button>
-  </nav>
 
   <!-- НАЧАЛО -->
   <section id="tab-start">
@@ -238,6 +296,7 @@
       <div class="sumline" id="sumLine"></div>
       <div class="verdict" id="verdict"></div>
       <canvas id="chart" width="900" height="240"></canvas>
+      <div class="candlebox" id="testCandles" hidden><div class="candlearea"></div><div class="candlehelp">Свечи и сделки: колесо — масштаб, перетаскивание — сдвиг, наведение — подробности.</div></div>
       <div class="help" id="chartLegend"></div>
       <table id="tbl"></table>
       <div style="margin-top:12px"><b>Идея против трёх эталонов и разбавленного удержания</b></div>
@@ -281,19 +340,6 @@
     </div>
     </div>
 
-    <div class="card">
-      <b>Журнал попыток</b>
-      <div class="help">Каждая проверка записывается. Чем больше вариантов вы перепробовали, тем выше планка, которую нужно превысить, чтобы результат нельзя было списать на удачу.</div>
-      <div class="help" id="journalSummary"></div>
-      <div id="deviceNote" class="warn" hidden></div>
-      <details class="sub" id="syncBox"><summary>Обмен с другим устройством (журнал, прогресс курса, бумажные сессии)</summary>
-        <div class="help">Планка должна учитывать попытки на всех устройствах. Выгрузите файл на одном устройстве и загрузите его на другом (например, через почту себе или облачный диск). Загрузка только добавляет недостающее и ничего не удаляет; повторы не задваиваются.</div>
-        <div class="inline"><button id="syncOut" class="sec">Выгрузить файл</button><label class="sec" style="margin:10px 0 0;display:inline-block;background:#2a3647;color:#fff;border-radius:6px;padding:9px 16px;cursor:pointer">Загрузить файл<input id="syncIn" type="file" accept=".json,application/json" hidden></label></div>
-        <div class="help" id="syncStatus"></div>
-        <div id="storageBox" hidden><div class="help" id="storageInfo"></div><button id="clearCandles" class="sec small">Очистить скачанные свечи</button></div>
-      </details>
-      <table id="journal"></table>
-    </div>
   </section>
 
   <!-- БУМАЖНАЯ ТОРГОВЛЯ -->
@@ -433,11 +479,48 @@
     <div class="card"><b>Словарь терминов</b><table id="glossary"></table></div>
     </div>
   </section>
+  <!-- ЖУРНАЛ ПОПЫТОК -->
+  <section id="tab-journal" hidden>
+    <div class="card">
+      <b>Журнал попыток</b>
+      <div class="help">Каждая проверка записывается. Чем больше вариантов вы перепробовали, тем выше планка, которую нужно превысить, чтобы результат нельзя было списать на удачу.</div>
+      <div class="help" id="journalSummary"></div>
+      <div id="deviceNote" class="warn" hidden></div>
+      <details class="sub" id="syncBox"><summary>Обмен с другим устройством (журнал, прогресс курса, бумажные сессии)</summary>
+        <div class="help">Планка должна учитывать попытки на всех устройствах. Выгрузите файл на одном устройстве и загрузите его на другом (например, через почту себе или облачный диск). Загрузка только добавляет недостающее и ничего не удаляет; повторы не задваиваются.</div>
+        <div class="inline"><button id="syncOut" class="sec">Выгрузить файл</button><label class="sec" style="margin:10px 0 0;display:inline-block;background:var(--raise);color:var(--tx);border-radius:2px;padding:9px 16px;cursor:pointer">Загрузить файл<input id="syncIn" type="file" accept=".json,application/json" hidden></label></div>
+        <div class="help" id="syncStatus"></div>
+        <div id="storageBox" hidden><div class="help" id="storageInfo"></div><button id="clearCandles" class="sec small">Очистить скачанные свечи</button></div>
+      </details>
+      <table id="journal"></table>
+    </div>
+    <div id="attemptCard"></div>
+  </section>
+  <section id="tab-settings" hidden><div class="card" id="settingsBox"><b>Общие настройки</b>
+    <div class="sumline" id="settingsSum"></div>
+    <div class="help">Одни на все этапы: проверку, скан и новые бумажные сессии.</div>
+    <div class="row">
+      <div><label>Биржа (источник данных)</label><select id="exchange"></select></div>
+      <div><label>Валюта отчёта</label><select id="reportCcy"><option value="USDT">USDT (доллары)</option><option value="BTC">BTC (биткоины)</option></select></div>
+      <div><label>Комиссия за сделку, % (с каждой стороны)</label><input id="fee" type="number" step="0.01" value="0.1"></div>
+      <div><label>Проскальзывание, % (разница цены при исполнении)</label><input id="slip" type="number" step="0.01" value="0.05"></div>
+      <div><label>Число свечей истории (до 20 000)</label><input id="maxBars" type="number" step="500" min="100" max="20000" value="5000"></div>
+    </div>
+    <div style="margin-top:10px"><b>С чем сравнивать (эталон)</b></div>
+        <div class="help">Эталон — простое действие, которое идея должна обогнать, чтобы в ней был смысл. Вердикт и t-статистика считаются против выбранного эталона, в таблице показываются все три. Удержание BTC важно, потому что цель — расти в BTC: идея на альте, которая проигрывает простому BTC, ничего не добавляет.</div>
+        <div class="row">
+          <div><label>Эталон для вердикта</label><select id="benchmark"></select></div>
+          <div><label>Доходность кэша, % годовых (USDT на сберегательном счёте; 0 — без дохода)</label><input id="cashYield" type="number" step="0.5" min="0" max="100" value="0"></div>
+          <div><label style="display:flex;gap:6px;align-items:center;margin-top:28px"><input type="checkbox" id="cashFlat" style="width:auto"> Начислять этот процент стратегии, пока она вне рынка</label></div>
+        </div>
+        <div class="help">Процент начисляется только за свечи, которые идея целиком провела вне рынка (свечи со входом или с выходом по стопу внутри свечи не считаются). По умолчанию выключено.</div>
+        </div></section>
   </div>
 </main>
+</div>
 
-<script src="i18n.js?v=d068926c34"></script>
-<script src="app.js?v=d068926c34"></script>
-<script type="module" src="course.js?v=d068926c34"></script>
+<script src="i18n.js?v=fd74acd404"></script>
+<script src="app.js?v=fd74acd404"></script>
+<script type="module" src="course.js?v=fd74acd404"></script>
 </body>
 </html>

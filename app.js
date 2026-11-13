@@ -4,6 +4,7 @@ const T = (s) => window.PolygonI18n?.tr(s) ?? s; // перевод текста,
 let meta, lastReq = null, custom = null, indSeq = 1, btcPairs = {};
 const pct = (x) => (x * 100).toFixed(1) + " %";
 const pct0 = (x) => (x * 100).toFixed(0) + " %";
+const mn = (s) => String(s).replace(/-(?=[0-9])/g, "−"); // минус «−» (U+2212), как в текстах judge()
 const EXN = { bybit: "Bybit", binance: "Binance", okx: "OKX" };
 const date = (t) => new Date(t * 1000).toISOString().slice(0, 10);
 const dt = (t) => new Date(t * 1000).toISOString().slice(0, 16).replace("T", " ");
@@ -41,13 +42,24 @@ window.polygonApi = api;
   $("langNote").hidden = I.lang === "ru";
 })();
 const MODE_KEY = "polygon.mode";
+// Боковая панель: отметить открытый режим и этап (на телефоне «Работа» — всё, кроме справки и настроек).
+// Вызывается только после загрузки скрипта целиком (клики, init), поэтому curStage уже определена.
+function sideSync() {
+  const m = document.body.dataset.mode || "work", st = curStage();
+  document.querySelectorAll("#side [data-mode]").forEach((b) => b.classList.toggle("on", m === "learn"));
+  document.querySelectorAll("#side [data-side=work]").forEach((b) => b.classList.toggle("on", m === "work" && !["journal", "ref", "settings"].includes(st)));
+  document.querySelectorAll("#side [data-tab]").forEach((b) => b.classList.toggle("on", m === "work" && b.dataset.tab === st));
+}
 function setMode(m) {
-  document.querySelectorAll("#modeSeg button").forEach((b) => b.classList.toggle("on", b.dataset.mode === m));
+  document.body.dataset.mode = m;
   $("learnArea").hidden = m !== "learn"; $("workArea").hidden = m !== "work";
   try { localStorage.setItem(MODE_KEY, m); } catch { /* выбор не запомнится */ }
   if (m === "learn") window.initCourse?.();
+  sideSync();
 }
-document.querySelectorAll("#modeSeg button").forEach((b) => (b.onclick = () => setMode(b.dataset.mode)));
+document.querySelectorAll("#side [data-mode]").forEach((b) => (b.onclick = () => { setMode("learn"); $("side").classList.remove("open"); window.scrollTo(0, 0); }));
+document.querySelectorAll("#side [data-side=work]").forEach((b) => (b.onclick = () => { setMode("work"); showTab(["journal", "ref", "settings"].includes(curStage()) ? "start" : curStage()); window.scrollTo(0, 0); }));
+$("sideMenu").onclick = () => $("side").classList.toggle("open");
 // Из урока — сразу на нужный этап рабочего режима.
 // Из урока: открыть этап; opts.strategy и opts.symbol — сразу выбрать идею и монету в проверке («проверить в полигоне»).
 window.goWork = (stage, sub, opts = {}) => {
@@ -96,17 +108,18 @@ $("syncBox").addEventListener("toggle", () => { if ($("syncBox").open) syncStatu
 
 /* ---------- этапы ---------- */
 // Старые имена вкладок ведут на новые этапы: scan — режим этапа «Проверка», ind и cat — разделы справки.
-const STAGES = ["start", "coins", "state", "idea", "test", "paper", "ref"];
+const STAGES = ["start", "coins", "state", "idea", "test", "paper", "journal", "ref", "settings"];
 const ALIAS = { rates: ["coins"], scan: ["test", "scan"], ind: ["ref", "ind"], cat: ["ref", "cat"] };
-document.querySelectorAll("#nav button").forEach((b) => (b.onclick = () => showTab(b.dataset.tab)));
+document.querySelectorAll("#side [data-tab]").forEach((b) => (b.onclick = () => { setMode("work"); showTab(b.dataset.tab); $("side").classList.remove("open"); window.scrollTo(0, 0); }));
 document.querySelectorAll("[data-go]").forEach((b) => (b.onclick = () => { if (b.closest("#tab-start")) { wiz.path = b.dataset.go === "idea" ? "idea" : "coins"; wizSave(); } showTab(b.dataset.go); window.scrollTo(0, 0); }));
 function showTab(name) {
   const [stage, sub] = ALIAS[name] || [name];
-  document.querySelectorAll("#nav button").forEach((b) => b.classList.toggle("on", b.dataset.tab === stage));
   for (const t of STAGES) $("tab-" + t).hidden = t !== stage;
+  sideSync();
   if (stage === "test" && sub) testMode(sub);
   if (stage === "ref" && sub) refMode(sub);
   if (stage === "paper") { updateNewSummary(); loadSessions(); }
+  if (stage === "journal") loadJournal();
   if (stage === "coins" && !$("rFunding").children.length) loadRates();
   if (stage === "coins" && !coinData) loadCoins();
   if (stage === "state") loadState(); // список монет мог измениться на этапе 1
@@ -176,6 +189,7 @@ document.querySelectorAll("#refMode button").forEach((b) => (b.onclick = () => r
 function settingsSummary() {
   const b = $("benchmark").selectedOptions[0]?.textContent || "";
   $("settingsSum").textContent = `Общие настройки: ${EXN[$("exchange").value] || ""} · комиссия ${$("fee").value} % · проскальзывание ${$("slip").value} % · отчёт в ${$("reportCcy").value} · до ${$("maxBars").value} свечей · эталон: ${b.toLowerCase()}${Number($("cashYield").value) > 0 ? ` · кэш ${$("cashYield").value} %` : ""}`;
+  $("sideSum").textContent = `${EXN[$("exchange").value] || ""} · ${$("fee").value} % · ${$("reportCcy").value}`;
   const perp = $("gMarket").value === "perp";
   $("gAdvSum").textContent = `Ещё настройки сетки: шаг ${$("gSpacing").value === "geom" ? "одинаковый в %" : "одинаковый в цене"} · ${Number($("gStop").value) || Number($("gTake").value) ? `стоп ${$("gStop").value || 0}, тейк ${$("gTake").value || 0}` : "без стопа и тейка"} · круги внутри свечи ${$("gIntrabar").value === "one" ? "мягко" : "строго"}${$("gStartBuy").checked ? "" : " · без стартовой позиции"}${$("gTrailing").checked ? " · трейлинг" : ""}${perp ? ` · комиссия фьючерса ${$("gPerpFee").value} %, маржа ${$("gMaint").value} %` : ""}`;
   $("cAdvSum").textContent = `Ещё настройки carry: аварийный выход ниже ${$("cEm").value} % · комиссия фьючерса ${$("cPerpFee").value} % · залог спота ${$("cHaircut").value}`;
@@ -587,7 +601,7 @@ async function loadRates(refresh = false) {
     $("rFunding").replaceChildren(h("table", null, h("tr", null, ["Монета", "Биржа", "Средняя за 7 дней", "Средняя за 30 дней", "Последняя выплата", "Интервал"].map((x) => h("th", null, x))),
       ...r.funding.map((x, i) => {
         const first = i === 0 || r.funding[i - 1].symbol !== x.symbol, ex = h("td", null, best[x.symbol] === x ? h("b", null, EXN[x.exchange]) : EXN[x.exchange]);
-        const coin = h("td", { style: first ? "border-top:2px solid var(--line, #444)" : "" }, first ? x.symbol : "");
+        const coin = h("td", { style: first ? "border-top:2px solid var(--line)" : "" }, first ? x.symbol : "");
         return x.error ? h("tr", null, coin, ex, h("td", { colspan: 4, class: "err" }, x.error))
           : h("tr", null, coin, ex, cell(x.apr7), cell(x.apr30), cell(x.lastApr), h("td", null, x.intervalH ? x.intervalH + " ч" : "—"));
       })));
@@ -612,16 +626,31 @@ function currentReq() {
 }
 
 /* ---------- график ---------- */
+// Цвета графиков — из темы (public/theme.css), чтобы совпадали со страницей.
+const cssVar = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 function draw(canvas, series, keys) {
   const g = canvas.getContext("2d"); g.clearRect(0, 0, canvas.width, canvas.height);
   if (!series.length) return;
   const all = series.flatMap((p) => keys.map((k) => p[k.key])), lo = Math.min(...all), hi = Math.max(...all);
   const x = (i) => 10 + (i / (series.length - 1 || 1)) * (canvas.width - 20), y = (v) => canvas.height - 15 - ((v - lo) / (hi - lo || 1)) * (canvas.height - 30);
+  g.font = "11px " + cssVar("--mono");
   keys.forEach((k, n) => {
     g.beginPath(); g.strokeStyle = k.color; g.lineWidth = 2;
     series.forEach((p, i) => (i ? g.lineTo(x(i), y(p[k.key])) : g.moveTo(x(i), y(p[k.key])))); g.stroke();
     g.fillStyle = k.color; g.fillText(T(k.label), 14 + n * 150, 14);
   });
+}
+
+// Свечной график со сделками (public/candles.js загружается при первом показе).
+let candlesMod = null;
+async function showCandles(box, chart) {
+  if (!chart?.candles?.t?.length) { box.hidden = true; return; }
+  box.hidden = false;
+  try {
+    candlesMod ||= await import("./candles.js");
+    box._chart?.destroy();
+    box._chart = candlesMod.mountCandles(box.querySelector(".candlearea"), chart);
+  } catch (err) { box.hidden = true; console.error("candle chart failed:", err); }
 }
 
 /* ---------- проверка ---------- */
@@ -641,9 +670,9 @@ $("run").onclick = async () => {
     const d = await api(isGrid() ? "api/grid" : isCarry() ? "api/carry" : "api/test", lastReq);
     $("deep").hidden = !!(d.grid || d.carry); $("toPaper").hidden = false; $("gridExtra").replaceChildren();
     $("result").hidden = false; $("verdict").textContent = d.verdict; sumLine(d);
-    const keys = [{ key: "h", color: "#8b95a3", label: "Удержание монеты" }, { key: "s", color: "#2f7de1", label: d.grid ? "Сетка" : d.carry ? "Carry" : "Идея" }, { key: "d", color: "#b07fe0", label: d.grid ? "50/50 без сетки" : "Разбавленное" }];
-    if (d.benchmark !== "coin") keys.splice(1, 0, { key: "r", color: "#e0b341", label: d.benchmarkLabel });
-    draw($("chart"), d.series, keys);
+    const keys = [{ key: "h", color: cssVar("--mut"), label: "Удержание монеты" }, { key: "s", color: cssVar("--acc"), label: d.grid ? "Сетка" : d.carry ? "Carry" : "Идея" }, { key: "d", color: cssVar("--fig-violet"), label: d.grid ? "50/50 без сетки" : "Разбавленное" }];
+    if (d.benchmark !== "coin") keys.splice(1, 0, { key: "r", color: cssVar("--tx"), label: d.benchmarkLabel });
+    draw($("chart"), d.series, keys); showCandles($("testCandles"), d.chart);
     $("chartLegend").textContent = `${d.symbol}${d.pair.kind === "synthetic" ? " (синтетика)" : ""}. Период: ${date(d.from)} — ${date(d.to)} (${d.bars} свечей, ${d.years.toFixed(1)} лет). Все цифры и кривые — в ${d.reportCcy}${d.pair.quote !== d.reportCcy ? ` (пересчитано из ${d.pair.quote})` : ""}; кривые — рост капитала от 1.`;
     $("historyHint").textContent = d.years < 6 ? `Проверка охватывает только ${d.years.toFixed(1)} лет. Проверьте на Binance с 2017 года (выберите биржу Binance${$("tf").value !== "1D" ? ", свечу 1 день" : ""}): короткая история может не содержать обвалов вроде 2018 года, и результат с плечом может оказаться совсем другим.` : "";
     const rows = [
@@ -746,12 +775,83 @@ async function loadJournal() {
   wizJournal = j; plankNow = bar; renderWizard();
   $("journalPill").replaceChildren(`Журнал: ${unique} попыт${unique % 10 === 1 && unique % 100 !== 11 ? "ка" : [2, 3, 4].includes(unique % 10) && ![12, 13, 14].includes(unique % 100) ? "ки" : "ок"} · планка `, h("b", null, bar.toFixed(2).replace(".", ",")));
   $("journalPill").title = "Число уникальных проверок в журнале и требование к t-статистике. Подробнее — в справке.";
-  $("journalPill").onclick = () => { showTab("ref"); refMode("plank"); };
+  $("journalPill").onclick = () => { setMode("work"); showTab("ref"); refMode("plank"); };
   $("journalSummary").textContent = `Записей ${j.length}, уникальных попыток ${unique}. Планка считается по уникальным: повтор той же настройки (та же биржа, монета, свеча, идея, параметры, плечо, издержки, эталон и длина истории) — не новая гипотеза, даже если за это время добавились свечи и цифры сдвинулись.`;
   $("journal").replaceChildren(h("tr", null, ["#", "Дата", "Биржа", "Монета", "Идея", "t", "Идея / удержание", "Попытка"].map((x) => h("th", null, x))),
-    ...journalRows(j).slice(0, 15).map(({ e, i, scan }) => scan ? h("tr", { class: "tag" }, [String(i + 1) + (scan.n > 1 ? "–" + (i + scan.n) : ""), e.time.slice(0, 16).replace("T", " "), e.exchange, `${scan.symbols} монет`, `Скан: ${scan.n} комбинаций (${scan.ideas} идей × свечи ${scan.tfs})`, "лучшее " + scan.bestT.toFixed(2), "—", `новых ${scan.fresh}`].map((x) => h("td", null, x)))
-      : h("tr", { class: e.repeatOf ? "tag" : null }, [String(i + 1), e.time.slice(0, 16).replace("T", " "), e.exchange, e.symbol + " " + e.tf, title(e) + (e.side === "short" ? ", шорт" : "") + (e.leverage > 1 ? ", " + e.leverage + "x" : "") + (e.reportCcy === "BTC" ? ", в BTC" : "") + (e.positionPct < 100 ? `, доля ${e.positionPct} %` : "") + (e.fundingHistory ? ", фандинг по истории" : ""), e.tExcess.toFixed(2), pct(e.strategyTotal) + " / " + pct(e.holdTotal), e.repeatOf ? "повтор №" + e.repeatOf : "новая"].map((x) => h("td", null, String(x))))));
+    ...journalRows(j).slice(0, 50).map(({ e, i, scan }) => scan ? h("tr", { class: "tag", onclick: (ev) => toggleScan(e.scan, ev.currentTarget, j), style: "cursor:pointer" }, [String(i + 1) + (scan.n > 1 ? "–" + (i + scan.n) : ""), e.time.slice(0, 16).replace("T", " "), e.exchange, `${scan.symbols} монет`, `Скан: ${scan.n} комбинаций (${scan.ideas} идей × свечи ${scan.tfs})`, "лучшее " + scan.bestT.toFixed(2), "—", `новых ${scan.fresh}`].map((x) => h("td", null, x)))
+      : h("tr", { class: e.repeatOf ? "tag" : null, ...(e.strategy === "carry" ? {} : { onclick: () => openAttempt(i, e.time, e.key), style: "cursor:pointer" }) }, [String(i + 1), e.time.slice(0, 16).replace("T", " "), e.exchange, e.symbol + " " + e.tf, title(e) + (e.side === "short" ? ", шорт" : "") + (e.leverage > 1 ? ", " + e.leverage + "x" : "") + (e.reportCcy === "BTC" ? ", в BTC" : "") + (e.positionPct < 100 ? `, доля ${e.positionPct} %` : "") + (e.fundingHistory ? ", фандинг по истории" : ""), e.tExcess.toFixed(2), pct(e.strategyTotal) + " / " + pct(e.holdTotal), e.repeatOf ? "повтор №" + e.repeatOf : "новая"].map((x) => h("td", null, String(x))))));
 }
+// Строка скана раскрывается его комбинациями (лучшие 20 по t); повторный клик сворачивает.
+function toggleScan(scanId, row, j) {
+  if (row._open) { row._open.forEach((x) => x.remove()); row._open = null; return; }
+  const items = j.map((x, k) => [x, k]).filter(([x]) => x.scan === scanId).sort((a, b) => b[0].tExcess - a[0].tExcess).slice(0, 20);
+  row._open = items.map(([x, k]) => h("tr", { onclick: () => openAttempt(k, x.time, x.key), style: "cursor:pointer" },
+    ["", "", "", x.symbol + " " + x.tf, T(meta.strategies.find((s) => s.key === x.strategy)?.title || x.strategy), x.tExcess.toFixed(2), pct(x.strategyTotal) + " / " + pct(x.holdTotal), ""].map((v) => h("td", null, v))));
+  row.after(...row._open);
+}
+
+// Параметры идеи и общие настройки записи одной строкой (то, что есть в записи).
+function attemptSettings(e, r) {
+  const p = e.params || {}, S = meta.strategies.find((x) => x.key === e.strategy);
+  const par = e.strategy === "grid" ? `Уровней ${p.levels}, ${p.mode === "pct" ? `границы −${p.lowerPct}…+${p.upperPct} %` : `границы ${p.lower}–${p.upper}`}`
+    : S?.params?.length ? S.params.map((q) => `${T(q.label)}: ${p[q.key] ?? q.def}`).join(", ") : "";
+  return (par ? `Параметры: ${par}. ` : "") + `Настройки: биржа ${EXN[e.exchange] || e.exchange}, ${e.symbol}, свеча ${e.tf}, история ${e.maxBars ?? "—"} свечей, комиссия ${e.feePct} %, проскальзывание ${e.slipPct} %, плечо ${e.leverage || 1}x, эталон «${r.benchmarkLabel || e.benchmark}», валюта отчёта ${e.reportCcy || "USDT"}.`;
+}
+
+// Повторить проверку: перенести в форму этапа «Проверка» ВСЕ настройки записи (биржа, монета, идея с параметрами, свеча, длина истории, издержки, плечо, эталон, валюта; у сетки — её настройки).
+function applyEntry(e) {
+  const fire = (id) => $(id).dispatchEvent(new Event("change"));
+  const setSel = (id, v) => { const el = $(id); if (v != null && ![...el.options].some((o) => o.value === String(v))) el.add(new Option(String(v), String(v))); if (v != null) el.value = String(v); };
+  setSel("exchange", e.exchange); fire("exchange"); // перерисовывает список монет, сбрасывает кэши этапов «Монеты» и «Состояние»
+  setSel("symbol", e.symbol); fire("symbol");
+  setSel("strategy", e.strategy);
+  if (e.strategy === "custom") custom = e.params?.spec ? structuredClone(e.params.spec) : null;
+  onStrategy();
+  setSel("tf", e.tf);
+  if (e.strategy === "grid") {
+    const g = e.params || {}, set = (id, v) => { if (v != null) $(id).value = v; };
+    set("gMarket", g.market || "spot"); set("gMode", g.mode); set("gLowPct", g.lowerPct); set("gUpPct", g.upperPct); set("gLow", g.lower); set("gUp", g.upper);
+    set("gLevels", g.levels); set("gSpacing", g.spacing); set("gStop", g.stopPx); set("gTake", g.takePx); set("gIntrabar", g.intrabar);
+    $("gStartBuy").checked = g.startBuy !== false; $("gTrailing").checked = !!g.trailing;
+    if (g.market === "perp") { set("gDir", g.direction); set("gLev", g.leverage); set("gPerpFee", g.perpFeePct); set("gMaint", g.maintPct); }
+    gridInfo();
+  } else if (e.strategy !== "custom") document.querySelectorAll("#params input").forEach((i) => { if (e.params?.[i.dataset.key] != null) i.value = e.params[i.dataset.key]; });
+  const num = (id, v) => { if (v != null) $(id).value = v; };
+  num("maxBars", e.maxBars); num("fee", e.feePct); num("slip", e.slipPct); num("lev", e.strategy === "grid" ? 1 : e.leverage); num("carry", e.carryPct); num("cashYield", e.cashYieldPct); num("positionPct", e.positionPct);
+  if (e.reportCcy) setSel("reportCcy", e.reportCcy);
+  if (e.benchmark) setSel("benchmark", e.benchmark);
+  $("cashFlat").checked = !!e.cashFlat; $("fundHist").checked = !!e.fundingHistory;
+  settingsSummary(); levInfo(); chooseIdea();
+}
+
+// Карточка попытки: правило идеи, цифры, плюсы и минусы, свечи со сделками, кривая денег.
+async function openAttempt(i, time, key) {
+  const box = $("attemptCard");
+  box.replaceChildren(h("div", { class: "card help" }, "Пересчитываю попытку по сохранённым свечам…"));
+  box.scrollIntoView({ block: "start" });
+  try {
+    const d = await api("api/replay", { index: i, time, key }), e = d.entry, r = d.result, idea = d.idea;
+    const li = (arr, cls) => h("ul", null, arr.map((s) => h("li", { class: cls }, s)));
+    const side = (name, a, b) => h("div", null, h("b", null, name), a?.length ? [h("div", { class: "tag" }, "Идея"), li(a, name === "Плюсы" ? "good" : "bad")] : null, h("div", { class: "tag" }, "Эта проверка"), li(b, name === "Плюсы" ? "good" : "bad"));
+    const cb = h("div", { class: "candlebox", hidden: true }, h("div", { class: "candlearea" }), h("div", { class: "candlehelp" }, "Свечи и сделки: колесо — масштаб, перетаскивание — сдвиг, наведение — подробности."));
+    const cv = h("canvas", { width: 900, height: 240 });
+    box.replaceChildren(h("div", { class: "card" },
+      h("div", { class: "tag" }, `Попытка №${d.index + 1} · ${e.time.slice(0, 16).replace("T", " ")} · ${e.exchange} · ${e.symbol} ${e.tf}`),
+      h("h2", null, idea ? T(idea.title) : e.strategy === "grid" ? "Сетка" : "Своя стратегия"),
+      idea ? h("div", { class: "plain" }, idea.plain) : null,
+      d.sameHistory ? null : h("div", { class: "warn" }, "Это старая запись: дата последней свечи не сохранялась, поэтому пересчёт сделан на нынешней истории — цифры могут отличаться от записанных."),
+      h("div", { class: "sumline" }, mn(`Идея ${pct(r.strategy.total)} · удержание ${pct(r.hold.total)} · t = ${r.tExcess.toFixed(2)} при планке сейчас ${r.plank.toFixed(2)} · сделок ${r.strategy.trades}`)),
+      h("div", { class: "sumline" }, mn(`Просадка идеи ${pct(r.strategy.maxDrawdown)}, удержания ${pct(r.hold.maxDrawdown)} · в рынке ${pct0(r.strategy.exposure)} времени`)),
+      h("div", { class: "small-note" }, attemptSettings(e, r)),
+      h("div", { class: "entry" }, side("Плюсы", idea?.pros, d.judged.pros), side("Минусы", idea?.cons, d.judged.cons)),
+      cb, cv,
+      idea ? h("div", { class: "box" }, h("b", null, "Вердикт проекта: "), badge(idea.verdict.status), " ", idea.verdict.text, h("div", { class: "small-note" }, "Источник: " + idea.source)) : null,
+      h("button", { title: "Все настройки этой попытки переносятся на этап «Проверка»", onclick: () => { applyEntry(e); goWork("test", "one"); } }, "Повторить проверку →")));
+    draw(cv, r.series, [{ key: "h", color: cssVar("--mut"), label: "Удержание монеты" }, { key: "s", color: cssVar("--acc"), label: "Идея" }]);
+    showCandles(cb, r.chart);
+  } catch (err) { box.replaceChildren(h("div", { class: "card err" }, "Не получилось пересчитать: " + err.message)); }
+}
+
 // Строки журнала от новых к старым; записи одного скана (поле scan) схлопываются в одну строку.
 function journalRows(j) {
   const out = [];
@@ -848,6 +948,7 @@ async function refreshSession(id) {
     const cls = (v) => (v > 0 ? "good" : v < 0 ? "bad" : "");
     if (st.waiting) { add(h("div", { class: "plain" }, "Новых закрытых свечей после старта пока нет. ", h("b", null, st.actionText + ".")), h("div", { class: "help" }, "Последняя закрытая свеча: " + dt(st.lastBarT) + " UTC.")); return; }
     const canvas = h("canvas", { width: 900, height: 200 });
+    const cb = h("div", { class: "candlebox", hidden: true }, h("div", { class: "candlearea" }), h("div", { class: "candlehelp" }, T("Свечи и сделки: колесо — масштаб, перетаскивание — сдвиг, наведение — подробности.")));
     if (st.grid) {
       const P = (v) => v.toPrecision(6), q = st.quote, amt = (v) => money(v, q);
       add(
@@ -861,10 +962,10 @@ async function refreshSession(id) {
         st.ruined ? h("div", { class: "err" }, `Ликвидация ${dt(st.liquidatedAt)} UTC по цене около ${P(st.liquidationPx)}: вложение потеряно, сетка остановлена.`) : st.perp && !st.stopped ? h("div", { class: "help" }, `Ликвидация, если цена пойдёт в одну сторону и исполнит все заявки на пути: вниз — ${st.liqDown ? P(st.liqDown) : "не наступит"}, вверх — ${st.liqUp ? P(st.liqUp) : "не наступит"}.`) : null,
         h("div", { class: "help" }, `Диапазон ${P(st.lower)} — ${P(st.upper)} ${q}, ${st.levels} уровней, шаг ${st.stepPct.toFixed(2)} %. Последняя цена ${P(st.price)}. ${st.actionText}.` + (st.trailShifts ? ` Сдвигов вверх: ${st.trailShifts}.` : "")),
         st.orders.length ? table(["Ближайшие заявки", "Цена", "Количество"], st.orders.map((o) => [o.side === "buy" ? "покупка" : "продажа", P(o.px), o.qty.toPrecision(6)])) : null,
-        canvas,
+        canvas, cb,
         st.trades.length ? table(["Время (UTC)", "Сделка", "Цена", "Количество", "Прибыль круга"], st.trades.map((t) => [dt(t.t), (t.side === "liq" ? "ликвидация" : t.side === "buy" ? "покупка" : "продажа") + (t.why && t.side !== "liq" ? ` (${t.why})` : ""), P(t.px), t.qty.toPrecision(6), t.profit == null ? "—" : amt(t.profit)])) : h("div", { class: "help" }, "Сделок пока не было."),
         h("div", { class: "small-note" }, "Последняя закрытая свеча: " + dt(st.lastBarT) + " UTC. Модель на свечах: круги внутри свечи " + (st.params.intrabar === "one" ? "засчитываются не больше одного (мягко)" : "не засчитываются (строго") + (st.params.intrabar === "one" ? "" : ")") + ". Учебная торговля без денег, не инвестиционный совет."));
-      draw(canvas, st.series, [{ key: "hold", color: "#8b95a3", label: "Удержание" }, { key: "equity", color: "#2f7de1", label: "Бумажная сетка" }]);
+      draw(canvas, st.series, [{ key: "hold", color: cssVar("--mut"), label: "Удержание" }, { key: "equity", color: cssVar("--acc"), label: "Бумажная сетка" }]); showCandles(cb, st.chart);
       return;
     }
     const head = (items) => h("div", { class: "row" }, ...items.map(([a, b, c]) => h("div", null, h("div", { class: "tag" }, a), h("div", { class: c || "" }, b))));
@@ -875,10 +976,10 @@ async function refreshSession(id) {
         head([["Капитал сейчас", `${money(st.equity, st.reportCcy)} (${sg(st.returnPct)})`, cls(st.returnPct)], ["Разовая покупка всего бюджета в начале", sg(st.holdReturnPct), cls(st.holdReturnPct)],
           ["Вложено / в кэше", `${amt(st.spentQuote)} / ${amt(st.cashQuote)}`], ["Монеты / средняя цена", `${st.coinQty.toPrecision(6)} / ${st.avgPrice ? P(st.avgPrice) : "—"}`], ["Покупок / новых свечей", `${st.buys} / ${st.newBars}`],
           ["Следующее действие", st.actionText, "warn"]]),
-        canvas,
+        canvas, cb,
         st.trades.length ? table(["Время (UTC)", `Сумма (${q})`, "Цена", "Монеты"], st.trades.map((t) => [dt(t.t), amt(t.amount), P(t.px), t.qty.toPrecision(6)])) : null,
         h("div", { class: "small-note" }, "Последняя закрытая свеча: " + dt(st.lastBarT) + " UTC. Покупка — по цене открытия свечи с комиссией и проскальзыванием. Учебная торговля без денег, не инвестиционный совет."));
-      draw(canvas, st.series, [{ key: "hold", color: "#8b95a3", label: "Разовая покупка" }, { key: "equity", color: "#2f7de1", label: "DCA" }]);
+      draw(canvas, st.series, [{ key: "hold", color: cssVar("--mut"), label: "Разовая покупка" }, { key: "equity", color: cssVar("--acc"), label: "DCA" }]); showCandles(cb, st.chart);
       return;
     }
     if (st.carry) {
@@ -887,10 +988,10 @@ async function refreshSession(id) {
           ["Фандинг / комиссии", `$${st.fundingUsd.toFixed(2)} / $${(-st.feesUsd).toFixed(2)}`], ["Позиция", st.held ? "спот + шорт фьючерса" : "в деньгах"], ["Новых свечей / сделок закрыто", `${st.newBars} / ${st.closedTrades}`],
           ["Следующее действие", st.actionText, "warn"]]),
         st.ruined ? h("div", { class: "err" }, "Фьючерс ликвидирован: торговля в этой сессии остановлена.") : null,
-        canvas,
+        canvas, cb,
         st.trades.length ? table(["Вход", "Выход", "Результат", "Примечание"], st.trades.map((t) => [dt(t.entryT), t.open ? "открыта" : dt(t.exitT), (t.ret >= 0 ? "+" : "") + (t.ret * 100).toFixed(2) + " %", t.open ? "" : t.note])) : h("div", { class: "help" }, "Сделок пока не было."),
         h("div", { class: "small-note" }, "Последняя закрытая свеча: " + dt(st.lastBarT) + " UTC. Модель единого счёта, обе ноги — по открытию свечи после сигнала. Учебная торговля без денег, не инвестиционный совет."));
-      draw(canvas, st.series, [{ key: "hold", color: "#8b95a3", label: "Удержание" }, { key: "equity", color: "#2f7de1", label: "Бумажный carry" }]);
+      draw(canvas, st.series, [{ key: "hold", color: cssVar("--mut"), label: "Удержание" }, { key: "equity", color: cssVar("--acc"), label: "Бумажный carry" }]); showCandles(cb, st.chart);
       return;
     }
     add(
@@ -902,10 +1003,10 @@ async function refreshSession(id) {
         h("div", null, h("div", { class: "tag" }, "Новых свечей / сделок закрыто"), h("div", null, `${st.newBars} / ${st.closedTrades} (прибыльных ${st.wins})`))),
       st.ruined ? h("div", { class: "err" }, "Позиция ликвидирована: залог потерян, учебный счёт обнулён. Торговля в этой сессии остановлена.") : null,
       st.openTrade ? h("div", { class: "help" }, `Открытая сделка (${st.side === "short" ? "шорт" : "покупка"}${st.leverage > 1 ? ", плечо " + st.leverage + "x" : ""}): вход ${dt(st.openTrade.entryT)} по ${st.openTrade.entryPrice.toFixed(4)}, пока ${st.openTrade.unrealizedPct >= 0 ? "+" : ""}${st.openTrade.unrealizedPct.toFixed(2)} %.${st.openTrade.liqPrice ? " Цена ликвидации: " + st.openTrade.liqPrice.toFixed(4) + "." : ""}`) : null,
-      canvas,
+      canvas, cb,
       st.trades.length ? table(["Вход", "Выход", "Цена входа", "Результат"], st.trades.map((t) => [dt(t.entryT), t.open ? "открыта" : dt(t.exitT), t.entryPrice.toFixed(4), (t.ret >= 0 ? "+" : "") + (t.ret * 100).toFixed(2) + " %" + (t.liquidated ? " (ликвидация)" : "")])) : h("div", { class: "help" }, "Сделок пока не было."),
       h("div", { class: "small-note" }, "Последняя закрытая свеча: " + dt(st.lastBarT) + " UTC. Учебная торговля без денег, не инвестиционный совет."));
-    draw(canvas, st.series, [{ key: "hold", color: "#8b95a3", label: "Удержание" }, { key: "equity", color: "#2f7de1", label: "Бумажный счёт" }]);
+    draw(canvas, st.series, [{ key: "hold", color: cssVar("--mut"), label: "Удержание" }, { key: "equity", color: cssVar("--acc"), label: "Бумажный счёт" }]); showCandles(cb, st.chart);
   } catch (e) { box.className = "err"; box.textContent = e.message; }
 }
 $("refreshAll").onclick = () => Object.keys(sessionBox).forEach(refreshSession);
@@ -1052,5 +1153,5 @@ if ("serviceWorker" in navigator && isSecureContext) navigator.serviceWorker.reg
   renderIndicators(); renderCatalog(); scanFill(); syncScanCoins(); loadJournal(); levInfo(); settingsSummary();
   api("api/paper").then((l) => { wizSessions = l; renderWizard(); }).catch(() => {});
   let mode = "work"; try { mode = localStorage.getItem(MODE_KEY) || "work"; } catch { /* по умолчанию рабочий */ }
-  if (mode === "learn") { const go = () => setMode("learn"); window.initCourse ? go() : addEventListener("load", go); }
+  const go = () => setMode(mode === "learn" ? "learn" : "work"); if (mode === "learn") { window.initCourse ? go() : addEventListener("load", go); } else go(); // рабочий режим тоже отмечается в панели
 })();

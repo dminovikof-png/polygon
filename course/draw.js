@@ -1,11 +1,12 @@
 // Общие кирпичики рисунков курса: цвета, холст SVG, подписи, прямоугольники, стрелки, оси графика.
 // Рисунки — функции, возвращающие SVG-строку; цифры считаются в коде, поэтому работают без сети.
-export const C = { bg: "#0e1318", card: "#171d24", line: "#263040", text: "#c9d1dc", dim: "#8b95a3", blue: "#2f7de1", green: "#4cc38a", red: "#ef6a6a", gold: "#e0b341", violet: "#a07be0" };
+// Цвета — переменные темы (public/theme.css): в уроке (.paper) рисунок светлый, в рабочем режиме и роликах — тёмный.
+export const C = { bg: "var(--fig-bg)", card: "var(--fig-card)", line: "var(--fig-line)", text: "var(--fig-text)", dim: "var(--fig-dim)", blue: "var(--fig-blue)", green: "var(--fig-green)", red: "var(--fig-red)", gold: "var(--fig-gold)", violet: "var(--fig-violet)" };
 
 const ARROW = `<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="${C.text}"/></marker></defs>`;
 export const svg = (w, h, body, label) => `<svg viewBox="0 0 ${w} ${h}" role="img" aria-label="${escAttr(label)}" style="width:100%;max-width:${w}px;height:auto;background:${C.bg};border-radius:8px">${ARROW}${body}</svg>`;
 export const escAttr = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-export const txt = (x, y, s, { size = 13, color = C.text, anchor = "start", weight = 400 } = {}) => `<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" font-weight="${weight}" font-family="system-ui,sans-serif">${escAttr(s)}</text>`;
+export const txt = (x, y, s, { size = 13, color = C.text, anchor = "start", weight = 400 } = {}) => `<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" font-weight="${weight}" style="font-family:var(--sans)">${escAttr(s)}</text>`;
 // прямоугольник с заголовком и строками по центру
 export function box(x, y, w, h, title, lines = [], { color = C.line, fill = C.card, size = 14 } = {}) {
   let s = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${fill}" stroke="${color}" stroke-width="2"/>`;

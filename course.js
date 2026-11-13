@@ -118,8 +118,15 @@ const BLOCKS = {
   },
 };
 
+// Строка в боковой панели под «Учёбой»: «07 Название модуля» и «7.2 Название урока»; без открытого урока скрыта.
+export const lessonLabel = (l) => { const n = Number(l.module.id.slice(1)); return [`${String(n).padStart(2, "0")} ${l.module.title}`, `${n}.${l.module.lessons.findIndex((x) => x.id === l.id) + 1} ${l.title}`]; };
+function sideLesson(l) {
+  const box = document.getElementById("sideLesson"); if (!box) return;
+  box.hidden = !l;
+  box.replaceChildren(...(l ? lessonLabel(l).map((t) => el("span", null, t)) : []));
+}
 function renderHome() {
-  view = null;
+  view = null; sideLesson(null);
   const done = lessons.filter((l) => P(l.id).done).length;
   $("learnArea").replaceChildren(
     el("div", { class: "card" }, el("b", null, "Курс"), el("div", { class: "help" }, `Пройдено уроков: ${done} из ${lessons.length}. Модули можно открывать в любом порядке. Курс объясняет и показывает, но не советует, что покупать.`)),
@@ -149,13 +156,14 @@ function openLesson(id) {
   const doneBtn = el("button", { onclick: () => { p.done = true; p.doneAt ||= Date.now(); saveLesson(id); next ? openLesson(next.id) : renderHome(); } }, p.done ? "Дальше" : "Урок пройден");
   const prev = lessons[i - 1], next = lessons[i + 1];
   $("learnArea").replaceChildren(el("div", { class: "card lesson" },
-    el("div", { class: "inline" }, el("button", { class: "sec small", onclick: renderHome }, "← К списку уроков"), el("span", { class: "help" }, el("span", { class: "notr" }, l.module.title), ` · урок ${l.module.lessons.findIndex((x) => x.id === id) + 1} из ${l.module.lessons.length} · ${l.minutes} мин`)),
+    el("div", { class: "inline" }, el("button", { class: "sec small", onclick: renderHome }, "← К списку уроков"), el("span", { class: "kicker" }, `Модуль ${l.module.id.replace(/[^0-9]/g, "").padStart(2, "0")} · урок ${l.module.lessons.findIndex((x) => x.id === id) + 1} из ${l.module.lessons.length} · ${l.minutes} мин`)),
     el("h2", { class: "notr" }, l.title),
     LANG !== "ru" && !l.module.translated ? el("div", { class: "box help" }, "Этот модуль пока не переведён: текст урока — на русском.") : null,
     l.module.lessons[0].id === id && VIDEOS[l.module.id] ? BLOCKS.video(moduleVideo(l.module.id)) : null, // ролик модуля — в его первом уроке
     ...l.blocks.map((b, k) => BLOCKS[b.type](b, l, k)),
     el("hr"),
     el("div", { class: "inline" }, prev ? el("button", { class: "sec notr", onclick: () => openLesson(prev.id) }, "← " + prev.title) : null, doneBtn, next ? el("span", { class: "help" }, "Следующий:", " ", el("span", { class: "notr" }, next.title)) : null)));
+  sideLesson(l);
   window.scrollTo(0, 0);
 }
 

@@ -25,7 +25,7 @@ export function coinFlipCounts(n, flips = 10, seed = 7) {
 }
 
 export function courseMap() {
-  const box = (x, title, lines, color) => `<rect x="${x}" y="20" width="250" height="150" rx="10" fill="#171d24" stroke="${color}" stroke-width="2"/>` +
+  const box = (x, title, lines, color) => `<rect x="${x}" y="20" width="250" height="150" rx="10" fill="${C.card}" stroke="${color}" stroke-width="2"/>` +
     txt(x + 125, 50, title, { size: 16, anchor: "middle", weight: 600 }) + lines.map((l, i) => txt(x + 125, 80 + i * 22, l, { anchor: "middle", color: C.dim })).join("");
   return svg(600, 230,
     box(20, "Учебный режим", ["модули 0–14", "уроки, схемы, анимации", "симуляторы без денег"], C.blue) +

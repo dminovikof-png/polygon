@@ -1,0 +1,69 @@
+/* Палитра «Прибор»: тёмная — рабочий режим и ролики, .paper — светлая «бумага» уроков.
+   Цвета задаются только здесь; страница, рисунки (var(--fig-*)) и графики берут их отсюда. */
+:root {
+  --bg: #0c0e0b;
+  --card: #0f110d;
+  --panel: #121410;
+  --raise: #1a1d17;
+  --line: #2a2d26;
+  --line2: #3a3e33;
+  --scrim: rgba(0, 0, 0, .5);
+  --tx: #d7d3c4;
+  --tx-hi: #f0ecdd;
+  --mut: #8a8d7b;
+  --acc: #ffb000;
+  --on-acc: #0c0e0b;
+  --acc-bg: #17190f;
+  --mid-bg: #3a2f0c;
+  --bad: #e5484d;
+  --bad-bg: #2a1012;
+  --good: #6fbf73;
+  --good-bg: #16301a;
+  --stripe: #ffb000;
+  --fig-bg: #121410;
+  --fig-card: #1a1d17;
+  --fig-line: #2a2d26;
+  --fig-text: #d7d3c4;
+  --fig-dim: #8a8d7b;
+  --fig-blue: #5b9bd5;
+  --fig-green: #6fbf73;
+  --fig-red: #e5484d;
+  --fig-gold: #ffb000;
+  --fig-violet: #a58bd6;
+  --mono: "JetBrains Mono", Consolas, "Microsoft YaHei", "PingFang SC", monospace;
+  --sans: "IBM Plex Sans", "Segoe UI", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+  --serif: "PT Serif", Georgia, "Microsoft YaHei", "PingFang SC", serif;
+}
+.paper {
+  --bg: #f4f1e8;
+  --card: #f4f1e8;
+  --panel: #ebe5d3;
+  --raise: #e2dbc6;
+  --line: #d6cfbb;
+  --line2: #c9c0a8;
+  --scrim: rgba(28, 29, 24, .4);
+  --tx: #1c1d18;
+  --tx-hi: #1c1d18;
+  --mut: #5e5948;
+  --acc: #8a5d00;
+  --on-acc: #f4f1e8;
+  --acc-bg: #ebe5d3;
+  --mid-bg: #ebe0c0;
+  --bad: #b4282d;
+  --bad-bg: #f1d9d6;
+  --good: #336e37;
+  --good-bg: #dbe8d6;
+  --stripe: #ffb000;
+  --fig-bg: #ebe5d3;
+  --fig-card: #f4f1e8;
+  --fig-line: #c9c0a8;
+  --fig-text: #1c1d18;
+  --fig-dim: #5e5948;
+  --fig-blue: #1f5fa0;
+  --fig-green: #336e37;
+  --fig-red: #b4282d;
+  --fig-gold: #8a5d00;
+  --fig-violet: #6a4fa8;
+  background: var(--bg);
+  color: var(--tx);
+}
